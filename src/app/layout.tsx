@@ -1,10 +1,19 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Rubik } from 'next/font/google';
+import Header from '@/components/header/Header';
+import Footer from '@/components/footer/Footer';
+import { ContextOverAll } from '@/components/context/context';
 
 export const metadata: Metadata = {
-  title: 'Дипломная работа Турсынхан Акжол',
+  title: 'Дипломная работа - Турсынхан Акжол',
   description: 'Made by NextJS',
 };
+
+const rubik = Rubik({
+  subsets: ['latin'],
+  display: 'swap',
+});
 
 export default function RootLayout({
   children,
@@ -13,7 +22,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className={rubik.className}>
+        <ContextOverAll>
+          <Header />
+          {children}
+          <Footer />
+        </ContextOverAll>
+      </body>
     </html>
   );
 }
