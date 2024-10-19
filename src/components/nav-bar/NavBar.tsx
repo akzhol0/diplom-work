@@ -28,7 +28,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
           </Link>
         ))}
       </ul>
-      <Link href="/request">
+      <Link onClick={() => setBurgerMenu(false)} href="/request">
         <MyButtonDanger className="hidden lg:flex text-red-500 font-semibold font-sm">
           Оставить заявку
         </MyButtonDanger>
