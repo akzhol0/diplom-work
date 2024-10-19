@@ -28,7 +28,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
           </Link>
         ))}
       </ul>
-      <Link onClick={() => setBurgerMenu(false)} href="/request">
+      <Link href="/request">
         <MyButtonDanger className="hidden lg:flex text-red-500 font-semibold font-sm">
           Оставить заявку
         </MyButtonDanger>
@@ -36,7 +36,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
       {mobileVersion && <p>+7 (777) 000 00-00 </p>}
       <p className="hidden xl:block">+7 (777) 000 00-00 </p>
       {mobileVersion && (
-        <Link href="/request">
+        <Link onClick={() => setBurgerMenu(false)} href="/request">
           <MyButtonDanger className="flex text-red-500 font-semibold font-sm">
             Оставить заявку
           </MyButtonDanger>
