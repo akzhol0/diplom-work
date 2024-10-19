@@ -13,15 +13,18 @@ function NavBar({ mobileVersion }: NavBarProps) {
   const classesForm = { over: '' };
   if (mobileVersion) classesForm.over = 'flex-col';
 
-  const { auth } = useContext(contextData);
-  {console.log(auth)}
+  const { auth, setBurgerMenu } = useContext(contextData);
 
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
       <ul className="flex gap-5">
         {links.map((item: any) => (
-          <Link key={item.url} href={item.url === '/profile' && auth === false ? '/login' : item.url}>
-            <li className="cursor-pointer">{item.title}</li>
+          <Link
+            key={item.url}
+            href={item.url === '/profile' && auth === false ? '/login' : item.url}>
+            <li onClick={() => setBurgerMenu(false)} className="cursor-pointer">
+              {item.title}
+            </li>
           </Link>
         ))}
       </ul>

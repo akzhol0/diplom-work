@@ -1,12 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import Brand from './Brand';
 import NavBar from '../nav-bar/NavBar';
 import BurgerButton from './header-burger/BurgerButton';
+import { contextData } from '../context/context';
 
 function Header() {
-  const [modal, setModal] = useState(false);
+  const { burgerMenu, setBurgerMenu } = useContext(contextData);
 
   return (
     <div className="w-full flex justify-center">
@@ -16,8 +17,8 @@ function Header() {
           <NavBar mobileVersion={false} />
         </div>
         <div className="block md:hidden">
-          <BurgerButton setModal={setModal} modal={modal} />
-          {modal && (
+          <BurgerButton setBurgerMenu={setBurgerMenu} burgerMenu={burgerMenu} />
+          {burgerMenu && (
             <div className="right-0 top-[120px] absolute w-full flex justify-center items-center min-h-[200px] bg-white">
               <NavBar mobileVersion={true} />
             </div>
