@@ -4,8 +4,8 @@ import Image from 'next/image';
 function Main() {
   return (
     <div className="w-full flex justify-center">
-      <div className="w-[95%] md:w-[80%] min-h-[500px] flex flex-col lg:flex-row justify-around gap-2">
-        <div className="h-[500px] flex flex-col gap-4 justify-center">
+      <div className="w-[95%] md:w-[80%] flex flex-col lg:flex-row justify-around gap-2">
+        <div className="h-auto lg:h-[500px] flex flex-col gap-4 justify-center">
           <p className="text-[30px] sm:text-[40px] md:text-[60px] font-bold">
             Digital production team
           </p>
