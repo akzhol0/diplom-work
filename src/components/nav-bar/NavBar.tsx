@@ -4,6 +4,7 @@ import WhatsappLogo from '../UI/icons/medias/WhatsappLogo';
 import Link from 'next/link';
 import { links } from '../services/links';
 import { contextData } from '../context/context';
+import { usePathname } from 'next/navigation';
 
 type NavBarProps = {
   mobileVersion: boolean;
@@ -12,9 +13,9 @@ type NavBarProps = {
 function NavBar({ mobileVersion }: NavBarProps) {
   const classesForm = { over: '' };
   if (mobileVersion) classesForm.over = 'flex-col';
+  const pathname = usePathname();
 
   const { auth, setBurgerMenu } = useContext(contextData);
-
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
       <ul className="flex gap-5">
@@ -22,7 +23,11 @@ function NavBar({ mobileVersion }: NavBarProps) {
           <Link
             key={item.url}
             href={item.url === '/profile' && auth === false ? '/login' : item.url}>
-            <li onClick={() => setBurgerMenu(false)} className="cursor-pointer">
+            <li
+              onClick={() => setBurgerMenu(false)}
+              className={
+                '' + pathname === item.url ? 'cursor-pointer text-gray-500' : 'cursor-pointer'
+              }>
               {item.title}
             </li>
           </Link>
