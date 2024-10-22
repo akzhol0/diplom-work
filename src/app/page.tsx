@@ -4,7 +4,6 @@ import { cards } from '@/components/services/cards';
 import CardComp from '@/components/main-page/CardComp';
 import PortfolioContainer from '@/components/portfolio/PortfolioContainer';
 import Link from 'next/link';
-import Parallax from '@/components/main-page/Parallax';
 
 function Main() {
   return (
