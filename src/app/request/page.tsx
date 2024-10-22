@@ -48,9 +48,9 @@ function RequestPage() {
         </div>
         <p className="text-[12px] mt-5">
           Заполняя данную форму, вы принимаете условия{' '}
-          <label className="text-red-600 cursor-pointer">Соглашения об использовании сайта</label>,{' '}
+          <label className="text-red-600 cursor-pointer hover:underline">Соглашения об использовании сайта</label>,{' '}
           <br /> и соглашаетесь с{' '}
-          <label className="text-red-600 cursor-pointer">
+          <label className="text-red-600 cursor-pointer hover:underline">
             Правилами обработки и использования персональных данных
           </label>
         </p>

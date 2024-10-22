@@ -5,3 +5,17 @@ export type PortItemPropsTypes = {
   id: number;
   type: string;
 };
+
+export type CardPropsTypes = {
+  img: string;
+  title: string;
+  description: string;
+  id: number;
+};
+
+export type PathPropsTypes = {
+  img: string;
+  title: string;
+  id: number;
+  description: string[];
+};
