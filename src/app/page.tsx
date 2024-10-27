@@ -49,7 +49,7 @@ function Main() {
           </p>
           <PortfolioContainer filter="Промо" />
           <div className="flex justify-end">
-            <Link href="/portfolio">
+            <Link href="/projects">
               <p className="text-lg text-red-600 cursor-pointer">Посмотреть все проекты</p>
             </Link>
           </div>
