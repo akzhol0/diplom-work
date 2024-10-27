@@ -1,7 +1,13 @@
-import React from "react";
+import ProfileComp from '@/components/profile/ProfileComp';
+import { Metadata } from 'next';
+import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Профиль',
+};
 
 function Profile() {
-  return <div className="h-[1000px]">Profile</div>;
+  return <ProfileComp />;
 }
 
 export default Profile;

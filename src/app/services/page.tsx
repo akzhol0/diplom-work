@@ -1,7 +1,12 @@
 import RequestComp from '@/components/footer/RequestComp';
 import { serviceCards } from '@/components/services/serviceCards';
 import ServiceCard from '@/components/servicesPage/ServiceCard';
+import { Metadata } from 'next';
 import React from 'react';
+
+export const metadata: Metadata = {
+  title: 'Услуги',
+};
 
 function Services() {
   return (
