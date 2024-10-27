@@ -19,7 +19,9 @@ function Header() {
         <div className="block md:hidden">
           <BurgerButton setBurgerMenu={setBurgerMenu} burgerMenu={burgerMenu} />
           {burgerMenu && (
-            <div className="right-0 top-[120px] absolute w-full flex justify-center items-center min-h-[200px]">
+            <div
+              className="right-0 top-[120px] absolute w-full flex justify-center items-center min-h-[200px] 
+                          bg-white border-b border-black">
               <NavBar mobileVersion={true} />
             </div>
           )}
