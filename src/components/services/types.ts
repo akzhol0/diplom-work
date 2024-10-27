@@ -19,3 +19,11 @@ export type PathPropsTypes = {
   id: number;
   description: string[];
 };
+
+export type ServiceCardPropsTypes = {
+  title: string;
+  description: string;
+  price: string;
+  id: number;
+  card: PortItemPropsTypes;
+};

@@ -26,7 +26,9 @@ function NavBar({ mobileVersion }: NavBarProps) {
             <li
               onClick={() => setBurgerMenu(false)}
               className={
-                '' + pathname === item.url ? 'cursor-pointer text-gray-500' : 'cursor-pointer'
+                '' + pathname === item.url
+                  ? 'cursor-pointer text-gray-500 whitespace-nowrap'
+                  : 'cursor-pointer whitespace-nowrap'
               }>
               {item.title}
             </li>
@@ -34,12 +36,12 @@ function NavBar({ mobileVersion }: NavBarProps) {
         ))}
       </ul>
       <Link href="/request">
-        <MyButtonDanger className="hidden lg:flex text-red-500 font-semibold font-sm">
+        <MyButtonDanger className="hidden lg:flex text-red-500 font-semibold font-sm whitespace-nowrap">
           Оставить заявку
         </MyButtonDanger>
       </Link>
       {mobileVersion && <p>+7 (777) 000 00-00 </p>}
-      <p className="hidden xl:block">+7 (777) 000 00-00 </p>
+      <p className="hidden xl:block whitespace-nowrap">+7 (777) 000 00-00 </p>
       {mobileVersion && (
         <Link onClick={() => setBurgerMenu(false)} href="/request">
           <MyButtonDanger className="flex text-red-500 font-semibold font-sm">
@@ -48,13 +50,13 @@ function NavBar({ mobileVersion }: NavBarProps) {
         </Link>
       )}
       <span className="cursor-pointer">
-        <WhatsappLogo />
+        <WhatsappLogo background="black" />
       </span>
-      <select name="" id="">
+      {/* <select name="" id="">
         <option value="">RU</option>
         <option value="">KZ</option>
         <option value="">ENG</option>
-      </select>
+      </select> */}
     </div>
   );
 }

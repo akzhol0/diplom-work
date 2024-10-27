@@ -24,7 +24,7 @@ export const portfolioItems = [
     title: 'Drop Shop',
     description: 'Разработка интернет-магазина для сети магазинов техники"',
     backgroundColor: 'bg-[#c4f2e1]',
-    type: 'ИнтернетМагазины',
+    type: 'Интернет-Магазины',
     id: 4,
   },
   {

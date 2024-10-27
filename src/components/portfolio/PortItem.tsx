@@ -9,8 +9,7 @@ type PortItemProps = {
 function PortItem({ item }: PortItemProps) {
   return (
     <div
-      className={`h-[250px] rounded-xl ${item.backgroundColor} overflow-hidden cursor-pointer hover:bg-[#CF433A] 
-      duration-200 hover:text-white`}>
+      className={`h-[250px] rounded-xl ${item.backgroundColor} overflow-hidden cursor-pointer duration-200 hover:scale-105`}>
       <div className="pt-5 ps-5">
         <p className="text-2xl font-semibold">{item.title}</p>
         <p className="w-[200px] text-sm">{item.description}</p>

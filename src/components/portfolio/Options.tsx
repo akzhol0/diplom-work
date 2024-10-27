@@ -22,8 +22,8 @@ function Options({ setFilter }: OptionsProps) {
             }}
             className={
               '' + activeOption === item
-                ? 'cursor-pointer text-gray-900'
-                : 'cursor-pointer text-red-600 hover:text-gray-900'
+                ? 'cursor-pointer text-gray-900 whitespace-nowrap'
+                : 'cursor-pointer text-red-600 hover:text-gray-900 whitespace-nowrap'
             }>
             {item}
           </li>

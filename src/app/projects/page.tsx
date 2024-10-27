@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   title: 'Портфолио',
 };
 
-function PortfolioPage() {
+function Projects() {
   return <Portfolio />;
 }
 
-export default PortfolioPage;
+export default Projects;

@@ -1,15 +1,15 @@
 export const links = [
   {
-    title: 'Портфолио',
-    url: '/portfolio',
+    title: 'Проекты',
+    url: '/projects',
   },
   {
     title: 'Услуги',
     url: '/services',
   },
   {
-    title: 'Контакты',
-    url: '/contacts',
+    title: 'Об разработчике',
+    url: '/about-developer',
   },
   {
     title: 'Профиль',

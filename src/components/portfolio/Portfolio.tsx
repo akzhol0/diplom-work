@@ -10,7 +10,7 @@ function Portfolio() {
   return (
     <div className="w-full flex justify-center">
       <div className="w-[95%] xl:w-[60%] min-h-[800px] flex flex-col">
-        <h1 className="text-[40px] md:text-[60px] font-semibold">Портфолио</h1>
+        <h1 className="text-[40px] md:text-[60px] font-semibold">Проекты</h1>
         <div className="my-6">
           <Options setFilter={setFilter} />
         </div>
