@@ -4,9 +4,10 @@ import React, { useContext } from 'react';
 import { contextData } from '@/components/context/context';
 import MyButtonDanger from '../UI/MyButtonDanger';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 function ProfileComp() {
-  const { userInfo, setAuth } = useContext(contextData);
+  const { userInfo, setAuth, mainLanguage } = useContext(contextData);
   const router = useRouter();
 
   return (
@@ -14,11 +15,23 @@ function ProfileComp() {
       <div className="w-[95%] md:w-[80%] min-h-[600px]">
         {userInfo.length !== 0 ? (
           <div className="flex flex-col md:flex-row gap-4 items-center">
-            <span className="w-[200px] h-[200px] rounded-[50%] bg-black"></span>
+            <Image src="/images/user-img.png" alt="user-png" width={180} height={180} />
             <div className="flex flex-col text-lg">
-              <p>Имя: {userInfo.userName}</p>
-              <p>Почта: {userInfo.userLogin}</p>
-              <p>Роль: {userInfo.role === 'user' ? 'Обычный пользователь' : 'Администратор'}</p>
+              <p>
+                {mainLanguage.profile.name}: {userInfo.userName}
+              </p>
+              {userInfo.gender !== 'Неизвестно' && (
+                <p>
+                  {mainLanguage.profile.gender}: {userInfo.gender}
+                </p>
+              )}
+              <p>
+                {mainLanguage.profile.email}: {userInfo.userLogin}
+              </p>
+              <p>
+                {mainLanguage.profile.role}:{' '}
+                {userInfo.role === 'user' ? 'Обычный пользователь' : 'Администратор'}
+              </p>
               <span
                 onClick={() => {
                   setAuth(false);
@@ -26,7 +39,7 @@ function ProfileComp() {
                   router.push('/login');
                 }}>
                 <MyButtonDanger className="font-semibold h-[40px] mt-4 text-red-600">
-                  Выйти из аккаунта
+                  {mainLanguage.profile.btn}
                 </MyButtonDanger>
               </span>
             </div>

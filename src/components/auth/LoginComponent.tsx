@@ -13,7 +13,7 @@ function LoginComponent() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { setAuth, checkIfUserLogged } = useContext(contextData);
+  const { checkIfUserLogged } = useContext(contextData);
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,7 +38,7 @@ function LoginComponent() {
         <div className="flex flex-col gap-4">
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Логин"
+            placeholder="Почта"
             type="text"
             id="login"
             value={login}

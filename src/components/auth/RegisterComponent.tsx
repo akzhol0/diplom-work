@@ -13,6 +13,7 @@ function RegisterComponent() {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [gender, setGender] = useState('Неизвестно');
   const [error, setError] = useState('');
 
   const router = useRouter();
@@ -42,6 +43,7 @@ function RegisterComponent() {
       userLogin: login,
       userPassword: password,
       role: 'user',
+      gender: gender,
     });
   };
 
@@ -58,11 +60,24 @@ function RegisterComponent() {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
+          <div className="flex justify-between items-center">
+            <p className="ps-2">Пол:</p>
+            <select
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="focus:outline-0"
+              name="gender"
+              id="gender-select">
+              <option value="Мужчина">Мужчина</option>
+              <option value="Женщина">Женщина</option>
+              <option value="Неизвестно">Не хочу говорить</option>
+            </select>
+          </div>
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Логин"
+            placeholder="Почта"
             type="text"
-            id="login"
+            id="email"
             value={login}
             onChange={(e) => setLogin(e.target.value)}
           />

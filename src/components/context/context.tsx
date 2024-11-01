@@ -4,6 +4,10 @@ import React, { createContext, useEffect, useState } from 'react';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
+import { en } from '../language/en';
+import { ru } from '../language/ru';
+import { kz } from '../language/kz';
+
 type ContextProps = {
   auth: boolean;
   setAuth: (arg0: boolean) => void;
@@ -11,6 +15,9 @@ type ContextProps = {
   setBurgerMenu: (arg0: boolean) => void;
   checkIfUserLogged: () => void;
   userInfo: any;
+  setLanguageChanger: (arg0: string) => void;
+  mainLanguage: any;
+  langFromLocalStorage: any;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -24,9 +31,24 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
 
+  const langFromLocalStorage = localStorage.getItem('lang');
+
+  const [languageChanger, setLanguageChanger] = useState(langFromLocalStorage || 'ru');
+  const [mainLanguage, setMainLanguage] = useState<any>(ru);
+
   useEffect(() => {
     !auth && checkIfUserLogged();
   }, []);
+
+  useEffect(() => {
+    if (languageChanger === 'en') {
+      setMainLanguage(en);
+    } else if (languageChanger === 'kz') {
+      setMainLanguage(kz);
+    } else if (languageChanger === 'ru') {
+      setMainLanguage(ru);
+    }
+  }, [languageChanger]);
 
   // check if user logged (that's what function name literally says :| )
   const checkIfUserLogged = async () => {
@@ -54,6 +76,9 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         setBurgerMenu,
         checkIfUserLogged,
         userInfo,
+        setLanguageChanger,
+        mainLanguage,
+        langFromLocalStorage,
       }}>
       {children}
     </contextData.Provider>

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import MyButtonDanger from '../UI/MyButtonDanger';
 import WhatsappLogo from '../UI/icons/medias/WhatsappLogo';
 import Link from 'next/link';
-import { links } from '../services/links';
 import { contextData } from '../context/context';
 import { usePathname } from 'next/navigation';
 
@@ -15,11 +14,12 @@ function NavBar({ mobileVersion }: NavBarProps) {
   if (mobileVersion) classesForm.over = 'flex-col';
   const pathname = usePathname();
 
-  const { auth, setBurgerMenu } = useContext(contextData);
+  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage, langFromLocalStorage } = useContext(contextData);
+
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
-      <ul className="flex gap-5">
-        {links.map((item: any) => (
+      <ul className="flex gap-2 sm:gap-5 text-lg">
+        {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
             href={item.url === '/profile' && auth === false ? '/login' : item.url}>
@@ -27,8 +27,8 @@ function NavBar({ mobileVersion }: NavBarProps) {
               onClick={() => setBurgerMenu(false)}
               className={
                 '' + pathname === item.url
-                  ? 'cursor-pointer text-gray-500 whitespace-nowrap'
-                  : 'cursor-pointer whitespace-nowrap'
+                  ? 'cursor-pointer text-gray-500 whitespace-nowrap hover:text-red-600'
+                  : 'cursor-pointer whitespace-nowrap hover:text-red-600'
               }>
               {item.title}
             </li>
@@ -37,26 +37,34 @@ function NavBar({ mobileVersion }: NavBarProps) {
       </ul>
       <Link href="/request">
         <MyButtonDanger className="hidden lg:flex text-red-500 font-semibold font-sm whitespace-nowrap">
-          Оставить заявку
+          {mainLanguage.header.btn}
         </MyButtonDanger>
       </Link>
-      {mobileVersion && <p>+7 (777) 000 00-00 </p>}
-      <p className="hidden xl:block whitespace-nowrap">+7 (777) 000 00-00 </p>
+      {mobileVersion && <p>+7 (777) 000 00-00</p>}
+      <p className="hidden xl:block whitespace-nowrap">+7 (777) 000 00-00</p>
       {mobileVersion && (
         <Link onClick={() => setBurgerMenu(false)} href="/request">
           <MyButtonDanger className="flex text-red-500 font-semibold font-sm">
-            Оставить заявку
+            {mainLanguage.header.btn}
           </MyButtonDanger>
         </Link>
       )}
       <span className="cursor-pointer">
         <WhatsappLogo background="black" />
       </span>
-      {/* <select name="" id="">
-        <option value="">RU</option>
-        <option value="">KZ</option>
-        <option value="">ENG</option>
-      </select> */}
+      <select
+        onChange={(e) => {
+          setLanguageChanger(e.target.value);
+          localStorage.setItem('lang', e.target.value);
+        }}
+        value={langFromLocalStorage}
+        className="text-lg mb-2 md:mb-0"
+        name="language-option"
+        id="language-option">
+        <option value="ru">RUS</option>
+        <option value="kz">KAZ</option>
+        <option value="en">ENG</option>
+      </select>
     </div>
   );
 }
