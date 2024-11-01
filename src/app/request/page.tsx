@@ -1,12 +1,12 @@
 'use client'
 
-import { Metadata } from 'next';
+//import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
-export const metadata: Metadata = {
-  title: 'Оставить заявку',
-};
+// export const metadata: Metadata = {
+//   title: 'Оставить заявку',
+// };
 
 const ClientOnlyRequestComp = dynamic(() => import('@/components/footer/RequestComp'), {
   ssr: false,
