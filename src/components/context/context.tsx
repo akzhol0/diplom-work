@@ -31,7 +31,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
 
-  const langFromLocalStorage = localStorage.getItem('lang');
+  const res = localStorage.getItem('lang');
+  const langFromLocalStorage = res ? res : 'ru';
 
   const [languageChanger, setLanguageChanger] = useState(langFromLocalStorage || 'ru');
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
