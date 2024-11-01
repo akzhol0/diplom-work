@@ -2,10 +2,20 @@
 
 import React, { useContext } from 'react';
 import Image from 'next/image';
-import CardComp from '@/components/main-page/CardComp';
-import PortfolioContainer from '@/components/portfolio/PortfolioContainer';
 import Link from 'next/link';
 import { contextData } from '@/components/context/context';
+import dynamic from 'next/dynamic';
+
+const ClientOnlyPortfolioContainer = dynamic(
+  () => import('@/components/portfolio/PortfolioContainer'),
+  {
+    ssr: false,
+  },
+);
+
+const ClientOnlyCardComp = dynamic(() => import('@/components/main-page/CardComp'), {
+  ssr: false,
+});
 
 function Main() {
   const { mainLanguage } = useContext(contextData);
@@ -32,7 +42,7 @@ function Main() {
         </div>
         <div className="w-full min-h-[500px] bg-[#fbfcfe] grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 my-4">
           {mainLanguage.mainPage.cards.map((item: any) => (
-            <CardComp key={item.id} item={item} />
+            <ClientOnlyCardComp key={item.id} item={item} />
           ))}
         </div>
         <div className="flex justify-center">
@@ -46,7 +56,7 @@ function Main() {
             {mainLanguage.mainPage.projects.title}
           </p>
           <p className="max-w-[500px]  lg:text-lg">{mainLanguage.mainPage.projects.small}</p>
-          <PortfolioContainer filter="Промо" />
+          <ClientOnlyPortfolioContainer filter="Промо" />
           <div className="flex justify-end">
             <Link href="/projects">
               <p className="text-lg text-red-600 cursor-pointer">
