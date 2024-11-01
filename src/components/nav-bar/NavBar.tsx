@@ -14,7 +14,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
   if (mobileVersion) classesForm.over = 'flex-col';
   const pathname = usePathname();
 
-  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage, langFromLocalStorage } = useContext(contextData);
+  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage } = useContext(contextData);
 
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
@@ -55,9 +55,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
       <select
         onChange={(e) => {
           setLanguageChanger(e.target.value);
-          localStorage.setItem('lang', e.target.value);
         }}
-        value={langFromLocalStorage}
         className="text-lg mb-2 md:mb-0"
         name="language-option"
         id="language-option">

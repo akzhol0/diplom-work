@@ -11,7 +11,7 @@ function ProfileComp() {
   const router = useRouter();
 
   return (
-    <div className="w-full flex justify-center">
+    <div className="w-full min-h-[600px] flex justify-center">
       <div className="w-[95%] md:w-[80%] min-h-[600px]">
         {userInfo.length !== 0 ? (
           <div className="flex flex-col md:flex-row gap-4 items-center">

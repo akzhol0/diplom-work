@@ -17,7 +17,6 @@ type ContextProps = {
   userInfo: any;
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
-  langFromLocalStorage: any;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -31,10 +30,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
 
-  const res = localStorage.getItem('lang');
-  const langFromLocalStorage = res ? res : 'ru';
-
-  const [languageChanger, setLanguageChanger] = useState(langFromLocalStorage || 'ru');
+  const [languageChanger, setLanguageChanger] = useState('ru');
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
   useEffect(() => {
@@ -79,7 +75,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         userInfo,
         setLanguageChanger,
         mainLanguage,
-        langFromLocalStorage,
       }}>
       {children}
     </contextData.Provider>

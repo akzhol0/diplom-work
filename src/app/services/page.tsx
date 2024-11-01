@@ -1,7 +1,5 @@
-'use client'
-
 import { serviceCards } from '@/components/services/serviceCards';
-// import { Metadata } from 'next';
+import { Metadata } from 'next';
 import dynamic from 'next/dynamic';
 import React from 'react';
 
@@ -13,9 +11,9 @@ const ClientOnlyServiceCard = dynamic(() => import('@/components/servicesPage/Se
   ssr: false,
 });
 
-// export const metadata: Metadata = {
-//   title: 'Услуги',
-// };
+export const metadata: Metadata = {
+  title: 'Услуги',
+};
 
 function Services() {
   return (
