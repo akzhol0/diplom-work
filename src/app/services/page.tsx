@@ -1,3 +1,5 @@
+'use client'
+
 import { serviceCards } from '@/components/services/serviceCards';
 import { Metadata } from 'next';
 import dynamic from 'next/dynamic';

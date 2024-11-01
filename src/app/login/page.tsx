@@ -1,3 +1,5 @@
+'use client'
+
 import { Metadata } from 'next';
 import React from 'react';
 import dynamic from 'next/dynamic';
