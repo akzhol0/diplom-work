@@ -15,8 +15,8 @@ function NavBar({ mobileVersion }: NavBarProps) {
   const pathname = usePathname();
 
   // third ls
-  const result = localStorage.getItem('lang');
-  const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
+  // const result = localStorage.getItem('lang');
+  // const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
 
   const { auth, setBurgerMenu, setLanguageChanger, mainLanguage } = useContext(contextData);
 
@@ -60,9 +60,9 @@ function NavBar({ mobileVersion }: NavBarProps) {
         onChange={(e) => {
           setLanguageChanger(e.target.value);
           // first set ls
-          localStorage.setItem('lang', JSON.stringify({ language: e.target.value }));
+          // localStorage.setItem('lang', JSON.stringify({ language: e.target.value }));
         }}
-        value={localstorageMainLanguage.language}
+        // value={localstorageMainLanguage.language}
         className="text-lg mb-2 md:mb-0"
         name="language-option"
         id="language-option">

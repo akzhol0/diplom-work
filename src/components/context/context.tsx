@@ -31,10 +31,10 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [burgerMenu, setBurgerMenu] = useState(false);
 
   // second get ls item
-  const result = localStorage.getItem('lang');
-  const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
+  // const result = localStorage.getItem('lang');
+  // const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
 
-  const [languageChanger, setLanguageChanger] = useState(localstorageMainLanguage.language || 'ru');
+  const [languageChanger, setLanguageChanger] = useState('ru');
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
   useEffect(() => {
