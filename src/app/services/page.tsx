@@ -1,15 +1,8 @@
+import RequestComp from '@/components/footer/RequestComp';
 import { serviceCards } from '@/components/services/serviceCards';
+import ServiceCard from '@/components/servicesPage/ServiceCard';
 import { Metadata } from 'next';
-import dynamic from 'next/dynamic';
 import React from 'react';
-
-const ClientOnlyRequestComp = dynamic(() => import('@/components/footer/RequestComp'), {
-  ssr: false,
-});
-
-const ClientOnlyServiceCard = dynamic(() => import('@/components/servicesPage/ServiceCard'), {
-  ssr: false,
-});
 
 export const metadata: Metadata = {
   title: 'Услуги',
@@ -34,11 +27,11 @@ function Services() {
         </div>
         <div className="flex flex-col gap-10 mt-5">
           {serviceCards.map((item) => (
-            <ClientOnlyServiceCard item={item} />
+            <ServiceCard item={item} />
           ))}
         </div>
         <div className="w-full flex justify-center mt-5">
-          <ClientOnlyRequestComp />
+          <RequestComp />
         </div>
       </div>
     </div>

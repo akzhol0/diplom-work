@@ -17,6 +17,7 @@ type ContextProps = {
   userInfo: any;
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
+  localstorageMainLanguage: string;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -30,7 +31,11 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
 
-  const [languageChanger, setLanguageChanger] = useState('ru');
+  // second get ls item
+  const res = localStorage.getItem('lang');
+  const localstorageMainLanguage = res ? res : 'ru';
+
+  const [languageChanger, setLanguageChanger] = useState(localstorageMainLanguage || 'ru');
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
   useEffect(() => {
@@ -38,6 +43,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   }, []);
 
   useEffect(() => {
+    // change it asap
     if (languageChanger === 'en') {
       setMainLanguage(en);
     } else if (languageChanger === 'kz') {
@@ -58,7 +64,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
       if (docSnap.exists()) {
         setAuth(true);
-
         setUserInfo(docSnap.data());
       }
     }
@@ -75,6 +80,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         userInfo,
         setLanguageChanger,
         mainLanguage,
+        localstorageMainLanguage,
       }}>
       {children}
     </contextData.Provider>
