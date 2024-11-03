@@ -17,7 +17,6 @@ type ContextProps = {
   userInfo: any;
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
-  localstorageMainLanguage: string;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -80,7 +79,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         userInfo,
         setLanguageChanger,
         mainLanguage,
-        localstorageMainLanguage,
       }}>
       {children}
     </contextData.Provider>

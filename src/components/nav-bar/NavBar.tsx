@@ -14,8 +14,10 @@ function NavBar({ mobileVersion }: NavBarProps) {
   if (mobileVersion) classesForm.over = 'flex-col';
   const pathname = usePathname();
 
-  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage, localstorageMainLanguage } =
-    useContext(contextData);
+  const res = localStorage.getItem('lang');
+  const localstorageMainLanguage = res ? res : 'ru';
+
+  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage } = useContext(contextData);
 
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
