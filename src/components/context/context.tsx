@@ -33,7 +33,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   useEffect(() => {
     const result = localStorage.getItem('lang');
-    const localstorageMainLanguage = result ? JSON.parse(result) : null;
+    const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
     setLanguageChanger(localstorageMainLanguage.language || 'ru');
   }, []);
 
