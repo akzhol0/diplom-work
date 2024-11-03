@@ -26,6 +26,10 @@ type ContextOverAllProps = {
   children: React.ReactNode;
 };
 
+useEffect(() => {
+  localStorage.setItem('lang', JSON.stringify({ language: 'ru' }));
+}, []);
+
 export function ContextOverAll({ children }: ContextOverAllProps) {
   const [auth, setAuth] = useState(false);
   const [userInfo, setUserInfo] = useState<any>([]);
