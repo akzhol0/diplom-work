@@ -14,6 +14,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
   if (mobileVersion) classesForm.over = 'flex-col';
   const pathname = usePathname();
 
+  // third ls
   const result = localStorage.getItem('lang');
   const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
 
