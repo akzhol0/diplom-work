@@ -19,12 +19,6 @@ function NavBar({ mobileVersion }: NavBarProps) {
   const { auth, setBurgerMenu, setLanguageChanger, mainLanguage, languageChanger } =
     useContext(contextData);
 
-  useEffect(() => {
-    const result = localStorage.getItem('lang');
-    const localstorageMainLanguage = result ? JSON.parse(result) : null;
-    setLanguageChanger(localstorageMainLanguage.language || 'ru');
-  }, []);
-
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
       <ul className="flex gap-2 sm:gap-5 text-lg">
@@ -65,7 +59,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
         onChange={(e) => {
           setLanguageChanger(e.target.value);
           // first set ls
-          localStorage.setItem('lang', JSON.stringify({ language: e.target.value }));
+          localStorage.setItem('lang', e.target.value);
         }}
         value={languageChanger}
         className="text-lg mb-2 md:mb-0"

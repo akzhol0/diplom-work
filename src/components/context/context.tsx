@@ -26,19 +26,14 @@ type ContextOverAllProps = {
   children: React.ReactNode;
 };
 
-useEffect(() => {
-  localStorage.setItem('lang', JSON.stringify({ language: 'ru' }));
-}, []);
-
 export function ContextOverAll({ children }: ContextOverAllProps) {
   const [auth, setAuth] = useState(false);
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
 
   useEffect(() => {
-    const result = localStorage.getItem('lang');
-    const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
-    setLanguageChanger(localstorageMainLanguage.language || 'ru');
+    const localstorageMainLanguage = localStorage.getItem('lang');
+    setLanguageChanger(localstorageMainLanguage || 'ru');
   }, []);
 
   const [languageChanger, setLanguageChanger] = useState('ru');
