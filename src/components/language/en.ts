@@ -152,5 +152,82 @@ export const en = {
     email: 'Email',
     role: 'Role',
     btn: 'Log Out',
-  }
+  },
+  services: {
+    title: 'Services',
+    small1:
+      'We manage the entire project development cycle and adhere to the product approach in our work. If you have an idea, but you don’t know how to implement it, we will help you.',
+    small2:
+      'Our team will consult you, conduct an analysis, identify competitors and the target audience of the product. Designers will form user scenarios and create not only a beautiful but also a functional design. And a team of programmers will develop the product logic and automate the system for more efficient task execution.',
+    serviceCards: [
+      {
+        title: 'Online Stores',
+        description:
+          'Product catalog, secure online payment, synchronization with product accounting software, integration with your CRM system, basic functionality',
+        price: '2 500 000 tenge',
+        id: 1,
+        card: {
+          title: 'Drop Shop',
+          description: 'Development of an online store for a chain of electronics stores"',
+          backgroundColor: 'bg-[#c4f2e1]',
+          type: 'Интернет-Магазины',
+          id: 4,
+        },
+      },
+      {
+        title: 'Mobile applications',
+        description: 'Entertainment, Travel, Business and Social Media',
+        price: '10 000 000 tenge',
+        id: 2,
+        card: {
+          title: 'QOS',
+          description: 'Mobile application for promotion of Q-POP industry',
+          backgroundColor: 'bg-[#ffbffc]',
+          type: 'Приложения',
+          id: 5,
+        },
+      },
+      {
+        title: 'Automation system',
+        description: 'Media portal, corporate portal, market place and virtual bulletin board',
+        price: '5 000 000 tenge',
+        id: 3,
+        card: {
+          title: 'Eliks',
+          description: 'Website for a specialty bakery',
+          backgroundColor: 'bg-[#9fd5e3]',
+          type: 'Промо',
+          id: 8,
+        },
+      },
+    ],
+  },
+  request: {
+    btn: 'Start a project',
+    userAgreementGray1: 'By filling out this form, you accept the terms',
+    userAgreementGray2: 'Site Usage Agreements',
+    userAgreementRed1: 'and agree with',
+    userAgreementRed2: 'Rules for processing and using personal data',
+    name: 'Name',
+    namePlaceholder: 'Enter your name',
+    phone: 'Telephone',
+    email: 'Mail',
+    emailPlaceholder: 'Your email',
+    message: 'Message',
+    messagePlaceholder: 'Launch dates, budget, requirements, your wishes...',
+  },
+  loginAndRegsitration: {
+    titleLogin: 'Login',
+    email: 'Email',
+    password: 'Password',
+    labelLogin: 'No account? Register!',
+    btnLogin: 'Login',
+    titleRegister: 'Register',
+    nameLastName: 'First and last name',
+    gender: 'Gender',
+    genders: ['Dont want to say', 'Male', 'Female'],
+    repeatPassword: 'Repeat password',
+    labelRegister: 'Have an account? Login!',
+    btnRegister: 'Register',
+  },
 };

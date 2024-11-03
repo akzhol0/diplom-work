@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import MyButtonDanger from '../UI/MyButtonDanger';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../firebase/config';
 import { useRouter } from 'next/navigation';
 import { doc, setDoc } from 'firebase/firestore';
+import { contextData } from '../context/context';
 
 function RegisterComponent() {
   const [userName, setUserName] = useState('');
@@ -15,6 +16,8 @@ function RegisterComponent() {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [gender, setGender] = useState('Неизвестно');
   const [error, setError] = useState('');
+
+  const { mainLanguage } = useContext(contextData);
 
   const router = useRouter();
 
@@ -50,32 +53,32 @@ function RegisterComponent() {
   return (
     <div className="w-full min-h-[600px] flex justify-center items-center">
       <form onSubmit={handleSubmit} className="flex flex-col items-center rounded-xl text-black">
-        <p className="text-3xl py-4">Регистрация</p>
+        <p className="text-3xl py-4">{mainLanguage.loginAndRegsitration.titleRegister}</p>
         <div className="flex flex-col gap-4">
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Имя и фамилия"
+            placeholder={mainLanguage.loginAndRegsitration.nameLastName}
             type="text"
             id="name"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
           <div className="flex justify-between items-center">
-            <p className="ps-2">Пол:</p>
+            <p className="ps-2">{mainLanguage.loginAndRegsitration.gender}:</p>
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
               className="focus:outline-0"
               name="gender"
               id="gender-select">
-              <option value="Мужчина">Мужчина</option>
-              <option value="Женщина">Женщина</option>
-              <option value="Неизвестно">Не хочу говорить</option>
+              {mainLanguage.loginAndRegsitration.genders.map((item: string) => (
+                <option value={item}>{item}</option>
+              ))}
             </select>
           </div>
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Почта"
+            placeholder={mainLanguage.loginAndRegsitration.email}
             type="text"
             id="email"
             value={login}
@@ -83,7 +86,7 @@ function RegisterComponent() {
           />
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Пароль"
+            placeholder={mainLanguage.loginAndRegsitration.password}
             type="password"
             id="password"
             value={password}
@@ -91,19 +94,21 @@ function RegisterComponent() {
           />
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Повторить пароль"
+            placeholder={mainLanguage.loginAndRegsitration.repeatPassword}
             type="password"
             id="password-repeat"
             value={repeatPassword}
             onChange={(e) => setRepeatPassword(e.target.value)}
           />
           <Link href="/login">
-            <p className="text-sm text-center cursor-pointer">Есть аккаунт? Войти!</p>
+            <p className="text-sm text-center cursor-pointer">
+              {mainLanguage.loginAndRegsitration.labelRegister}
+            </p>
           </Link>
           <MyButtonDanger
             type="submit"
             className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white">
-            Регистрация
+            {mainLanguage.loginAndRegsitration.btnRegister}
           </MyButtonDanger>
           <p className="text-sm text-center cursor-pointer text-red-600">{error}</p>
         </div>

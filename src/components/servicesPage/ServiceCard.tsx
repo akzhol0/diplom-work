@@ -15,7 +15,7 @@ function ServiceCard({ item }: serviceCardsProps) {
           {item.title}
         </p>
         <p className="mt-2 xl:mt-10">{item.description}</p>
-        <p className="font-semibold mt-2">от {item.price} тенге</p>
+        <p className="font-semibold mt-2">{item.price} </p>
         <Link href="/projects">
           <p className="cursor-pointer mt-4 text-red-600">
             Смотреть все {item.title.toLocaleLowerCase()}

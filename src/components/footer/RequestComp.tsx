@@ -1,56 +1,63 @@
-import React from 'react';
+'use client';
+
+import React, { useContext } from 'react';
 import MyButtonDanger from '../UI/MyButtonDanger';
+import { contextData } from '../context/context';
 
 function RequestComp() {
+  const { mainLanguage } = useContext(contextData);
+
   return (
     <div className="w-full min-h-[600px] justify-center flex flex-col">
       <div className="w-full flex flex-col md:flex-row justify-between gap-8">
         <span className="w-full flex flex-col">
-          <p className="text-xl">Имя</p>
+          <p className="text-xl">{mainLanguage.request.name}</p>
           <input
-            className="h-[60px] border-b border-1 focus:outline-[#f1f1f1]"
-            placeholder="Введите имя"
+            className="h-[60px] border-b border-1 focus:outline-0"
+            placeholder={mainLanguage.request.namePlaceholder}
             type="text"
             id="name"
           />
         </span>
         <span className="w-full flex flex-col">
-          <p className="text-xl">Номер телефона</p>
+          <p className="text-xl">{mainLanguage.request.phone}</p>
           <input
-            className="h-[60px] border-b border-1 focus:outline-[#f1f1f1]"
+            className="h-[60px] border-b border-1 focus:outline-0"
             placeholder="+7 (7__) ___-__-__"
             type="number"
             id="tel"
           />
         </span>
         <span className="w-full flex flex-col">
-          <p className="text-xl">Email</p>
+          <p className="text-xl">{mainLanguage.request.email}</p>
           <input
-            className="h-[60px] border-b border-1 focus:outline-[#f1f1f1]"
-            placeholder="Ваша почта"
+            className="h-[60px] border-b border-1 focus:outline-0"
+            placeholder={mainLanguage.request.emailPlaceholder}
             type="email"
             id="email"
           />
         </span>
       </div>
       <div className="flex flex-col mt-10">
-        <p>Сообщение</p>
+        <p>{mainLanguage.request.message}</p>
         <textarea
-          className="h-[150px] border-b focus:outline-[#f1f1f1]"
-          placeholder="Сроки запуска, бюджет, требования, ваши пожелания..."
+          className="h-[150px] border-b focus:outline-0"
+          placeholder={mainLanguage.request.messagePlaceholder}
           id="message"></textarea>
       </div>
       <p className="text-[12px] mt-5">
-        Заполняя данную форму, вы принимаете условия{' '}
+        {mainLanguage.request.userAgreementGray1}{' '}
         <label className="text-red-600 cursor-pointer hover:underline">
-          Соглашения об использовании сайта
+          {mainLanguage.request.userAgreementRed1}
         </label>
-        , <br /> и соглашаетесь с{' '}
+        , <br /> {mainLanguage.request.userAgreementGray2}{' '}
         <label className="text-red-600 cursor-pointer hover:underline">
-          Правилами обработки и использования персональных данных
+          {mainLanguage.request.userAgreementRed2}
         </label>
       </p>
-      <MyButtonDanger className="w-[200px] text-red-500 mt-5">Начать проект</MyButtonDanger>
+      <MyButtonDanger className="w-[200px] text-red-500 mt-5">
+        {mainLanguage.request.btn}
+      </MyButtonDanger>
     </div>
   );
 }

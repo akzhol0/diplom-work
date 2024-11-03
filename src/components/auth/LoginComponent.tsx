@@ -13,7 +13,7 @@ function LoginComponent() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const { checkIfUserLogged } = useContext(contextData);
+  const { checkIfUserLogged, mainLanguage } = useContext(contextData);
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,11 +34,11 @@ function LoginComponent() {
   return (
     <div className="w-full min-h-[600px] flex justify-center items-center">
       <form onSubmit={handleSubmit} className="flex flex-col items-center rounded-xl text-black">
-        <p className="text-3xl py-4">Войти</p>
+        <p className="text-3xl py-4">{mainLanguage.loginAndRegsitration.titleLogin}</p>
         <div className="flex flex-col gap-4">
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Почта"
+            placeholder={mainLanguage.loginAndRegsitration.email}
             type="text"
             id="login"
             value={login}
@@ -46,19 +46,21 @@ function LoginComponent() {
           />
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder="Пароль"
+            placeholder={mainLanguage.loginAndRegsitration.password}
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Link href="/register">
-            <p className="text-sm text-center cursor-pointer">Нет аккаунта? Регистрация!</p>
+            <p className="text-sm text-center cursor-pointer">
+              {mainLanguage.loginAndRegsitration.labelLogin}
+            </p>
           </Link>
           <MyButtonDanger
             type="submit"
             className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white">
-            Войти
+            {mainLanguage.loginAndRegsitration.btnLogin}
           </MyButtonDanger>
           <p className="text-sm text-center cursor-pointer text-red-600">{error}</p>
         </div>
