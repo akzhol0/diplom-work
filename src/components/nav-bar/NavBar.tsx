@@ -1,4 +1,6 @@
-import React, { useContext } from 'react';
+'use client';
+
+import React, { useContext, useEffect } from 'react';
 import MyButtonDanger from '../UI/MyButtonDanger';
 import WhatsappLogo from '../UI/icons/medias/WhatsappLogo';
 import Link from 'next/link';
@@ -14,11 +16,14 @@ function NavBar({ mobileVersion }: NavBarProps) {
   if (mobileVersion) classesForm.over = 'flex-col';
   const pathname = usePathname();
 
-  // third ls
-  // const result = localStorage.getItem('lang');
-  // const localstorageMainLanguage = result ? JSON.parse(result) : 'ru';
+  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage, languageChanger } =
+    useContext(contextData);
 
-  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage } = useContext(contextData);
+  useEffect(() => {
+    const result = localStorage.getItem('lang');
+    const localstorageMainLanguage = result ? JSON.parse(result) : null;
+    setLanguageChanger(localstorageMainLanguage.language || 'ru');
+  }, []);
 
   return (
     <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
@@ -60,9 +65,9 @@ function NavBar({ mobileVersion }: NavBarProps) {
         onChange={(e) => {
           setLanguageChanger(e.target.value);
           // first set ls
-          // localStorage.setItem('lang', JSON.stringify({ language: e.target.value }));
+          localStorage.setItem('lang', JSON.stringify({ language: e.target.value }));
         }}
-        // value={localstorageMainLanguage.language}
+        value={languageChanger}
         className="text-lg mb-2 md:mb-0"
         name="language-option"
         id="language-option">
