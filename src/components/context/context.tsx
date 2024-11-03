@@ -31,16 +31,14 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
 
-  useEffect(() => {
-    const localstorageMainLanguage = localStorage.getItem('lang');
-    setLanguageChanger(localstorageMainLanguage || 'ru');
-  }, []);
-
   const [languageChanger, setLanguageChanger] = useState('ru');
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
   useEffect(() => {
     !auth && checkIfUserLogged();
+
+    const localstorageMainLanguage = localStorage.getItem('lang');
+    setLanguageChanger(localstorageMainLanguage || 'ru');
   }, []);
 
   useEffect(() => {
