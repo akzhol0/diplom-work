@@ -7,7 +7,7 @@ import { auth } from '../firebase/config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { contextData } from '../context/context';
-import Eye from '../UI/icons/eye/eye';
+import EyeIcon from '../UI/icons/eye/EyeIcon';
 
 function LoginComponent() {
   const [login, setLogin] = useState('');
@@ -58,7 +58,7 @@ function LoginComponent() {
             <div
               onClick={() => setPasswordEye(!passwordEye)}
               className="absolute right-4 bottom-4 cursor-pointer">
-              <Eye />
+              <EyeIcon />
             </div>
           </div>
           <Link href="/register">

@@ -8,7 +8,7 @@ import { auth, db } from '../firebase/config';
 import { useRouter } from 'next/navigation';
 import { doc, setDoc } from 'firebase/firestore';
 import { contextData } from '../context/context';
-import Eye from '../UI/icons/eye/eye';
+import EyeIcon from '../UI/icons/eye/EyeIcon';
 
 function RegisterComponent() {
   const [userName, setUserName] = useState('');
@@ -98,7 +98,7 @@ function RegisterComponent() {
             <div
               onClick={() => setPasswordEye(!passwordEye)}
               className="absolute right-4 bottom-4 cursor-pointer">
-              <Eye />
+              <EyeIcon />
             </div>
           </div>
           <div className="relative">
@@ -113,7 +113,7 @@ function RegisterComponent() {
             <div
               onClick={() => setPasswordEye(!passwordEye)}
               className="absolute right-4 bottom-4 cursor-pointer">
-              <Eye />
+              <EyeIcon />
             </div>
           </div>
           <Link href="/login">
