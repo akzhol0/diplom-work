@@ -1,6 +1,7 @@
 export const kz = {
   lang: 'kz',
   mainPage: {
+    questionLabel: 'Ақпараттық қауіпсіздік туралы жиі қойылатын 20 сұрақ',
     parallax: {
       title: 'Цифрлық өндіріс тобы',
       small:

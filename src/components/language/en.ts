@@ -1,6 +1,7 @@
 export const en = {
   lang: 'en',
   mainPage: {
+    questionLabel: '20 Frequently Asked Questions About Information Security',
     parallax: {
       title: 'Digital Production Team',
       small:

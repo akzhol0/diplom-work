@@ -1,6 +1,7 @@
 export const ru = {
   lang: 'ru',
   mainPage: {
+    questionLabel: '20 часто задаваемых вопросов про информационную безопасность',
     parallax: {
       title: 'Команда цифрового производства',
       small:

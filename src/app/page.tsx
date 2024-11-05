@@ -47,7 +47,7 @@ function Main() {
       <Information title={mainLanguage.mainPage.title3} small={mainLanguage.mainPage.small3} />
       <Iframe ytid="VEQd-jmVs44" />
       <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
-        20 часто задаваемых вопросов про информационную безопасность
+        {mainLanguage.mainPage.questionLabel}
       </p>
       <div className="w-full min-h-[600px] flex justify-center bg-[#131313]">
         <Qa />
