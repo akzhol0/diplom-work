@@ -17,7 +17,7 @@ function Brand() {
           <Image src="/images/brand-logo.png" width={60} height={60} alt="logo" />
         </div>
         <div className={dmSerif.className}>
-          <p className="font-bold text-[38px] text-[#0a0a0a]">Brooklyn</p>
+          <span className="font-bold text-[38px] text-[#0a0a0a]">Mercury</span>
         </div>
       </div>
     </Link>
