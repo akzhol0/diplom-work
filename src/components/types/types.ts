@@ -27,3 +27,9 @@ export type ServiceCardPropsTypes = {
   id: number;
   card: PortItemPropsTypes;
 };
+
+export type QuestionTypes = {
+  question: string;
+  answer: string;
+  id: number;
+};

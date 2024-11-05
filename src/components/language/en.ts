@@ -1,9 +1,14 @@
 export const en = {
+  lang: 'en',
   mainPage: {
     parallax: {
       title: 'Digital Production Team',
-      small: 'We develop mobile applications, commercial sites, automation systems and more.',
+      small:
+        'Our team develops websites protected from hackers and DDOS attacks, with an increased level of information security.',
     },
+    title3: 'Why is website information security important?',
+    small3:
+      'Security on the site is extremely important because it protects users personal data, prevents hacks and information leaks, ensuring trust in the resource. This not only reduces the risk of financial and reputational losses, but also creates a safe environment where users can interact and make purchases without fear.',
     cards: [
       {
         img: '/images/img1.png',
@@ -32,12 +37,129 @@ export const en = {
         id: 4,
       },
     ],
+    title2: 'What is Information Security?',
+    small2:
+      'Information security is the protection and preservation of information and its main elements, including systems and equipment designed to use, store and transmit information. In other words, it is a set of technologies, standards and management methods necessary to ensure information security.',
     projects: {
       title: 'Projects',
       small:
         'We create high-quality and visually attractive digital products that help businessmen and startup ideas.',
       linkTitle: 'See all projects',
     },
+    questions: [
+      {
+        question: 'What is information security and how does it protect data?',
+        answer:
+          'Information security is a set of measures and technologies for protecting information from theft, leakage, and damage.',
+        id: 1,
+      },
+      {
+        question: 'What types of cyberattacks are most common nowadays?',
+        answer:
+          'The most common are phishing, virus attacks, DDoS attacks, malware, and social engineering.',
+        id: 2,
+      },
+      {
+        question: 'Why is two-factor authentication considered a reliable security measure?',
+        answer:
+          'Two-factor authentication requires identity confirmation through two different methods, increasing the level of security.',
+        id: 3,
+      },
+      {
+        question: 'How does social engineering threaten the security of users on the internet?',
+        answer:
+          'Social engineering deceives people, forcing them to disclose confidential data, compromising their security.',
+        id: 4,
+      },
+      {
+        question: 'What is encryption, and why is it used to protect data?',
+        answer:
+          'Encryption converts data into an encrypted code, protecting it from unauthorized access.',
+        id: 5,
+      },
+      {
+        question: 'How do companies protect their networks from viruses and malware?',
+        answer:
+          'They use antivirus software, firewalls, filters, conduct regular checks, and update systems.',
+        id: 6,
+      },
+      {
+        question: 'What measures can help prevent data leakage in an organization?',
+        answer:
+          'Access restriction, encryption, regular checks, employee training, and network protection help prevent leaks.',
+        id: 7,
+      },
+      {
+        question: 'Why is it important to have strong and unique passwords for each account?',
+        answer:
+          'Strong passwords are harder to hack, and unique passwords protect against data theft.',
+        id: 8,
+      },
+      {
+        question: 'How to respond correctly to suspicious emails and links?',
+        answer:
+          'Never open suspicious links, verify senders, and do not enter data without verification.',
+        id: 9,
+      },
+      {
+        question: 'How can users protect themselves from malware when downloading files?',
+        answer:
+          'Download only from trusted sources, use antivirus software, and check files before opening.',
+        id: 10,
+      },
+      {
+        question: 'How can you protect personal data on social networks?',
+        answer: 'Use privacy settings, limit access, avoid sharing personal information.',
+        id: 11,
+      },
+      {
+        question: 'What is a firewall, and how does it work in network protection?',
+        answer: 'A firewall blocks suspicious traffic, filtering incoming and outgoing data.',
+        id: 12,
+      },
+      {
+        question: 'What are the signs of a phishing email that are easy to recognize?',
+        answer: 'Errors in the text, suspicious links, requests for personal information.',
+        id: 13,
+      },
+      {
+        question: 'Why is it important to back up data?',
+        answer: 'Backups protect information from loss in case of failures or cyberattacks.',
+        id: 14,
+      },
+      {
+        question: 'What threats can arise when using open Wi-Fi networks?',
+        answer: 'Data interception, hacker attacks, and fake access points are possible.',
+        id: 15,
+      },
+      {
+        question: 'Which antivirus software is considered best for home use?',
+        answer: 'It depends on needs; popular ones are Kaspersky, Bitdefender, Norton, etc.',
+        id: 16,
+      },
+      {
+        question: 'What is a cyber threat, and how can it be prevented?',
+        answer:
+          'A cyber threat is a potential attack on a system; it is prevented through protection, monitoring.',
+        id: 17,
+      },
+      {
+        question: 'Why is it not recommended to use the same passwords for different sites?',
+        answer: 'One compromised password can give access to all your accounts.',
+        id: 18,
+      },
+      {
+        question: 'How to protect data on a mobile device?',
+        answer: 'Install antivirus software, enable screen lock, avoid suspicious apps.',
+        id: 19,
+      },
+      {
+        question: 'What is a DDoS attack, and how does it affect a system?',
+        answer:
+          'A DDoS attack overwhelms the server with requests, making it unavailable to users.',
+        id: 20,
+      },
+    ],
   },
   header: {
     links: [
@@ -66,82 +188,90 @@ export const en = {
   projects: {
     title: 'Projects',
     options: [
-      { title: 'All', filterBy: 'Все' },
-      { title: 'Services', filterBy: 'Сервисы' },
-      { title: 'Internet Shops', filterBy: 'Интернет-Магазины' },
-      { title: 'Applications', filterBy: 'Приложения' },
-      { title: 'Promo', filterBy: 'Промо' },
-      { title: 'Corporative', filterBy: 'Корпоративные' },
+      { title: 'Все', filterBy: 'All' },
+      { title: 'Controle', filterBy: 'Controle' },
+      { title: 'Decision support systems', filterBy: 'Decision support systems' },
+      { title: 'Automated Systems', filterBy: 'Automated Systems' },
+      { title: 'Technical process management', filterBy: 'Technical process management' },
+      { title: 'Information infrastructures', filterBy: 'Information infrastructures' },
     ],
     portfolioItems: [
       {
-        title: 'MEGA Family',
-        description: 'Mega Family mobile app for iOS and Android platforms',
+        title: 'Mercury',
+        description:
+          'An organizational and technical system that ensures the development of solutions based on the automation of information processes in various areas of activity or their combinations',
         backgroundColor: 'bg-[#bdeffc]',
-        type: 'Приложения',
+        type: 'Automated Systems',
         id: 1,
       },
       {
-        title: 'Tvoy.kz',
-        description: 'Mobile application for ordering goods from the supermarket chain Small',
+        title: 'Parent Controle',
+        description:
+          'A class of software solutions for restricting a childs access to various types of information on the Internet or certain functions of a device (TV, tablet or set-top box), as well as limiting the time of their use.',
         backgroundColor: 'bg-[#ffc9f9]',
-        type: 'Сервисы',
+        type: 'Controle',
         id: 2,
       },
       {
-        title: 'Ecuador',
-        description: 'Mobile application and admin panel for the Ministry of Ecuador',
+        title: 'Controle',
+        description:
+          'Conducting checks for compliance with legal and organizational requirements, as well as regulatory documents.',
         backgroundColor: 'bg-[#ffcccf]',
-        type: 'Сервисы',
+        type: 'Controle',
         id: 3,
       },
       {
-        title: 'Drop Shop',
-        description: 'Development of an online store for a chain of electronics stores',
+        title: 'Jupiter',
+        description:
+          'Computerized automated system helps decision makers in complex conditions for a complete and objective analysis of the subject activity',
         backgroundColor: 'bg-[#c4f2e1]',
-        type: 'Интернет-Магазины',
+        type: 'Decision support systems',
         id: 4,
       },
       {
         title: 'QOS',
-        description: 'Mobile application for promotion of Q-POP industry',
+        description:
+          'A set of hardware and software tools, as well as personnel, designed to manage various processes within the framework of a technological process, production, or enterprise.',
         backgroundColor: 'bg-[#ffbffc]',
-        type: 'Приложения',
+        type: 'Automated Systems',
         id: 5,
       },
       {
         title: 'Gippo',
-        description: 'Development of an online store for a fast food chain',
+        description:
+          'This is a concept of managing an organization that represents the activities of an enterprise as a set of processes. Combines ideas of business process management and the IT environment to change them',
         backgroundColor: 'bg-[#fcf1c2]',
-        type: 'Промо',
+        type: 'Technical process management',
         id: 6,
       },
       {
-        title: 'Masa Media',
-        description: 'News portal about politics and more',
+        title: 'Mercole',
+        description:
+          'This is a concept of managing an organization that represents the activities of an enterprise as a set of processes. Combines ideas of business process management and the IT environment to change them',
         backgroundColor: 'bg-[#d1baff]',
-        type: 'Промо',
+        type: 'Technical process management',
         id: 7,
       },
       {
-        title: 'Eliks',
-        description: 'Website for a specialty bakery',
+        title: 'New way',
+        description: 'Поддержка организационной структуры и ролевых групп',
         backgroundColor: 'bg-[#9fd5e3]',
-        type: 'Промо',
+        type: 'Technical process management',
         id: 8,
       },
       {
-        title: 'Sony',
-        description: 'Sony Mobile App',
+        title: 'Angela',
+        description:
+          'A complex of interconnected service structures or objects that constitute and provide the basis for the functioning of the system',
         backgroundColor: 'bg-[#bff8ff]',
-        type: 'Корпоративные',
+        type: 'Information infrastructures',
         id: 9,
       },
       {
         title: '31 channel',
         description: 'Corporate website of Channel 31',
         backgroundColor: 'bg-[#ffc9db]',
-        type: 'Корпоративные',
+        type: 'Information infrastructures',
         id: 10,
       },
     ],
@@ -156,18 +286,18 @@ export const en = {
   services: {
     title: 'Services',
     small1:
-      'We manage the entire project development cycle and adhere to the product approach in our work. If you have an idea, but you don’t know how to implement it, we will help you.',
+      'We manage the entire project development cycle and adhere to the product approach in our work. ',
     small2:
       'Our team will consult you, conduct an analysis, identify competitors and the target audience of the product. Designers will form user scenarios and create not only a beautiful but also a functional design. And a team of programmers will develop the product logic and automate the system for more efficient task execution.',
     serviceCards: [
       {
-        title: 'Online Stores',
+        title: 'Decision support systems',
         description:
-          'Product catalog, secure online payment, synchronization with product accounting software, integration with your CRM system, basic functionality',
-        price: '2 500 000 tenge',
+          'Computerized automated system helps decision makers in complex conditions for a complete and objective analysis of the subject activity',
+        price: '',
         id: 1,
         card: {
-          title: 'Drop Shop',
+          title: 'Huricane',
           description: 'Development of an online store for a chain of electronics stores"',
           backgroundColor: 'bg-[#c4f2e1]',
           type: 'Интернет-Магазины',
@@ -175,32 +305,36 @@ export const en = {
         },
       },
       {
-        title: 'Mobile applications',
-        description: 'Entertainment, Travel, Business and Social Media',
-        price: '10 000 000 tenge',
+        title: 'Automated systems',
+        description:
+          'Conducting checks for compliance with legal and organizational requirements, as well as regulatory documents.',
+        price: '',
         id: 2,
         card: {
           title: 'QOS',
-          description: 'Mobile application for promotion of Q-POP industry',
+          description:
+            'An organizational and technical system that ensures the development of solutions based on the automation of information processes in various areas of activity or their combinations',
           backgroundColor: 'bg-[#ffbffc]',
           type: 'Приложения',
           id: 5,
         },
       },
       {
-        title: 'Automation system',
-        description: 'Media portal, corporate portal, market place and virtual bulletin board',
-        price: '5 000 000 tenge',
+        title: 'Information infrastructures',
+        description:
+          'A site with increased information security intended for the use, storage and transmission of information.',
+        price: '',
         id: 3,
         card: {
           title: 'Eliks',
-          description: 'Website for a specialty bakery',
+          description: 'Information infrastructures',
           backgroundColor: 'bg-[#9fd5e3]',
           type: 'Промо',
           id: 8,
         },
       },
     ],
+    small5: 'See all projects',
   },
   request: {
     btn: 'Start a project',

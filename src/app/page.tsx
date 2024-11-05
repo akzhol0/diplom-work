@@ -2,66 +2,57 @@
 
 import React, { useContext } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { contextData } from '@/components/context/context';
 import CardComp from '@/components/main-page/CardComp';
-import PortfolioContainer from '@/components/portfolio/PortfolioContainer';
+import Information from '@/components/main-page/Information';
+import Parallax from '@/components/main-page/Parallax';
+import Iframe from '@/components/main-page/Iframe';
+import ProjectsMainPage from '@/components/main-page/ProjectsMainPage';
+import ServicesMainPafe from '@/components/main-page/ServicesMainPafe';
+import Qa from '@/components/main-page/Qa';
 
 function Main() {
   const { mainLanguage } = useContext(contextData);
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-[95%] md:w-[80%] flex flex-col">
-        <div className="flex flex-col lg:flex-row justify-around gap-2">
-          <div className="h-auto lg:h-[600px] flex flex-col gap-4 justify-center">
-            <p className="text-[30px] sm:text-[40px] md:text-[60px] font-bold">
-              {mainLanguage.mainPage.parallax.title}
-            </p>
-            <p className="max-w-[600px] text-[18px] md:text-[20px]">
-              {mainLanguage.mainPage.parallax.small}
-            </p>
-          </div>
-          <div className="flex justify-center items-center">
-            <Image
-              priority={true}
-              src="/images/laptop.png"
-              width={400}
-              height={400}
-              alt="laptop picture"
-            />
-          </div>
+      <div className="w-[95%] md:w-[80%] flex flex-col lg:flex-row justify-around gap-2">
+        <Parallax
+          title={mainLanguage.mainPage.parallax.title}
+          small={mainLanguage.mainPage.parallax.small}
+        />
+        <div className="flex justify-center items-center">
+          <Image
+            priority={true}
+            src="/images/laptop.png"
+            width={500}
+            height={500}
+            alt="laptop picture"
+          />
         </div>
-        <div className="w-full min-h-[500px] bg-[#fbfcfe] grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4 my-4">
+      </div>
+      <div className="w-full min-h-[400px] bg-[#f8f8f8] flex justify-center items-center">
+        <div className="w-[95%] md:w-[80%] place-items-center gap-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 my-4">
           {mainLanguage.mainPage.cards.map((item: any) => (
             <CardComp key={item.id} item={item} />
           ))}
         </div>
-        <div className="flex justify-center">
-          <iframe
-            width="900"
-            height="506"
-            src="https://www.youtube.com/embed/Gt8xiJyJ2Sc?autoplay=1&mute=1"></iframe>
-        </div>
-        <div className="flex flex-col gap-[20px] lg:gap-[50px] my-[50px]">
-          <p className="text-[40px] lg:text-[50px] font-bold">
-            {mainLanguage.mainPage.projects.title}
-          </p>
-          <p className="max-w-[500px]  lg:text-lg">{mainLanguage.mainPage.projects.small}</p>
-          <PortfolioContainer filter="Промо" />
-          <div className="flex justify-end">
-            <Link href="/projects">
-              <p className="text-lg text-red-600 cursor-pointer">
-                {mainLanguage.mainPage.projects.linkTitle}
-              </p>
-            </Link>
-          </div>
-        </div>
       </div>
-      <div className="">
-        <p>Услуги</p>
+      <Information title={mainLanguage.mainPage.title2} small={mainLanguage.mainPage.small2} />
+      <Iframe ytid="Gt8xiJyJ2Sc" />
+      <div className="w-[95%] md:w-[80%]">
+        <ProjectsMainPage />
       </div>
-      <div className="">
+      <ServicesMainPafe />
+      <Information title={mainLanguage.mainPage.title3} small={mainLanguage.mainPage.small3} />
+      <Iframe ytid="VEQd-jmVs44" />
+      <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
+        20 часто задаваемых вопросов про информационную безопасность
+      </p>
+      <div className="w-full min-h-[600px] flex justify-center bg-[#131313]">
+        <Qa />
+      </div>
+      <div className="mt-[40px]">
         <p>Об разработчике</p>
       </div>
     </div>

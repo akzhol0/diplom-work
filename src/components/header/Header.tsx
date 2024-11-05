@@ -10,8 +10,8 @@ function Header() {
   const { burgerMenu, setBurgerMenu } = useContext(contextData);
 
   return (
-    <div className="w-full flex justify-center bg-white">
-      <div className="w-[95%] lg:w-[80%] h-[120px] flex items-center justify-between gap-4">
+    <div className="sticky top-0 w-full flex justify-center bg-[#ffffff]">
+      <div className="w-[95%] lg:w-[80%] h-[80px] flex items-center justify-between gap-4">
         <Brand />
         <div className="hidden md:block">
           <NavBar mobileVersion={false} />
@@ -20,7 +20,7 @@ function Header() {
           <BurgerButton setBurgerMenu={setBurgerMenu} burgerMenu={burgerMenu} />
           {burgerMenu && (
             <div
-              className="right-0 top-[120px] absolute w-full flex justify-center items-center min-h-[200px] 
+              className="left-0 top-[80px] absolute w-full flex justify-center items-center min-h-[200px] 
                           bg-white border-b border-black">
               <NavBar mobileVersion={true} />
             </div>

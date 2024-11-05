@@ -15,7 +15,7 @@ function Options({ setFilter }: OptionsProps) {
 
   return (
     <div className="flex h-[60px]">
-      <ul className="w-full flex text-[16px] md:text-[18px] gap-[40px] text-lg overflow-x-scroll md:overflow-x-hidden">
+      <ul className="w-full flex text-[16px] md:text-[18px] gap-[40px] text-lg overflow-x-scroll">
         {mainLanguage.projects.options.map((item: any) => (
           <li
             key={item.title}

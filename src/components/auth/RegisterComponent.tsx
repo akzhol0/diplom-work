@@ -8,12 +8,14 @@ import { auth, db } from '../firebase/config';
 import { useRouter } from 'next/navigation';
 import { doc, setDoc } from 'firebase/firestore';
 import { contextData } from '../context/context';
+import Eye from '../UI/icons/eye/eye';
 
 function RegisterComponent() {
   const [userName, setUserName] = useState('');
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [passwordEye, setPasswordEye] = useState(false);
   const [gender, setGender] = useState('Неизвестно');
   const [error, setError] = useState('');
 
@@ -84,22 +86,36 @@ function RegisterComponent() {
             value={login}
             onChange={(e) => setLogin(e.target.value)}
           />
-          <input
-            className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder={mainLanguage.loginAndRegsitration.password}
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder={mainLanguage.loginAndRegsitration.repeatPassword}
-            type="password"
-            id="password-repeat"
-            value={repeatPassword}
-            onChange={(e) => setRepeatPassword(e.target.value)}
-          />
+          <div className="relative">
+            <input
+              className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
+              placeholder={mainLanguage.loginAndRegsitration.password}
+              type={passwordEye ? 'text' : 'password'}
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div
+              onClick={() => setPasswordEye(!passwordEye)}
+              className="absolute right-4 bottom-4 cursor-pointer">
+              <Eye />
+            </div>
+          </div>
+          <div className="relative">
+            <input
+              className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
+              placeholder={mainLanguage.loginAndRegsitration.repeatPassword}
+              type={passwordEye ? 'text' : 'password'}
+              id="password-repeat"
+              value={repeatPassword}
+              onChange={(e) => setRepeatPassword(e.target.value)}
+            />
+            <div
+              onClick={() => setPasswordEye(!passwordEye)}
+              className="absolute right-4 bottom-4 cursor-pointer">
+              <Eye />
+            </div>
+          </div>
           <Link href="/login">
             <p className="text-sm text-center cursor-pointer">
               {mainLanguage.loginAndRegsitration.labelRegister}

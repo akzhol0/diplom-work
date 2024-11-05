@@ -18,6 +18,7 @@ type ContextProps = {
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
   languageChanger: string;
+  questionChanger: string;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -33,6 +34,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   const [languageChanger, setLanguageChanger] = useState('ru');
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
+  const [questionChanger, setQuestionChanger] = useState('');
 
   useEffect(() => {
     !auth && checkIfUserLogged();
@@ -45,10 +47,13 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     // change it asap
     if (languageChanger === 'en') {
       setMainLanguage(en);
+      setQuestionChanger('en');
     } else if (languageChanger === 'kz') {
       setMainLanguage(kz);
+      setQuestionChanger('kz');
     } else if (languageChanger === 'ru') {
       setMainLanguage(ru);
+      setQuestionChanger('ru');
     }
   }, [languageChanger]);
 
@@ -80,6 +85,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         setLanguageChanger,
         mainLanguage,
         languageChanger,
+        questionChanger,
       }}>
       {children}
     </contextData.Provider>
