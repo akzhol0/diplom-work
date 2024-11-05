@@ -18,7 +18,7 @@ function ServiceComponent() {
         </div>
         <div className="flex flex-col gap-10 mt-5">
           {mainLanguage.services.serviceCards.map((item: any) => (
-            <ServiceCard item={item} />
+            <ServiceCard key={item.id} item={item} />
           ))}
         </div>
         <div className="w-full flex justify-center mt-5">

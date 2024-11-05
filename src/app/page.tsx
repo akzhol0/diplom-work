@@ -18,7 +18,9 @@ function Main() {
             <p className="text-[30px] sm:text-[40px] md:text-[60px] font-bold">
               {mainLanguage.mainPage.parallax.title}
             </p>
-            <p className="text-[20px]">{mainLanguage.mainPage.parallax.small}</p>
+            <p className="max-w-[600px] text-[18px] md:text-[20px]">
+              {mainLanguage.mainPage.parallax.small}
+            </p>
           </div>
           <div className="flex justify-center items-center">
             <Image

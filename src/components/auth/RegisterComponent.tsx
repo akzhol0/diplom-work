@@ -32,14 +32,14 @@ function RegisterComponent() {
     createUserWithEmailAndPassword(auth, login, password)
       .then((userCredentials) => {
         router.push('/login');
-        adddbDocc(userCredentials);
+        addUserFirebase(userCredentials);
       })
       .catch((err) => {
         setError(err.code);
       });
   };
 
-  const adddbDocc = async (userInfo: any) => {
+  const addUserFirebase = async (userInfo: any) => {
     await setDoc(doc(db, 'users', userInfo.user.uid), {
       userName: userName,
       userId: userInfo.user.uid,
