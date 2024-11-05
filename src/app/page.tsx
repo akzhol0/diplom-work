@@ -39,7 +39,7 @@ function Main() {
           <iframe
             width="900"
             height="506"
-            src="https://www.youtube.com/embed/Gt8xiJyJ2Sc?autoplay=0&mute=1"></iframe>
+            src="https://www.youtube.com/embed/Gt8xiJyJ2Sc?autoplay=1&mute=1"></iframe>
         </div>
         <div className="flex flex-col gap-[20px] lg:gap-[50px] my-[50px]">
           <p className="text-[40px] lg:text-[50px] font-bold">
