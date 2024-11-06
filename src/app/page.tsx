@@ -43,17 +43,31 @@ function Main() {
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
       </div>
-      <ServicesMainPafe />
-      <Information title={mainLanguage.mainPage.title3} small={mainLanguage.mainPage.small3} />
-      <Iframe ytid="VEQd-jmVs44" />
       <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
         {mainLanguage.mainPage.questionLabel}
       </p>
       <div className="w-full min-h-[600px] flex justify-center bg-[#131313]">
         <Qa />
       </div>
-      <div className="mt-[40px]">
-        <p>Об разработчике</p>
+      <ServicesMainPafe />
+      <Information title={mainLanguage.mainPage.title3} small={mainLanguage.mainPage.small3} />
+      <Iframe ytid="VEQd-jmVs44" />
+      <div className="w-full flex justify-center mt-[40px]">
+        <div className="w-[95%] md:w-[80%] py-5 flex flex-col items-center text-black ">
+          <p>
+            Тестовый сайт, сделанный для дипломной работы, разработчик Турсынхан Акжол, студент 4
+            курса университета ESIL University.
+          </p>
+          <div className="flex items-center gap-4">
+            <p>Исходный код:</p>
+
+            <div className="hover:bg-[#ffdcb7] rounded-[50%] cursor-pointer duration-200">
+              <a href="https://github.com/akzhol0/diplom-work" target="_blank">
+                <Image src="/images/github-logo.png" width={40} height={40} alt="gh" />
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

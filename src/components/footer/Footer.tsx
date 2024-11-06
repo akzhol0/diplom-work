@@ -12,7 +12,7 @@ function Footer() {
 
   return (
     <div className="w-full h-[600px] flex justify-center mt-10 bg-[#1b1b1b]">
-      <div className="w-[1000px] px-4 h-full flex flex-col justify-center items-center lg:items-start text-white">
+      <div className="w-[1000px] px-4 h-full relative flex flex-col justify-center items-center lg:items-start text-white">
         <p className="w-full flex text-[30px]">{mainLanguage.footer.title}</p>
         <div className="w-full flex flex-col md:flex-row lg:items-center gap-4 justify-between lg:border-b">
           <div className="min-h-[200px] lg:items-center flex flex-col lg:flex-row gap-[40px]">
@@ -41,6 +41,7 @@ function Footer() {
         <div className="flex mt-10">
           <small>© 2024 Brooklyn</small>
         </div>
+        <p className="absolute w-full text-center bottom-0 text-sm">Made by Akzhol Tursynkhan</p>
       </div>
     </div>
   );
