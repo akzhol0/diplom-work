@@ -1,14 +1,14 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
-import { getAuth } from 'firebase/auth';
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBTncB0BpcyPle6NStXKZazPMDBoziGRO4',
-  authDomain: 'diplom-work-477e6.firebaseapp.com',
-  projectId: 'diplom-work-477e6',
-  storageBucket: 'diplom-work-477e6.firebasestorage.app',
-  messagingSenderId: '406241106714',
-  appId: '1:406241106714:web:4c60608a58ee91140beaa3',
+  apiKey: process.env.NEXT_PUBLIC_API_KEY,
+  authDomain: "diplom-work-477e6.firebaseapp.com",
+  projectId: "diplom-work-477e6",
+  storageBucket: "diplom-work-477e6.firebasestorage.app",
+  messagingSenderId: "406241106714",
+  appId: "1:406241106714:web:4c60608a58ee91140beaa3",
 };
 
 const app = initializeApp(firebaseConfig);

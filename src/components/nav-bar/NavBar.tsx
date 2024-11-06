@@ -25,7 +25,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
-            href={item.url === '/profile' && auth === false ? '/login' : item.url}>
+            href={item.url === '/profile' && !auth ? '/login' : item.url}>
             <li
               onClick={() => setBurgerMenu(false)}
               className={

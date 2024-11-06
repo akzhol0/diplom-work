@@ -1,12 +1,13 @@
-'use client';
+"use client";
 
-import React, { useContext, useEffect, useState } from 'react';
-import { contextData } from '../context/context';
-import './/qa-styles.css';
-import { QuestionTypes } from '../types/types';
+import React, { useContext, useEffect, useState } from "react";
+import { contextData } from "../context/context";
+import ".//qa-styles.css";
+import { QuestionTypes } from "../types/types";
 
 function Qa() {
-  const { mainLanguage, languageChanger, questionChanger } = useContext(contextData);
+  const { mainLanguage, languageChanger, questionChanger } =
+    useContext(contextData);
   const [currentQuestion, setCurrentQuestion] = useState<QuestionTypes>(
     mainLanguage.mainPage.questions[0],
   );
@@ -20,10 +21,12 @@ function Qa() {
       <div className="w-full md:w-[50%] max-h-[400px] md:max-h-[600px] overflow-y-scroll text-white">
         {mainLanguage.mainPage.questions.map((item: any) => (
           <div
+            key={item.id}
             onClick={() => setCurrentQuestion(item)}
-            className="flex items-center py-2 lg:py-0 min-h-[60px] cursor-pointer hover:bg-[#1b1b1b] transition-[.2s] rounded-lg ps-4">
+            className="flex items-center py-2 lg:py-0 min-h-[60px] cursor-pointer hover:bg-[#1b1b1b] transition-[.2s] rounded-lg ps-4"
+          >
             <div>
-              {item.id}. {item.question}
+              {item.id}.{item.question}
             </div>
           </div>
         ))}
@@ -32,7 +35,9 @@ function Qa() {
         <p className="w-full text-start text-xl md:text-3xl font-semibold ps-4">
           {currentQuestion.id}. {currentQuestion.question}
         </p>
-        <p className="w-full text-start text-base md:text-lg ps-4">{currentQuestion.answer}</p>
+        <p className="w-full text-start text-base md:text-lg ps-4">
+          {currentQuestion.answer}
+        </p>
       </div>
     </div>
   );

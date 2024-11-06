@@ -6,8 +6,6 @@ type BurgerButtonProps = {
 };
 
 function BurgerButton({ burgerMenu, setBurgerMenu }: BurgerButtonProps) {
-  // dont mind stupid code, ill change it later :))))
-
   return (
     <div
       onClick={() => setBurgerMenu(!burgerMenu)}

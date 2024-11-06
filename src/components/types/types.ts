@@ -13,13 +13,6 @@ export type CardPropsTypes = {
   id: number;
 };
 
-export type PathPropsTypes = {
-  img: string;
-  title: string;
-  id: number;
-  description: string[];
-};
-
 export type ServiceCardPropsTypes = {
   title: string;
   description: string;

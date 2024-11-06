@@ -1,15 +1,16 @@
-'use client';
+"use client";
 
-import React, { useContext } from 'react';
-import Image from 'next/image';
-import { contextData } from '@/components/context/context';
-import CardComp from '@/components/main-page/CardComp';
-import Information from '@/components/main-page/Information';
-import Parallax from '@/components/main-page/Parallax';
-import Iframe from '@/components/main-page/Iframe';
-import ProjectsMainPage from '@/components/main-page/ProjectsMainPage';
-import ServicesMainPafe from '@/components/main-page/ServicesMainPafe';
-import Qa from '@/components/main-page/Qa';
+import React, { useContext } from "react";
+import Image from "next/image";
+import { contextData } from "@/components/context/context";
+import CardComp from "@/components/main-page/CardComp";
+import Information from "@/components/main-page/Information";
+import Parallax from "@/components/main-page/Parallax";
+import Iframe from "@/components/main-page/Iframe";
+import ProjectsMainPage from "@/components/main-page/ProjectsMainPage";
+import ServicesMainPage from "@/components/main-page/ServicesMainPage";
+import Qa from "@/components/main-page/Qa";
+import AboutDeveloper from "@/components/main-page/AboutDeveloper";
 
 function Main() {
   const { mainLanguage } = useContext(contextData);
@@ -38,7 +39,10 @@ function Main() {
           ))}
         </div>
       </div>
-      <Information title={mainLanguage.mainPage.title2} small={mainLanguage.mainPage.small2} />
+      <Information
+        title={mainLanguage.mainPage.title2}
+        small={mainLanguage.mainPage.small2}
+      />
       <Iframe ytid="Gt8xiJyJ2Sc" />
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
@@ -49,25 +53,14 @@ function Main() {
       <div className="w-full min-h-[600px] flex justify-center bg-[#131313]">
         <Qa />
       </div>
-      <ServicesMainPafe />
-      <Information title={mainLanguage.mainPage.title3} small={mainLanguage.mainPage.small3} />
+      <ServicesMainPage />
+      <Information
+        title={mainLanguage.mainPage.title3}
+        small={mainLanguage.mainPage.small3}
+      />
       <Iframe ytid="VEQd-jmVs44" />
       <div className="w-full flex justify-center mt-[40px]">
-        <div className="w-[95%] md:w-[80%] py-5 flex flex-col items-center text-black ">
-          <p>
-            Тестовый сайт, сделанный для дипломной работы, разработчик Турсынхан Акжол, студент 4
-            курса университета ESIL University.
-          </p>
-          <div className="flex items-center gap-4">
-            <p>Исходный код:</p>
-
-            <div className="hover:bg-[#ffdcb7] rounded-[50%] cursor-pointer duration-200">
-              <a href="https://github.com/akzhol0/diplom-work" target="_blank">
-                <Image src="/images/github-logo.png" width={40} height={40} alt="gh" />
-              </a>
-            </div>
-          </div>
-        </div>
+        <AboutDeveloper />
       </div>
     </div>
   );

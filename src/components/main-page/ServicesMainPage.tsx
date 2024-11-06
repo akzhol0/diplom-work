@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { contextData } from '@/components/context/context';
 import ServiceCard from '../servicesPage/ServiceCard';
 
-function ServicesMainPafe() {
+function ServicesMainPage() {
   const { mainLanguage } = useContext(contextData);
 
   return (
@@ -20,4 +20,4 @@ function ServicesMainPafe() {
   );
 }
 
-export default ServicesMainPafe;
+export default ServicesMainPage;
