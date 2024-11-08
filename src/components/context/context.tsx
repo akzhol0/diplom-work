@@ -42,18 +42,28 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     setLanguageChanger(localstorageMainLanguage || "ru");
   }, []);
 
+  const languageHelper = [
+    {
+      languageString: "ru",
+      languageMain: { ...ru },
+    },
+    {
+      languageString: "en",
+      languageMain: { ...en },
+    },
+    {
+      languageString: "kz",
+      languageMain: { ...kz },
+    },
+  ];
+
   useEffect(() => {
-    // change it asap
-    if (languageChanger === "en") {
-      setMainLanguage(en);
-      setQuestionChanger("en");
-    } else if (languageChanger === "kz") {
-      setMainLanguage(kz);
-      setQuestionChanger("kz");
-    } else if (languageChanger === "ru") {
-      setMainLanguage(ru);
-      setQuestionChanger("ru");
-    }
+    languageHelper.map((item) => {
+      if (languageChanger === item.languageString) {
+        setMainLanguage(item.languageMain);
+        setQuestionChanger(item.languageString);
+      }
+    });
   }, [languageChanger]);
 
   // check if user logged (that's what function name literally says :| )

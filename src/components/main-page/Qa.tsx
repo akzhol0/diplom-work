@@ -2,7 +2,6 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "../context/context";
-import ".//qa-styles.css";
 import { QuestionTypes } from "../types/types";
 
 function Qa() {
