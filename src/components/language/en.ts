@@ -6,9 +6,9 @@ export const en = {
     source: "Source code:",
     questionLabel: "20 Frequently Asked Questions About Information Security",
     parallax: {
-      title: "Digital Production Team",
+      title: "Decision Support System for Information Security",
       small:
-        "Our team develops websites protected from hackers and DDOS attacks, with an increased level of information security.",
+        "A specialized information system that helps analyze threats, identify vulnerabilities, and take measures to ensure the security of data and information resources of the organization.",
     },
     title3: "Why is website information security important?",
     small3:
@@ -16,36 +16,36 @@ export const en = {
     cards: [
       {
         img: "/images/img1.png",
-        title: "Customer focus",
+        title: "Data Collection and Security Analysis",
         description:
-          "Customer focus is a fundamental factor in accompanying any of our work.",
+          "The system collects and analyzes information on current threats, security incidents, vulnerabilities, and suspicious activities.",
         id: 1,
       },
       {
         img: "/images/img2.png",
-        title: "Full project cycle",
+        title: "Attack Scenario Modeling",
         description:
-          "We study the market, competitors and conduct research. We accompany from the idea to implementation and entry into the market",
+          "The DSS can use modeling and analysis of attack scenarios to understand how penetration or damage could occur.",
         id: 2,
       },
       {
         img: "/images/img3.png",
-        title: "New technologies",
+        title: "Threat Forecasting and Defense Strategy Development",
         description:
-          "We solve everything according to the latest technology, taking into account safety and simplicity, but we do not chase fashion",
+          "It analyzes data on past incidents and overall trends in information security to forecast potential future threats.",
         id: 3,
       },
       {
         img: "/images/img4.png",
-        title: "High trust",
+        title: "Reporting and Compliance Monitoring",
         description:
-          "We have a good customer base who recommend us to their friends and family.",
+          "The system helps generate reports on the security status and risk level, which is important for internal control and external audits.",
         id: 4,
       },
     ],
-    title2: "What is Information Security?",
+    title2: "Who Are We?",
     small2:
-      "Information security is the protection and preservation of information and its main elements, including systems and equipment designed to use, store and transmit information. In other words, it is a set of technologies, standards and management methods necessary to ensure information security.",
+      "Brooklyn Organization, our team of programmers working in the field of decision support systems (DSS) development and implementation, creates software solutions and provides consulting services to help clients make more informed and effective decisions in information security.",
     projects: {
       title: "Projects",
       small:
@@ -320,7 +320,7 @@ export const en = {
     small1:
       "We manage the entire project development cycle and adhere to the product approach in our work. ",
     small2:
-      "Our team will consult you, conduct an analysis, identify competitors and the target audience of the product. Designers will form user scenarios and create not only a beautiful but also a functional design. And a team of programmers will develop the product logic and automate the system for more efficient task execution.",
+      "Specialized in Decision Support Systems for Information Security. Our solutions help protect your business from cyber threats, reduce risks, and respond quickly to incidents. We provide a comprehensive approach to security: from data analysis and threat forecasting to automating protection and ensuring compliance with standards.",
     serviceCards: [
       {
         title: "Decision support systems",
@@ -377,11 +377,11 @@ export const en = {
     userAgreementRed2: "Rules for processing and using personal data",
     name: "Name",
     namePlaceholder: "Enter your name",
-    phone: "Telephone",
+    phone: "Phone",
     email: "Mail",
     emailPlaceholder: "Your email",
     message: "Message",
-    messagePlaceholder: "Launch dates, budget, requirements, your wishes...",
+    messagePlaceholder: "Launch dates, requirements, your wishes...",
   },
   loginAndRegsitration: {
     titleLogin: "Login",

@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useContext } from 'react';
-import WhatsappLogo from '../UI/icons/medias/WhatsappLogo';
-import MyButtonDanger from '../UI/MyButtonDanger';
-import MyArrow from '../UI/icons/my-arrow/MyArrow';
-import Link from 'next/link';
-import { contextData } from '../context/context';
+import React, { useContext } from "react";
+import WhatsappLogo from "../UI/icons/medias/WhatsappLogo";
+import MyButtonDanger from "../UI/MyButtonDanger";
+import MyArrow from "../UI/icons/my-arrow/MyArrow";
+import Link from "next/link";
+import { contextData } from "../context/context";
 
 function Footer() {
   const { mainLanguage } = useContext(contextData);
@@ -41,7 +41,9 @@ function Footer() {
         <div className="flex mt-10">
           <small>© 2024 Brooklyn</small>
         </div>
-        <p className="absolute w-full text-center bottom-0 text-sm">Made by Akzhol Tursynkhan</p>
+        <p className="absolute bottom-0 w-full text-center text-sm">
+          Made by Akzhol Tursynkhan
+        </p>
       </div>
     </div>
   );
