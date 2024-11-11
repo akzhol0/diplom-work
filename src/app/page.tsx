@@ -28,7 +28,7 @@ function Main() {
             src="/images/protection.png"
             width={500}
             height={500}
-            alt="laptop picture"
+            alt="inform sec"
           />
         </div>
       </div>

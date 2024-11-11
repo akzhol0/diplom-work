@@ -11,7 +11,7 @@ function CardComp({ item }: CardCompProps) {
     <div className="flex gap-2 lg:gap-6">
       <div className="flex flex-col justify-center items-center gap-4">
         <Image src={item.img} width={100} height={100} alt="picture" />
-        <p className="text-lg text-red-600 text-center">{item.title}</p>
+        <p className="text-lg text-red-600 text-center py-4">{item.title}</p>
         <p className="text-sm text-center">{item.description}</p>
       </div>
     </div>

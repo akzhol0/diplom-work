@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useContext } from 'react';
-import MyButtonDanger from '../UI/MyButtonDanger';
-import { contextData } from '../context/context';
+import React, { useContext } from "react";
+import MyButtonDanger from "../UI/MyButtonDanger";
+import { contextData } from "../context/context";
 
 function RequestComp() {
   const { mainLanguage } = useContext(contextData);
@@ -25,7 +25,7 @@ function RequestComp() {
             className="h-[60px] border-b border-1 focus:outline-0"
             placeholder="+7 (7__) ___-__-__"
             type="number"
-            id="tel"
+            id="phone"
           />
         </span>
         <span className="w-full flex flex-col">
@@ -41,16 +41,17 @@ function RequestComp() {
       <div className="flex flex-col mt-10">
         <p>{mainLanguage.request.message}</p>
         <textarea
-          className="h-[150px] border-b focus:outline-0"
+          className="w-full h-[150px] border-b focus:outline-0"
           placeholder={mainLanguage.request.messagePlaceholder}
-          id="message"></textarea>
+          id="message"
+        ></textarea>
       </div>
       <p className="text-[12px] mt-5">
-        {mainLanguage.request.userAgreementGray1}{' '}
+        {mainLanguage.request.userAgreementGray1}{" "}
         <label className="text-red-600 cursor-pointer hover:underline">
           {mainLanguage.request.userAgreementRed1}
         </label>
-        , <br /> {mainLanguage.request.userAgreementGray2}{' '}
+        , <br /> {mainLanguage.request.userAgreementGray2}{" "}
         <label className="text-red-600 cursor-pointer hover:underline">
           {mainLanguage.request.userAgreementRed2}
         </label>
