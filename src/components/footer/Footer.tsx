@@ -32,7 +32,7 @@ function Footer() {
             </span>
           </div>
           <Link href="/request">
-            <MyButtonDanger className="w-[220px] h-[60px] gap-2">
+            <MyButtonDanger className="w-[220px] h-[60px] gap-2 text-white">
               {mainLanguage.footer.btn}
               <MyArrow />
             </MyButtonDanger>
