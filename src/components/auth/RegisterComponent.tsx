@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import React, { useContext, useState } from 'react';
-import MyButtonDanger from '../UI/MyButtonDanger';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../firebase/config';
-import { useRouter } from 'next/navigation';
-import { doc, setDoc } from 'firebase/firestore';
-import { contextData } from '../context/context';
-import EyeIcon from '../UI/icons/eye/EyeIcon';
+import Link from "next/link";
+import React, { useContext, useState } from "react";
+import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, db } from "../firebase/config";
+import { useRouter } from "next/navigation";
+import { doc, setDoc } from "firebase/firestore";
+import { contextData } from "../context/context";
+import EyeIcon from "../UI/icons/eye/EyeIcon";
 
 function RegisterComponent() {
-  const [userName, setUserName] = useState('');
-  const [login, setLogin] = useState('');
-  const [password, setPassword] = useState('');
-  const [repeatPassword, setRepeatPassword] = useState('');
+  const [userName, setUserName] = useState("");
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordEye, setPasswordEye] = useState(false);
-  const [gender, setGender] = useState('Неизвестно');
-  const [error, setError] = useState('');
+  const [gender, setGender] = useState("Неизвестно");
+  const [error, setError] = useState("");
 
   const { mainLanguage } = useContext(contextData);
 
@@ -27,13 +27,13 @@ function RegisterComponent() {
     e.preventDefault();
 
     if (password !== repeatPassword) {
-      setError('Пароли не совпадают');
+      setError("Пароли не совпадают");
       return;
     }
 
     createUserWithEmailAndPassword(auth, login, password)
       .then((userCredentials) => {
-        router.push('/login');
+        router.push("/login");
         addUserFirebase(userCredentials);
       })
       .catch((err) => {
@@ -42,20 +42,26 @@ function RegisterComponent() {
   };
 
   const addUserFirebase = async (userInfo: any) => {
-    await setDoc(doc(db, 'users', userInfo.user.uid), {
+    await setDoc(doc(db, "users", userInfo.user.uid), {
       userName: userName,
       userId: userInfo.user.uid,
       userLogin: login,
       userPassword: password,
-      role: 'user',
+      role: "user",
       gender: gender,
+      image: "/images/user-img.png",
     });
   };
 
   return (
     <div className="w-full min-h-[600px] flex justify-center items-center">
-      <form onSubmit={handleSubmit} className="flex flex-col items-center rounded-xl text-black">
-        <p className="text-3xl py-4">{mainLanguage.loginAndRegsitration.titleRegister}</p>
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col items-center rounded-xl text-black"
+      >
+        <p className="text-3xl py-4">
+          {mainLanguage.loginAndRegsitration.titleRegister}
+        </p>
         <div className="flex flex-col gap-4">
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
@@ -72,7 +78,8 @@ function RegisterComponent() {
               onChange={(e) => setGender(e.target.value)}
               className="focus:outline-0"
               name="gender"
-              id="gender-select">
+              id="gender-select"
+            >
               {mainLanguage.loginAndRegsitration.genders.map((item: string) => (
                 <option value={item}>{item}</option>
               ))}
@@ -90,14 +97,15 @@ function RegisterComponent() {
             <input
               className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
               placeholder={mainLanguage.loginAndRegsitration.password}
-              type={passwordEye ? 'text' : 'password'}
+              type={passwordEye ? "text" : "password"}
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
             <div
               onClick={() => setPasswordEye(!passwordEye)}
-              className="absolute right-4 bottom-4 cursor-pointer">
+              className="absolute right-4 bottom-4 cursor-pointer"
+            >
               <EyeIcon />
             </div>
           </div>
@@ -105,14 +113,15 @@ function RegisterComponent() {
             <input
               className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
               placeholder={mainLanguage.loginAndRegsitration.repeatPassword}
-              type={passwordEye ? 'text' : 'password'}
+              type={passwordEye ? "text" : "password"}
               id="password-repeat"
               value={repeatPassword}
               onChange={(e) => setRepeatPassword(e.target.value)}
             />
             <div
               onClick={() => setPasswordEye(!passwordEye)}
-              className="absolute right-4 bottom-4 cursor-pointer">
+              className="absolute right-4 bottom-4 cursor-pointer"
+            >
               <EyeIcon />
             </div>
           </div>
@@ -123,10 +132,13 @@ function RegisterComponent() {
           </Link>
           <MyButtonDanger
             type="submit"
-            className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white">
+            className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white"
+          >
             {mainLanguage.loginAndRegsitration.btnRegister}
           </MyButtonDanger>
-          <p className="text-sm text-center cursor-pointer text-red-600">{error}</p>
+          <p className="text-sm text-center cursor-pointer text-red-600">
+            {error}
+          </p>
         </div>
       </form>
     </div>

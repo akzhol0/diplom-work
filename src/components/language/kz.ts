@@ -402,4 +402,12 @@ export const kz = {
     labelRegister: "Аккаунт бар ма? Жүйеге кіру!",
     btnRegister: "Тіркелу",
   },
+  edit: {
+    nameLname: "Аты-жөні",
+    changePhoto: "Фотосуретті өзгерту",
+    changePhotoPlaceholder: "Фотосурет сілтемесі",
+    comment:
+      "Өкінішке орай, электрондық поштаны және рөлді тек әкімші өзгерте алады!",
+    btn: "Өзгерту",
+  },
 };

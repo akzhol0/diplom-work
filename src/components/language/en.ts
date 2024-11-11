@@ -397,4 +397,12 @@ export const en = {
     labelRegister: "Have an account? Login!",
     btnRegister: "Register",
   },
+  edit: {
+    nameLname: "Name-Surname",
+    changePhoto: "Change Photo",
+    changePhotoPlaceholder: "Photo URL",
+    comment:
+      "Unfortunately, only the administrator can change the email and role!",
+    btn: "Edit profile",
+  },
 };

@@ -404,4 +404,11 @@ export const ru = {
     labelRegister: "Есть аккаунт? Войти!",
     btnRegister: "Регистрация",
   },
+  edit: {
+    nameLname: "Имя-фамилия",
+    changePhoto: "Поменять фото",
+    changePhotoPlaceholder: "Ссылка на фотография",
+    comment: "К сожалению почту и роль может поменять только администратор!",
+    btn: "Поменять",
+  },
 };

@@ -2,7 +2,7 @@
 
 import React, { useContext } from "react";
 import WhatsappLogo from "../UI/icons/medias/WhatsappLogo";
-import MyButtonDanger from "../UI/MyButtonDanger";
+import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import MyArrow from "../UI/icons/my-arrow/MyArrow";
 import Link from "next/link";
 import { contextData } from "../context/context";

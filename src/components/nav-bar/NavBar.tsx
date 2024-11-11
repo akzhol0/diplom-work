@@ -1,38 +1,45 @@
-'use client';
+"use client";
 
-import React, { useContext, useEffect } from 'react';
-import MyButtonDanger from '../UI/MyButtonDanger';
-import WhatsappLogo from '../UI/icons/medias/WhatsappLogo';
-import Link from 'next/link';
-import { contextData } from '../context/context';
-import { usePathname } from 'next/navigation';
+import React, { useContext, useEffect } from "react";
+import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
+import WhatsappLogo from "../UI/icons/medias/WhatsappLogo";
+import Link from "next/link";
+import { contextData } from "../context/context";
+import { usePathname } from "next/navigation";
 
 type NavBarProps = {
   mobileVersion: boolean;
 };
 
 function NavBar({ mobileVersion }: NavBarProps) {
-  const classesForm = { over: '' };
-  if (mobileVersion) classesForm.over = 'flex-col';
+  const classesForm = { over: "" };
+  if (mobileVersion) classesForm.over = "flex-col";
   const pathname = usePathname();
 
-  const { auth, setBurgerMenu, setLanguageChanger, mainLanguage, languageChanger } =
-    useContext(contextData);
+  const {
+    auth,
+    setBurgerMenu,
+    setLanguageChanger,
+    mainLanguage,
+    languageChanger,
+  } = useContext(contextData);
 
   return (
-    <div className={'flex items-center gap-4' + ' ' + classesForm.over}>
+    <div className={"flex items-center gap-4" + " " + classesForm.over}>
       <ul className="flex gap-2 sm:gap-5 text-lg">
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
-            href={item.url === '/profile' && !auth ? '/login' : item.url}>
+            href={item.url === "/profile" && !auth ? "/login" : item.url}
+          >
             <li
               onClick={() => setBurgerMenu(false)}
               className={
-                '' + pathname === item.url
-                  ? 'cursor-pointer text-gray-500 whitespace-nowrap hover:text-red-600'
-                  : 'cursor-pointer whitespace-nowrap hover:text-red-600'
-              }>
+                "" + pathname === item.url
+                  ? "cursor-pointer text-gray-500 whitespace-nowrap hover:text-red-600"
+                  : "cursor-pointer whitespace-nowrap hover:text-red-600"
+              }
+            >
               {item.title}
             </li>
           </Link>
@@ -59,12 +66,13 @@ function NavBar({ mobileVersion }: NavBarProps) {
         onChange={(e) => {
           setLanguageChanger(e.target.value);
           // first set ls
-          localStorage.setItem('lang', e.target.value);
+          localStorage.setItem("lang", e.target.value);
         }}
         value={languageChanger}
         className="text-lg mb-2 md:mb-0"
         name="language-option"
-        id="language-option">
+        id="language-option"
+      >
         <option value="ru">RUS</option>
         <option value="kz">KAZ</option>
         <option value="en">ENG</option>

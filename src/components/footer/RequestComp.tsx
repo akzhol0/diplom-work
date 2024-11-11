@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
-import MyButtonDanger from "../UI/MyButtonDanger";
+import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import { contextData } from "../context/context";
 
 function RequestComp() {
