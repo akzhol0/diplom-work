@@ -80,8 +80,8 @@ function RegisterComponent() {
               name="gender"
               id="gender-select"
             >
-              {mainLanguage.loginAndRegsitration.genders.map((item: string) => (
-                <option value={item}>{item}</option>
+              {mainLanguage.loginAndRegsitration.genders.map((item: any) => (
+                <option value={item.local}>{item.local}</option>
               ))}
             </select>
           </div>

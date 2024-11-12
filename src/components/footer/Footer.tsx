@@ -11,7 +11,7 @@ function Footer() {
   const { mainLanguage } = useContext(contextData);
 
   return (
-    <div className="w-full h-[600px] flex justify-center mt-10 bg-[#1b1b1b]">
+    <div className="w-full h-[600px] flex justify-center mt-10 bg-[#131313]">
       <div className="w-[1000px] px-4 h-full relative flex flex-col justify-center items-center lg:items-start text-white">
         <p className="w-full flex text-[30px]">{mainLanguage.footer.title}</p>
         <div className="w-full flex flex-col md:flex-row lg:items-center gap-4 justify-between lg:border-b">
@@ -41,7 +41,7 @@ function Footer() {
         <div className="flex mt-10">
           <small>© 2024 Brooklyn</small>
         </div>
-        <p className="absolute bottom-0 w-full text-center text-sm">
+        <p className="absolute bottom-0 w-full text-center text-[10px] text-gray-300">
           Made by Akzhol Tursynkhan
         </p>
       </div>

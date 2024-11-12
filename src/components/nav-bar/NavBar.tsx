@@ -50,7 +50,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
           {mainLanguage.header.btn}
         </MyButtonDanger>
       </Link>
-      {mobileVersion && <p>+7 (777) 000 00-00</p>}
+      {mobileVersion && <p className="whitespace-nowrap">+7 (777) 000 00-00</p>}
       <p className="hidden xl:block whitespace-nowrap">+7 (777) 000 00-00</p>
       {mobileVersion && (
         <Link onClick={() => setBurgerMenu(false)} href="/request">
@@ -65,7 +65,6 @@ function NavBar({ mobileVersion }: NavBarProps) {
       <select
         onChange={(e) => {
           setLanguageChanger(e.target.value);
-          // first set ls
           localStorage.setItem("lang", e.target.value);
         }}
         value={languageChanger}

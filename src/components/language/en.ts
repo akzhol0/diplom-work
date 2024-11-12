@@ -392,7 +392,11 @@ export const en = {
     titleRegister: "Register",
     nameLastName: "First and last name",
     gender: "Gender",
-    genders: ["Dont want to say", "Male", "Female"],
+    genders: [
+      { local: "Dont want to say", ru: "Не хочу говорить", id: 1 },
+      { local: "Male", ru: "Мужчина", id: 2 },
+      { local: "Female", ru: "Женщина", id: 3 },
+    ],
     repeatPassword: "Repeat password",
     labelRegister: "Have an account? Login!",
     btnRegister: "Register",
@@ -402,7 +406,8 @@ export const en = {
     changePhoto: "Change Photo",
     changePhotoPlaceholder: "Photo URL",
     comment:
-      "Unfortunately, only the administrator can change the email and role!",
+      "Unfortunately, only the administrator can change the email and password!",
     btn: "Edit profile",
+    btn2: "Back",
   },
 };

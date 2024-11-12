@@ -16,7 +16,11 @@ function ProfileComp() {
   return userInfo.length !== 0 ? (
     <div className="flex flex-col md:flex-row gap-4 items-center ">
       <Image
-        src={userInfo.image}
+        src={
+          userInfo.image.includes("https") || userInfo.image.includes("http")
+            ? userInfo.image
+            : "/images/user-img.png"
+        }
         alt="user-png"
         width={180}
         height={180}
@@ -26,7 +30,7 @@ function ProfileComp() {
         <p>
           {mainLanguage.profile.name}: {userInfo.userName}
         </p>
-        {userInfo.gender !== "Неизвестно" && (
+        {userInfo.gender !== "Не хочу говорить" && (
           <p>
             {mainLanguage.profile.gender}: {userInfo.gender}
           </p>
