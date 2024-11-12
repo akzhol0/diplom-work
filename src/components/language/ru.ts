@@ -399,7 +399,11 @@ export const ru = {
     titleRegister: "Регистрация",
     nameLastName: "Имя и фамилия",
     gender: "Пол",
-    genders: ["Не хочу говорить", "Мужчина", "Женщина"],
+    genders: [
+      { local: "Не хочу говорить", ru: "Не хочу говорить", id: 1 },
+      { local: "Мужчина", ru: "Мужчина", id: 2 },
+      { local: "Женщина", ru: "Женщина", id: 3 },
+    ],
     repeatPassword: "Повторите пароль",
     labelRegister: "Есть аккаунт? Войти!",
     btnRegister: "Регистрация",
