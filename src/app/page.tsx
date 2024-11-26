@@ -14,8 +14,7 @@ import AboutDeveloper from "@/components/main-page/AboutDeveloper";
 import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
 
 function Main() {
-  const { mainLanguage } = useContext(contextData);
-  const [isVisible, setIsVisible] = React.useState(false);
+  const { mainLanguage, isVisible, setIsVisible } = useContext(contextData);
 
   useEffect(() => {
     window.addEventListener("scroll", () =>
@@ -70,9 +69,7 @@ function Main() {
       <div className="w-full flex justify-center mt-[40px]">
         <AboutDeveloper />
       </div>
-      <div className="fixed right-5 bottom-5">
-        {isVisible && <GoUpButton />}
-      </div>
+      {isVisible && <GoUpButton />}
     </div>
   );
 }

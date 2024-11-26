@@ -18,6 +18,8 @@ type ContextProps = {
   mainLanguage: any;
   languageChanger: string;
   questionChanger: string;
+  isVisible: boolean;
+  setIsVisible: (arg0: boolean) => void;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -30,6 +32,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [auth, setAuth] = useState(false);
   const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
@@ -95,6 +98,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         mainLanguage,
         languageChanger,
         questionChanger,
+        isVisible,
+        setIsVisible,
       }}
     >
       {children}
