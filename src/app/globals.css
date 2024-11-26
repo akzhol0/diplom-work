@@ -20,3 +20,11 @@
   background: #272727;
   border-radius: 10px;
 }
+
+.bit1 {
+  transform: translateX(-800px);
+}
+
+.bit2 {
+  transform: translateX(0);
+}
