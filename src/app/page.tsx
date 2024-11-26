@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Image from "next/image";
 import { contextData } from "@/components/context/context";
 import CardComp from "@/components/main-page/CardComp";
@@ -11,9 +11,17 @@ import ProjectsMainPage from "@/components/main-page/ProjectsMainPage";
 import ServicesMainPage from "@/components/main-page/ServicesMainPage";
 import Qa from "@/components/main-page/Qa";
 import AboutDeveloper from "@/components/main-page/AboutDeveloper";
+import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
 
 function Main() {
   const { mainLanguage } = useContext(contextData);
+  const [isVisible, setIsVisible] = React.useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () =>
+      setIsVisible(window.scrollY > 1000),
+    );
+  }, [window.scrollY]);
 
   return (
     <div className="w-full flex flex-col items-center">
@@ -61,6 +69,9 @@ function Main() {
       <Iframe ytid="VEQd-jmVs44" />
       <div className="w-full flex justify-center mt-[40px]">
         <AboutDeveloper />
+      </div>
+      <div className="fixed right-5 bottom-5">
+        {isVisible && <GoUpButton />}
       </div>
     </div>
   );
