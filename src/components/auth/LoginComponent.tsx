@@ -11,6 +11,7 @@ import EyeIcon from "../UI/icons/eye/EyeIcon";
 
 function LoginComponent() {
   const [login, setLogin] = useState("");
+
   const [password, setPassword] = useState("");
   const [passwordEye, setPasswordEye] = useState(false);
   const [error, setError] = useState("");
