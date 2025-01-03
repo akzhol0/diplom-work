@@ -20,7 +20,7 @@ function Main() {
     window.addEventListener("scroll", () =>
       setIsVisible(window.scrollY > 1000),
     );
-  }, [window.scrollY]);
+  }, []);
 
   return (
     <div className="w-full flex flex-col items-center">
