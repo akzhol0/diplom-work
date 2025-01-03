@@ -406,6 +406,9 @@ export const kz = {
     labelRegister: "Аккаунт бар ма? Жүйеге кіру!",
     btnRegister: "Тіркелу",
   },
+  feedback: {
+    btn: "Пікір қалдыру",
+  },
   edit: {
     nameLname: "Аты-жөні",
     changePhoto: "Фотосуретті өзгерту",

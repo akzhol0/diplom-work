@@ -401,6 +401,9 @@ export const en = {
     labelRegister: "Have an account? Login!",
     btnRegister: "Register",
   },
+  feedback: {
+    btn: "Leave a feedback",
+  },
   edit: {
     nameLname: "Name-Surname",
     changePhoto: "Change Photo",

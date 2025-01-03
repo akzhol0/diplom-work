@@ -42,25 +42,29 @@ function ProfileComp() {
           {mainLanguage.profile.role}:{" "}
           {userInfo.role === "user" ? "Обычный пользователь" : "Администратор"}
         </p>
-        <span className="mt-2">
+        <div className="flex gap-2 my-2">
           <Link href="/edit">
             <MyPrimaryButton className="font-semibold h-[40px]">
               {mainLanguage.edit.btn}
             </MyPrimaryButton>
           </Link>
-        </span>
-        <span
-          onClick={() => {
-            setAuth(false);
-            localStorage.removeItem("userId");
-            router.push("/login");
-          }}
-          className="mt-2"
-        >
-          <MyButtonDanger className="font-semibold h-[40px]">
-            {mainLanguage.profile.btn}
-          </MyButtonDanger>
-        </span>
+          <span
+            onClick={() => {
+              setAuth(false);
+              localStorage.removeItem("userId");
+              router.push("/login");
+            }}
+          >
+            <MyButtonDanger className="font-semibold h-[40px]">
+              {mainLanguage.profile.btn}
+            </MyButtonDanger>
+          </span>
+          <Link href="/feedback">
+            <MyPrimaryButton className="font-semibold h-[40px]">
+              {mainLanguage.feedback.btn}
+            </MyPrimaryButton>
+          </Link>
+        </div>
       </div>
     </div>
   ) : (

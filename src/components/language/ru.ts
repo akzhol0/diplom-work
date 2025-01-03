@@ -320,6 +320,9 @@ export const ru = {
     role: "Роль",
     btn: "Выйти из аккаунта",
   },
+  feedback: {
+    btn: "Оставить отзыв",
+  },
   services: {
     title: "Услуги",
     small1:
