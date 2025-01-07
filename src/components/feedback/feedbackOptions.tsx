@@ -27,8 +27,13 @@ const FeedbackOptions = ({ feedback }: FeedbackOptionsProps) => {
       className={`relative w-[30px] h-[30px] ms-2 rounded-lg flex justify-center items-center gap-1 cursor-pointer duration-200 
       ${modalVisible && "bg-white"}`}
     >
-      {[...Array(3)].map((_) => {
-        return <span className="w-[3px] h-[3px] rounded-lg] bg-black"></span>;
+      {[...Array(3)].map((_, index) => {
+        return (
+          <span
+            key={index}
+            className="w-[3px] h-[3px] rounded-lg] bg-black"
+          ></span>
+        );
       })}
       <div
         className={`absolute flex flex-col items-center top-[30px] right-0 w-[150px] min-h-[20px] 

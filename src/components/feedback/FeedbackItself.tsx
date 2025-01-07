@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import FeedbackOptions from "@/components/feedback/feedbackOptions";
+import Link from "next/link";
 
 type FeedbackItselfProps = {
   feedback: any;
@@ -21,7 +22,11 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
           </div>
           <div className="flex items-center text-sm justify-center ps-2">
             <div className="">
-              <p>{feedback.feedbackUserInfo.userName}</p>
+              <Link href={`/users/${feedback.feedbackUserInfo.userId}`}>
+                <p className="max-w-[120px] overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
+                  {feedback.feedbackUserInfo.userName}
+                </p>
+              </Link>
               <p className="max-w-[150px] md:max-w-[200px] max-h-[22px] overflow-hidden">
                 {feedback.date}
               </p>
