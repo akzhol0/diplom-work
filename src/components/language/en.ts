@@ -198,6 +198,10 @@ export const en = {
         title: "Profile",
         url: "/profile",
       },
+      {
+        title: "Feedbacks",
+        url: "/feedback",
+      },
     ],
     btn: "Leave a request",
   },
@@ -402,7 +406,15 @@ export const en = {
     btnRegister: "Register",
   },
   feedback: {
-    btn: "Leave a feedback",
+    header: "Header",
+    body: "Description",
+    rating: "Rating",
+    btn: "Leave a Review",
+    allFeedbacks: "All Reviews",
+    like: "Like",
+    dislike: "Dislike",
+    delete: "Delete",
+    prevent: "You need to register to leave a feedback",
   },
   edit: {
     nameLname: "Name-Surname",

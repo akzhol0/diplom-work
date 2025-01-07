@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 type IframeProps = {
   ytid: string;
@@ -11,7 +11,10 @@ function Iframe({ ytid }: IframeProps) {
         <iframe
           width="900"
           height="506"
-          src={`https://www.youtube.com/embed/${ytid}?autoplay=1&mute=1&loop=1&playlist=${ytid}`}></iframe>
+          src={`https://www.youtube.com/embed/${ytid}?autoplay=1&loop=1&playlist=${ytid}`}
+          allow="autoplay; encrypted-media"
+          allowFullScreen
+        ></iframe>
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ function Main() {
             src="/images/protection.png"
             width={500}
             height={500}
-            alt="inform sec"
+            alt="image"
           />
         </div>
       </div>
@@ -50,7 +50,9 @@ function Main() {
         title={mainLanguage.mainPage.title2}
         small={mainLanguage.mainPage.small2}
       />
-      <Iframe ytid="Gt8xiJyJ2Sc" />
+      <video width="900" height="600" controls autoPlay loop muted>
+        <source src="/videos/video1.mp4" type="video/mp4" />
+      </video>
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
       </div>
@@ -65,7 +67,9 @@ function Main() {
         title={mainLanguage.mainPage.title3}
         small={mainLanguage.mainPage.small3}
       />
-      <Iframe ytid="VEQd-jmVs44" />
+      <video width="900" height="600" controls autoPlay loop muted>
+        <source src="/videos/video2.mp4" type="video/mp4" />
+      </video>
       <div className="w-full flex justify-center mt-[40px]">
         <AboutDeveloper />
       </div>

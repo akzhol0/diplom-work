@@ -13,7 +13,7 @@ function ServiceComponent() {
     window.addEventListener("scroll", () =>
       setIsVisible(window.scrollY > 1000),
     );
-  }, [window.scrollY]);
+  }, []);
 
   return (
     <div className="w-full min-h-[800px] flex justify-center">

@@ -24,12 +24,11 @@ const StarRating = ({ setRatingInput }: StartRatingProps) => {
             onClick={() => handleRating(starValue)}
             onMouseEnter={() => setHoveredRating(starValue)}
             onMouseLeave={() => setHoveredRating(0)}
-            className={`text-2xl ps-1 ${
+            className={`text-2xl pe-1 ${
               starValue <= (hoveredRating || selectedRating)
-                ? "text-yellow-500"
+                ? "text-red-500"
                 : "text-gray-300"
             }`}
-            aria-label={`Rate ${starValue} stars`}
           >
             ★
           </button>

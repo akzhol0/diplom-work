@@ -14,7 +14,7 @@ function Portfolio() {
     window.addEventListener("scroll", () =>
       setIsVisible(window.scrollY > 1000),
     );
-  }, [window.scrollY]);
+  }, []);
 
   return (
     <div className="w-full flex justify-center">

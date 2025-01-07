@@ -202,6 +202,10 @@ export const kz = {
         title: "Профиль",
         url: "/profile",
       },
+      {
+        title: "Пікірлер",
+        url: "/feedback",
+      },
     ],
     btn: "Өтініш қалдыру",
   },
@@ -407,7 +411,15 @@ export const kz = {
     btnRegister: "Тіркелу",
   },
   feedback: {
+    header: "Тақырып",
+    body: "Сипаттама",
+    rating: "Бағалау",
     btn: "Пікір қалдыру",
+    allFeedbacks: "Барлық пікірлер",
+    like: "Ұнайды",
+    dislike: "Ұнамайды",
+    delete: "Жою",
+    prevent: "Пікір қалдыру үшін сайтты тіркелуіңіз қажет",
   },
   edit: {
     nameLname: "Аты-жөні",

@@ -24,16 +24,6 @@ const AboutDeveloper = () => {
           />
         </a>
       </div>
-      <div className="flex items-center gap-4">
-        <p>Vercel:</p>
-        <a
-          className="hover:scale-110 duration-200"
-          href="https://vercel.com/akzhols-projects/diplom-work-akzhol"
-          target="_blank"
-        >
-          <Image src="/images/vercel.png" width={40} height={40} alt="vercel" />
-        </a>
-      </div>
     </div>
   );
 };
