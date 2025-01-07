@@ -50,9 +50,10 @@ function Main() {
         title={mainLanguage.mainPage.title2}
         small={mainLanguage.mainPage.small2}
       />
-      <video width="900" height="600" controls autoPlay loop muted>
+      <video width="900" height="600" autoPlay loop muted>
         <source src="/videos/video1.mp4" type="video/mp4" />
       </video>
+      ...
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
       </div>
@@ -67,7 +68,7 @@ function Main() {
         title={mainLanguage.mainPage.title3}
         small={mainLanguage.mainPage.small3}
       />
-      <video width="900" height="600" controls autoPlay loop muted>
+      <video width="900" height="600" autoPlay loop muted>
         <source src="/videos/video2.mp4" type="video/mp4" />
       </video>
       <div className="w-full flex justify-center mt-[40px]">
