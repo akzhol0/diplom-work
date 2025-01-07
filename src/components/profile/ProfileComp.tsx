@@ -42,9 +42,9 @@ function ProfileComp() {
           {mainLanguage.profile.role}:{" "}
           {userInfo.role === "user" ? "Обычный пользователь" : "Администратор"}
         </p>
-        <div className="flex gap-2 my-2">
+        <div className="flex flex-col lg:flex-row gap-2 my-2">
           <Link href="/edit">
-            <MyPrimaryButton className="font-semibold h-[40px]">
+            <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">
               {mainLanguage.edit.btn}
             </MyPrimaryButton>
           </Link>
@@ -55,12 +55,12 @@ function ProfileComp() {
               router.push("/login");
             }}
           >
-            <MyButtonDanger className="font-semibold h-[40px]">
+            <MyButtonDanger className="font-semibold h-[40px] whitespace-nowrap">
               {mainLanguage.profile.btn}
             </MyButtonDanger>
           </span>
           <Link href="/feedback">
-            <MyPrimaryButton className="font-semibold h-[40px]">
+            <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">
               {mainLanguage.feedback.btn}
             </MyPrimaryButton>
           </Link>
