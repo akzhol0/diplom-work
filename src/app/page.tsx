@@ -53,7 +53,6 @@ function Main() {
       <video width="900" height="600" autoPlay loop muted>
         <source src="/videos/video1.mp4" type="video/mp4" />
       </video>
-      ...
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
       </div>
