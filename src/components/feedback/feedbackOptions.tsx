@@ -2,9 +2,10 @@ import React, { useContext, useState } from "react";
 import { contextData } from "@/components/context/context";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
+import { FeedbacksTypes } from "@/components/types/types";
 
 type FeedbackOptionsProps = {
-  feedback: any;
+  feedback: FeedbacksTypes;
 };
 
 const FeedbackOptions = ({ feedback }: FeedbackOptionsProps) => {
@@ -40,7 +41,7 @@ const FeedbackOptions = ({ feedback }: FeedbackOptionsProps) => {
         duration-200 bg-[#131313] rounded-lg text-white overflow-hidden 
         ${modalVisible ? "block" : "hidden"}`}
       >
-        {userInfo.userId === feedback.feedbackUserInfo.userId && (
+        {userInfo?.userId === feedback.feedbackUserInfo.userId && (
           <div
             onClick={() => handleDeleteButton()}
             className="w-full hover:bg-gray-600 text-center"

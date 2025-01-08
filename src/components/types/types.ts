@@ -26,3 +26,22 @@ export type QuestionTypes = {
   answer: string;
   id: number;
 };
+
+export type UserInfoTypes = {
+  gender: string;
+  image: string;
+  role: string;
+  userId: number;
+  userLogin: string;
+  userName: string;
+  userPassword: string;
+};
+
+export type FeedbacksTypes = {
+  body: string;
+  date: string;
+  header: string;
+  rating: number;
+  id: string;
+  feedbackUserInfo: UserInfoTypes;
+};

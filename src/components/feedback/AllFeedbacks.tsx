@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import FeedbackItself from "@/components/feedback/FeedbackItself";
 import { contextData } from "@/components/context/context";
+import { FeedbacksTypes } from "@/components/types/types";
 
 const AllFeedbacks = () => {
   const { mainLanguage, feedbacks, loadedFeedbacks } = useContext(contextData);
@@ -14,7 +15,7 @@ const AllFeedbacks = () => {
       <div className="w-full md:w-[80%] flex justify-center">
         {loadedFeedbacks ? (
           <div className="w-full">
-            {feedbacks.map((feedback: any, index: number) => (
+            {feedbacks.map((feedback: FeedbacksTypes, index: number) => (
               <FeedbackItself feedback={feedback} key={index} />
             ))}
           </div>

@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import { contextData } from "@/components/context/context";
 import AllFeedbacks from "@/components/feedback/AllFeedbacks";
 import StarRating from "@/components/feedback/StarRating";
-import { collection, doc, getDocs, query, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 import Link from "next/link";
+import { FeedbacksTypes } from "@/components/types/types";
 
 const Feedbacks = () => {
   const { mainLanguage, userInfo, setFeedbacks } = useContext(contextData);
@@ -39,14 +40,14 @@ const Feedbacks = () => {
       date: Date(),
     };
 
-    setFeedbacks((prev: any) => [feedbackObj, ...prev]);
+    setFeedbacks((prev: FeedbacksTypes[]) => [feedbackObj, ...prev]);
     await setDoc(feedbacksRef, feedbackObj);
   };
 
   return (
     <div className="flex flex-col">
       <div className="flex justify-center items-center">
-        {userInfo.userId ? (
+        {userInfo ? (
           <form
             onSubmit={handleSubmit}
             className="min-w-[350px] flex flex-col gap-4"

@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 import LoadingUi from "@/components/UI/my-loading/LoadingUI";
+import { UserInfoTypes } from "@/components/types/types";
 
 const EditPage = () => {
   const { userInfo, mainLanguage, checkIfUserLogged } = useContext(contextData);
@@ -42,7 +43,7 @@ const EditPage = () => {
     router.push("/profile");
   };
 
-  const updateFirebaseData = async (userChangedData: any) => {
+  const updateFirebaseData = async (userChangedData: UserInfoTypes) => {
     const referral = doc(db, "users", `${userInfo.userId}`);
 
     await updateDoc(referral, {
@@ -50,7 +51,7 @@ const EditPage = () => {
     });
   };
 
-  return userInfo.length !== 0 ? (
+  return userInfo ? (
     <div className="w-full flex justify-center items-center">
       <form
         onSubmit={submitHandler}

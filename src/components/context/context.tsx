@@ -6,6 +6,7 @@ import { db } from "../firebase/config";
 import { en } from "../language/en";
 import { ru } from "../language/ru";
 import { kz } from "../language/kz";
+import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
 
 type ContextProps = {
   auth: boolean;
@@ -13,14 +14,14 @@ type ContextProps = {
   burgerMenu: boolean;
   setBurgerMenu: (arg0: boolean) => void;
   checkIfUserLogged: () => void;
-  userInfo: any;
+  userInfo: UserInfoTypes;
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
   languageChanger: string;
   questionChanger: string;
   isVisible: boolean;
   setIsVisible: (arg0: boolean) => void;
-  feedbacks: any;
+  feedbacks: FeedbacksTypes[];
   setFeedbacks: (arg0: any) => void;
   loadedFeedbacks: boolean;
 };
@@ -32,11 +33,12 @@ type ContextOverAllProps = {
 };
 
 export function ContextOverAll({ children }: ContextOverAllProps) {
+  const [userInfo, setUserInfo] = useState<any>();
+  const [feedbacks, setFeedbacks] = useState<FeedbacksTypes[]>([]);
+
   const [auth, setAuth] = useState(false);
-  const [userInfo, setUserInfo] = useState<any>([]);
   const [burgerMenu, setBurgerMenu] = useState(false);
-  const [isVisible, setIsVisible] = React.useState(false);
-  const [feedbacks, setFeedbacks] = useState<any>([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
@@ -98,6 +100,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
       if (docSnap.exists()) {
         setAuth(true);
+
         setUserInfo(docSnap.data());
       }
     }

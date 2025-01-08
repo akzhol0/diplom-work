@@ -2,9 +2,10 @@ import React from "react";
 import Image from "next/image";
 import FeedbackOptions from "@/components/feedback/feedbackOptions";
 import Link from "next/link";
+import { FeedbacksTypes } from "@/components/types/types";
 
 type FeedbackItselfProps = {
-  feedback: any;
+  feedback: FeedbacksTypes;
 };
 
 const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
@@ -21,7 +22,7 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
             />
           </div>
           <div className="flex items-center text-sm justify-center ps-2">
-            <div className="">
+            <div>
               <Link href={`/users/${feedback.feedbackUserInfo.userId}`}>
                 <p className="max-w-[120px] overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
                   {feedback.feedbackUserInfo.userName}
@@ -38,7 +39,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
                     type="button"
                     key={index}
                     className={`text-xl md:text-2xl ps-1 ${
-                      feedback.rating > index ? "text-red-500" : "text-gray-300"
+                      feedback.rating >= index + 1
+                        ? "text-red-500"
+                        : "text-gray-300"
                     }`}
                   >
                     ★

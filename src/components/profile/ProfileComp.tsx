@@ -14,7 +14,7 @@ function ProfileComp() {
   const { userInfo, setAuth, mainLanguage } = useContext(contextData);
   const router = useRouter();
 
-  return userInfo.length !== 0 ? (
+  return userInfo ? (
     <div className="flex flex-col">
       <div className="flex flex-col md:flex-row gap-4 items-center ">
         <Image

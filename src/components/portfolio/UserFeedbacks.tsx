@@ -4,7 +4,7 @@ import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import FeedbackItself from "@/components/feedback/FeedbackItself";
 
 type UserFeedbacksProps = {
-  userIdProp: string;
+  userIdProp: number;
 };
 
 const UserFeedbacks = ({ userIdProp }: UserFeedbacksProps) => {
