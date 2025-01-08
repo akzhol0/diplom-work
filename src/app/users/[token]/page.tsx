@@ -7,13 +7,13 @@ export const metadata: Metadata = {
 };
 
 type UserPageProps = {
-  params: { id: string };
+  params: { token: string };
 };
 
 const Page = ({ params }: UserPageProps) => {
-  const { id } = params;
+  const { token } = params;
 
-  return <UserPage id={id} />;
+  return <UserPage token={token} />;
 };
 
 export default Page;
