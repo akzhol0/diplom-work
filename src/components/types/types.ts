@@ -31,7 +31,7 @@ export type UserInfoTypes = {
   gender: string;
   image: string;
   role: string;
-  userId: number;
+  userId: string;
   userLogin: string;
   userName: string;
   userPassword: string;

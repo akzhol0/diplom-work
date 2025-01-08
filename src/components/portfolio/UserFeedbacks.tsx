@@ -2,17 +2,18 @@ import React, { useContext, useState } from "react";
 import { contextData } from "@/components/context/context";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import FeedbackItself from "@/components/feedback/FeedbackItself";
+import { FeedbacksTypes } from "@/components/types/types";
 
 type UserFeedbacksProps = {
-  userIdProp: string;
+  userToken: string;
 };
 
-const UserFeedbacks = ({ userIdProp }: UserFeedbacksProps) => {
-  const { feedbacks, loadedFeedbacks, userInfo } = useContext(contextData);
+const UserFeedbacks = ({ userToken }: UserFeedbacksProps) => {
+  const { feedbacks, loadedFeedbacks } = useContext(contextData);
 
   function filterFeedbacksFunction() {
     return feedbacks.filter(
-      (item: any) => item.feedbackUserInfo.userId === userIdProp,
+      (item: FeedbacksTypes) => item.feedbackUserInfo.userId === userToken,
     );
   }
 

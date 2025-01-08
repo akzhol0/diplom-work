@@ -8,10 +8,10 @@ import UserFeedbacks from "@/components/portfolio/UserFeedbacks";
 import { UserInfoTypes } from "@/components/types/types";
 
 type UserPageProps = {
-  id: string;
+  token: string;
 };
 
-const UserPage = ({ id }: UserPageProps) => {
+const UserPage = ({ token }: UserPageProps) => {
   const { feedbacks, mainLanguage } = useContext(contextData);
 
   const [user, setUser] = useState<UserInfoTypes>();
@@ -23,7 +23,7 @@ const UserPage = ({ id }: UserPageProps) => {
 
   const findUser = () => {
     feedbacks.map((item: any) => {
-      if (item.feedbackUserInfo.userId === id) {
+      if (item.feedbackUserInfo.userId === token) {
         setUser(item.feedbackUserInfo as UserInfoTypes);
       }
       setLoaded(true);
@@ -71,7 +71,7 @@ const UserPage = ({ id }: UserPageProps) => {
               <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
                 Отзывы {user?.userName}
               </div>
-              <UserFeedbacks userIdProp={id} />
+              <UserFeedbacks userToken={token} />
             </div>
           </div>
         ) : (
