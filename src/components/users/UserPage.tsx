@@ -5,6 +5,7 @@ import { contextData } from "@/components/context/context";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import Image from "next/image";
 import UserFeedbacks from "@/components/portfolio/UserFeedbacks";
+import { UserInfoTypes } from "@/components/types/types";
 
 type UserPageProps = {
   id: string;
@@ -13,7 +14,7 @@ type UserPageProps = {
 const UserPage = ({ id }: UserPageProps) => {
   const { feedbacks, mainLanguage } = useContext(contextData);
 
-  const [user, setUser] = useState<any>([]);
+  const [user, setUser] = useState<UserInfoTypes>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const UserPage = ({ id }: UserPageProps) => {
   const findUser = () => {
     feedbacks.map((item: any) => {
       if (item.feedbackUserInfo.userId === id) {
-        setUser(item.feedbackUserInfo);
+        setUser(item.feedbackUserInfo as UserInfoTypes);
       }
       setLoaded(true);
     });
@@ -37,8 +38,8 @@ const UserPage = ({ id }: UserPageProps) => {
             <div className="flex flex-col md:flex-row gap-4 items-center ">
               <Image
                 src={
-                  user.image.includes("https") || user.image.includes("http")
-                    ? user.image
+                  user?.image.includes("https") || user?.image.includes("http")
+                    ? user?.image
                     : "/images/user-img.png"
                 }
                 alt="user-png"
@@ -48,19 +49,19 @@ const UserPage = ({ id }: UserPageProps) => {
               />
               <div className="flex flex-col text-lg">
                 <p>
-                  {mainLanguage.profile.name}: {user.userName}
+                  {mainLanguage.profile.name}: {user?.userName}
                 </p>
-                {user.gender !== "Не хочу говорить" && (
+                {user?.gender !== "Не хочу говорить" && (
                   <p>
-                    {mainLanguage.profile.gender}: {user.gender}
+                    {mainLanguage.profile.gender}: {user?.gender}
                   </p>
                 )}
                 <p>
-                  {mainLanguage.profile.email}: {user.userLogin}
+                  {mainLanguage.profile.email}: {user?.userLogin}
                 </p>
                 <p>
                   {mainLanguage.profile.role}:{" "}
-                  {user.role === "user"
+                  {user?.role === "user"
                     ? "Обычный пользователь"
                     : "Администратор"}
                 </p>
@@ -68,7 +69,7 @@ const UserPage = ({ id }: UserPageProps) => {
             </div>
             <div className="flex flex-col">
               <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
-                Отзывы {user.userName}
+                Отзывы {user?.userName}
               </div>
               <UserFeedbacks userIdProp={id} />
             </div>
