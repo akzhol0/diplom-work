@@ -75,7 +75,7 @@ function ProfileComp() {
         <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
           Отзывы {userInfo.userName}
         </div>
-        <UserFeedbacks userIdProp={userInfo.userId} />
+        <UserFeedbacks userToken={userInfo.userId} />
       </div>
     </div>
   ) : (
