@@ -32,8 +32,8 @@ const EditPage = () => {
       image: image === "" ? userInfo.image : image,
     };
 
-    checkIfUserLogged();
     updateFirebaseData(userChangedData);
+    checkIfUserLogged();
 
     router.push("/profile");
   };
