@@ -24,6 +24,7 @@ type ContextProps = {
   feedbacks: FeedbacksTypes[];
   setFeedbacks: (arg0: any) => void;
   loadedFeedbacks: boolean;
+  setUserInfo: (arg0: any) => void;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -99,9 +100,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setAuth(true);
-
         setUserInfo(docSnap.data());
+        setAuth(true);
       }
     }
   };
@@ -124,6 +124,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         feedbacks,
         setFeedbacks,
         loadedFeedbacks,
+        setUserInfo,
       }}
     >
       {children}

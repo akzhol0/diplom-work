@@ -11,10 +11,11 @@ import Link from "next/link";
 import UserFeedbacks from "@/components/portfolio/UserFeedbacks";
 
 function ProfileComp() {
-  const { userInfo, setAuth, mainLanguage } = useContext(contextData);
+  const { userInfo, setAuth, mainLanguage, setUserInfo, auth } =
+    useContext(contextData);
   const router = useRouter();
 
-  return userInfo ? (
+  return auth ? (
     <div className="flex flex-col">
       <div className="flex flex-col md:flex-row gap-4 items-center ">
         <Image
@@ -54,9 +55,10 @@ function ProfileComp() {
             </Link>
             <span
               onClick={() => {
+                router.push("/login");
                 setAuth(false);
                 localStorage.removeItem("userId");
-                router.push("/login");
+                setUserInfo({});
               }}
             >
               <MyButtonDanger className="font-semibold h-[40px] whitespace-nowrap">

@@ -11,30 +11,25 @@ import LoadingUi from "@/components/UI/my-loading/LoadingUI";
 import { UserInfoTypes } from "@/components/types/types";
 
 const EditPage = () => {
-  const { userInfo, mainLanguage, checkIfUserLogged } = useContext(contextData);
+  const { userInfo, mainLanguage, checkIfUserLogged, auth } =
+    useContext(contextData);
   const router = useRouter();
 
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [gender, setGender] = useState("");
 
-  useEffect(() => {
-    setName(userInfo.userName);
-    setGender(userInfo.gender);
-    setImage(userInfo.image);
-  }, [userInfo]);
-
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const userChangedData = {
-      userName: name,
+      userName: name === "" ? userInfo.userName : name,
       userId: userInfo.userId,
       userLogin: userInfo.userLogin,
       userPassword: userInfo.userPassword,
       role: userInfo.role,
-      gender: gender,
-      image: image,
+      gender: gender === "" ? userInfo.gender : gender,
+      image: image === "" ? userInfo.image : image,
     };
 
     checkIfUserLogged();
@@ -51,7 +46,7 @@ const EditPage = () => {
     });
   };
 
-  return userInfo ? (
+  return auth ? (
     <div className="w-full flex justify-center items-center">
       <form
         onSubmit={submitHandler}

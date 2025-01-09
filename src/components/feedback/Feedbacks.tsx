@@ -11,7 +11,8 @@ import Link from "next/link";
 import { FeedbacksTypes } from "@/components/types/types";
 
 const Feedbacks = () => {
-  const { mainLanguage, userInfo, setFeedbacks } = useContext(contextData);
+  const { mainLanguage, userInfo, setFeedbacks, auth } =
+    useContext(contextData);
 
   const [headerInput, setHeaderInput] = useState("");
   const [bodyInput, setBodyInput] = useState("");
@@ -47,7 +48,7 @@ const Feedbacks = () => {
   return (
     <div className="flex flex-col">
       <div className="flex justify-center items-center">
-        {userInfo ? (
+        {auth ? (
           <form
             onSubmit={handleSubmit}
             className="min-w-[350px] flex flex-col gap-4"
