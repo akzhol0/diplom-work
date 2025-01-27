@@ -1,4 +1,5 @@
 import React from "react";
+import MyArrowUp from "@/components/UI/icons/my-arrow/MyArrowUp";
 
 const GoUpButton = () => {
   return (
@@ -7,20 +8,7 @@ const GoUpButton = () => {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className="w-[60px] h-[60px] cursor-pointer"
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full h-full"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M5 15l7-7 7 7"
-          />
-        </svg>
+        <MyArrowUp />
       </div>
     </div>
   );

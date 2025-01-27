@@ -3,40 +3,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "../context/context";
 import { QuestionTypes } from "../types/types";
+import MyArrow from "@/components/UI/icons/my-arrow/MyArrow";
+import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
+import MyArrowUp from "@/components/UI/icons/my-arrow/MyArrowUp";
+import QuestionItself from "@/components/main-page/QuestionItself";
 
 function Qa() {
-  const { mainLanguage, languageChanger, questionChanger } =
-    useContext(contextData);
-  const [currentQuestion, setCurrentQuestion] = useState<QuestionTypes>(
-    mainLanguage.mainPage.questions[0],
-  );
-
-  useEffect(() => {
-    setCurrentQuestion(mainLanguage.mainPage.questions[0]);
-  }, [questionChanger]);
+  const { mainLanguage } = useContext(contextData);
 
   return (
-    <div className="w-[99%] lg:w-[80%] min-h-[600px] flex flex-col md:flex-row justify-between items-center">
-      <div className="w-full md:w-[50%] max-h-[400px] md:max-h-[600px] overflow-y-scroll text-white">
+    <div className="w-[100%] lg:w-[80%] flex flex-col md:flex-row justify-center items-center">
+      <div className="w-full h-[600px] overflow-y-scroll text-white">
         {mainLanguage.mainPage.questions.map((item: any) => (
-          <div
-            key={item.id}
-            onClick={() => setCurrentQuestion(item)}
-            className="flex items-center py-2 lg:py-0 min-h-[60px] cursor-pointer hover:bg-[#1b1b1b] transition-[.2s] rounded-lg ps-4"
-          >
-            <div>
-              {item.id}.{item.question}
-            </div>
-          </div>
+          <QuestionItself key={item.id} item={item} />
         ))}
-      </div>
-      <div className="w-full md:w-[50%] min-h-[300px] flex flex-col items-center justify-center text-white gap-4">
-        <p className="w-full text-start text-xl md:text-3xl font-semibold ps-4">
-          {currentQuestion.id}. {currentQuestion.question}
-        </p>
-        <p className="w-full text-start text-base md:text-lg ps-4">
-          {currentQuestion.answer}
-        </p>
       </div>
     </div>
   );

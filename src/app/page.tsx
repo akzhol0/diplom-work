@@ -59,7 +59,7 @@ function Main() {
       <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
         {mainLanguage.mainPage.questionLabel}
       </p>
-      <div className="w-full min-h-[600px] flex justify-center bg-[#131313]">
+      <div className="w-full flex justify-center bg-[#131313]">
         <Qa />
       </div>
       <ServicesMainPage />
