@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import FeedbackOptions from "@/components/feedback/feedbackOptions";
 import Link from "next/link";
@@ -9,6 +9,10 @@ type FeedbackItselfProps = {
 };
 
 const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
+  const [postLikesCount, setPostLikesCount] = useState(
+    feedback.likedUsers.length,
+  );
+
   return (
     <div className="flex flex-col min-h-[150px] bg-[#f1f1f1] rounded-lg my-4 p-5">
       <div className="flex justify-between items-center">
@@ -51,11 +55,20 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
             </div>
           </div>
         </div>
-        <FeedbackOptions feedback={feedback} />
+        <FeedbackOptions
+          setPostLikesCount={setPostLikesCount}
+          feedback={feedback}
+        />
       </div>
       <div className="flex flex-col mt-2">
         <p className="text-md sm:text-xl font-semibold">{feedback.header}</p>
         <p className="text-sm sm:text-base mt-2">{feedback.body}</p>
+      </div>
+      <div className="flex border-t border-red-600 mt-2 py-2">
+        <div className="flex items-center gap-2">
+          <Image src="/images/like.png" alt="like-png" width={25} height={25} />
+          {postLikesCount}
+        </div>
       </div>
     </div>
   );

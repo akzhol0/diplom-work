@@ -24,7 +24,7 @@ function Main() {
 
   return (
     <div className="w-full flex flex-col items-center">
-      <div className="w-[95%] md:w-[80%] flex flex-col lg:flex-row justify-around gap-2">
+      <div className="w-[95%] md:w-[80%] flex flex-col lg:flex-row justify-around">
         <Parallax
           title={mainLanguage.mainPage.parallax.title}
           small={mainLanguage.mainPage.parallax.small}

@@ -1,17 +1,62 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "@/components/context/context";
-import { doc, deleteDoc } from "firebase/firestore";
+import {
+  doc,
+  deleteDoc,
+  updateDoc,
+  arrayUnion,
+  arrayRemove,
+} from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 import { FeedbacksTypes } from "@/components/types/types";
 
 type FeedbackOptionsProps = {
   feedback: FeedbacksTypes;
+  setPostLikesCount: (arg0: any) => void;
 };
 
-const FeedbackOptions = ({ feedback }: FeedbackOptionsProps) => {
-  const { userInfo, mainLanguage, setFeedbacks, feedbacks } =
+const FeedbackOptions = ({
+  feedback,
+  setPostLikesCount,
+}: FeedbackOptionsProps) => {
+  const { userInfo, mainLanguage, setFeedbacks, feedbacks, auth } =
     useContext(contextData);
   const [modalVisible, setModalVisible] = useState(false);
+  const [didUserLiked, setDidUserLiked] = useState(false);
+
+  useEffect(() => {
+    checkIfUserLiked();
+  }, []);
+
+  const checkIfUserLiked = () => {
+    if (!auth) {
+      return;
+    }
+
+    feedback.likedUsers.map((user: any) => {
+      if (user.userId === userInfo.userId) {
+        setDidUserLiked(true);
+      }
+    });
+  };
+
+  const handleLikeFunction = async (action: "like" | "dislike") => {
+    const docRef = doc(db, "feedbacks", `${feedback.id}`);
+    const updateAction = action === "like" ? arrayUnion : arrayRemove;
+
+    setDidUserLiked(!didUserLiked);
+    setModalVisible(false);
+
+    setPostLikesCount(
+      (postLikesCount: any) => postLikesCount + (action === "like" ? 1 : -1),
+    );
+
+    await updateDoc(docRef, {
+      likedUsers: updateAction({
+        ...userInfo,
+      }),
+    });
+  };
 
   const handleDeleteButton = async () => {
     await deleteDoc(doc(db, "feedbacks", `${feedback.id}`));
@@ -36,26 +81,37 @@ const FeedbackOptions = ({ feedback }: FeedbackOptionsProps) => {
           ></span>
         );
       })}
-      <div
-        className={`absolute flex flex-col items-center top-[30px] right-0 w-[150px] min-h-[20px] 
+      {auth && (
+        <div
+          className={`absolute flex flex-col items-center top-[30px] right-0 w-[150px] min-h-[20px] 
         duration-200 bg-[#131313] rounded-lg text-white overflow-hidden 
         ${modalVisible ? "block" : "hidden"}`}
-      >
-        {userInfo?.userId === feedback.feedbackUserInfo.userId && (
-          <div
-            onClick={() => handleDeleteButton()}
-            className="w-full hover:bg-gray-600 text-center"
-          >
-            {mainLanguage.feedback.delete}
-          </div>
-        )}
-        <div className="w-full hover:bg-gray-600 text-center">
-          {mainLanguage.feedback.like}
+        >
+          {userInfo?.userId === feedback.feedbackUserInfo.userId && (
+            <div
+              onClick={() => handleDeleteButton()}
+              className="w-full hover:bg-gray-600 text-center"
+            >
+              {mainLanguage.feedback.delete}
+            </div>
+          )}
+          {didUserLiked ? (
+            <div
+              onClick={() => handleLikeFunction("dislike")}
+              className="w-full hover:bg-gray-600 text-center"
+            >
+              {mainLanguage.feedback.dislike}
+            </div>
+          ) : (
+            <div
+              onClick={() => handleLikeFunction("like")}
+              className="w-full hover:bg-gray-600 text-center"
+            >
+              {mainLanguage.feedback.like}
+            </div>
+          )}
         </div>
-        <div className="w-full hover:bg-gray-600 text-center">
-          {mainLanguage.feedback.dislike}
-        </div>
-      </div>
+      )}
     </div>
   );
 };
