@@ -29,7 +29,7 @@ const QuestionItself = ({ item }: QuestionItselfProps) => {
           </div>
         </div>
         <div
-          className={`absolute bottom-0 duration-500 ${isSelected ? "opacity-100" : "opacity-0"}`}
+          className={`absolute bottom-0 md:bottom-4 duration-500 ${isSelected ? "opacity-100" : "opacity-0"}`}
         >
           Ответ: {item.answer}
         </div>
