@@ -126,7 +126,7 @@ function RegisterComponent() {
             </div>
           </div>
           <Link href="/login">
-            <p className="text-sm text-center cursor-pointer">
+            <p className="text-sm text-center cursor-pointer hover:underline">
               {mainLanguage.loginAndRegsitration.labelRegister}
             </p>
           </Link>
