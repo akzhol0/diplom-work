@@ -42,9 +42,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
                   <button
                     type="button"
                     key={index}
-                    className={`text-xl md:text-2xl ps-1 ${
+                    className={`text-xl md:text-2xl ps-1 cursor-default ${
                       feedback.rating >= index + 1
-                        ? "text-red-500"
+                        ? "text-red-600"
                         : "text-gray-300"
                     }`}
                   >

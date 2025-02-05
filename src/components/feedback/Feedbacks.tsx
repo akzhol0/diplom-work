@@ -39,6 +39,7 @@ const Feedbacks = () => {
       rating: ratingInput,
       feedbackUserInfo: { ...userInfo },
       date: Date(),
+      likedUsers: [],
     };
 
     setFeedbacks((prev: FeedbacksTypes[]) => [feedbackObj, ...prev]);

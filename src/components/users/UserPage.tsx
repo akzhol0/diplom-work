@@ -12,22 +12,22 @@ type UserPageProps = {
 };
 
 const UserPage = ({ token }: UserPageProps) => {
-  const { feedbacks, mainLanguage } = useContext(contextData);
+  const { feedbacks, mainLanguage, loadedFeedbacks } = useContext(contextData);
 
   const [user, setUser] = useState<UserInfoTypes>();
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    !loaded && findUser();
-  }, []);
+    loadedFeedbacks && findUser();
+  }, [loadedFeedbacks]);
 
   const findUser = () => {
     feedbacks.map((item: any) => {
       if (item.feedbackUserInfo.userId === token) {
         setUser(item.feedbackUserInfo as UserInfoTypes);
       }
-      setLoaded(true);
     });
+    setLoaded(true);
   };
 
   return (
