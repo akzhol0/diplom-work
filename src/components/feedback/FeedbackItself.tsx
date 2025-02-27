@@ -19,7 +19,12 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
         <div className="flex">
           <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
             <Image
-              src={feedback.feedbackUserInfo.image}
+              src={
+                feedback.feedbackUserInfo.image.includes("https") ||
+                feedback.feedbackUserInfo.image.includes("http")
+                  ? feedback.feedbackUserInfo.image
+                  : "/images/user-img.png"
+              }
               alt="pfp"
               width={60}
               height={60}
