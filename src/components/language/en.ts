@@ -215,7 +215,7 @@ export const en = {
   projects: {
     title: "Projects",
     options: [
-      { title: "Все", filterBy: "All" },
+      { title: "All", filterBy: "All" },
       { title: "Controle", filterBy: "Controle" },
       {
         title: "Decision support systems",
