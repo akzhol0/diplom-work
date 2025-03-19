@@ -39,7 +39,7 @@ function Footer() {
           </Link>
         </div>
         <div className="flex mt-10">
-          <small>© 2024 Brooklyn</small>
+          <small>© 2025 Brooklyn</small>
         </div>
         <p className="absolute bottom-0 w-full text-center text-[10px] text-gray-300">
           Made by Akzhol Tursynkhan

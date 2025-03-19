@@ -6,7 +6,7 @@ export default {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "**", // Allows images from any secure hostname
+        hostname: "**",
       },
     ],
   },
