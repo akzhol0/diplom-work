@@ -51,6 +51,7 @@ const FeedbackOptions = ({
       (postLikesCount: any) => postLikesCount + (action === "like" ? 1 : -1),
     );
 
+    console.log(userInfo);
     await updateDoc(docRef, {
       likedUsers: updateAction({
         ...userInfo,

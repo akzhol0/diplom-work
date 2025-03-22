@@ -22,10 +22,10 @@ function ServiceComponent() {
           <p className="text-[50px] md:text-[60px] font-bold">
             {mainLanguage.services.title}
           </p>
-          <p className="text-[15px] md:text-[20px]">
+          <p className="text-[15px] md:text-[20px] text-justify">
             {mainLanguage.services.small1}
           </p>
-          <p className="text-[15px] md:text-[20px]">
+          <p className="text-[15px] md:text-[20px] text-justify">
             {mainLanguage.services.small2}
           </p>
         </div>
