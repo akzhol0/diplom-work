@@ -45,7 +45,7 @@ export const en = {
     ],
     title2: "Who Are We?",
     small2:
-      "Brooklyn Organization, our team of programmers working in the field of decision support systems (DSS) development and implementation, creates software solutions and provides consulting services to help clients make more informed and effective decisions in information security.",
+      "Mercury Organization, our team of programmers working in the field of decision support systems (DSS) development and implementation, creates software solutions and provides consulting services to help clients make more informed and effective decisions in information security.",
     projects: {
       title: "Projects",
       small:
@@ -233,7 +233,7 @@ export const en = {
     ],
     portfolioItems: [
       {
-        title: "Mercury",
+        title: "Brooklyn",
         description:
           "An organizational and technical system that ensures the development of solutions based on the automation of information processes in various areas of activity or their combinations",
         backgroundColor: "bg-[#bdeffc]",

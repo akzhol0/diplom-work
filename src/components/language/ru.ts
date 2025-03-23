@@ -249,7 +249,7 @@ export const ru = {
     ],
     portfolioItems: [
       {
-        title: "Mercury",
+        title: "Brooklyn",
         description:
           "Организационно-техническую систему, обеспечивающую выработку решений на основе автоматизации информационных процессов в различных сферах деятельности или их сочетаниях",
         backgroundColor: "bg-[#bdeffc]",

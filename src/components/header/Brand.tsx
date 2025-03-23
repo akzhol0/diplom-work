@@ -12,7 +12,7 @@ const dmSerif = DM_Serif_Text({
 function Brand() {
   return (
     <Link href={"/"}>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-0 md:gap-2">
         <div className="w-[60px] h-[60px] overflow-hidden">
           <Image
             src="/images/brand-logo.png"
