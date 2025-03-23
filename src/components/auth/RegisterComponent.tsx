@@ -14,6 +14,7 @@ function RegisterComponent() {
   const [userName, setUserName] = useState("");
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
+  const [birthdate, setBirthdate] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [passwordEye, setPasswordEye] = useState(false);
   const [gender, setGender] = useState("Неизвестно");
@@ -31,6 +32,16 @@ function RegisterComponent() {
       return;
     }
 
+    console.log({
+      userName: userName,
+      userId: "",
+      userLogin: login,
+      userPassword: password,
+      role: "user",
+      gender: gender,
+      image: "/images/user-img.png",
+      birthdate: birthdate,
+    });
     createUserWithEmailAndPassword(auth, login, password)
       .then((userCredentials) => {
         router.push("/login");
@@ -50,6 +61,7 @@ function RegisterComponent() {
       role: "user",
       gender: gender,
       image: "/images/user-img.png",
+      birthdate: birthdate,
     });
   };
 
@@ -71,12 +83,25 @@ function RegisterComponent() {
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
+          <div className="flex flex-col items-center justify-center bg-white ">
+            <div className="w-full space-y-2">
+              <label className="text-gray-700 text-sm">Дата рождения</label>
+              <input
+                type="date"
+                value={birthdate}
+                onChange={(e) => setBirthdate(e.target.value)}
+                className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+          </div>
           <div className="flex justify-between items-center">
-            <p className="ps-2">{mainLanguage.loginAndRegsitration.gender}:</p>
+            <p className="ps-2 text-gray-700 text-sm">
+              {mainLanguage.loginAndRegsitration.gender}:
+            </p>
             <select
               value={gender}
               onChange={(e) => setGender(e.target.value)}
-              className="focus:outline-0"
+              className="focus:outline-0 text-gray-700 text-sm"
               name="gender"
               id="gender-select"
             >

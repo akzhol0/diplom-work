@@ -34,7 +34,7 @@ const FeedbackOptions = ({
     }
 
     feedback.likedUsers.map((user: any) => {
-      if (user.userId === userInfo.userId) {
+      if (user.log === userInfo.userId) {
         setDidUserLiked(true);
       }
     });
@@ -51,10 +51,10 @@ const FeedbackOptions = ({
       (postLikesCount: any) => postLikesCount + (action === "like" ? 1 : -1),
     );
 
-    console.log(userInfo);
+    const log = userInfo.userId;
     await updateDoc(docRef, {
       likedUsers: updateAction({
-        ...userInfo,
+        log,
       }),
     });
   };
@@ -71,7 +71,7 @@ const FeedbackOptions = ({
     <div
       onMouseEnter={() => setModalVisible(true)}
       onMouseLeave={() => setModalVisible(false)}
-      className={`relative w-[30px] h-[30px] ms-2 rounded-lg flex justify-center items-center gap-1 cursor-pointer duration-200 
+      className={`relative w-[30px] h-[30px] ms-2 rounded-lg flex items-center gap-1 cursor-pointer duration-200 
       ${modalVisible && "bg-white"}`}
     >
       {[...Array(3)].map((_, index) => {

@@ -47,6 +47,7 @@ function ProfileComp() {
               ? "Обычный пользователь"
               : "Администратор"}
           </p>
+          <p>Дата рождения: {userInfo.birthdate}</p>
           <div className="flex flex-col lg:flex-row gap-2 my-2">
             <Link href="/edit">
               <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">

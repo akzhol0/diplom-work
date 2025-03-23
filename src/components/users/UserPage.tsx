@@ -65,6 +65,7 @@ const UserPage = ({ token }: UserPageProps) => {
                     ? "Обычный пользователь"
                     : "Администратор"}
                 </p>
+                <p>Дата рождения: {user?.birthdate}</p>
               </div>
             </div>
             <div className="flex flex-col">

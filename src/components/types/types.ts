@@ -35,6 +35,7 @@ export type UserInfoTypes = {
   userLogin: string;
   userName: string;
   userPassword: string;
+  birthdate: string;
 };
 
 export type FeedbacksTypes = {
