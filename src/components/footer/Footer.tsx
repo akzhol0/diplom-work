@@ -18,7 +18,7 @@ function Footer() {
           <div className="min-h-[200px] lg:items-center flex flex-col lg:flex-row gap-[40px]">
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.email}:</p>
-              <p className="text-xl">sales@brooklyn.kz</p>
+              <p className="text-xl">sales@mercury.kz</p>
             </span>
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.phone}:</p>
@@ -39,7 +39,7 @@ function Footer() {
           </Link>
         </div>
         <div className="flex mt-10">
-          <small>© 2025 Brooklyn</small>
+          <small>© 2025 Mercury</small>
         </div>
         <p className="absolute bottom-0 w-full text-center text-[10px] text-gray-300">
           Made by Akzhol Tursynkhan
