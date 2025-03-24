@@ -14,9 +14,9 @@ function Header() {
       <div className="flex pt-6 ps-6 md:hidden">
         <BurgerButton setBurgerMenu={setBurgerMenu} burgerMenu={burgerMenu} />
         <div
-          className={`absolute right-0 bit1 flex top-[80px] w-full justify-center 
-          items-start h-screen bg-white border-b duration-[0.4s] border-black 
-          ${burgerMenu ? "bit2 duration-[0.4s]" : ""}`}
+          className={`absolute right-0 transform translate-x-[-800px] flex top-[80px] w-full justify-center 
+          items-start h-screen bg-white border-b transition-all duration-500 border-black 
+          ${burgerMenu && "translate-x-[0px]"}`}
         >
           <NavBar mobileVersion={true} />
         </div>
