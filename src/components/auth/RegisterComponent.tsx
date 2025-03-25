@@ -84,7 +84,7 @@ function RegisterComponent() {
             onChange={(e) => setUserName(e.target.value)}
           />
           <div className="flex flex-col items-center justify-center bg-white ">
-            <div className="w-full space-y-2">
+            <div className="w-full flex items-center space-y-2">
               <label className="text-gray-700 text-sm">Дата рождения</label>
               <input
                 type="date"
