@@ -16,7 +16,9 @@ export default function Error({
 
   return (
     <div className="flex flex-col items-center py-[200px]">
-      <h2>Произошла ошибка в коде, пажалуйста перезагрузите браузер!</h2>
+      <h2 className="text-center">
+        Произошла ошибка в коде, пажалуйста перезагрузите браузер!
+      </h2>
       <span className="mt-2" onClick={() => reset()}>
         <MyDangerButton className="px-8">Перезагрузить</MyDangerButton>
       </span>

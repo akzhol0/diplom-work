@@ -2,7 +2,7 @@ import React from "react";
 
 const LoadingUi = () => {
   return (
-    <div className="w-full h-[200px] flex justify-center items-center">
+    <div className="w-full h-[400px] flex justify-center items-center">
       <div role="status">
         <svg
           aria-hidden="true"
