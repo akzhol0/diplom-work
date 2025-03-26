@@ -11,7 +11,7 @@ const AsTwiceModal = ({ setModalTwice }: AsTwiceModalProps) => {
   const router = useRouter();
 
   return (
-    <div className="px-2 fixed inset-0 flex items-center justify-center bg-black bg-opacity-40">
+    <div className="px-2 fixed inset-0 flex items-center justify-center bg-black bg-opacity-40 backdrop-blur-sm">
       <div className="bg-white p-6 rounded-2xl shadow-xl w-96 text-center">
         <h2 className="text-xl font-semibold text-gray-800">
           Вы уверены, что хотите выйти?

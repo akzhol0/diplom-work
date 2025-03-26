@@ -91,7 +91,7 @@ const FeedbackOptions = ({
           {userInfo?.userId === feedback.feedbackId && (
             <div
               onClick={() => handleDeleteButton()}
-              className="w-full hover:bg-gray-600 text-center"
+              className="w-full hover:bg-gray-700 text-center"
             >
               {mainLanguage.feedback.delete}
             </div>
@@ -99,14 +99,14 @@ const FeedbackOptions = ({
           {didUserLiked ? (
             <div
               onClick={() => handleLikeFunction("dislike")}
-              className="w-full hover:bg-gray-600 text-center"
+              className="w-full hover:bg-gray-700 text-center"
             >
               {mainLanguage.feedback.dislike}
             </div>
           ) : (
             <div
               onClick={() => handleLikeFunction("like")}
-              className="w-full hover:bg-gray-600 text-center"
+              className="w-full hover:bg-gray-700 text-center"
             >
               {mainLanguage.feedback.like}
             </div>
