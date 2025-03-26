@@ -85,7 +85,7 @@ function RegisterComponent() {
           />
           <div className="flex flex-col items-center justify-center bg-white ">
             <div className="w-full flex gap-2 justify-center items-center">
-              <label className="text-gray-700 text-sm whitespace-nowrap ps-1">
+              <label className="text-gray-700 text-sm whitespace-nowrap">
                 Дата рождения
               </label>
               <input

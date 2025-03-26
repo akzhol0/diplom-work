@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import FeedbackOptions from "@/components/feedback/feedbackOptions";
 import Link from "next/link";
-import { FeedbacksTypes } from "@/components/types/types";
+import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
+import { contextData } from "@/components/context/context";
 
 type FeedbackItselfProps = {
   feedback: FeedbacksTypes;
 };
 
 const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
+  const { users } = useContext(contextData);
+  const [user, setUser] = useState<UserInfoTypes>();
+
+  const getOneUser = () => {
+    users.map((item) => {
+      if (feedback.feedbackId === item.userId) {
+        setUser(item);
+      }
+    });
+  };
+
+  useEffect(() => {
+    users.length !== 0 && getOneUser();
+  }, [users]);
+
   const [postLikesCount, setPostLikesCount] = useState(
     feedback.likedUsers.length,
   );
@@ -20,9 +36,8 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
           <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
             <Image
               src={
-                feedback.feedbackUserInfo.image.includes("https") ||
-                feedback.feedbackUserInfo.image.includes("http")
-                  ? feedback.feedbackUserInfo.image
+                user?.image.includes("https") || user?.image.includes("http")
+                  ? user?.image
                   : "/images/user-img.png"
               }
               alt="pfp"
@@ -32,9 +47,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
           </div>
           <div className="flex items-center text-sm justify-center ps-2">
             <div>
-              <Link href={`/users/${feedback.feedbackUserInfo.userId}`}>
+              <Link href={`/users/${user?.userId}`}>
                 <p className="max-w-[120px] overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
-                  {feedback.feedbackUserInfo.userName}
+                  {user?.userName}
                 </p>
               </Link>
               <p className="max-w-[150px] md:max-w-[200px] max-h-[22px] overflow-hidden">

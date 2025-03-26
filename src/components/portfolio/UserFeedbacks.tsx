@@ -13,7 +13,7 @@ const UserFeedbacks = ({ userToken }: UserFeedbacksProps) => {
 
   function filterFeedbacksFunction() {
     return feedbacks.filter(
-      (item: FeedbacksTypes) => item.feedbackUserInfo.userId === userToken,
+      (item: FeedbacksTypes) => item.feedbackId === userToken,
     );
   }
 

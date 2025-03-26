@@ -23,7 +23,7 @@ const Feedbacks = () => {
     e.preventDefault();
 
     if (headerInput === "" || bodyInput === "") {
-      setError("Инпуты пустые!");
+      setError("Пусто!");
       return;
     }
 
@@ -37,7 +37,7 @@ const Feedbacks = () => {
       header: headerInput,
       body: bodyInput,
       rating: ratingInput,
-      feedbackUserInfo: { ...userInfo },
+      feedbackId: userInfo.userId,
       date: Date(),
       likedUsers: [],
     };

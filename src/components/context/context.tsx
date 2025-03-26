@@ -25,6 +25,7 @@ type ContextProps = {
   setFeedbacks: (arg0: any) => void;
   loadedFeedbacks: boolean;
   setUserInfo: (arg0: any) => void;
+  users: UserInfoTypes[];
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -36,6 +37,7 @@ type ContextOverAllProps = {
 export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>();
   const [feedbacks, setFeedbacks] = useState<FeedbacksTypes[]>([]);
+  const [users, setUsers] = useState<UserInfoTypes[]>([]);
 
   const [auth, setAuth] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
@@ -46,6 +48,15 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [questionChanger, setQuestionChanger] = useState("");
 
   const [loadedFeedbacks, setLoadedFeedbacks] = useState(false);
+
+  const getUsers = async () => {
+    const q = query(collection(db, "users"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      setUsers((prev: any) => [...prev, doc.data()]);
+    });
+  };
 
   const getFeedbacks = async () => {
     const q = query(collection(db, "feedbacks"));
@@ -61,6 +72,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   useEffect(() => {
     !auth && checkIfUserLogged();
     !loadedFeedbacks && getFeedbacks();
+    users.length === 0 && getUsers();
 
     const localstorageMainLanguage = localStorage.getItem("lang");
     setLanguageChanger(localstorageMainLanguage || "ru");
@@ -125,6 +137,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         setFeedbacks,
         loadedFeedbacks,
         setUserInfo,
+        users,
       }}
     >
       {children}

@@ -14,6 +14,7 @@ const AllFeedbacks = () => {
       setIsVisible(window.scrollY > 1000),
     );
   }, []);
+
   return (
     <div className="mt-8 flex flex-col items-center justify-center">
       <p className="text-center text-3xl">

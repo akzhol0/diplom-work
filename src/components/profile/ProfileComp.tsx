@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { contextData } from "@/components/context/context";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import { useRouter } from "next/navigation";
@@ -9,11 +9,13 @@ import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import Link from "next/link";
 import UserFeedbacks from "@/components/portfolio/UserFeedbacks";
+import AsTwiceModal from "@/components/profile/AsTwiceModal";
 
 function ProfileComp() {
   const { userInfo, setAuth, mainLanguage, setUserInfo, auth } =
     useContext(contextData);
   const router = useRouter();
+  const [modalTwice, setModalTwice] = useState(false);
 
   return auth ? (
     <div className="flex flex-col">
@@ -56,16 +58,14 @@ function ProfileComp() {
             </Link>
             <span
               onClick={() => {
-                router.push("/login");
-                setAuth(false);
-                localStorage.removeItem("userId");
-                setUserInfo({});
+                setModalTwice(true);
               }}
             >
               <MyButtonDanger className="font-semibold h-[40px] whitespace-nowrap">
                 {mainLanguage.profile.btn}
               </MyButtonDanger>
             </span>
+            {modalTwice && <AsTwiceModal setModalTwice={setModalTwice} />}
             <Link href="/feedback">
               <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">
                 {mainLanguage.feedback.btn}

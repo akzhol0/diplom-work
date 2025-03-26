@@ -71,7 +71,7 @@ const FeedbackOptions = ({
     <div
       onMouseEnter={() => setModalVisible(true)}
       onMouseLeave={() => setModalVisible(false)}
-      className={`relative w-[30px] h-[30px] ms-2 rounded-lg flex items-center gap-1 cursor-pointer duration-200 
+      className={`relative w-[30px] h-[30px] ms-2 rounded-lg flex justify-center items-center gap-1 cursor-pointer duration-200 
       ${modalVisible && "bg-white"}`}
     >
       {[...Array(3)].map((_, index) => {
@@ -88,7 +88,7 @@ const FeedbackOptions = ({
         duration-200 bg-[#131313] rounded-lg text-white overflow-hidden 
         ${modalVisible ? "block" : "hidden"}`}
         >
-          {userInfo?.userId === feedback.feedbackUserInfo.userId && (
+          {userInfo?.userId === feedback.feedbackId && (
             <div
               onClick={() => handleDeleteButton()}
               className="w-full hover:bg-gray-600 text-center"
