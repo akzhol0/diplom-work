@@ -89,7 +89,7 @@ const EditPage = () => {
           {/*    onChange={(e) => setImage(e.target.value)}*/}
           {/*  />*/}
           {/*</div>*/}
-          <div className="w-full flex justify-start gap-2 pb-4 items-center border-b">
+          <div className="w-full flex justify-start gap-2 pb-4 items-start border-b">
             <p className="pe-2">{mainLanguage.loginAndRegsitration.gender}:</p>
             <select
               value={gender}
