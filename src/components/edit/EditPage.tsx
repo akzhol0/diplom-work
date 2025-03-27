@@ -67,8 +67,10 @@ const EditPage = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-            <div className="w-full space-y-2 py-2">
-              <label className="text-gray-700 text-lg">Дата рождения</label>
+            <div className="w-full flex gap-2 justify-center items-center pt-3">
+              <label className="text-gray-700 text-md whitespace-nowrap">
+                Дата рождения
+              </label>
               <input
                 type="date"
                 value={birthdate}
