@@ -8,16 +8,19 @@ import {
   arrayRemove,
 } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
-import { FeedbacksTypes } from "@/components/types/types";
+import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
+import Link from "next/link";
 
 type FeedbackOptionsProps = {
   feedback: FeedbacksTypes;
   setPostLikesCount: (arg0: any) => void;
+  user: UserInfoTypes | undefined;
 };
 
 const FeedbackOptions = ({
   feedback,
   setPostLikesCount,
+  user,
 }: FeedbackOptionsProps) => {
   const { userInfo, mainLanguage, setFeedbacks, feedbacks, auth } =
     useContext(contextData);
@@ -82,37 +85,45 @@ const FeedbackOptions = ({
           ></span>
         );
       })}
-      {auth && (
-        <div
-          className={`absolute flex flex-col items-center top-[30px] right-0 w-[150px] min-h-[20px] 
-        duration-200 bg-[#131313] rounded-lg text-white overflow-hidden 
+
+      <div
+        className={`absolute top-[30px] right-0 flex flex-col w-[150px] bg-[#131313] rounded-xl text-white
         ${modalVisible ? "block" : "hidden"}`}
+      >
+        <Link
+          className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
+          href={`/users/${user?.userId}`}
         >
-          {userInfo?.userId === feedback.feedbackId && (
-            <div
-              onClick={() => handleDeleteButton()}
-              className="w-full hover:bg-gray-700 text-center"
-            >
-              {mainLanguage.feedback.delete}
-            </div>
-          )}
-          {didUserLiked ? (
+          <div>Пользователь</div>
+        </Link>
+        {userInfo?.userId === feedback.feedbackId && (
+          <div
+            onClick={() => handleDeleteButton()}
+            className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
+          >
+            {mainLanguage.feedback.delete}
+          </div>
+        )}
+        {auth &&
+          (didUserLiked ? (
             <div
               onClick={() => handleLikeFunction("dislike")}
-              className="w-full hover:bg-gray-700 text-center"
+              className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
             >
               {mainLanguage.feedback.dislike}
             </div>
           ) : (
             <div
               onClick={() => handleLikeFunction("like")}
-              className="w-full hover:bg-gray-700 text-center"
+              className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
             >
               {mainLanguage.feedback.like}
             </div>
-          )}
+          ))}
+        <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
+          <div>Скопировать</div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

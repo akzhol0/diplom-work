@@ -78,6 +78,7 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
         <FeedbackOptions
           setPostLikesCount={setPostLikesCount}
           feedback={feedback}
+          user={user}
         />
       </div>
       <div className="flex flex-col mt-2">
