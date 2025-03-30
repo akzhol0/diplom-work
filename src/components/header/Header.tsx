@@ -15,7 +15,7 @@ function Header() {
         <BurgerButton setBurgerMenu={setBurgerMenu} burgerMenu={burgerMenu} />
         <div
           className={`absolute right-0 transform translate-x-[-800px] flex top-[80px] w-full justify-center 
-          items-start h-screen bg-white border-b transition-all duration-500 border-black 
+          items-start h-screen bg-white border-b transition-all duration-300 border-black 
           ${burgerMenu && "translate-x-[0px]"}`}
         >
           <NavBar mobileVersion={true} />

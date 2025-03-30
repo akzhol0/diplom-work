@@ -211,12 +211,12 @@ export const ru = {
         url: "/services",
       },
       {
-        title: "Профиль",
-        url: "/profile",
-      },
-      {
         title: "Отзывы",
         url: "/feedback",
+      },
+      {
+        title: "Профиль",
+        url: "/profile",
       },
     ],
     btn: "Оставить заявку",

@@ -22,8 +22,13 @@ const Feedbacks = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    if (!auth) {
+      setError("Чтобы оставить отзыв нужно зарегестрироваться");
+      return;
+    }
+
     if (headerInput === "" || bodyInput === "") {
-      setError("Пусто!");
+      setError("Пустые инпуты...");
       return;
     }
 
@@ -49,47 +54,36 @@ const Feedbacks = () => {
   return (
     <div className="flex flex-col">
       <div className="flex justify-center items-center">
-        {auth ? (
-          <form
-            onSubmit={handleSubmit}
-            className="min-w-[350px] flex flex-col gap-4"
-          >
-            <div className="w-full sm:w-[500px] flex flex-col sm:flex-row justify-between items-center gap-4">
-              <input
-                className="w-full h-[60px] border-b border-1 focus:outline-0 rounded-lg ps-2"
-                placeholder={mainLanguage.feedback.header}
-                type="text"
-                id="header"
-                value={headerInput}
-                onChange={(e) => setHeaderInput(e.target.value)}
-              />
-              <div className="flex items-center">
-                <p className="me-4">{mainLanguage.feedback.rating}: </p>
-                <StarRating setRatingInput={setRatingInput} />
-              </div>
-            </div>
-            <textarea
-              className="w-full h-[100px] border-b focus:outline-0 ps-2 rounded-lg"
-              placeholder={mainLanguage.feedback.body}
-              id="message"
-              value={bodyInput}
-              onChange={(e) => setBodyInput(e.target.value)}
-            ></textarea>
-            <MyPrimaryButton type="submit" className="font-semibold">
-              {mainLanguage.feedback.btn}
-            </MyPrimaryButton>
-            <p className="text-red-600 text-center">{error}</p>
-          </form>
-        ) : (
-          <div className="text-center">
-            <p>{mainLanguage.feedback.prevent}</p>
-            <div className="hover:underline">
-              <Link href="/register">
-                {mainLanguage.loginAndRegsitration.labelLogin}
-              </Link>
+        <form
+          onSubmit={handleSubmit}
+          className="min-w-[350px] flex flex-col gap-4"
+        >
+          <div className="w-full sm:w-[500px] flex flex-col sm:flex-row justify-between items-center gap-4">
+            <input
+              className="w-full h-[60px] border-b border-1 focus:outline-0 rounded-lg ps-2"
+              placeholder={mainLanguage.feedback.header}
+              type="text"
+              id="header"
+              value={headerInput}
+              onChange={(e) => setHeaderInput(e.target.value)}
+            />
+            <div className="flex items-center">
+              <p className="me-4">{mainLanguage.feedback.rating}: </p>
+              <StarRating setRatingInput={setRatingInput} />
             </div>
           </div>
-        )}
+          <textarea
+            className="w-full h-[100px] border-b focus:outline-0 ps-2 rounded-lg"
+            placeholder={mainLanguage.feedback.body}
+            id="message"
+            value={bodyInput}
+            onChange={(e) => setBodyInput(e.target.value)}
+          ></textarea>
+          <MyPrimaryButton type="submit" className="font-semibold">
+            {mainLanguage.feedback.btn}
+          </MyPrimaryButton>
+          <p className="min-h-[25px] text-red-600 text-center">{error}</p>
+        </form>
       </div>
       <AllFeedbacks />
     </div>

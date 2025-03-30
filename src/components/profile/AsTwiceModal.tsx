@@ -30,7 +30,7 @@ const AsTwiceModal = ({ setModalTwice }: AsTwiceModalProps) => {
           </button>
           <button
             onClick={() => {
-              router.push("/login");
+              router.push("/");
               setAuth(false);
               localStorage.removeItem("userId");
               setUserInfo({});

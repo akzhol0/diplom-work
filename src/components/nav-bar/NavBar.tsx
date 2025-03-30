@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import WhatsappLogo from "../UI/icons/medias/WhatsappLogo";
 import Link from "next/link";
