@@ -82,7 +82,7 @@ const Feedbacks = () => {
           <MyPrimaryButton type="submit" className="font-semibold">
             {mainLanguage.feedback.btn}
           </MyPrimaryButton>
-          <p className="min-h-[25px] text-red-600 text-center">{error}</p>
+          <p className="px-3 min-h-[25px] text-red-600 text-center">{error}</p>
         </form>
       </div>
       <AllFeedbacks />
