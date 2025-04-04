@@ -40,9 +40,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
                 </p>
               </Link>
               <p className="max-w-[150px] md:max-w-[200px] max-h-[22px] overflow-hidden">
-                {/*{feedback.date._methodName*/}
-                {/*  ? dateTime.toLocaleString()*/}
-                {/*  : feedback.date.toDate().toDateString()}*/}
+                {feedback.date._methodName
+                  ? dateTime.toLocaleString()
+                  : feedback.date.toDate().toDateString()}
               </p>
             </div>
             <div className="flex sm:ps-4 md:ps-8">
