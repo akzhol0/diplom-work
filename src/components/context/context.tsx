@@ -68,7 +68,9 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     });
   };
 
-  const getFeedbacks = async () => {
+  async function getFeedbacks() {
+    setFeedbacks([]);
+
     const q = query(collection(db, "feedbacks"), orderBy("date", "asc"));
 
     const querySnapshot = await getDocs(q);
@@ -77,7 +79,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     });
 
     setLoadedFeedbacks(true);
-  };
+  }
 
   const languageHelper = [
     {

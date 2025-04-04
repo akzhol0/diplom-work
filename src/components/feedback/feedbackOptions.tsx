@@ -72,6 +72,7 @@ const FeedbackOptions = ({
   const handleDeleteButton = async () => {
     await deleteDoc(doc(db, "feedbacks", `${feedback.id}`));
     setFeedbacks(feedbacks.filter((item: any) => item !== feedback));
+    getFeedbacks();
   };
 
   return (
