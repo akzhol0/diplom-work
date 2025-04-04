@@ -1,6 +1,11 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
+import { contextData } from "@/components/context/context";
 
 const LoadingUi = () => {
+  const { mainLanguage } = useContext(contextData);
+
   return (
     <div className="w-full h-[400px] flex justify-center items-center">
       <div role="status">
@@ -20,7 +25,7 @@ const LoadingUi = () => {
             fill="currentFill"
           />
         </svg>
-        <span className="sr-only">Loading...</span>
+        <span className="sr-only">{mainLanguage.rest.loading}</span>
       </div>
     </div>
   );

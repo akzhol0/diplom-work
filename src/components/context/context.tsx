@@ -1,7 +1,15 @@
 "use client";
 
 import React, { createContext, useEffect, useState } from "react";
-import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  onSnapshot,
+  orderBy,
+  query,
+} from "firebase/firestore";
 import { db } from "../firebase/config";
 import { en } from "../language/en";
 import { ru } from "../language/ru";
@@ -26,6 +34,7 @@ type ContextProps = {
   loadedFeedbacks: boolean;
   setUserInfo: (arg0: any) => void;
   users: UserInfoTypes[];
+  getFeedbacks: () => void;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -37,6 +46,7 @@ type ContextOverAllProps = {
 export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>();
   const [feedbacks, setFeedbacks] = useState<FeedbacksTypes[]>([]);
+
   const [users, setUsers] = useState<UserInfoTypes[]>([]);
 
   const [auth, setAuth] = useState(false);
@@ -59,7 +69,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   };
 
   const getFeedbacks = async () => {
-    const q = query(collection(db, "feedbacks"));
+    const q = query(collection(db, "feedbacks"), orderBy("date", "asc"));
 
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
@@ -68,15 +78,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
     setLoadedFeedbacks(true);
   };
-
-  useEffect(() => {
-    !auth && checkIfUserLogged();
-    !loadedFeedbacks && getFeedbacks();
-    users.length === 0 && getUsers();
-
-    const localstorageMainLanguage = localStorage.getItem("lang");
-    setLanguageChanger(localstorageMainLanguage || "ru");
-  }, []);
 
   const languageHelper = [
     {
@@ -94,6 +95,15 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   ];
 
   useEffect(() => {
+    !auth && checkIfUserLogged();
+    !loadedFeedbacks && getFeedbacks();
+    users.length === 0 && getUsers();
+
+    const localstorageMainLanguage = localStorage.getItem("lang");
+    setLanguageChanger(localstorageMainLanguage || "ru");
+  }, []);
+
+  useEffect(() => {
     languageHelper.map((item) => {
       if (languageChanger === item.languageString) {
         setMainLanguage(item.languageMain);
@@ -102,7 +112,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     });
   }, [languageChanger]);
 
-  // check if user logged (that's what function name literally says :| )
   const checkIfUserLogged = async () => {
     const result = localStorage.getItem("userId");
     const userId = result ? JSON.parse(result) : null;
@@ -138,6 +147,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         loadedFeedbacks,
         setUserInfo,
         users,
+        getFeedbacks,
       }}
     >
       {children}

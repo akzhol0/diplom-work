@@ -10,20 +10,7 @@ type FeedbackItselfProps = {
 };
 
 const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
-  const { users } = useContext(contextData);
-  const [user, setUser] = useState<UserInfoTypes>();
-
-  const getOneUser = () => {
-    users.map((item) => {
-      if (feedback.feedbackId === item.userId) {
-        setUser(item);
-      }
-    });
-  };
-
-  useEffect(() => {
-    users.length !== 0 && getOneUser();
-  }, [users]);
+  const dateTime = new Date();
 
   const [postLikesCount, setPostLikesCount] = useState(
     feedback.likedUsers.length,
@@ -36,8 +23,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
           <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
             <Image
               src={
-                user?.image.includes("https") || user?.image.includes("http")
-                  ? user?.image
+                feedback.author.image.includes("https") ||
+                feedback.author.image.includes("http")
+                  ? feedback.author.image
                   : "/images/user-img.png"
               }
               alt="pfp"
@@ -47,16 +35,18 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
           </div>
           <div className="flex items-center text-sm justify-center ps-2">
             <div>
-              <Link href={`/users/${user?.userId}`}>
-                <p className="max-w-[120px] overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
-                  {user?.userName}
+              <Link href={`/users/${feedback.author.userId}`}>
+                <p className="max-w-[150px] overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
+                  {feedback.author.userName}
                 </p>
               </Link>
               <p className="max-w-[150px] md:max-w-[200px] max-h-[22px] overflow-hidden">
-                {feedback.date}
+                {feedback.date._methodName
+                  ? dateTime.toLocaleString()
+                  : feedback.date.toDate().toDateString()}
               </p>
             </div>
-            <div className="flex">
+            <div className="flex sm:ps-4 md:ps-8">
               {[...Array(5)].map((_, index) => {
                 return (
                   <button
@@ -78,14 +68,14 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
         <FeedbackOptions
           setPostLikesCount={setPostLikesCount}
           feedback={feedback}
-          user={user}
+          user={feedback.author}
         />
       </div>
       <div className="flex flex-col mt-2">
         <p className="text-md sm:text-xl font-semibold">{feedback.header}</p>
         <p className="text-sm sm:text-base mt-2">{feedback.body}</p>
       </div>
-      <div className="flex border-t border-red-600 mt-2 py-2">
+      <div className="flex border-t border-gray-600 mt-2 py-2">
         <div className="flex items-center gap-2">
           <Image src="/images/like.png" alt="like-png" width={25} height={25} />
           {postLikesCount}

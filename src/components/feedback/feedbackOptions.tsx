@@ -22,8 +22,14 @@ const FeedbackOptions = ({
   setPostLikesCount,
   user,
 }: FeedbackOptionsProps) => {
-  const { userInfo, mainLanguage, setFeedbacks, feedbacks, auth } =
-    useContext(contextData);
+  const {
+    userInfo,
+    mainLanguage,
+    setFeedbacks,
+    feedbacks,
+    auth,
+    getFeedbacks,
+  } = useContext(contextData);
   const [modalVisible, setModalVisible] = useState(false);
   const [didUserLiked, setDidUserLiked] = useState(false);
 
@@ -46,6 +52,7 @@ const FeedbackOptions = ({
   const handleLikeFunction = async (action: "like" | "dislike") => {
     const docRef = doc(db, "feedbacks", `${feedback.id}`);
     const updateAction = action === "like" ? arrayUnion : arrayRemove;
+    console.log(feedback);
 
     setDidUserLiked(!didUserLiked);
     setModalVisible(false);
@@ -64,10 +71,7 @@ const FeedbackOptions = ({
 
   const handleDeleteButton = async () => {
     await deleteDoc(doc(db, "feedbacks", `${feedback.id}`));
-
-    setFeedbacks(
-      feedbacks.filter((item: any) => item.header !== feedback.header),
-    );
+    setFeedbacks(feedbacks.filter((item: any) => item !== feedback));
   };
 
   return (
@@ -94,9 +98,9 @@ const FeedbackOptions = ({
           className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
           href={`/users/${user?.userId}`}
         >
-          <div>Пользователь</div>
+          <div>{mainLanguage.rest.user}</div>
         </Link>
-        {userInfo?.userId === feedback.feedbackId && (
+        {userInfo?.userId === feedback.author.userId && (
           <div
             onClick={() => handleDeleteButton()}
             className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
@@ -120,8 +124,11 @@ const FeedbackOptions = ({
               {mainLanguage.feedback.like}
             </div>
           ))}
-        <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
-          <div>Скопировать</div>
+        <div
+          onClick={() => setModalVisible(false)}
+          className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
+        >
+          <div>{mainLanguage.rest.copy}</div>
         </div>
       </div>
     </div>

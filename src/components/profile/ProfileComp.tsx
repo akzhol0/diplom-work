@@ -8,7 +8,7 @@ import Image from "next/image";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import Link from "next/link";
-import UserFeedbacks from "@/components/portfolio/UserFeedbacks";
+import UserFeedbacks from "@/components/users/UserFeedbacks";
 import AsTwiceModal from "@/components/profile/AsTwiceModal";
 
 function ProfileComp() {

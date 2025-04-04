@@ -21,12 +21,6 @@ export type ServiceCardPropsTypes = {
   card: PortItemPropsTypes;
 };
 
-export type QuestionTypes = {
-  question: string;
-  answer: string;
-  id: number;
-};
-
 export type UserInfoTypes = {
   gender: string;
   image: string;
@@ -40,10 +34,10 @@ export type UserInfoTypes = {
 
 export type FeedbacksTypes = {
   body: string;
-  date: string;
+  date: any;
   header: string;
   rating: number;
   id: string;
+  author: UserInfoTypes;
   likedUsers: any;
-  feedbackId: string;
 };

@@ -28,20 +28,15 @@ function RegisterComponent() {
     e.preventDefault();
 
     if (password !== repeatPassword) {
-      setError("Пароли не совпадают");
+      setError(mainLanguage.rest.registerPass);
       return;
     }
 
-    console.log({
-      userName: userName,
-      userId: "",
-      userLogin: login,
-      userPassword: password,
-      role: "user",
-      gender: gender,
-      image: "/images/user-img.png",
-      birthdate: birthdate,
-    });
+    if (userName === "" || login === "" || gender === "" || birthdate === "") {
+      setError(mainLanguage.rest.pleaseSignAll);
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, login, password)
       .then((userCredentials) => {
         router.push("/login");
@@ -108,7 +103,9 @@ function RegisterComponent() {
               id="gender-select"
             >
               {mainLanguage.loginAndRegsitration.genders.map((item: any) => (
-                <option value={item.local}>{item.local}</option>
+                <option key={item.local} value={item.local}>
+                  {item.local}
+                </option>
               ))}
             </select>
           </div>

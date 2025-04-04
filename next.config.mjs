@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 // next.config.mjs
 export default {
-  reactStrictMode: false,
+  reactStrictMode: false, // Disable React Strict Mode
   images: {
     remotePatterns: [
       {

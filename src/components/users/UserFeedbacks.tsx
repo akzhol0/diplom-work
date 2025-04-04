@@ -9,11 +9,11 @@ type UserFeedbacksProps = {
 };
 
 const UserFeedbacks = ({ userToken }: UserFeedbacksProps) => {
-  const { feedbacks, loadedFeedbacks } = useContext(contextData);
+  const { feedbacks, loadedFeedbacks, mainLanguage } = useContext(contextData);
 
   function filterFeedbacksFunction() {
     return feedbacks.filter(
-      (item: FeedbacksTypes) => item.feedbackId === userToken,
+      (item: FeedbacksTypes) => item.author.userId === userToken,
     );
   }
 
@@ -25,7 +25,7 @@ const UserFeedbacks = ({ userToken }: UserFeedbacksProps) => {
         <FeedbackItself key={index} feedback={item} />
       ))
     ) : (
-      <p className="text-center mt-3">Вы пока не написали ни одного отзыва!</p>
+      <p className="text-center mt-3">{mainLanguage.rest.noFeed}</p>
     )
   ) : (
     <LoadingUI />

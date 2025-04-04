@@ -16,7 +16,6 @@ const EditPage = () => {
   const router = useRouter();
 
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
   const [gender, setGender] = useState("");
   const [birthdate, setBirthdate] = useState("");
 
@@ -30,7 +29,7 @@ const EditPage = () => {
       userPassword: userInfo.userPassword,
       role: userInfo.role,
       gender: gender === "" ? userInfo.gender : gender,
-      image: image === "" ? userInfo.image : image,
+      image: "/images/user-img.png",
       birthdate: birthdate === "" ? userInfo.birthdate : birthdate,
     };
 
@@ -69,7 +68,7 @@ const EditPage = () => {
             />
             <div className="w-full flex gap-2 justify-center items-center pt-3">
               <label className="text-gray-700 text-md whitespace-nowrap">
-                Дата рождения
+                {mainLanguage.rest.birth}
               </label>
               <input
                 type="date"
@@ -79,16 +78,6 @@ const EditPage = () => {
               />
             </div>
           </div>
-          {/*<div className="flex flex-col">*/}
-          {/*  <p className="text-xl">{mainLanguage.edit.changePhoto}</p>*/}
-          {/*  <input*/}
-          {/*    className="w-[300px] h-[60px] border-b border-1 focus:outline-0"*/}
-          {/*    placeholder={mainLanguage.edit.changePhotoPlaceholder}*/}
-          {/*    type="text"*/}
-          {/*    id="image"*/}
-          {/*    onChange={(e) => setImage(e.target.value)}*/}
-          {/*  />*/}
-          {/*</div>*/}
           <div className="w-full flex justify-start gap-2 pb-4 items-start border-b">
             <p className="pe-2">{mainLanguage.loginAndRegsitration.gender}:</p>
             <select

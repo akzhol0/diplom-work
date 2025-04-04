@@ -1,5 +1,28 @@
 export const en = {
   lang: "en",
+  rest: {
+    errorMessage: "An error occurred in the code, please reload the browser!",
+    errorReload: "Reload",
+    loading: "Loading...",
+    pageErrorMessage: "An error occurred!",
+    pageErrorApology:
+      "Sorry, we can't find this page. You will find a lot of interesting things on the home page.",
+    pageErrorMainPage: "To the main page",
+    registerPass: "Passwords do not match",
+    pleaseSignAll: "Please fill in all fields",
+    feedMessage: "To leave a review, you need to register",
+    copy: "Copy",
+    answer: "Answer",
+    asSure: "Are you sure you want to log out?",
+    asSaved: "Your changes will be saved.",
+    asCancel: "Cancel",
+    asLeave: "Log out",
+    noFeed: "You haven't written any reviews yet!",
+    birth: "Birthday",
+    feedsUser: "Reviews",
+    user: "User",
+  },
+
   mainPage: {
     codeDevText:
       "Test site made for a diploma thesis, developer Tursynkhan Akzhol, 4th year student at ESIL University.",

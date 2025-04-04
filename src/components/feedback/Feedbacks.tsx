@@ -5,13 +5,12 @@ import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import { contextData } from "@/components/context/context";
 import AllFeedbacks from "@/components/feedback/AllFeedbacks";
 import StarRating from "@/components/feedback/StarRating";
-import { collection, doc, setDoc } from "firebase/firestore";
+import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
-import Link from "next/link";
 import { FeedbacksTypes } from "@/components/types/types";
 
 const Feedbacks = () => {
-  const { mainLanguage, userInfo, setFeedbacks, auth } =
+  const { mainLanguage, userInfo, setFeedbacks, auth, getFeedbacks } =
     useContext(contextData);
 
   const [headerInput, setHeaderInput] = useState("");
@@ -23,12 +22,12 @@ const Feedbacks = () => {
     e.preventDefault();
 
     if (!auth) {
-      setError("Чтобы оставить отзыв нужно зарегестрироваться");
+      setError(mainLanguage.rest.feedMessage);
       return;
     }
 
     if (headerInput === "" || bodyInput === "") {
-      setError("Пустые инпуты...");
+      setError(mainLanguage.rest.pleaseSignAll);
       return;
     }
 
@@ -42,8 +41,8 @@ const Feedbacks = () => {
       header: headerInput,
       body: bodyInput,
       rating: ratingInput,
-      feedbackId: userInfo.userId,
-      date: Date(),
+      author: { ...userInfo },
+      date: serverTimestamp(),
       likedUsers: [],
     };
 
@@ -69,7 +68,10 @@ const Feedbacks = () => {
             />
             <div className="flex items-center">
               <p className="me-4">{mainLanguage.feedback.rating}: </p>
-              <StarRating setRatingInput={setRatingInput} />
+              <StarRating
+                ratingInput={ratingInput}
+                setRatingInput={setRatingInput}
+              />
             </div>
           </div>
           <textarea

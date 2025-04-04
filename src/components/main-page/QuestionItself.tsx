@@ -1,4 +1,8 @@
-import React, { useState } from "react";
+import { contextData } from "@/components/context/context";
+
+("usec client");
+
+import React, { useContext, useState } from "react";
 import MyArrowUp from "@/components/UI/icons/my-arrow/MyArrowUp";
 
 type QuestionItselfProps = {
@@ -7,6 +11,7 @@ type QuestionItselfProps = {
 
 const QuestionItself = ({ item }: QuestionItselfProps) => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
+  const { mainLanguage } = useContext(contextData);
 
   return (
     <div
@@ -31,7 +36,7 @@ const QuestionItself = ({ item }: QuestionItselfProps) => {
         <div
           className={`absolute bottom-0 md:bottom-4 duration-500 ${isSelected ? "opacity-100" : "opacity-0"}`}
         >
-          Ответ: {item.answer}
+          {mainLanguage.rest.answer}: {item.answer}
         </div>
       </div>
     </div>

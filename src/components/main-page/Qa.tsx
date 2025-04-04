@@ -2,10 +2,6 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "../context/context";
-import { QuestionTypes } from "../types/types";
-import MyArrow from "@/components/UI/icons/my-arrow/MyArrow";
-import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
-import MyArrowUp from "@/components/UI/icons/my-arrow/MyArrowUp";
 import QuestionItself from "@/components/main-page/QuestionItself";
 
 function Qa() {

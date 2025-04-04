@@ -2,9 +2,10 @@ import React, { useState } from "react";
 
 type StartRatingProps = {
   setRatingInput: (arg0: number) => void;
+  ratingInput: number;
 };
 
-const StarRating = ({ setRatingInput }: StartRatingProps) => {
+const StarRating = ({ setRatingInput, ratingInput }: StartRatingProps) => {
   const [selectedRating, setSelectedRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
 
@@ -21,6 +22,7 @@ const StarRating = ({ setRatingInput }: StartRatingProps) => {
           <button
             type="button"
             key={index}
+            value={ratingInput}
             onClick={() => handleRating(starValue)}
             onMouseEnter={() => setHoveredRating(starValue)}
             onMouseLeave={() => setHoveredRating(0)}

@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "@/components/context/context";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import Image from "next/image";
-import UserFeedbacks from "@/components/portfolio/UserFeedbacks";
+import UserFeedbacks from "@/components/users/UserFeedbacks";
 import { UserInfoTypes } from "@/components/types/types";
 
 type UserPageProps = {
@@ -65,12 +65,14 @@ const UserPage = ({ token }: UserPageProps) => {
                     ? "Обычный пользователь"
                     : "Администратор"}
                 </p>
-                <p>Дата рождения: {user?.birthdate}</p>
+                <p>
+                  {mainLanguage.rest.birth}: {user?.birthdate}
+                </p>
               </div>
             </div>
             <div className="flex flex-col">
               <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
-                Отзывы {user?.userName}
+                {mainLanguage.rest.feedsUser} {user?.userName}
               </div>
               <UserFeedbacks userToken={token} />
             </div>
