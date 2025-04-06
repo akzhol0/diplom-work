@@ -256,7 +256,7 @@ export const en = {
     ],
     portfolioItems: [
       {
-        title: "Brooklyn",
+        title: "California",
         description:
           "An organizational and technical system that ensures the development of solutions based on the automation of information processes in various areas of activity or their combinations",
         backgroundColor: "bg-[#bdeffc]",
