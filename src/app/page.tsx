@@ -23,21 +23,21 @@ function Main() {
 
   return (
     <div className="w-full flex flex-col items-center bg-[#ffffff]">
-      <div className="w-[95%] md:w-[80%] flex flex-col lg:flex-row justify-around">
-        <Parallax
-          title={mainLanguage.mainPage.parallax.title}
-          small={mainLanguage.mainPage.parallax.small}
-        />
-        <div className="flex justify-center items-center">
-          <Image
-            priority={true}
-            src="/images/protection.png"
-            width={500}
-            height={500}
-            alt="image"
-          />
-        </div>
-      </div>
+      {/*<div className="w-[95%] md:w-[80%] flex flex-col lg:flex-row justify-around">*/}
+      {/*  <Parallax*/}
+      {/*    title={mainLanguage.mainPage.parallax.title}*/}
+      {/*    small={mainLanguage.mainPage.parallax.small}*/}
+      {/*  />*/}
+      {/*  <div className="flex justify-center items-center">*/}
+      {/*    <Image*/}
+      {/*      priority={true}*/}
+      {/*      src="/images/protection.png"*/}
+      {/*      width={500}*/}
+      {/*      height={500}*/}
+      {/*      alt="image"*/}
+      {/*    />*/}
+      {/*  </div>*/}
+      {/*</div>*/}
       <div className="w-full min-h-[400px] bg-[#f8f8f8] flex justify-center items-center">
         <div className="w-[95%] md:w-[80%] gap-4 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 ">
           {mainLanguage.mainPage.cards.map((item: any) => (
