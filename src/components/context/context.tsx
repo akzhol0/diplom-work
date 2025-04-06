@@ -6,7 +6,6 @@ import {
   doc,
   getDoc,
   getDocs,
-  onSnapshot,
   orderBy,
   query,
 } from "firebase/firestore";
@@ -26,7 +25,6 @@ type ContextProps = {
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
   languageChanger: string;
-  questionChanger: string;
   isVisible: boolean;
   setIsVisible: (arg0: boolean) => void;
   feedbacks: FeedbacksTypes[];
@@ -46,7 +44,6 @@ type ContextOverAllProps = {
 export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>();
   const [feedbacks, setFeedbacks] = useState<FeedbacksTypes[]>([]);
-
   const [users, setUsers] = useState<UserInfoTypes[]>([]);
 
   const [auth, setAuth] = useState(false);
@@ -55,7 +52,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
-  const [questionChanger, setQuestionChanger] = useState("");
 
   const [loadedFeedbacks, setLoadedFeedbacks] = useState(false);
 
@@ -109,7 +105,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     languageHelper.map((item) => {
       if (languageChanger === item.languageString) {
         setMainLanguage(item.languageMain);
-        setQuestionChanger(item.languageString);
       }
     });
   }, [languageChanger]);
@@ -141,7 +136,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         setLanguageChanger,
         mainLanguage,
         languageChanger,
-        questionChanger,
         isVisible,
         setIsVisible,
         feedbacks,

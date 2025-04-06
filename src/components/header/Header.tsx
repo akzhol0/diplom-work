@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Brand from "./Brand";
 import NavBar from "../nav-bar/NavBar";
 import BurgerButton from "./header-burger/BurgerButton";

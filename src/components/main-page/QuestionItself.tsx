@@ -1,7 +1,5 @@
 import { contextData } from "@/components/context/context";
 
-("usec client");
-
 import React, { useContext, useState } from "react";
 import MyArrowUp from "@/components/UI/icons/my-arrow/MyArrowUp";
 

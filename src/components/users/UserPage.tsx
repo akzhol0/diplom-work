@@ -4,7 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "@/components/context/context";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import Image from "next/image";
-import UserFeedbacks from "@/components/users/UserFeedbacks";
+import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import { UserInfoTypes } from "@/components/types/types";
 
 type UserPageProps = {

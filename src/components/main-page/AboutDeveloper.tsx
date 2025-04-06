@@ -1,6 +1,5 @@
-import react, { useContext } from "react";
 import Image from "next/image";
-import React from "react";
+import React, { useContext } from "react";
 import { contextData } from "@/components/context/context";
 
 const AboutDeveloper = () => {

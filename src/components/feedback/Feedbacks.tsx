@@ -8,7 +8,6 @@ import StarRating from "@/components/feedback/StarRating";
 import { collection, doc, setDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 import { FeedbacksTypes } from "@/components/types/types";
-import { useRouter } from "next/navigation";
 
 const Feedbacks = () => {
   const { mainLanguage, userInfo, setFeedbacks, auth, getFeedbacks } =
@@ -18,7 +17,6 @@ const Feedbacks = () => {
   const [bodyInput, setBodyInput] = useState("");
   const [ratingInput, setRatingInput] = useState(0);
   const [error, setError] = useState("");
-  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { contextData } from "../context/context";
 import QuestionItself from "@/components/main-page/QuestionItself";
 

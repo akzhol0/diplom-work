@@ -3,18 +3,15 @@
 import React, { useContext, useState } from "react";
 import { contextData } from "@/components/context/context";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
-import { useRouter } from "next/navigation";
 import Image from "next/image";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import Link from "next/link";
-import UserFeedbacks from "@/components/users/UserFeedbacks";
+import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import AsTwiceModal from "@/components/profile/AsTwiceModal";
 
 function ProfileComp() {
-  const { userInfo, setAuth, mainLanguage, setUserInfo, auth } =
-    useContext(contextData);
-  const router = useRouter();
+  const { userInfo, mainLanguage, auth } = useContext(contextData);
   const [modalTwice, setModalTwice] = useState(false);
 
   return auth ? (
@@ -76,7 +73,7 @@ function ProfileComp() {
       </div>
       <div className="flex flex-col">
         <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
-          Отзывы {userInfo.userName}
+          {mainLanguage.rest.feedsUser} {userInfo.userName}
         </div>
         <UserFeedbacks userToken={userInfo.userId} />
       </div>

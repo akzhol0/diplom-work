@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import FeedbackOptions from "@/components/feedback/feedbackOptions";
 import Link from "next/link";
-import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
+import { FeedbacksTypes } from "@/components/types/types";
 
 type FeedbackItselfProps = {
   feedback: FeedbacksTypes;
