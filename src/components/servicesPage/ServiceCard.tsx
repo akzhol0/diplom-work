@@ -16,9 +16,11 @@ function ServiceCard({ item }: serviceCardsProps) {
   return (
     <div className="flex flex-col gap-2 md:flex-row justify-between">
       <div className="w-full md:w-[50%] flex flex-col">
-        <p className="text-[25px] md:text-[30px] font-bold cursor-pointer hover:text-red-600 duration-300">
-          {item.title}
-        </p>
+        <Link href={`/services/${item.card.route}`}>
+          <p className="text-[25px] md:text-[30px] font-bold cursor-pointer hover:text-red-600 duration-300">
+            {item.title}
+          </p>
+        </Link>
         <p className="mt-2 xl:mt-2">{item.description}</p>
         <p className="font-semibold mt-2">{item.price} </p>
         <Link href="/projects">

@@ -45,13 +45,11 @@ function Main() {
           ))}
         </div>
       </div>
-      <Information
-        title={mainLanguage.mainPage.title2}
-        small={mainLanguage.mainPage.small2}
-      />
-      <video width="900" height="600" playsInline autoPlay loop muted>
-        <source src="/videos/video1.mp4" type="video/mp4" />
-      </video>
+      <div className="pt-8">
+        <video width="900" height="600" playsInline autoPlay loop muted>
+          <source src="/videos/video1.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
       </div>

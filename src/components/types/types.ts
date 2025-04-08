@@ -4,6 +4,7 @@ export type PortItemPropsTypes = {
   backgroundColor: string;
   id: number;
   type: string;
+  route: string;
 };
 
 export type CardPropsTypes = {
@@ -32,6 +33,12 @@ export type UserInfoTypes = {
   birthdate: string;
 };
 
+export type questionTypes = {
+  id: number;
+  question: string;
+  answer: string;
+};
+
 export type FeedbacksTypes = {
   body: string;
   date: any;
@@ -40,4 +47,12 @@ export type FeedbacksTypes = {
   id: string;
   author: UserInfoTypes;
   likedUsers: any;
+};
+
+export type AntivirusTypes = {
+  question: string;
+  inputOrSelect: string;
+  selectOptions: string[];
+  state: string;
+  id: number;
 };
