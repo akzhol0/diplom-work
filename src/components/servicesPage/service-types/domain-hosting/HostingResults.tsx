@@ -63,7 +63,7 @@ const HostingResults = ({ results, setResultsPage }: HostingResultsProps) => {
             <Image
               width={500}
               height={600}
-              src={mainLanguage.hostingServiceData[pickedItemIndex].imageURL}
+              src={mainLanguage.hostingServiceData[pickedItemIndex].img}
               alt={mainLanguage.hostingServiceData[pickedItemIndex].title}
             />
           </div>
