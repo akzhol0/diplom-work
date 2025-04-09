@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Page = () => {
   const [messages, setMessages] = useState([
-    { role: "assistant", content: "Привет! Я Mixtral 🤖. Чем могу помочь?" },
+    { role: "assistant", content: "Привет! Я ChatGPT. Чем могу помочь?" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -23,7 +23,7 @@ const Page = () => {
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer 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`,
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_TOKEN_API}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -40,7 +40,7 @@ const Page = () => {
       console.error(err);
       setMessages([
         ...newMessages,
-        { role: "assistant", content: "Произошла ошибка 😥" },
+        { role: "assistant", content: "Произошла ошибка" },
       ]);
     } finally {
       setLoading(false);
@@ -56,7 +56,7 @@ const Page = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4 text-center">Mixtral Chat</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center">ChatGPT</h1>
       <div className="bg-white shadow rounded-xl p-4 h-[500px] overflow-y-auto flex flex-col gap-3 border">
         {messages.map((msg, i) => (
           <div
@@ -72,7 +72,7 @@ const Page = () => {
         ))}
         {loading && (
           <div className="self-start bg-gray-100 rounded-xl px-4 py-2 animate-pulse">
-            Mixtral печатает...
+            ChatGPT печатает...
           </div>
         )}
       </div>
