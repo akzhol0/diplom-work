@@ -4,6 +4,7 @@ import { questionTypes } from "@/components/types/types";
 import Image from "next/image";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
+import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 
 type AntivirusResultsProps = {
   answers: questionTypes[];
@@ -47,7 +48,9 @@ const AntivirusResults = ({ answers, setNextStage }: AntivirusResultsProps) => {
       }
     });
 
-    setFinish(true);
+    setTimeout(() => {
+      setFinish(true);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -59,7 +62,7 @@ const AntivirusResults = ({ answers, setNextStage }: AntivirusResultsProps) => {
       <p className="text-[20px] lg:text-[25px] font-semibold text-center mb-4">
         Результаты:
       </p>
-      {finish && (
+      {finish ? (
         <div className="flex flex-col md:flex-row justify-between">
           <div className="h-auto xl:min-h-[600px] w-full lg:w-[30%] flex justify-center items-center border rounded-lg overflow-hidden">
             <Image
@@ -94,6 +97,8 @@ const AntivirusResults = ({ answers, setNextStage }: AntivirusResultsProps) => {
             </div>
           </div>
         </div>
+      ) : (
+        <LoadingUI />
       )}
     </div>
   );

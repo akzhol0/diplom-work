@@ -52,7 +52,7 @@ const HostingResults = ({ results, setResultsPage }: HostingResultsProps) => {
 
     setTimeout(() => {
       setLoaded(true);
-    }, 1);
+    }, 3000);
   };
 
   return (

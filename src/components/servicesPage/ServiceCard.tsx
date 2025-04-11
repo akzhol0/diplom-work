@@ -8,9 +8,10 @@ import { contextData } from "../context/context";
 
 type serviceCardsProps = {
   item: ServiceCardPropsTypes;
+  from: string;
 };
 
-function ServiceCard({ item }: serviceCardsProps) {
+function ServiceCard({ item, from }: serviceCardsProps) {
   const { mainLanguage } = useContext(contextData);
 
   return (
@@ -23,11 +24,13 @@ function ServiceCard({ item }: serviceCardsProps) {
         </Link>
         <p className="mt-2 xl:mt-2">{item.description}</p>
         <p className="font-semibold mt-2">{item.price} </p>
-        <Link href="/projects">
-          <p className="cursor-pointer mt-2 text-red-600">
-            {mainLanguage.services.small5}
-          </p>
-        </Link>
+        {from === "mainPage" && (
+          <Link href="/services">
+            <p className="cursor-pointer mt-2 text-red-600">
+              {mainLanguage.services.small5}
+            </p>
+          </Link>
+        )}
       </div>
       <div className="w-full md:w-[50%] flex justify-center">
         <div className="w-full">
