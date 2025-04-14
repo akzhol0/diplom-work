@@ -64,7 +64,7 @@ function RegisterComponent() {
   const signInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);
-      addUserFirebase(result.user);
+      // addUserFirebase(result.user);
 
       router.push("/login");
     } catch (error) {
