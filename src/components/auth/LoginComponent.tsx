@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { contextData } from "../context/context";
 import EyeIcon from "../UI/icons/eye/EyeIcon";
+import MyGoogleButton from "@/components/UI/my-buttons/MyGoogleButton";
 
 function LoginComponent() {
   const [login, setLogin] = useState("");
@@ -67,20 +68,23 @@ function LoginComponent() {
               <EyeIcon />
             </div>
           </div>
-          <Link href="/register">
-            <p className="text-sm text-center cursor-pointer hover:underline">
-              {mainLanguage.loginAndRegsitration.labelLogin}
+          <div className="flex flex-col gap-2">
+            <Link href="/register">
+              <p className="text-sm text-center cursor-pointer hover:underline">
+                {mainLanguage.loginAndRegsitration.labelLogin}
+              </p>
+            </Link>
+            <MyButtonDanger
+              type="submit"
+              className="bg-[#131313] border-white hover:bg-red-600 duration-300 text-white"
+            >
+              {mainLanguage.loginAndRegsitration.btnLogin}
+            </MyButtonDanger>
+            <MyGoogleButton />
+            <p className="text-sm text-center cursor-pointer text-red-600">
+              {error}
             </p>
-          </Link>
-          <MyButtonDanger
-            type="submit"
-            className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white"
-          >
-            {mainLanguage.loginAndRegsitration.btnLogin}
-          </MyButtonDanger>
-          <p className="text-sm text-center cursor-pointer text-red-600">
-            {error}
-          </p>
+          </div>
         </div>
       </form>
     </div>

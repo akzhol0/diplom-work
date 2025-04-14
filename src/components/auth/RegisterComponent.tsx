@@ -3,12 +3,13 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth, db } from "../firebase/config";
+import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, db, provider } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc } from "firebase/firestore";
 import { contextData } from "../context/context";
 import EyeIcon from "../UI/icons/eye/EyeIcon";
+import MyGoogleButton from "@/components/UI/my-buttons/MyGoogleButton";
 
 function RegisterComponent() {
   const [userName, setUserName] = useState("");
@@ -58,6 +59,17 @@ function RegisterComponent() {
       image: "/images/user-img.png",
       birthdate: birthdate,
     });
+  };
+
+  const signInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      addUserFirebase(result.user);
+
+      router.push("/login");
+    } catch (error) {
+      console.error("Ошибка входа через Google:", error);
+    }
   };
 
   return (
@@ -149,20 +161,25 @@ function RegisterComponent() {
               <EyeIcon />
             </div>
           </div>
-          <Link href="/login">
-            <p className="text-sm text-center cursor-pointer hover:underline">
-              {mainLanguage.loginAndRegsitration.labelRegister}
+          <div className="flex flex-col gap-2">
+            <Link href="/login">
+              <p className="text-sm text-center cursor-pointer hover:underline">
+                {mainLanguage.loginAndRegsitration.labelRegister}
+              </p>
+            </Link>
+            <MyButtonDanger
+              type="submit"
+              className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white"
+            >
+              {mainLanguage.loginAndRegsitration.btnRegister}
+            </MyButtonDanger>
+            <div className="w-full flex" onClick={() => signInWithGoogle()}>
+              <MyGoogleButton />
+            </div>
+            <p className="text-sm text-center cursor-pointer text-red-600">
+              {error}
             </p>
-          </Link>
-          <MyButtonDanger
-            type="submit"
-            className="bg-[#131313] border-white hover:bg-red-500 duration-300 text-white"
-          >
-            {mainLanguage.loginAndRegsitration.btnRegister}
-          </MyButtonDanger>
-          <p className="text-sm text-center cursor-pointer text-red-600">
-            {error}
-          </p>
+          </div>
         </div>
       </form>
     </div>
