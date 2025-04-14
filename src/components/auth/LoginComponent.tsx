@@ -8,7 +8,6 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { contextData } from "../context/context";
 import EyeIcon from "../UI/icons/eye/EyeIcon";
-import MyGoogleButton from "@/components/UI/my-buttons/MyGoogleButton";
 
 function LoginComponent() {
   const [login, setLogin] = useState("");
@@ -80,7 +79,7 @@ function LoginComponent() {
             >
               {mainLanguage.loginAndRegsitration.btnLogin}
             </MyButtonDanger>
-            <MyGoogleButton />
+            {/*<MyGoogleButton />*/}
             <p className="text-sm text-center cursor-pointer text-red-600">
               {error}
             </p>

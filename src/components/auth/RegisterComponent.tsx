@@ -61,16 +61,16 @@ function RegisterComponent() {
     });
   };
 
-  const signInWithGoogle = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      // addUserFirebase(result.user);
-
-      router.push("/login");
-    } catch (error) {
-      console.error("Ошибка входа через Google:", error);
-    }
-  };
+  // const signInWithGoogle = async () => {
+  //   try {
+  //     const result = await signInWithPopup(auth, provider);
+  //     addUserFirebase(result.user);
+  //
+  //     router.push("/login");
+  //   } catch (error) {
+  //     console.error("Ошибка входа через Google:", error);
+  //   }
+  // };
 
   return (
     <div className="w-full min-h-[600px] flex justify-center items-center">
@@ -173,9 +173,9 @@ function RegisterComponent() {
             >
               {mainLanguage.loginAndRegsitration.btnRegister}
             </MyButtonDanger>
-            <div className="w-full flex" onClick={() => signInWithGoogle()}>
-              <MyGoogleButton />
-            </div>
+            {/*<div className="w-full flex" onClick={() => signInWithGoogle()}>*/}
+            {/*  <MyGoogleButton />*/}
+            {/*</div>*/}
             <p className="text-sm text-center cursor-pointer text-red-600">
               {error}
             </p>
