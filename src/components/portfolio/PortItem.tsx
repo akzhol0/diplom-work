@@ -12,7 +12,7 @@ function PortItem({ item }: PortItemProps) {
       className={`min-h-[250px] rounded-xl ${item.backgroundColor} overflow-hidden`}
     >
       <div className="flex justify-between">
-        <div className="w-[75%] h-[250px] flex flex-col justify-center ps-2 pt-2">
+        <div className="w-[75%] min-h-[250px] py-2 flex flex-col justify-center ps-2 pt-2">
           <p className="text-4xl font-semibold whitespace-nowrap">
             {item.title}
           </p>

@@ -52,7 +52,6 @@ const FeedbackOptions = ({
   const handleLikeFunction = async (action: "like" | "dislike") => {
     const docRef = doc(db, "feedbacks", `${feedback.id}`);
     const updateAction = action === "like" ? arrayUnion : arrayRemove;
-    console.log(feedback);
 
     setDidUserLiked(!didUserLiked);
     setModalVisible(false);

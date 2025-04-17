@@ -55,8 +55,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
-  console.log(Cookies.get("userId"), Cookies.get("lang"));
-
   const getUsers = async () => {
     const q = query(collection(db, "users"));
 
