@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import FeedbackOptions from "@/components/feedback/feedbackOptions";
 import Link from "next/link";
-import { FeedbacksTypes } from "@/components/types/types";
+import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
+import { contextData } from "@/components/context/context";
 
 type FeedbackItselfProps = {
   feedback: FeedbacksTypes;
@@ -10,6 +11,20 @@ type FeedbackItselfProps = {
 
 const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
   const dateTime = new Date();
+  const { users } = useContext(contextData);
+  const [user, setUser] = useState<UserInfoTypes>();
+
+  const findUser = () => {
+    users.map((user: UserInfoTypes) => {
+      if (user.userId === feedback.authorId) {
+        setUser(user);
+      }
+    });
+  };
+
+  useEffect(() => {
+    findUser();
+  }, []);
 
   const [postLikesCount, setPostLikesCount] = useState(
     feedback.likedUsers.length,
@@ -21,12 +36,7 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
         <div className="flex">
           <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
             <Image
-              src={
-                feedback.author.image.includes("https") ||
-                feedback.author.image.includes("http")
-                  ? feedback.author.image
-                  : "/images/user-img.png"
-              }
+              src="/images/user-img.png"
               alt="pfp"
               width={60}
               height={60}
@@ -34,9 +44,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
           </div>
           <div className="flex items-center text-sm justify-center ps-2">
             <div>
-              <Link href={`/users/${feedback.author.userId}`}>
+              <Link href={`/users/${user?.userId}`}>
                 <p className="max-w-[150px] overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
-                  {feedback.author.userName}
+                  {user?.userName}
                 </p>
               </Link>
               <p className="max-w-[150px] md:max-w-[200px] max-h-[22px] overflow-hidden">
@@ -67,7 +77,7 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
         <FeedbackOptions
           setPostLikesCount={setPostLikesCount}
           feedback={feedback}
-          user={feedback.author}
+          user={user}
         />
       </div>
       <div className="flex flex-col mt-2">

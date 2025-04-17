@@ -6,6 +6,7 @@ import WhatsappLogo from "../UI/icons/medias/WhatsappLogo";
 import Link from "next/link";
 import { contextData } from "../context/context";
 import { usePathname } from "next/navigation";
+import Cookies from "js-cookie";
 
 type NavBarProps = {
   mobileVersion: boolean;
@@ -65,7 +66,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
       <select
         onChange={(e) => {
           setLanguageChanger(e.target.value);
-          localStorage.setItem("lang", e.target.value);
+          Cookies.set("lang", e.target.value);
         }}
         value={languageChanger}
         className="text-lg mb-2 md:mb-0"

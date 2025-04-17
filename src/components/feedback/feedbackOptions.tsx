@@ -101,7 +101,7 @@ const FeedbackOptions = ({
         >
           <div>{mainLanguage.rest.user}</div>
         </Link>
-        {userInfo?.userId === feedback.author.userId && (
+        {userInfo?.userId === user?.userId && (
           <div
             onClick={() => handleDeleteButton()}
             className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"

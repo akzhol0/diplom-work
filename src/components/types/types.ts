@@ -45,7 +45,7 @@ export type FeedbacksTypes = {
   header: string;
   rating: number;
   id: string;
-  author: UserInfoTypes;
+  authorId: string;
   likedUsers: any;
 };
 

@@ -8,6 +8,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import { contextData } from "../context/context";
 import EyeIcon from "../UI/icons/eye/EyeIcon";
+import Cookies from "js-cookie";
 
 function LoginComponent() {
   const [login, setLogin] = useState("");
@@ -23,7 +24,7 @@ function LoginComponent() {
 
     signInWithEmailAndPassword(auth, login, password)
       .then((userCredential) => {
-        localStorage.setItem("userId", JSON.stringify(userCredential.user.uid));
+        Cookies.set("userId", userCredential.user.uid);
 
         checkIfUserLogged();
         router.push("/profile");

@@ -3,6 +3,7 @@
 import React, { useContext } from "react";
 import { contextData } from "@/components/context/context";
 import { useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 type AsTwiceModalProps = {
   setModalTwice: (arg0: boolean) => void;
@@ -35,7 +36,7 @@ const AsTwiceModal = ({ setModalTwice }: AsTwiceModalProps) => {
             onClick={() => {
               router.push("/");
               setAuth(false);
-              localStorage.removeItem("userId");
+              Cookies.remove("userId");
               setUserInfo({});
             }}
             className="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"

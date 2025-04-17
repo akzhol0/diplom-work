@@ -14,6 +14,7 @@ import { en } from "../language/en";
 import { ru } from "../language/ru";
 import { kz } from "../language/kz";
 import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
+import Cookies from "js-cookie";
 
 type ContextProps = {
   auth: boolean;
@@ -49,11 +50,12 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [auth, setAuth] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [loadedFeedbacks, setLoadedFeedbacks] = useState(false);
 
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
-  const [loadedFeedbacks, setLoadedFeedbacks] = useState(false);
+  console.log(Cookies.get("userId"), Cookies.get("lang"));
 
   const getUsers = async () => {
     const q = query(collection(db, "users"));
@@ -66,6 +68,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   async function getFeedbacks() {
     setFeedbacks([]);
+    setLoadedFeedbacks(false);
 
     const q = query(collection(db, "feedbacks"), orderBy("date", "asc"));
 
@@ -97,7 +100,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     !loadedFeedbacks && getFeedbacks();
     users.length === 0 && getUsers();
 
-    const localstorageMainLanguage = localStorage.getItem("lang");
+    const localstorageMainLanguage = Cookies.get("lang");
     setLanguageChanger(localstorageMainLanguage || "ru");
   }, []);
 
@@ -110,11 +113,11 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   }, [languageChanger]);
 
   const checkIfUserLogged = async () => {
-    const result = localStorage.getItem("userId");
-    const userId = result ? JSON.parse(result) : null;
+    const result = Cookies.get("userId");
+    // const userId = result ? JSON.parse(result) : null;
 
-    if (userId !== null) {
-      const docRef = doc(db, "users", userId);
+    if (result !== undefined) {
+      const docRef = doc(db, "users", result);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {

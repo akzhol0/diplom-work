@@ -41,7 +41,7 @@ const Feedbacks = () => {
       header: headerInput,
       body: bodyInput,
       rating: ratingInput,
-      author: { ...userInfo },
+      authorId: userInfo.userId,
       date: serverTimestamp(),
       likedUsers: [],
     };
