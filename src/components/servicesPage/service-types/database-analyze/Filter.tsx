@@ -124,9 +124,7 @@ const Filter = ({ data, loaded }: FilterProps) => {
         <ul className="max-h-[150px] overflow-x-scroll">
           {Object.entries(formState.locationDistribution).map(
             ([loc, count]) => (
-              <li key={loc}>
-                {loc}: {count} пользователь(ей)
-              </li>
+              <li key={loc}>{/*{loc}: {count} пользователь(ей)*/}</li>
             ),
           )}
         </ul>
