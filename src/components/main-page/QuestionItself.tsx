@@ -21,7 +21,7 @@ const QuestionItself = ({ item }: QuestionItselfProps) => {
         className={`relative w-full justify-between flex flex-col gap-2 px-2 md:px-8 py-4 transition-all duration-200 ease-in-out overflow-hidden
         ${isSelected ? "min-h-[140px] md:min-h-[160px] lg:min-h-[120px] sm:min-h-[120px]" : "min-h-[0px]"}`}
       >
-        <div className="w-full flex justify-between text-sm md:text-lg z-50">
+        <div className="w-full flex justify-between text-md md:text-lg z-50">
           <p>
             {item.id}. {item.question}
           </p>
