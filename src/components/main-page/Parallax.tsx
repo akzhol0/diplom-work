@@ -15,7 +15,12 @@ function Parallax({ title, small }: ParallaxProps) {
       <div className="max-w-[600px] text-[18px] md:text-[20px]">
         <p>{small}</p>
         <div className="my-4">
-          <Image src="/gifs/coding.gif" alt="logo" width={300} height={300} />
+          <Image
+            src="https://cloud.githubusercontent.com/assets/835857/14581711/ba623018-0436-11e6-8fce-d2ccd4d379c9.gif"
+            alt="logo"
+            width={300}
+            height={300}
+          />
         </div>
       </div>
     </div>

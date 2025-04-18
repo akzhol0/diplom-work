@@ -31,7 +31,7 @@ function Main() {
         <div className="flex justify-center items-center">
           <div className="rounded-xl overflow-hidden mb-4">
             <Image
-              src="/gifs/secure.gif"
+              src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXFvaWprYmwwdXZ0NXhxanNpeTk1NWtkZGZkOGljZ2llcDZybDQ2dSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/RDZo7znAdn2u7sAcWH/giphy.gif"
               priority={true}
               width={500}
               height={500}
