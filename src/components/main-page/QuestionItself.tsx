@@ -15,7 +15,7 @@ const QuestionItself = ({ item }: QuestionItselfProps) => {
     <div
       key={item.id}
       onClick={() => setIsSelected(!isSelected)}
-      className="w-full flex justify-center items-center lg:py-0 min-h-[60px] cursor-pointer hover:bg-[#1b1b1b] transition-[.2s] rounded-lg md:ps-4"
+      className="w-full flex justify-between items-center lg:py-0 min-h-[60px] cursor-pointer hover:bg-[#1b1b1b] transition-[.2s] rounded-lg md:ps-4"
     >
       <div
         className={`relative w-full flex flex-col gap-2 px-2 md:px-8 py-4 transition-all duration-200 ease-in-out overflow-hidden
