@@ -9,7 +9,7 @@ function Qa() {
 
   return (
     <div className="w-[100%] lg:w-[80%] flex flex-col md:flex-row justify-center items-center">
-      <div className="w-full min-h-[600px] text-white">
+      <div className="w-full flex flex-col items-center min-h-[600px] text-white">
         {mainLanguage.mainPage.questions.map(
           (item: any) =>
             item.id <= 10 && <QuestionItself key={item.id} item={item} />,
