@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import MyArrowRight from "@/components/UI/icons/my-arrow/MyArrowRight";
 import ResultPage from "@/components/servicesPage/service-types/database-analyze/ResultPage";
+import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 
 const Analyze = () => {
   const [resultPage, setResultPage] = useState(false);
@@ -49,25 +50,33 @@ const Analyze = () => {
       <p className="text-2xl font-semibold text-center">
         Выберите базу данных для анализа
       </p>
-      <div className="flex flex-col lg:flex-row justify-center mt-14 text-lg gap-8">
-        <div className="w-[350px] flex flex-col gap-4">
+      <div className="flex flex-col lg:flex-row mt-14 text-lg gap-8">
+        <div className="w-[350px] flex flex-col justify-between gap-4">
           <p>Скачать готовую базу данных (в виде .json)</p>
           <a href="/download/users.json" download>
             <MyPrimaryButton className="w-full">Скачать</MyPrimaryButton>
           </a>
         </div>
-        <div className="w-[350px] flex flex-col gap-4 lg:px-8 border-y py-8 lg:py-0 lg:border-x lg:border-y-0">
+        <div className="w-[350px] flex flex-col justify-between gap-4 lg:px-8 border-y py-8 lg:py-0 lg:border-x lg:border-y-0">
           <p>Продолжить с готовой базой данных, для примера</p>
-          <div
-            onClick={() => {
-              setResultPage(true);
-              setUserDecision("default");
-            }}
-          >
-            <MyPrimaryButton className="w-full">Продолжить</MyPrimaryButton>
+          <div className="w-full flex justify-between">
+            <a target="_blank" href="/download/users.json">
+              <MyDangerButton className="py-0 whitespace-nowrap">
+                Пример
+              </MyDangerButton>
+            </a>
+            <div
+              onClick={() => {
+                setResultPage(true);
+                setUserDecision("default");
+              }}
+              className="flex"
+            >
+              <MyPrimaryButton className="w-full">Продолжить</MyPrimaryButton>
+            </div>
           </div>
         </div>
-        <div className="w-[350px] flex flex-col gap-4">
+        <div className="w-[350px] flex flex-col justify-between gap-4">
           <p>Загрузить свою базу данных (только в виде .txt или .json)</p>
           <div className="flex justify-center items-center">
             <label

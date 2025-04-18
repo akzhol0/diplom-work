@@ -27,7 +27,7 @@ export const en = {
     codeDevText:
       "Test site made for a diploma thesis, developer Tursynkhan Akzhol, 4th year student at ESIL University.",
     source: "Source code:",
-    questionLabel: "20 Frequently Asked Questions About Information Security",
+    questionLabel: "10 Frequently Asked Questions About Information Security",
     parallax: {
       title: "Decision Support System for Information Security",
       small:

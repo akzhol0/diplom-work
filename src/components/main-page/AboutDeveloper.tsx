@@ -1,15 +1,23 @@
 import Image from "next/image";
-import React, { useContext } from "react";
-import { contextData } from "@/components/context/context";
+import React from "react";
 
 const AboutDeveloper = () => {
-  const { mainLanguage } = useContext(contextData);
-
   return (
-    <div className="w-[95%] md:w-[80%] py-5 flex flex-col items-center text-black ">
-      <p className="text-center">{mainLanguage.mainPage.codeDevText}</p>
+    <div className="w-[95%] md:w-[80%] py-5 flex flex-col items-center text-black text-center">
+      <p>
+        Название темы: Разработка веб-приложения поддержки принятия решений по
+        информационной безопасности
+      </p>
+      <p className="mb-4">
+        Тақырыбы: Ақпараттық қауіпсіздік бойынша шешім қабылдайтын веб-қосымшаны
+        өңдеу
+      </p>
+      <p>
+        Тестовый сайт, сделанный для дипломной работы, разработчик Турсынхан
+        Акжол, студент 4 курса университета ESIL University.
+      </p>
       <div className="flex items-center gap-4">
-        <p>{mainLanguage.mainPage.source}</p>
+        <p>Исходный код:</p>
         <a
           className="hover:scale-110 duration-200"
           href="https://github.com/akzhol0/diplom-work"

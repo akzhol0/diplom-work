@@ -29,13 +29,15 @@ function Main() {
           title={mainLanguage.mainPage.parallax.title}
         />
         <div className="flex justify-center items-center">
-          <Image
-            src="/images/protection.png"
-            priority={true}
-            width={500}
-            height={500}
-            alt="image"
-          />
+          <div className="rounded-xl overflow-hidden mb-4">
+            <Image
+              src="/gifs/secure.gif"
+              priority={true}
+              width={500}
+              height={500}
+              alt="image"
+            />
+          </div>
         </div>
       </div>
       <div className="w-full min-h-[400px] bg-[#f8f8f8] flex justify-center items-center">
