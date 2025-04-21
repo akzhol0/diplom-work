@@ -19,7 +19,6 @@ const GetBrowserInfo = () => {
         if (ua.includes("Opera") || ua.includes("OPR")) return "Opera";
         return "Unknown";
       };
-
       const getOS = () => {
         if (ua.includes("Windows NT 10")) return "Windows 10";
         if (ua.includes("Windows NT 6.1")) return "Windows 7";
@@ -43,7 +42,7 @@ const GetBrowserInfo = () => {
         },
         device: {
           os: getOS(),
-          deviceMemory: nav.deviceMemory || "Unknown",
+          deviceMemory: (nav as any).deviceMemory || "Unknown",
           hardwareConcurrency: nav.hardwareConcurrency || "Unknown",
           maxTouchPoints: nav.maxTouchPoints || "Unknown",
         },
@@ -62,10 +61,6 @@ const GetBrowserInfo = () => {
           latitude: null,
           longitude: null,
         },
-        battery: {
-          level: "Unknown",
-          charging: "Unknown",
-        },
         cores: nav.hardwareConcurrency || "Unknown",
       };
 
@@ -82,13 +77,6 @@ const GetBrowserInfo = () => {
           },
         );
       } else {
-        setBrowserData({ ...data });
-      }
-
-      if (navigator.getBattery) {
-        const battery = await navigator.getBattery();
-        data.battery.level = `${battery.level * 100}%`;
-        data.battery.charging = battery.charging ? "Charging" : "Not Charging";
         setBrowserData({ ...data });
       }
 
