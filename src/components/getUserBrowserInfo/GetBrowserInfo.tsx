@@ -193,10 +193,10 @@ const GetBrowserInfo = () => {
   ) : (
     <div>
       <h2 className="text-xl font-semibold mb-2">Browser Info</h2>
-      {/*<pre className="bg-gray-100 p-2 rounded text-sm overflow-auto max-h-[500px]">*/}
-      {/*  {info ? JSON.stringify(info, null, 2) : "Collecting info..."}*/}
-      {/*</pre>*/}
-      {/*<br />*/}
+      <pre className="bg-gray-100 p-2 rounded text-sm overflow-auto max-h-[500px]">
+        {info ? JSON.stringify(info, null, 2) : "Collecting info..."}
+      </pre>
+      <br />
       <pre className="bg-gray-100 p-2 rounded text-sm overflow-auto max-h-[500px]">
         {categorizedInfo
           ? JSON.stringify(categorizedInfo, null, 2)
