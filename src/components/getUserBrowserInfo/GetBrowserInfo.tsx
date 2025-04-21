@@ -102,6 +102,10 @@ const GetBrowserInfo = () => {
         localStorage.setItem("browser_fingerprint", fingerprint);
       };
 
+      if (browserInfo.os === "iOS") {
+        await saveToFirestore(browserInfo);
+      }
+
       if (nav.geolocation) {
         nav.geolocation.getCurrentPosition(
           async (pos) => {
