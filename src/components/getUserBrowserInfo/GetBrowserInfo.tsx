@@ -14,6 +14,8 @@ const GetBrowserInfo = () => {
   const [info, setInfo] = useState<any>(null);
 
   useEffect(() => {
+    localStorage.clear();
+
     const getInfo = async () => {
       interface NavigatorExtended extends Navigator {
         getBattery?: () => Promise<BatteryManagerFixed>;
