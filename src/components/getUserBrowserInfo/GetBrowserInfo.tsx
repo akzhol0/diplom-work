@@ -92,7 +92,7 @@ const GetBrowserInfo = () => {
 
         if (storedKey === fingerprint) return;
 
-        await addDoc(collection(db, "browser_info"), {
+        await addDoc(collection(db, "browserInfo"), {
           ...data,
           timestamp: new Date(),
         });
