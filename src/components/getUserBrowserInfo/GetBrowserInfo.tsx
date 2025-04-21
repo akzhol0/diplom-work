@@ -22,9 +22,9 @@ const GetBrowserInfo = () => {
       const getOS = () => {
         if (ua.includes("Windows NT 10")) return "Windows 10";
         if (ua.includes("Windows NT 6.1")) return "Windows 7";
+        if (ua.includes("iPhone")) return "iOS";
         if (ua.includes("Mac OS X")) return "macOS";
         if (ua.includes("Android")) return "Android";
-        if (ua.includes("iPhone")) return "iOS";
         if (ua.includes("Linux")) return "Linux";
         return "Unknown";
       };
