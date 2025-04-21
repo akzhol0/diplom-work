@@ -11,6 +11,7 @@ import ServicesMainPage from "@/components/main-page/ServicesMainPage";
 import Qa from "@/components/main-page/Qa";
 import AboutDeveloper from "@/components/main-page/AboutDeveloper";
 import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
+import GetBrowserInfo from "@/components/getUserBrowserInfo/GetBrowserInfo";
 
 function Main() {
   const { mainLanguage, isVisible, setIsVisible } = useContext(contextData);
@@ -71,6 +72,9 @@ function Main() {
       </video>
       <div className="w-full flex justify-center mt-[40px]">
         <AboutDeveloper />
+      </div>
+      <div className="w-[95%] md:w-[80%]">
+        <GetBrowserInfo />
       </div>
       {isVisible && <GoUpButton />}
     </div>
