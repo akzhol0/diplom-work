@@ -1,5 +1,6 @@
 {
-  "compilerOptions": {
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "global.d.ts"],
+"compilerOptions": {
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
