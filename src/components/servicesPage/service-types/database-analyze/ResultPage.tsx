@@ -18,7 +18,7 @@ const ResultPage = ({ userDecision, data }: ResultPageProps) => {
     querySnapshot.forEach((doc) => {
       setDatabaseUsers((prev: any) => [...prev, doc.data()]);
     });
-    setTimeout(() => setLoaded(true), 1000);
+    setTimeout(() => setLoaded(true), 3000);
   };
 
   const getUsersFromFile = () => {
@@ -38,8 +38,7 @@ const ResultPage = ({ userDecision, data }: ResultPageProps) => {
 
   return (
     <div className="flex flex-col items-center">
-      <p className="text-2xl font-semibold text-center">Результаты</p>
-      <Filter data={databaseUsers} loaded={loaded} />
+      <Filter users={databaseUsers} loaded={loaded} />
     </div>
   );
 };

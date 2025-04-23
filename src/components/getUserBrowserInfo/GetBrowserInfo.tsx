@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
-import { db } from "@/components/firebase/config";
 
 const GetBrowserInfo = () => {
   const [browserData, setBrowserData] = useState<any>(null);
@@ -80,20 +78,7 @@ const GetBrowserInfo = () => {
         setBrowserData({ ...data });
       }
 
-      addToFirestore(data);
       return data;
-    };
-
-    const addToFirestore = async (info: any) => {
-      const userId = localStorage.getItem("browser_uid") || crypto.randomUUID();
-      localStorage.setItem("browser_uid", userId);
-
-      const userDoc = doc(db, "browserInfo", userId);
-      await setDoc(
-        userDoc,
-        { ...info, updatedAt: new Date().toISOString() },
-        { merge: true },
-      );
     };
 
     const data = getBrowserInfo();

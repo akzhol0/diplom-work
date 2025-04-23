@@ -35,11 +35,8 @@ function NavBar({ mobileVersion }: NavBarProps) {
           >
             <li
               onClick={() => setBurgerMenu(false)}
-              className={
-                "" + pathname === item.url
-                  ? "cursor-pointer text-gray-500 whitespace-nowrap hover:text-red-600"
-                  : "cursor-pointer whitespace-nowrap hover:text-red-600"
-              }
+              className={`cursor-pointer whitespace-nowrap hover:text-red-600 
+              ${pathname === item.url && "text-gray-500 hover:text-gray-500"}`}
             >
               {item.title}
             </li>

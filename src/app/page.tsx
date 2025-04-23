@@ -73,9 +73,6 @@ function Main() {
       <div className="w-full flex justify-center mt-[40px]">
         <AboutDeveloper />
       </div>
-      <div className="w-[95%] md:w-[80%]">
-        <GetBrowserInfo />
-      </div>
       {isVisible && <GoUpButton />}
     </div>
   );
