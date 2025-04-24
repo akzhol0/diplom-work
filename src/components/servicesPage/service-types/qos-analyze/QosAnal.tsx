@@ -136,7 +136,7 @@ const QOSAnal = () => {
         Данные браузера
       </h1>
       {loaded ? (
-        <>
+        <div>
           <pre className="bg-gray-100 p-6 rounded-md overflow-y-scroll overflow-x-hidden text-sm max-h-[400px] md:max-h-[600px]">
             {JSON.stringify(info, null, 2)}
           </pre>
@@ -148,12 +148,12 @@ const QOSAnal = () => {
               Анализ
             </MyPrimaryButton>
           </div>
-        </>
+        </div>
       ) : (
-        <>
+        <div>
           <p className="text-center">Загрузка данных браузера...</p>
           <LoadingUI />
-        </>
+        </div>
       )}
     </div>
   ) : (
