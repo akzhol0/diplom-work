@@ -14,65 +14,70 @@ const QOSAnal = () => {
 
   useEffect(() => {
     const collect = async () => {
-      const nav: any = navigator;
-      const scr: any = window.screen;
+      const nav = navigator as any;
+      const scr = window.screen as any;
 
-      // Canvas fingerprint
       const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d") as any;
+      const ctx = canvas.getContext("2d") as CanvasRenderingContext2D | null;
       let canvasFP = "";
       if (ctx) {
         ctx.textBaseline = "top";
         ctx.font = "14px Arial";
         ctx.fillText("FP test", 2, 2);
-        canvasFP = canvas.toDataURL();
+        try {
+          canvasFP = canvas.toDataURL();
+        } catch {
+          canvasFP = "";
+        }
       }
 
-      // WebGL info
       const glCanvas = document.createElement("canvas");
-      const gl: any = glCanvas.getContext("webgl");
+      const gl =
+        (glCanvas.getContext("webgl") as WebGLRenderingContext) ||
+        (glCanvas.getContext("experimental-webgl") as WebGLRenderingContext) ||
+        null;
       const webgl = {
-        vendor: gl?.getParameter(gl.VENDOR) || null,
-        renderer: gl?.getParameter(gl.RENDERER) || null,
+        vendor: gl ? gl.getParameter(gl.VENDOR) : null,
+        renderer: gl ? gl.getParameter(gl.RENDERER) : null,
       };
 
-      // Plugins & MIME types
       const plugins = Array.from(nav.plugins || []).map((p: any) => p.name);
       const mimeTypes = Array.from(nav.mimeTypes || []).map((m: any) => m.type);
 
-      // Media devices
       let mediaDevices: any[] = [];
       try {
-        mediaDevices = await nav.mediaDevices.enumerateDevices();
+        mediaDevices = nav.mediaDevices
+          ? await nav.mediaDevices.enumerateDevices()
+          : [];
       } catch {
         mediaDevices = [];
       }
 
-      // Network
-      const conn: any = nav.connection || {};
+      const conn = nav.connection || {};
       const network = {
-        effectiveType: conn.effectiveType,
-        downlink: conn.downlink,
-        rtt: conn.rtt,
+        effectiveType: conn.effectiveType ?? null,
+        downlink: conn.downlink ?? null,
+        rtt: conn.rtt ?? null,
       };
 
-      // Battery
       let battery: any = null;
       try {
         battery = await nav.getBattery();
-      } catch {}
+      } catch {
+        battery = null;
+      }
 
-      // Geolocation
-      const location = await new Promise<any>((resolve) => {
-        if (!nav.geolocation) return resolve(null);
-        nav.geolocation.getCurrentPosition(
-          (pos: any) => resolve(pos.coords),
-          () => resolve(null),
-          { enableHighAccuracy: true, timeout: 5000 },
+      let location: any = null;
+      if (nav.geolocation) {
+        location = await new Promise((resolve) =>
+          nav.geolocation.getCurrentPosition(
+            (pos: any) => resolve(pos.coords),
+            () => resolve(null),
+            { enableHighAccuracy: true, timeout: 5000 },
+          ),
         );
-      });
+      }
 
-      // Performance & Visibility
       const performanceEntries = performance.getEntries();
       const visibility = document.visibilityState;
 
@@ -107,7 +112,14 @@ const QOSAnal = () => {
         canvasFP,
         webgl,
         network,
-        battery,
+        battery: battery
+          ? {
+              charging: battery.charging,
+              chargingTime: battery.chargingTime,
+              dischargingTime: battery.dischargingTime,
+              level: battery.level,
+            }
+          : null,
         location,
         performanceEntries,
         visibility,
@@ -115,9 +127,7 @@ const QOSAnal = () => {
     };
 
     collect();
-    setTimeout(() => {
-      setLoaded(true);
-    }, 1000);
+    setTimeout(() => setLoaded(true), 3000);
   }, []);
 
   return !finalStage ? (
@@ -127,7 +137,7 @@ const QOSAnal = () => {
       </h1>
       {loaded ? (
         <>
-          <pre className="bg-gray-100 p-6 rounded-md overflow-y-scroll overflow-x-hidden text-sm max-h-[600px] ">
+          <pre className="bg-gray-100 p-6 rounded-md overflow-y-scroll overflow-x-hidden text-sm max-h-[400px] md:max-h-[600px]">
             {JSON.stringify(info, null, 2)}
           </pre>
           <div

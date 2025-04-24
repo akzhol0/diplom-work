@@ -19,7 +19,7 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
     setTimeout(() => {
       setFinalLoaded(true);
     }, 3000);
-    getLocation();
+    data.location !== null && getLocation();
   }, []);
 
   const getBatteryStatus = () => {
@@ -74,7 +74,7 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
             </div>
             <div>
               <span className="font-semibold">Часовой пояс:</span>{" "}
-              {location.timezone.name}
+              {location?.timezone.name}
             </div>
 
             <div>
@@ -130,14 +130,18 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
                 ? `${data.location.latitude.toFixed(10)}, ${data.location.longitude.toFixed(10)}`
                 : "Нет данных"}
             </div>
-            <div>
-              <span className="font-semibold">Страна, город:</span>{" "}
-              {location.country}, {location.city}
-            </div>
-            <div>
-              <span className="font-semibold">Postcode:</span>{" "}
-              {location.postcode}
-            </div>
+            {location && (
+              <div>
+                <span className="font-semibold">Страна, город:</span>{" "}
+                {location?.country}, {location?.city}
+              </div>
+            )}
+            {location && (
+              <div>
+                <span className="font-semibold">Postcode:</span>{" "}
+                {location?.postcode}
+              </div>
+            )}
             <div>
               <span className="font-semibold">Текущее время:</span>{" "}
               {new Date().toLocaleString()}
@@ -147,10 +151,12 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
               <span className="font-semibold">Canvas отпечаток (хеш):</span>{" "}
               {canvasHash}
             </div>
-            <div>
-              <span className="font-semibold">Часовой пояс:</span>{" "}
-              {location.timezone.offset_DST}
-            </div>
+            {location && (
+              <div>
+                <span className="font-semibold">Часовой пояс:</span>{" "}
+                {location.timezone.offset_DST}
+              </div>
+            )}
             <div>
               <span className="font-semibold">WebGL vendor:</span>{" "}
               {data.webgl?.vendor}
