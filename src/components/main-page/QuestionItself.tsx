@@ -18,7 +18,7 @@ const QuestionItself = ({ item }: QuestionItselfProps) => {
     >
       <div
         className={`relative w-full justify-between flex flex-col gap-2 px-2 md:px-8 py-4 transition-all duration-200 ease-in-out overflow-hidden
-        ${isSelected ? "min-h-[140px] md:min-h-[160px] lg:min-h-[120px] sm:min-h-[120px]" : "min-h-[0px]"}`}
+        ${isSelected ? "min-h-[180px] md:min-h-[160px] lg:min-h-[120px] sm:min-h-[120px]" : "min-h-[0px]"}`}
       >
         <div className="w-full flex justify-between text-md md:text-lg z-2">
           <p>
@@ -31,7 +31,7 @@ const QuestionItself = ({ item }: QuestionItselfProps) => {
           </div>
         </div>
         <div
-          className={`absolute text-sm md:text-lg bottom-0 z-1 md:bottom-4 duration-500 ${isSelected ? "opacity-100" : "opacity-0"}`}
+          className={`absolute text-md md:text-lg bottom-0 z-1 md:bottom-4 duration-500 ${isSelected ? "opacity-100" : "opacity-0"}`}
         >
           {mainLanguage.rest.answer}: {item.answer}
         </div>

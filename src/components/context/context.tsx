@@ -34,6 +34,8 @@ type ContextProps = {
   setUserInfo: (arg0: any) => void;
   users: UserInfoTypes[];
   getFeedbacks: () => void;
+  isBotVisible: boolean;
+  setIsBotVisible: (arg0: boolean) => void;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -51,6 +53,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [burgerMenu, setBurgerMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [loadedFeedbacks, setLoadedFeedbacks] = useState(false);
+  const [isBotVisible, setIsBotVisible] = useState(false);
 
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
@@ -145,6 +148,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         setUserInfo,
         users,
         getFeedbacks,
+        setIsBotVisible,
+        isBotVisible,
       }}
     >
       {children}
