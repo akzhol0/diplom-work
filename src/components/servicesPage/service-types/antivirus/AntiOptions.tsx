@@ -97,7 +97,7 @@ const AntiOptions = () => {
         },
         {
           id: 10,
-          question: "Какие антивирусы вы использовали до этого?",
+          question: "Насколько вы знакомы с антивирусами?",
           answer: state.before,
         },
       ];

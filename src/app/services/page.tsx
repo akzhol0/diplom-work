@@ -1,12 +1,18 @@
-import ServiceComponent from '@/components/servicesPage/ServiceComponent';
-import { Metadata } from 'next';
+import ServiceComponent from "@/components/servicesPage/ServiceComponent";
+import { Metadata } from "next";
+import ChatBot from "@/components/chatBot/ChatBot";
 
 export const metadata: Metadata = {
-  title: 'Услуги',
+  title: "Услуги",
 };
 
 function Services() {
-  return <ServiceComponent />;
+  return (
+    <>
+      <ServiceComponent />
+      <ChatBot />
+    </>
+  );
 }
 
 export default Services;

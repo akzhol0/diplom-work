@@ -33,8 +33,9 @@ export const ru = {
     },
     {
       question: "Сколько серверов или устройств нужно защитить?",
-      inputOrSelect: "input",
+      inputOrSelect: "select",
       state: "quantity",
+      selectOptions: ["0-9", "10-20", "21->"],
       id: 4,
     },
     {
@@ -93,7 +94,8 @@ export const ru = {
     },
     {
       question: "Насколько вы знакомы с антивирусами?",
-      inputOrSelect: "input",
+      inputOrSelect: "select",
+      selectOptions: ["Хорошо знаком", "Средне", "Никогда не пользовался"],
       state: "before",
       id: 10,
     },
