@@ -11,7 +11,6 @@ import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
-import { useRouter } from "next/navigation";
 
 type UserPageProps = {
   token: string;
@@ -21,7 +20,6 @@ const UserPage = ({ token }: UserPageProps) => {
   const { mainLanguage, users, userInfo, auth } = useContext(contextData);
   const [friendsModal, setFriendsModal] = useState(false);
   const [isFriends, setIsFriends] = useState(false);
-  const router = useRouter();
 
   const [user, setUser] = useState<UserInfoTypes>();
   const [loaded, setLoaded] = useState(false);
