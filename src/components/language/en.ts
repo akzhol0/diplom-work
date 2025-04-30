@@ -210,6 +210,10 @@ export const en = {
   header: {
     links: [
       {
+        title: "Forum",
+        url: "/forum",
+      },
+      {
         title: "Projects",
         url: "/projects",
       },

@@ -214,6 +214,10 @@ export const kz = {
   header: {
     links: [
       {
+        title: "Форум",
+        url: "/forum",
+      },
+      {
         title: "Жобалар",
         url: "/projects",
       },

@@ -27,7 +27,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
 
   return (
     <div className={"flex items-center gap-4" + " " + classesForm.over}>
-      <ul className="flex gap-2 sm:gap-5 text-lg">
+      <ul className="flex flex-col sm:flex-row text-center gap-4 sm:gap-5 text-lg">
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}

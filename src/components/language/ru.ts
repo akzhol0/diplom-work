@@ -2160,6 +2160,10 @@ export const ru = {
   header: {
     links: [
       {
+        title: "Форум",
+        url: "/forum",
+      },
+      {
         title: "Проекты",
         url: "/projects",
       },
