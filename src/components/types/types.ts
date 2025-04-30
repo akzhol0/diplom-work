@@ -31,6 +31,7 @@ export type UserInfoTypes = {
   userName: string;
   userPassword: string;
   birthdate: string;
+  friends: any;
 };
 
 export type questionTypes = {

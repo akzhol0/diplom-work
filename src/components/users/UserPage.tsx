@@ -6,13 +6,22 @@ import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import Image from "next/image";
 import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import { UserInfoTypes } from "@/components/types/types";
+import FriendsModal from "@/components/UI/modals/FriendsModal";
+import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
+import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
+import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { db } from "@/components/firebase/config";
+import { useRouter } from "next/navigation";
 
 type UserPageProps = {
   token: string;
 };
 
 const UserPage = ({ token }: UserPageProps) => {
-  const { mainLanguage, users } = useContext(contextData);
+  const { mainLanguage, users, userInfo, auth } = useContext(contextData);
+  const [friendsModal, setFriendsModal] = useState(false);
+  const [isFriends, setIsFriends] = useState(false);
+  const router = useRouter();
 
   const [user, setUser] = useState<UserInfoTypes>();
   const [loaded, setLoaded] = useState(false);
@@ -26,8 +35,51 @@ const UserPage = ({ token }: UserPageProps) => {
       if (item.userId === token) {
         setUser(item as UserInfoTypes);
       }
+      auth && checkIfTheyAreFriends();
     });
     setLoaded(true);
+  };
+
+  const checkIfTheyAreFriends = async () => {
+    userInfo.friends.map((item: any) => {
+      if (token === item.log) {
+        setIsFriends(true);
+      }
+    });
+  };
+
+  const addFriend = async (move: string) => {
+    const docRef = doc(db, "users", `${userInfo?.userId}`);
+    const docRefSecond = doc(db, "users", `${token}`);
+    const updateAction = move === "add" ? arrayUnion : arrayRemove;
+
+    if (move === "add") {
+      userInfo.friends.push(token);
+      setIsFriends(true);
+    } else {
+      userInfo.friends.filter((item: any) => item.log !== token);
+      setIsFriends(false);
+    }
+
+    addSecondRef(docRefSecond, updateAction);
+
+    const log = token;
+    await updateDoc(docRef, {
+      friends: updateAction({
+        log,
+      }),
+    });
+
+    window.location.reload();
+  };
+
+  const addSecondRef = async (docRefSecond: any, updateAction: any) => {
+    const log = userInfo.userId;
+    await updateDoc(docRefSecond, {
+      friends: updateAction({
+        log,
+      }),
+    });
   };
 
   return (
@@ -68,6 +120,32 @@ const UserPage = ({ token }: UserPageProps) => {
                 <p>
                   {mainLanguage.rest.birth}: {user?.birthdate}
                 </p>
+                <div className="flex">
+                  <div
+                    onClick={() => setFriendsModal(true)}
+                    className="w-auto border-white border-b hover:border-b hover:border-black cursor-pointer"
+                  >
+                    Друзья: {user?.friends.length}
+                  </div>
+                </div>
+                <div className="mt-1">
+                  {auth &&
+                    (token !== userInfo.userId && !isFriends ? (
+                      <div onClick={() => addFriend("add")}>
+                        <MyPrimaryButton className="text-[16px] font-semibold">
+                          Добавить в друзья
+                        </MyPrimaryButton>
+                      </div>
+                    ) : (
+                      token !== userInfo.userId && (
+                        <div onClick={() => addFriend("remove")}>
+                          <MyDangerButton className="text-[16px] font-semibold">
+                            Удалить из друзей
+                          </MyDangerButton>
+                        </div>
+                      )
+                    ))}
+                </div>
               </div>
             </div>
             <div className="flex flex-col">
@@ -76,6 +154,9 @@ const UserPage = ({ token }: UserPageProps) => {
               </div>
               <UserFeedbacks userToken={token} />
             </div>
+            {friendsModal && (
+              <FriendsModal user={user} setFriendsModal={setFriendsModal} />
+            )}
           </div>
         ) : (
           <LoadingUI />

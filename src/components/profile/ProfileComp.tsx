@@ -9,10 +9,12 @@ import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import Link from "next/link";
 import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import AsTwiceModal from "@/components/profile/AsTwiceModal";
+import FriendsModal from "../UI/modals/FriendsModal";
 
 function ProfileComp() {
   const { userInfo, mainLanguage, auth } = useContext(contextData);
   const [modalTwice, setModalTwice] = useState(false);
+  const [friendsModal, setFriendsModal] = useState(false);
 
   return auth ? (
     <div className="flex flex-col">
@@ -47,6 +49,14 @@ function ProfileComp() {
               : "Администратор"}
           </p>
           <p>Дата рождения: {userInfo.birthdate}</p>
+          <div className="flex">
+            <div
+              onClick={() => setFriendsModal(!friendsModal)}
+              className="w-auto border-white border-b hover:border-b hover:border-black cursor-pointer"
+            >
+              Друзья: {userInfo.friends.length}
+            </div>
+          </div>
           <div className="flex flex-col lg:flex-row gap-2 my-2">
             <Link href="/edit">
               <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">
@@ -77,6 +87,9 @@ function ProfileComp() {
         </div>
         <UserFeedbacks userToken={userInfo.userId} />
       </div>
+      {friendsModal && (
+        <FriendsModal user={userInfo} setFriendsModal={setFriendsModal} />
+      )}
     </div>
   ) : (
     <LoadingUI />
