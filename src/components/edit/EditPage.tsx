@@ -31,7 +31,10 @@ const EditPage = () => {
       gender: gender === "" ? userInfo.gender : gender,
       image: "/images/user-img.png",
       birthdate: birthdate === "" ? userInfo.birthdate : birthdate,
+      friends: userInfo.friends,
     };
+
+    console.log(userChangedData);
 
     updateFirebaseData(userChangedData);
     checkIfUserLogged();
