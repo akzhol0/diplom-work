@@ -6,6 +6,7 @@ import {
   doc,
   getDoc,
   getDocs,
+  onSnapshot,
   orderBy,
   query,
 } from "firebase/firestore";
@@ -118,15 +119,13 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   // get all user's messages
   const getAllUserMessages = async () => {
-    const querySnapshot = await getDocs(collection(db, "userMessages"));
+    onSnapshot(collection(db, "userMessages"), (querySnapshot) => {
+      const messages = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
-    const documents = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
-    documents.map((doc) => {
-      setAllUsersMessages((prev: any) => [{ ...doc }, ...prev]);
+      setAllUsersMessages(messages); // Overwrite the full state with new data
     });
   };
 
