@@ -124,7 +124,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         id: doc.id,
         ...doc.data(),
       }));
-
+      console.log("working");
       setAllUsersMessages(messages); // Overwrite the full state with new data
     });
   };
