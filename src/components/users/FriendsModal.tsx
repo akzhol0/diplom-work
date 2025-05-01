@@ -1,10 +1,10 @@
 import React from "react";
 import { UserInfoTypes } from "@/components/types/types";
-import SingleFriendModal from "@/components/UI/modals/SingleFriendModal";
+import SingleFriendModal from "@/components/users/SingleFriendModal";
 
 type FriendsModalProps = {
   setFriendsModal: (arg0: boolean) => void;
-  user: UserInfoTypes | any;
+  user: UserInfoTypes;
 };
 
 const FriendsModal = ({ setFriendsModal, user }: FriendsModalProps) => {

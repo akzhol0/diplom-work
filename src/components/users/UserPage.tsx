@@ -6,23 +6,32 @@ import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import Image from "next/image";
 import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import { UserInfoTypes } from "@/components/types/types";
-import FriendsModal from "@/components/UI/modals/FriendsModal";
+import FriendsModal from "@/components/users/FriendsModal";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
+import UserWriteFunction from "@/components/users/userWriteFunction";
+
+type MessageData = {
+  message: string;
+  sendingUserId: string;
+};
 
 type UserPageProps = {
   token: string;
 };
 
 const UserPage = ({ token }: UserPageProps) => {
-  const { mainLanguage, users, userInfo, auth } = useContext(contextData);
+  const { mainLanguage, users, userInfo, auth, allUsersMessages } =
+    useContext(contextData);
   const [friendsModal, setFriendsModal] = useState(false);
   const [isFriends, setIsFriends] = useState(false);
-
+  const [didTheyMessaged, setDidTheyMessaged] = useState(false);
+  const [twoUserMessages, setTwoUserMessages] = useState<any>([]);
+  const [messagedIdIfNeeded, setMessagedIdIfNeeded] = useState("");
   const [user, setUser] = useState<UserInfoTypes>();
-  const [loaded, setLoaded] = useState(false);
+  const [writeModal, setWriteModal] = useState(false);
 
   useEffect(() => {
     users.length !== 0 && findUser();
@@ -32,10 +41,11 @@ const UserPage = ({ token }: UserPageProps) => {
     users.map((item: any) => {
       if (item.userId === token) {
         setUser(item as UserInfoTypes);
+
+        auth && checkIfTheyAreFriends();
+        auth && checkIfTheyMessagedEachOther(item);
       }
-      auth && checkIfTheyAreFriends();
     });
-    setLoaded(true);
   };
 
   const checkIfTheyAreFriends = async () => {
@@ -80,10 +90,50 @@ const UserPage = ({ token }: UserPageProps) => {
     });
   };
 
+  const checkIfTheyMessagedEachOther = async (usercb: UserInfoTypes) => {
+    allUsersMessages.map((item: any) => {
+      if (
+        item.id.includes(userInfo.userId) &&
+        item.id.includes(usercb?.userId)
+      ) {
+        setMessagedIdIfNeeded(item.id);
+        const result = Object.entries(item)
+          .filter(([key]) => key !== "id")
+          .map(([key, value]) => {
+            if (
+              typeof value === "object" &&
+              value !== null &&
+              !Array.isArray(value)
+            ) {
+              const { message, sendingUserId } = value as MessageData;
+              return {
+                field: key,
+                message,
+                sendingUserId,
+              };
+            }
+            return null;
+          })
+          .filter(
+            (
+              item,
+            ): item is {
+              field: string;
+              message: string;
+              sendingUserId: string;
+            } => item !== null,
+          );
+
+        setTwoUserMessages(result);
+        setDidTheyMessaged(true);
+      }
+    });
+  };
+
   return (
     <div className="w-full min-h-[700px] flex justify-center">
       <div className="w-[95%] md:w-[80%] min-h-[600px]">
-        {loaded ? (
+        {user ? (
           <div className="flex flex-col">
             <div className="flex flex-col md:flex-row gap-4 items-center ">
               <Image
@@ -126,23 +176,24 @@ const UserPage = ({ token }: UserPageProps) => {
                     Друзья: {user?.friends.length}
                   </div>
                 </div>
-                <div className="mt-1">
+                <div className="flex gap-2 text-[16px] font-semibold mt-1">
                   {auth &&
                     (token !== userInfo.userId && !isFriends ? (
                       <div onClick={() => addFriend("add")}>
-                        <MyPrimaryButton className="text-[16px] font-semibold">
-                          Добавить в друзья
-                        </MyPrimaryButton>
+                        <MyPrimaryButton>Добавить в друзья</MyPrimaryButton>
                       </div>
                     ) : (
                       token !== userInfo.userId && (
                         <div onClick={() => addFriend("remove")}>
-                          <MyDangerButton className="text-[16px] font-semibold">
-                            Удалить из друзей
-                          </MyDangerButton>
+                          <MyDangerButton>Удалить из друзей</MyDangerButton>
                         </div>
                       )
                     ))}
+                  {token !== userInfo.userId && (
+                    <div onClick={() => setWriteModal(!writeModal)}>
+                      <MyPrimaryButton>Написать</MyPrimaryButton>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -154,6 +205,17 @@ const UserPage = ({ token }: UserPageProps) => {
             </div>
             {friendsModal && (
               <FriendsModal user={user} setFriendsModal={setFriendsModal} />
+            )}
+            {writeModal && (
+              <UserWriteFunction
+                setTwoUserMessages={setTwoUserMessages}
+                id={messagedIdIfNeeded}
+                didTheyMessaged={didTheyMessaged}
+                twoUserMessages={twoUserMessages}
+                receivingUser={user}
+                sendingUser={userInfo}
+                setWriteModal={setWriteModal}
+              />
             )}
           </div>
         ) : (

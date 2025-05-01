@@ -36,6 +36,7 @@ type ContextProps = {
   getFeedbacks: () => void;
   isBotVisible: boolean;
   setIsBotVisible: (arg0: boolean) => void;
+  allUsersMessages: any;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -48,6 +49,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [userInfo, setUserInfo] = useState<any>();
   const [feedbacks, setFeedbacks] = useState<FeedbacksTypes[]>([]);
   const [users, setUsers] = useState<UserInfoTypes[]>([]);
+  const [allUsersMessages, setAllUsersMessages] = useState<any>([]);
 
   const [auth, setAuth] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
@@ -100,6 +102,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     !auth && checkIfUserLogged();
     !loadedFeedbacks && getFeedbacks();
     users.length === 0 && getUsers();
+    allUsersMessages.length === 0 && getAllUserMessages();
 
     const localstorageMainLanguage = Cookies.get("lang");
     setLanguageChanger(localstorageMainLanguage || "ru");
@@ -112,6 +115,20 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
       }
     });
   }, [languageChanger]);
+
+  // get all user's messages
+  const getAllUserMessages = async () => {
+    const querySnapshot = await getDocs(collection(db, "userMessages"));
+
+    const documents = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    documents.map((doc) => {
+      setAllUsersMessages((prev: any) => [{ ...doc }, ...prev]);
+    });
+  };
 
   const checkIfUserLogged = async () => {
     const result = Cookies.get("userId");
@@ -150,6 +167,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
         getFeedbacks,
         setIsBotVisible,
         isBotVisible,
+        allUsersMessages,
       }}
     >
       {children}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "@/components/context/context";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import Image from "next/image";
@@ -9,7 +9,7 @@ import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import Link from "next/link";
 import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import AsTwiceModal from "@/components/profile/AsTwiceModal";
-import FriendsModal from "../UI/modals/FriendsModal";
+import FriendsModal from "../users/FriendsModal";
 
 function ProfileComp() {
   const { userInfo, mainLanguage, auth } = useContext(contextData);
