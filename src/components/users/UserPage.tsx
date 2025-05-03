@@ -189,7 +189,7 @@ const UserPage = ({ token }: UserPageProps) => {
                         </div>
                       )
                     ))}
-                  {token !== userInfo.userId && (
+                  {auth && token !== userInfo.userId && (
                     <div onClick={() => setWriteModal(!writeModal)}>
                       <MyPrimaryButton>Написать</MyPrimaryButton>
                     </div>
@@ -210,6 +210,7 @@ const UserPage = ({ token }: UserPageProps) => {
               <UserWriteFunction
                 setTwoUserMessages={setTwoUserMessages}
                 id={messagedIdIfNeeded}
+                setDidTheyMessaged={setDidTheyMessaged}
                 didTheyMessaged={didTheyMessaged}
                 twoUserMessages={twoUserMessages}
                 receivingUser={user}

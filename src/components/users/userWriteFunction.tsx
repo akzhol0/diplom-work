@@ -11,6 +11,7 @@ type UserWriteFunctionProps = {
   twoUserMessages: any;
   setTwoUserMessages: (arg0: any) => void;
   id: string;
+  setDidTheyMessaged: (arg0: any) => void;
 };
 
 const UserWriteFunction = ({
@@ -19,42 +20,46 @@ const UserWriteFunction = ({
   sendingUser,
   didTheyMessaged,
   twoUserMessages,
+  setDidTheyMessaged,
   id,
   setTwoUserMessages,
 }: UserWriteFunctionProps) => {
   const [userInputMessage, setUserInputMessage] = useState("");
 
-  // const [localMessages, setLocalMessages] = useState<any>([]);
-  //
-  // const getAllUserMessages = async () => {
-  //   const docRef = doc(db, "userMessages", id);
-  //
-  //   onSnapshot(docRef, (docSnap) => {
-  //     if (docSnap.exists()) {
-  //       const docData = docSnap.data();
-  //       const dataArray = Object.entries(docData).map(([key, value]) => ({
-  //         key,
-  //         value,
-  //       }));
-  //
-  //       setLocalMessages(dataArray);
-  //     } else {
-  //       console.log(123);
-  //     }
-  //   });
-  // };
+  const [localMessages, setLocalMessages] = useState<any>([]);
 
-  // useEffect(() => {
-  //   getAllUserMessages();
-  // }, []);
+  const getAllUserMessages = async () => {
+    if (didTheyMessaged) {
+      const docRef = doc(db, "userMessages", id);
+
+      onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          const docData = docSnap.data();
+          const dataArray = Object.entries(docData).map(([key, value]) => ({
+            key,
+            value,
+          }));
+
+          setLocalMessages(dataArray);
+        } else {
+          console.log(123);
+        }
+      });
+    } else {
+      console.log(123);
+    }
+  };
+
+  useEffect(() => {
+    getAllUserMessages();
+  }, []);
 
   const handleSubmitSendMessage = async () => {
     if (userInputMessage === "") return;
     setUserInputMessage("");
 
-    const randomField = twoUserMessages.length + 1;
     const data = {
-      [randomField]: {
+      [twoUserMessages.length + 1]: {
         sendingUserId: sendingUser.userId,
         message: userInputMessage,
       },
@@ -67,6 +72,7 @@ const UserWriteFunction = ({
 
     if (didTheyMessaged) {
       await setDoc(doc(db, "userMessages", `${id}`), data, { merge: true });
+      setDidTheyMessaged(true);
     } else {
       await setDoc(
         doc(
@@ -87,7 +93,35 @@ const UserWriteFunction = ({
           <h2 className="text-md font-semibold">{receivingUser.userName}</h2>
         </div>
         <div className="flex flex-col h-[500px] overflow-y-auto gap-2 my-4">
-          {twoUserMessages.length !== 0 ? (
+          {didTheyMessaged ? (
+            localMessages.length !== 0 ? (
+              localMessages
+                .sort((a: any, b: any) => {
+                  a.key - b.key;
+                })
+                .map((item: any, index: number) => (
+                  <div
+                    className={`p-2 bg-gray-100 rounded-lg ${item.value.sendingUserId !== sendingUser.userId ? "self-start" : "self-end"} `}
+                    key={index}
+                  >
+                    <div>
+                      <div>
+                        {item.value.sendingUserId === sendingUser.userId ? (
+                          <p>{sendingUser.userName}:</p>
+                        ) : (
+                          <p>{receivingUser.userName}:</p>
+                        )}
+                      </div>
+                      <p>{item.value.message}</p>
+                    </div>
+                  </div>
+                ))
+            ) : (
+              <div className="h-full text-lg flex justify-center items-center">
+                <p>Пусто</p>
+              </div>
+            )
+          ) : twoUserMessages.length !== 0 ? (
             twoUserMessages
               .sort((a: any, b: any) => {
                 a - b;
