@@ -3,7 +3,11 @@
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
-import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  sendEmailVerification,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, db, provider } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc } from "firebase/firestore";
@@ -27,12 +31,10 @@ function RegisterComponent() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     if (password !== repeatPassword) {
       setError(mainLanguage.rest.registerPass);
       return;
     }
-
     if (userName === "" || login === "" || gender === "" || birthdate === "") {
       setError(mainLanguage.rest.pleaseSignAll);
       return;
@@ -42,6 +44,7 @@ function RegisterComponent() {
       .then((userCredentials) => {
         router.push("/login");
         addUserFirebase(userCredentials);
+        sendEmailVerification(userCredentials.user);
       })
       .catch((err) => {
         setError(err.code);

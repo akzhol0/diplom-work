@@ -16,6 +16,7 @@ import { ru } from "../language/ru";
 import { kz } from "../language/kz";
 import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
 import Cookies from "js-cookie";
+import { onAuthStateChanged } from "@firebase/auth";
 
 type ContextProps = {
   auth: boolean;
@@ -127,6 +128,17 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
       setAllUsersMessages(messages); // Overwrite the full state with new data
     });
   };
+
+  // // verify email
+  // onAuthStateChanged(auth, (user) => {
+  //   if (user) {
+  //     if (user.emailVerified) {
+  //       console.log("Email is verified.", user);
+  //     } else {
+  //       console.log("Email not verified.", user);
+  //     }
+  //   }
+  // });
 
   const checkIfUserLogged = async () => {
     const result = Cookies.get("userId");
