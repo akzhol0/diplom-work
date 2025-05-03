@@ -1,139 +1,96 @@
 import React, { useEffect, useState } from "react";
 import { UserInfoTypes } from "@/components/types/types";
-import { collection, doc, onSnapshot, setDoc } from "firebase/firestore";
+import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 
 type UserWriteFunctionProps = {
   setWriteModal: (arg0: boolean) => void;
   receivingUser: UserInfoTypes;
   sendingUser: UserInfoTypes;
-  didTheyMessaged: boolean;
-  twoUserMessages: any;
-  setTwoUserMessages: (arg0: any) => void;
-  id: string;
-  setDidTheyMessaged: (arg0: any) => void;
+  docId: string;
 };
 
 const UserWriteFunction = ({
   setWriteModal,
   receivingUser,
   sendingUser,
-  didTheyMessaged,
-  twoUserMessages,
-  setDidTheyMessaged,
-  id,
-  setTwoUserMessages,
+  docId,
 }: UserWriteFunctionProps) => {
   const [userInputMessage, setUserInputMessage] = useState("");
-
-  const [localMessages, setLocalMessages] = useState<any>([]);
-
-  const getAllUserMessages = async () => {
-    if (didTheyMessaged) {
-      const docRef = doc(db, "userMessages", id);
-
-      onSnapshot(docRef, (docSnap) => {
-        if (docSnap.exists()) {
-          const docData = docSnap.data();
-          const dataArray = Object.entries(docData).map(([key, value]) => ({
-            key,
-            value,
-          }));
-
-          setLocalMessages(dataArray);
-        } else {
-          console.log(123);
-        }
-      });
-    } else {
-      console.log(123);
-    }
-  };
+  const [messages, setMessages] = useState<any>([]);
 
   useEffect(() => {
-    getAllUserMessages();
+    messages.length === 0 && getTwoUserMessages();
   }, []);
 
-  const handleSubmitSendMessage = async () => {
+  const getTwoUserMessages = async () => {
+    const docRef = doc(db, "userMessages", docId);
+
+    onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+
+        const newMessages = Object.entries(data).map(
+          ([key, value]: [string, any]) => ({
+            id: key,
+            message: value.message,
+            senderId: value.sendingUserId,
+          }),
+        );
+
+        setMessages(newMessages);
+      } else {
+        console.log("No such document!");
+      }
+    });
+  };
+
+  const handleSubmitSendMessage = async (
+    e: React.FormEvent<HTMLFormElement>,
+  ) => {
+    e.preventDefault();
+
     if (userInputMessage === "") return;
     setUserInputMessage("");
 
     const data = {
-      [twoUserMessages.length + 1]: {
+      [messages.length + 1]: {
         sendingUserId: sendingUser.userId,
         message: userInputMessage,
       },
     };
 
-    setTwoUserMessages((prev: any) => [
-      ...prev,
-      { sendingUserId: sendingUser.userId, message: userInputMessage },
-    ]);
-
-    if (didTheyMessaged) {
-      await setDoc(doc(db, "userMessages", `${id}`), data, { merge: true });
-      setDidTheyMessaged(true);
-    } else {
-      await setDoc(
-        doc(
-          db,
-          "userMessages",
-          `${receivingUser.userId}_${sendingUser.userId}`,
-        ),
-        data,
-        { merge: true },
-      );
-    }
+    await setDoc(doc(db, "userMessages", `${docId}`), data, { merge: true });
   };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 px-2">
       <div className="flex flex-col bg-white p-4 rounded-3xl shadow-xl w-[600px] h-[600px] text-center">
-        <div className="flex items-center justify-center p-2 bg-blue-600 text-white rounded-xl">
-          <h2 className="text-md font-semibold">{receivingUser.userName}</h2>
+        <div className="flex">
+          <div onClick={() => setWriteModal(false)}>
+            <button className="me-1 bg-red-500 text-white px-3 py-2 rounded-xl hover:bg-red-800 transition">
+              {"<"}
+            </button>
+          </div>
+          <div className="w-full flex items-center justify-center p-2 bg-blue-600 text-white rounded-xl">
+            <h2 className="text-md font-semibold">{receivingUser.userName}</h2>
+          </div>
         </div>
+
         <div className="flex flex-col h-[500px] overflow-y-auto gap-2 my-4">
-          {didTheyMessaged ? (
-            localMessages.length !== 0 ? (
-              localMessages
-                .sort((a: any, b: any) => {
-                  a.key - b.key;
-                })
-                .map((item: any, index: number) => (
-                  <div
-                    className={`p-2 bg-gray-100 rounded-lg ${item.value.sendingUserId !== sendingUser.userId ? "self-start" : "self-end"} `}
-                    key={index}
-                  >
-                    <div>
-                      <div>
-                        {item.value.sendingUserId === sendingUser.userId ? (
-                          <p>{sendingUser.userName}:</p>
-                        ) : (
-                          <p>{receivingUser.userName}:</p>
-                        )}
-                      </div>
-                      <p>{item.value.message}</p>
-                    </div>
-                  </div>
-                ))
-            ) : (
-              <div className="h-full text-lg flex justify-center items-center">
-                <p>Пусто</p>
-              </div>
-            )
-          ) : twoUserMessages.length !== 0 ? (
-            twoUserMessages
+          {messages.length !== 0 ? (
+            messages
               .sort((a: any, b: any) => {
-                a - b;
+                a.key - b.key;
               })
               .map((item: any, index: number) => (
                 <div
-                  className={`p-2 bg-gray-100 rounded-lg ${item.sendingUserId !== sendingUser.userId ? "self-start" : "self-end"} `}
+                  className={`p-2 bg-gray-100 rounded-lg ${item.senderId === sendingUser.userId ? "self-end" : "self-start"} `}
                   key={index}
                 >
                   <div>
                     <div>
-                      {item.sendingUserId === sendingUser.userId ? (
+                      {item.senderId === sendingUser.userId ? (
                         <p>{sendingUser.userName}:</p>
                       ) : (
                         <p>{receivingUser.userName}:</p>
@@ -149,12 +106,10 @@ const UserWriteFunction = ({
             </div>
           )}
         </div>
-        <div className="bg-white flex items-center">
-          <div onClick={() => setWriteModal(false)}>
-            <button className="me-2 bg-red-500 text-white px-3 py-2 rounded-xl hover:bg-red-800 transition">
-              Назад
-            </button>
-          </div>
+        <form
+          onSubmit={handleSubmitSendMessage}
+          className="bg-white flex items-center"
+        >
           <input
             type="text"
             placeholder="Написать..."
@@ -163,12 +118,12 @@ const UserWriteFunction = ({
             onChange={(e) => setUserInputMessage(e.target.value)}
           />
           <button
-            onClick={() => handleSubmitSendMessage()}
+            type={"submit"}
             className="ms-2 bg-blue-500 text-white px-3 py-2 rounded-xl hover:bg-blue-800 transition"
           >
             ➤
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

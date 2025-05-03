@@ -27,11 +27,9 @@ const UserPage = ({ token }: UserPageProps) => {
     useContext(contextData);
   const [friendsModal, setFriendsModal] = useState(false);
   const [isFriends, setIsFriends] = useState(false);
-  const [didTheyMessaged, setDidTheyMessaged] = useState(false);
-  const [twoUserMessages, setTwoUserMessages] = useState<any>([]);
-  const [messagedIdIfNeeded, setMessagedIdIfNeeded] = useState("");
   const [user, setUser] = useState<UserInfoTypes>();
   const [writeModal, setWriteModal] = useState(false);
+  const [docId, setDocId] = useState<string>("");
 
   useEffect(() => {
     users.length !== 0 && findUser();
@@ -96,36 +94,7 @@ const UserPage = ({ token }: UserPageProps) => {
         item.id.includes(userInfo.userId) &&
         item.id.includes(usercb?.userId)
       ) {
-        setMessagedIdIfNeeded(item.id);
-        const result = Object.entries(item)
-          .filter(([key]) => key !== "id")
-          .map(([key, value]) => {
-            if (
-              typeof value === "object" &&
-              value !== null &&
-              !Array.isArray(value)
-            ) {
-              const { message, sendingUserId } = value as MessageData;
-              return {
-                field: key,
-                message,
-                sendingUserId,
-              };
-            }
-            return null;
-          })
-          .filter(
-            (
-              item,
-            ): item is {
-              field: string;
-              message: string;
-              sendingUserId: string;
-            } => item !== null,
-          );
-
-        setTwoUserMessages(result);
-        setDidTheyMessaged(true);
+        setDocId(item.id);
       }
     });
   };
@@ -208,14 +177,10 @@ const UserPage = ({ token }: UserPageProps) => {
             )}
             {writeModal && (
               <UserWriteFunction
-                setTwoUserMessages={setTwoUserMessages}
-                id={messagedIdIfNeeded}
-                setDidTheyMessaged={setDidTheyMessaged}
-                didTheyMessaged={didTheyMessaged}
-                twoUserMessages={twoUserMessages}
                 receivingUser={user}
                 sendingUser={userInfo}
                 setWriteModal={setWriteModal}
+                docId={docId === "" ? "null" : docId}
               />
             )}
           </div>
