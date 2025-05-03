@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { UserInfoTypes } from "@/components/types/types";
 import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
@@ -18,13 +18,19 @@ const UserWriteFunction = ({
 }: UserWriteFunctionProps) => {
   const [userInputMessage, setUserInputMessage] = useState("");
   const [messages, setMessages] = useState<any>([]);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [newDocId, setNewDocId] = useState(docId);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   useEffect(() => {
     messages.length === 0 && getTwoUserMessages();
   }, []);
 
   const getTwoUserMessages = async () => {
-    const docRef = doc(db, "userMessages", docId);
+    const docRef = doc(db, "userMessages", newDocId);
 
     onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
@@ -40,9 +46,17 @@ const UserWriteFunction = ({
 
         setMessages(newMessages);
       } else {
-        console.log("No such document!");
+        createDoc();
       }
     });
+  };
+
+  const createDoc = async () => {
+    setNewDocId(`${sendingUser.userId}_${receivingUser.userId}`);
+    await setDoc(
+      doc(db, "userMessages", `${sendingUser.userId}_${receivingUser.userId}`),
+      {},
+    );
   };
 
   const handleSubmitSendMessage = async (
@@ -60,7 +74,7 @@ const UserWriteFunction = ({
       },
     };
 
-    await setDoc(doc(db, "userMessages", `${docId}`), data, { merge: true });
+    await setDoc(doc(db, "userMessages", `${newDocId}`), data, { merge: true });
   };
 
   return (
@@ -76,8 +90,7 @@ const UserWriteFunction = ({
             <h2 className="text-md font-semibold">{receivingUser.userName}</h2>
           </div>
         </div>
-
-        <div className="flex flex-col h-[500px] overflow-y-auto gap-2 my-4">
+        <div className="flex flex-col h-[500px] overflow-y-auto md:px-4 mb-4">
           {messages.length !== 0 ? (
             messages
               .sort((a: any, b: any) => {
@@ -85,7 +98,7 @@ const UserWriteFunction = ({
               })
               .map((item: any, index: number) => (
                 <div
-                  className={`p-2 bg-gray-100 rounded-lg ${item.senderId === sendingUser.userId ? "self-end" : "self-start"} `}
+                  className={`p-2 mt-2 bg-gray-100 rounded-lg ${item.senderId === sendingUser.userId ? "self-end" : "self-start"} `}
                   key={index}
                 >
                   <div>
@@ -105,6 +118,7 @@ const UserWriteFunction = ({
               <p>Пусто</p>
             </div>
           )}
+          <div ref={messagesEndRef} />
         </div>
         <form
           onSubmit={handleSubmitSendMessage}
