@@ -75,6 +75,7 @@ const UserWriteFunction = ({
     };
 
     await setDoc(doc(db, "userMessages", `${newDocId}`), data, { merge: true });
+    getTwoUserMessages();
   };
 
   return (
