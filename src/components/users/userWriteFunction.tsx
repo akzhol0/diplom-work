@@ -46,17 +46,20 @@ const UserWriteFunction = ({
 
         setMessages(newMessages);
       } else {
+        const createDoc = async () => {
+          setNewDocId(`${sendingUser.userId}_${receivingUser.userId}`);
+          await setDoc(
+            doc(
+              db,
+              "userMessages",
+              `${sendingUser.userId}_${receivingUser.userId}`,
+            ),
+            {},
+          );
+        };
         createDoc();
       }
     });
-  };
-
-  const createDoc = async () => {
-    setNewDocId(`${sendingUser.userId}_${receivingUser.userId}`);
-    await setDoc(
-      doc(db, "userMessages", `${sendingUser.userId}_${receivingUser.userId}`),
-      {},
-    );
   };
 
   const handleSubmitSendMessage = async (

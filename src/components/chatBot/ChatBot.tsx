@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { contextData } from "@/components/context/context";
 import Image from "next/image";
 
@@ -15,6 +15,11 @@ const ChatBot = () => {
   const [userMessage, setUserMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [commands, setCommands] = useState(false);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   const sendMessage = async (question: string, from: string) => {
     if (question === "" || loading) return;
@@ -98,6 +103,7 @@ const ChatBot = () => {
                 Бот печатает...
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
           <div className="bg-white border-t flex items-center">
             {commands && (
