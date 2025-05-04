@@ -61,6 +61,7 @@ function RegisterComponent() {
       gender: gender,
       image: "/images/user-img.png",
       birthdate: birthdate,
+      friends: [],
     });
   };
 
