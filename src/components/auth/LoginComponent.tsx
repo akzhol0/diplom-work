@@ -28,6 +28,10 @@ function LoginComponent() {
 
         checkIfUserLogged();
         router.push("/profile");
+
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
       })
       .catch((err) => {
         setError(err.code);
