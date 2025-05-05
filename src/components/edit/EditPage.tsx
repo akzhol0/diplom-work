@@ -29,12 +29,13 @@ const EditPage = () => {
       userPassword: userInfo.userPassword,
       role: userInfo.role,
       gender: gender === "" ? userInfo.gender : gender,
-      image: "/images/user-img.png",
+      image:
+        gender === "Мужчина"
+          ? "/images/man-user.png"
+          : "/images/woman-user.png",
       birthdate: birthdate === "" ? userInfo.birthdate : birthdate,
       friends: userInfo.friends,
     };
-
-    console.log(userChangedData);
 
     updateFirebaseData(userChangedData);
     checkIfUserLogged();

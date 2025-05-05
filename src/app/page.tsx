@@ -12,6 +12,7 @@ import Qa from "@/components/main-page/Qa";
 import AboutDeveloper from "@/components/main-page/AboutDeveloper";
 import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
 import ChatBot from "@/components/chatBot/ChatBot";
+import UsersListModal from "@/components/usersModal/UsersListModal";
 
 function Main() {
   const { mainLanguage, isVisible, setIsVisible } = useContext(contextData);
@@ -75,6 +76,7 @@ function Main() {
       </div>
       {isVisible && <GoUpButton />}
       <ChatBot />
+      <UsersListModal />
     </div>
   );
 }

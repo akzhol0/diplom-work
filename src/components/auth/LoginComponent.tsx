@@ -31,7 +31,7 @@ function LoginComponent() {
 
         setTimeout(() => {
           window.location.reload();
-        }, 1000);
+        }, 1200);
       })
       .catch((err) => {
         setError(err.code);

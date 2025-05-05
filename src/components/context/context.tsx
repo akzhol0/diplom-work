@@ -150,7 +150,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
       if (docSnap.exists()) {
         setUserInfo(docSnap.data());
-        console.log(docSnap.data());
         setAuth(true);
       }
     }

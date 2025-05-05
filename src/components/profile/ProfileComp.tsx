@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { contextData } from "@/components/context/context";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import Image from "next/image";

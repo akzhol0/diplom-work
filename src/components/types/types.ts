@@ -57,3 +57,13 @@ export type AntivirusTypes = {
   state: string;
   id: number;
 };
+
+export type SingleForumItemProps = {
+  authorId: string;
+  comments: any;
+  createdAt: any;
+  description: string;
+  header: string;
+  id: string;
+  count: number;
+};

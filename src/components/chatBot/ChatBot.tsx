@@ -75,7 +75,7 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="z-30 relative">
       <div
         className={`h-[600px] fixed flex bottom-0 md:bottom-[50px] left-0 duration-300   ${
           isBotVisible ? "translate-x-0" : "-translate-x-[91%]"
