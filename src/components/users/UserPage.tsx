@@ -13,11 +13,6 @@ import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 import UserWriteFunction from "@/components/users/userWriteFunction";
 
-type MessageData = {
-  message: string;
-  sendingUserId: string;
-};
-
 type UserPageProps = {
   token: string;
 };
