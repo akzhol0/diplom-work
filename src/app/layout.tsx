@@ -7,7 +7,7 @@ import { ContextOverAll } from "@/components/context/context";
 
 export const metadata: Metadata = {
   title: {
-    default: "Дипломная работа - Турсынхан Акжол",
+    default: "Дипломная работа - Турсынхан Акжол - Brooklyn",
     template: "%s - Brooklyn",
   },
   description: "Made by Tursynkhan Akzhol",
