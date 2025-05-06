@@ -29,10 +29,7 @@ const EditPage = () => {
       userPassword: userInfo.userPassword,
       role: userInfo.role,
       gender: gender === "" ? userInfo.gender : gender,
-      image:
-        gender === "Мужчина"
-          ? "/images/man-user.png"
-          : "/images/woman-user.png",
+      image: "/images/user.png",
       birthdate: birthdate === "" ? userInfo.birthdate : birthdate,
       friends: userInfo.friends,
     };

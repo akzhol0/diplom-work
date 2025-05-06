@@ -59,10 +59,7 @@ function RegisterComponent() {
       userPassword: password,
       role: "user",
       gender: gender,
-      image:
-        gender === "Мужчина"
-          ? "/images/man-user.png"
-          : "/images/woman-user.png",
+      image: "/images/user.png",
       birthdate: birthdate,
       friends: [],
     });

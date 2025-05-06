@@ -22,7 +22,7 @@ function Brand() {
           />
         </div>
         <div className={dmSerif.className}>
-          <span className="font-bold text-[38px] text-[#0a0a0a]">Mercury</span>
+          <span className="font-bold text-[38px] text-[#0a0a0a]">Brooklyn</span>
         </div>
       </div>
     </Link>

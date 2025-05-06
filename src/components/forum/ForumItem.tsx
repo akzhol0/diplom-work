@@ -27,6 +27,7 @@ const ForumItem = ({
   const [isCommentsVisible, setIsCommentsVisible] = useState(false);
   const [commentsLoading, setCommentsLoading] = useState(false);
   const [forumOptions, setForumOptions] = useState(false);
+  const commentsLength = item.comments.length;
 
   useEffect(() => {
     !user && findUser();
@@ -45,10 +46,22 @@ const ForumItem = ({
       {user && (
         <>
           <div
-            className={`w-auto md:min-w-[600px] bg-gray-50 rounded-lg ${type === "low" ? "ms-[40px] md:ms-[100px] px-4" : "p-4"}`}
+            className={`w-auto md:min-w-[600px] min-h-[150px] bg-gray-50 rounded-lg ${type === "low" ? "ms-[40px] md:ms-[100px] px-4" : "p-4"}`}
           >
             <div className="flex items-center justify-between">
-              <div className="flex">
+              <div className="relative flex">
+                {type === "low" && (
+                  <div className="absolute left-[-100px] top-0">
+                    {item.comments.length === commentsLength && (
+                      <Image
+                        width={142}
+                        height={142}
+                        alt="test"
+                        src="/images/line-vert.png"
+                      />
+                    )}
+                  </div>
+                )}
                 <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
                   <Image src={user.image} alt="pfp" width={60} height={60} />
                 </div>
