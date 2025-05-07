@@ -32,7 +32,7 @@ type ContextProps = {
   feedbacks: FeedbacksTypes[];
   setFeedbacks: (arg0: any) => void;
   loadedFeedbacks: boolean;
-  setUserInfo: (arg0: UserInfoTypes) => void;
+  setUserInfo: (arg0: any) => void;
   users: UserInfoTypes[];
   getFeedbacks: () => void;
   isBotVisible: boolean;
