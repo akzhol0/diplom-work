@@ -7,10 +7,48 @@ import { ContextOverAll } from "@/components/context/context";
 
 export const metadata: Metadata = {
   title: {
-    default: "Дипломная работа - Турсынхан Акжол - Brooklyn",
+    default: "Дипломная работа - Турсынханов Акжол - Brooklyn",
     template: "%s - Brooklyn",
   },
-  description: "Made by Tursynkhan Akzhol",
+  description:
+    "Веб-приложение, созданное для дипломной работы студентом Турсынханов Акжол. Система поддержки принятие решений для помощи пользователю индидуально решит или дать максималально подходящий совет по решению проблемы в области информационной безопасности, по итогам опроса пользователя или по анализу данных",
+  openGraph: {
+    title: "Дипломная работа - Турсынхан Акжол - Brooklyn",
+    description:
+      "Веб-приложение, созданное для дипломной работы студентом Турсынханов Акжол. Система поддержки принятие решений для помощи пользователю индидуально решит или дать максималально подходящий совет по решению проблемы в области информационной безопасности, по итогам опроса пользователя или по анализу данных",
+    url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+    siteName: "Brooklyn",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_BASE_URL}/open-graph.png`,
+        width: 1200,
+        height: 630,
+        alt: "Дипломная работа - Brooklyn - СППР",
+      },
+    ],
+    locale: "ru_RU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Дипломная работа - Турсынханов Акжол",
+    description: "Веб-приложение: Brooklyn Web App.",
+    images: `${process.env.NEXT_PUBLIC_BASE_URL}/open-graph.png`,
+  },
+  appleWebApp: {
+    title: "Brooklyn",
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
+  icons: {
+    icon: "/favicon/favicon.ico",
+    shortcut: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 const rubik = Rubik({

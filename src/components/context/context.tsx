@@ -16,7 +16,6 @@ import { ru } from "../language/ru";
 import { kz } from "../language/kz";
 import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
 import Cookies from "js-cookie";
-import { onAuthStateChanged } from "@firebase/auth";
 
 type ContextProps = {
   auth: boolean;
@@ -24,7 +23,7 @@ type ContextProps = {
   burgerMenu: boolean;
   setBurgerMenu: (arg0: boolean) => void;
   checkIfUserLogged: () => void;
-  userInfo: UserInfoTypes;
+  userInfo: any;
   setLanguageChanger: (arg0: string) => void;
   mainLanguage: any;
   languageChanger: string;
@@ -33,7 +32,7 @@ type ContextProps = {
   feedbacks: FeedbacksTypes[];
   setFeedbacks: (arg0: any) => void;
   loadedFeedbacks: boolean;
-  setUserInfo: (arg0: any) => void;
+  setUserInfo: (arg0: UserInfoTypes) => void;
   users: UserInfoTypes[];
   getFeedbacks: () => void;
   isBotVisible: boolean;
