@@ -8,13 +8,7 @@ import { contextData } from "../context/context";
 import { usePathname } from "next/navigation";
 import Cookies from "js-cookie";
 
-type NavBarProps = {
-  mobileVersion: boolean;
-};
-
-function NavBar({ mobileVersion }: NavBarProps) {
-  const classesForm = { over: "" };
-  if (mobileVersion) classesForm.over = "flex-col";
+function NavBar() {
   const pathname = usePathname();
 
   const {
@@ -26,8 +20,10 @@ function NavBar({ mobileVersion }: NavBarProps) {
   } = useContext(contextData);
 
   return (
-    <div className={"flex items-center gap-4" + " " + classesForm.over}>
-      <ul className="flex flex-col sm:flex-row text-center gap-4 sm:gap-5 text-lg">
+    <div
+      className={`flex-col md:flex-row flex items-center justify-center gap-4`}
+    >
+      <ul className="flex flex-col md:flex-row text-center gap-4 sm:gap-5 text-lg">
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
@@ -35,8 +31,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
           >
             <li
               onClick={() => setBurgerMenu(false)}
-              className={`cursor-pointer whitespace-nowrap hover:text-red-600 
-              ${pathname === item.url && "text-gray-500 hover:text-gray-500"}`}
+              className={`${pathname === item.url ? "text-gray-500 hover:text-gray-500 cursor-pointer whitespace-nowrap" : "cursor-pointer whitespace-nowrap hover:text-red-600"}`}
             >
               {item.title}
             </li>
@@ -44,19 +39,13 @@ function NavBar({ mobileVersion }: NavBarProps) {
         ))}
       </ul>
       <Link href="/request">
-        <MyButtonDanger className="hidden lg:flex text-red-500 font-semibold font-sm whitespace-nowrap">
+        <MyButtonDanger className="flex md:hidden lg:flex text-red-500 font-semibold font-sm whitespace-nowrap">
           {mainLanguage.header.btn}
         </MyButtonDanger>
       </Link>
-      {mobileVersion && <p className="whitespace-nowrap">+7 (777) 000 00-00</p>}
-      <p className="hidden xl:block whitespace-nowrap">+7 (777) 000 00-00</p>
-      {mobileVersion && (
-        <Link onClick={() => setBurgerMenu(false)} href="/request">
-          <MyButtonDanger className="flex text-red-500 font-semibold font-sm">
-            {mainLanguage.header.btn}
-          </MyButtonDanger>
-        </Link>
-      )}
+      <p className="flex sm:hidden xl:block whitespace-nowrap">
+        +7 (777) 000 00-00
+      </p>
       <span className="cursor-pointer">
         <WhatsappLogo background="black" />
       </span>

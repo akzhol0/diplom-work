@@ -16,17 +16,17 @@ function Header() {
           <Brand />
         </div>
         <div className="hidden md:block">
-          <NavBar mobileVersion={false} />
+          <NavBar />
         </div>
       </div>
-      <div className="flex pt-6 pe-6 md:hidden">
+      <div className="flex pt-6 pe-6 md:hidden overflow-hidden">
         <BurgerButton setBurgerMenu={setBurgerMenu} burgerMenu={burgerMenu} />
         <div
           className={`absolute right-0 transform translate-x-[-800px] flex top-[80px] w-full justify-center 
           items-start h-screen bg-white border-b transition-all duration-300 border-black 
           ${burgerMenu && "translate-x-[0px]"}`}
         >
-          <NavBar mobileVersion={true} />
+          <NavBar />
         </div>
       </div>
     </div>
