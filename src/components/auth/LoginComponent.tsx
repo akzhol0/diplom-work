@@ -11,18 +11,30 @@ import EyeIcon from "../UI/icons/eye/EyeIcon";
 import Cookies from "js-cookie";
 
 function LoginComponent() {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordEye, setPasswordEye] = useState(false);
-  const [error, setError] = useState("");
-
   const { checkIfUserLogged, mainLanguage } = useContext(contextData);
+
+  const [stateForm, setStateForm] = useState({
+    login: "",
+    password: "",
+    passwordEye: false,
+    error: "",
+  });
+
   const router = useRouter();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setStateForm({ ...stateForm, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    signInWithEmailAndPassword(auth, login, password)
+    if (stateForm.login === "" || stateForm.password === "") {
+      setStateForm({ ...stateForm, error: "Пажалуйста заполните все поля" });
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, stateForm.login, stateForm.password)
       .then((userCredential) => {
         Cookies.set("userId", userCredential.user.uid);
 
@@ -30,64 +42,68 @@ function LoginComponent() {
         router.push("/profile");
       })
       .catch((err) => {
-        setError(err.code);
+        setStateForm({ ...stateForm, error: err.message });
       });
   };
 
   return (
-    <div className="w-full min-h-[600px] flex justify-center items-center">
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col items-center rounded-xl text-black"
-      >
-        <p className="text-3xl py-4">
-          {mainLanguage.loginAndRegsitration.titleLogin}
-        </p>
-        <div className="flex flex-col gap-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col items-center rounded-xl text-black"
+    >
+      <p className="text-3xl py-4">
+        {mainLanguage.loginAndRegsitration.titleLogin}
+      </p>
+      <div className="flex flex-col gap-4">
+        <input
+          className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
+          placeholder={mainLanguage.loginAndRegsitration.email}
+          type="text"
+          id="login"
+          name="login"
+          value={stateForm.login}
+          onChange={handleChange}
+        />
+        <div className="flex relative">
           <input
             className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-            placeholder={mainLanguage.loginAndRegsitration.email}
-            type="text"
-            id="login"
-            value={login}
-            onChange={(e) => setLogin(e.target.value)}
+            placeholder={mainLanguage.loginAndRegsitration.password}
+            type={stateForm.passwordEye ? "text" : "password"}
+            name="password"
+            value={stateForm.password}
+            onChange={handleChange}
           />
-          <div className="flex relative">
-            <input
-              className="w-[300px] rounded-lg ps-2 h-[60px] border-b border-1 focus:outline-0"
-              placeholder={mainLanguage.loginAndRegsitration.password}
-              type={passwordEye ? "text" : "password"}
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <div
-              onClick={() => setPasswordEye(!passwordEye)}
-              className="absolute right-4 bottom-4 cursor-pointer"
-            >
-              <EyeIcon />
-            </div>
-          </div>
-          <div className="flex flex-col gap-2">
-            <Link href="/register">
-              <p className="text-sm text-center cursor-pointer hover:underline">
-                {mainLanguage.loginAndRegsitration.labelLogin}
-              </p>
-            </Link>
-            <MyButtonDanger
-              type="submit"
-              className="bg-[#131313] border-white hover:bg-red-600 duration-300 text-white"
-            >
-              {mainLanguage.loginAndRegsitration.btnLogin}
-            </MyButtonDanger>
-            {/*<MyGoogleButton />*/}
-            <p className="text-sm text-center cursor-pointer text-red-600">
-              {error}
-            </p>
+          <div
+            onClick={() =>
+              setStateForm({
+                ...stateForm,
+                passwordEye: !stateForm.passwordEye,
+              })
+            }
+            className="absolute right-4 bottom-4 cursor-pointer"
+          >
+            <EyeIcon />
           </div>
         </div>
-      </form>
-    </div>
+        <div className="flex flex-col gap-2 text-sm ">
+          <Link href="/register">
+            <p className="text-center cursor-pointer hover:underline">
+              {mainLanguage.loginAndRegsitration.labelLogin}
+            </p>
+          </Link>
+          <MyButtonDanger
+            type="submit"
+            className="bg-[#131313] border-white hover:bg-red-600 duration-300 text-white"
+          >
+            {mainLanguage.loginAndRegsitration.btnLogin}
+          </MyButtonDanger>
+          {/*<MyGoogleButton />*/}
+          <p className="text-center cursor-pointer text-red-600">
+            {stateForm.error}
+          </p>
+        </div>
+      </div>
+    </form>
   );
 }
 

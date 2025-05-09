@@ -7,7 +7,11 @@ export const metadata: Metadata = {
 };
 
 function Login() {
-  return <LoginComponent />;
+  return (
+    <div className="min-h-[600px] flex items-center justify-center">
+      <LoginComponent />
+    </div>
+  );
 }
 
 export default Login;

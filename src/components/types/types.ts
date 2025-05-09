@@ -32,6 +32,7 @@ export type UserInfoTypes = {
   userPassword: string;
   birthdate: string;
   friends: any;
+  verified: boolean;
 };
 
 export type questionTypes = {

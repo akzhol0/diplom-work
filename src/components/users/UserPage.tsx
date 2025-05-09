@@ -18,7 +18,7 @@ type UserPageProps = {
 };
 
 const UserPage = ({ token }: UserPageProps) => {
-  const { mainLanguage, users, userInfo, auth, allUsersMessages } =
+  const { mainLanguage, users, userInfo, isAuth, allUsersMessages } =
     useContext(contextData);
   const [friendsModal, setFriendsModal] = useState(false);
   const [isFriends, setIsFriends] = useState(false);
@@ -35,8 +35,8 @@ const UserPage = ({ token }: UserPageProps) => {
       if (item.userId === token) {
         setUser(item as UserInfoTypes);
 
-        auth && checkIfTheyAreFriends();
-        auth && checkIfTheyMessagedEachOther(item);
+        isAuth && checkIfTheyAreFriends();
+        isAuth && checkIfTheyMessagedEachOther(item);
       }
     });
   };
@@ -137,7 +137,7 @@ const UserPage = ({ token }: UserPageProps) => {
                   </div>
                 </div>
                 <div className="flex gap-2 text-[16px] font-semibold mt-1">
-                  {auth &&
+                  {isAuth &&
                     (token !== userInfo.userId && !isFriends ? (
                       <div onClick={() => addFriend("add")}>
                         <MyPrimaryButton>Добавить в друзья</MyPrimaryButton>
@@ -149,7 +149,7 @@ const UserPage = ({ token }: UserPageProps) => {
                         </div>
                       )
                     ))}
-                  {auth && token !== userInfo.userId && (
+                  {isAuth && token !== userInfo.userId && (
                     <div onClick={() => setWriteModal(!writeModal)}>
                       <MyPrimaryButton>Написать</MyPrimaryButton>
                     </div>

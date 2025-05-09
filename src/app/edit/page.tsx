@@ -7,7 +7,11 @@ export const metadata: Metadata = {
 };
 
 const Page = () => {
-  return <EditPage />;
+  return (
+    <div className="flex justify-center">
+      <EditPage />
+    </div>
+  );
 };
 
 export default Page;

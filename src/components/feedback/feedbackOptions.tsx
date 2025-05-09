@@ -27,7 +27,7 @@ const FeedbackOptions = ({
     mainLanguage,
     setFeedbacks,
     feedbacks,
-    auth,
+    isAuth,
     getFeedbacks,
   } = useContext(contextData);
   const [modalVisible, setModalVisible] = useState(false);
@@ -38,7 +38,7 @@ const FeedbackOptions = ({
   }, []);
 
   const checkIfUserLiked = () => {
-    if (!auth) {
+    if (!isAuth) {
       return;
     }
 
@@ -108,7 +108,7 @@ const FeedbackOptions = ({
             {mainLanguage.feedback.delete}
           </div>
         )}
-        {auth &&
+        {isAuth &&
           (didUserLiked ? (
             <div
               onClick={() => handleLikeFunction("dislike")}

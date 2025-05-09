@@ -18,7 +18,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
   const pathname = usePathname();
 
   const {
-    auth,
+    isAuth,
     setBurgerMenu,
     setLanguageChanger,
     mainLanguage,
@@ -31,7 +31,7 @@ function NavBar({ mobileVersion }: NavBarProps) {
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
-            href={item.url === "/profile" && !auth ? "/login" : item.url}
+            href={item.url === "/profile" && !isAuth ? "/login" : item.url}
           >
             <li
               onClick={() => setBurgerMenu(false)}

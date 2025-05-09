@@ -10,7 +10,7 @@ import { db } from "@/components/firebase/config";
 import { FeedbacksTypes } from "@/components/types/types";
 
 const Feedbacks = () => {
-  const { mainLanguage, userInfo, setFeedbacks, auth, getFeedbacks } =
+  const { mainLanguage, userInfo, setFeedbacks, isAuth, getFeedbacks } =
     useContext(contextData);
 
   const [headerInput, setHeaderInput] = useState("");
@@ -21,7 +21,7 @@ const Feedbacks = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!auth) {
+    if (!isAuth) {
       setError(mainLanguage.rest.feedMessage);
       return;
     }

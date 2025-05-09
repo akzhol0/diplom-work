@@ -16,7 +16,7 @@ const ForumCommInput = ({
   item,
   setPostComments,
 }: ForumCommInputProps) => {
-  const { auth, userInfo } = useContext(contextData);
+  const { isAuth, userInfo } = useContext(contextData);
 
   const [header, setHeader] = useState("");
   const [desc, setDesc] = useState("");
@@ -24,7 +24,7 @@ const ForumCommInput = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!auth) {
+    if (!isAuth) {
       setError("Надо зарегестрироваться, чтобы создать дискуссию в форуме!");
       return;
     }

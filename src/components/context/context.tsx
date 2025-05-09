@@ -18,8 +18,8 @@ import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
 import Cookies from "js-cookie";
 
 type ContextProps = {
-  auth: boolean;
-  setAuth: (arg0: boolean) => void;
+  isAuth: boolean;
+  setIsAuth: (arg0: boolean) => void;
   burgerMenu: boolean;
   setBurgerMenu: (arg0: boolean) => void;
   checkIfUserLogged: () => void;
@@ -52,7 +52,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [users, setUsers] = useState<UserInfoTypes[]>([]);
   const [allUsersMessages, setAllUsersMessages] = useState<any>([]);
 
-  const [auth, setAuth] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
   const [burgerMenu, setBurgerMenu] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [loadedFeedbacks, setLoadedFeedbacks] = useState(false);
@@ -61,6 +61,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   const [languageChanger, setLanguageChanger] = useState("ru");
   const [mainLanguage, setMainLanguage] = useState<any>(ru);
 
+  // to get all registered users
   const getUsers = async () => {
     const q = query(collection(db, "users"));
 
@@ -70,6 +71,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     });
   };
 
+  // to get all-users feedbacks
   async function getFeedbacks() {
     setFeedbacks([]);
     setLoadedFeedbacks(false);
@@ -100,7 +102,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   ];
 
   useEffect(() => {
-    !auth && checkIfUserLogged();
+    !isAuth && checkIfUserLogged();
     !loadedFeedbacks && getFeedbacks();
     users.length === 0 && getUsers();
     allUsersMessages.length === 0 && getAllUserMessages();
@@ -128,17 +130,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     });
   };
 
-  // // verify email
-  // onAuthStateChanged(auth, (user) => {
-  //   if (user) {
-  //     if (user.emailVerified) {
-  //       console.log("Email is verified.", user);
-  //     } else {
-  //       console.log("Email not verified.", user);
-  //     }
-  //   }
-  // });
-
   const checkIfUserLogged = async () => {
     const result = Cookies.get("userId");
     // const userId = result ? JSON.parse(result) : null;
@@ -149,7 +140,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
       if (docSnap.exists()) {
         setUserInfo(docSnap.data());
-        setAuth(true);
+        setIsAuth(true);
       }
     }
   };
@@ -157,8 +148,8 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   return (
     <contextData.Provider
       value={{
-        auth,
-        setAuth,
+        isAuth,
+        setIsAuth,
         burgerMenu,
         setBurgerMenu,
         checkIfUserLogged,

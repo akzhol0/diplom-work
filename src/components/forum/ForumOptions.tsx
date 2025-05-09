@@ -28,7 +28,7 @@ const ForumOptions = ({
   getAllForumItems,
   item,
 }: ForumItemProps) => {
-  const { userInfo, auth } = useContext(contextData);
+  const { userInfo, isAuth } = useContext(contextData);
 
   const handleDeleteButton = async () => {
     await deleteDoc(doc(db, "forum", `${item.id}`));
@@ -65,7 +65,7 @@ const ForumOptions = ({
           >
             <div>Скопировать</div>
           </div>
-          {type !== "low" && auth && (
+          {type !== "low" && isAuth && (
             <>
               {user.userId === userInfo.userId && (
                 <div

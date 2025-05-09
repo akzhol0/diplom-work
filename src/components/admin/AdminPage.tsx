@@ -5,11 +5,11 @@ import { contextData } from "@/components/context/context";
 import { useRouter } from "next/navigation";
 
 const AdminPage = () => {
-  const { userInfo, auth } = useContext(contextData);
+  const { userInfo, isAuth } = useContext(contextData);
   const router = useRouter();
 
   useEffect(() => {
-    if (!auth && !userInfo) {
+    if (!isAuth && !userInfo) {
       userInfo?.role !== "admin" && router.push("/");
     }
   }, [userInfo]);

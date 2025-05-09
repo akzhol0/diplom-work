@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "@/components/context/context";
 import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import Image from "next/image";
@@ -10,13 +10,67 @@ import Link from "next/link";
 import UserFeedbacks from "@/components/feedback/UserFeedbacks";
 import AsTwiceModal from "@/components/profile/AsTwiceModal";
 import FriendsModal from "../users/FriendsModal";
+import {
+  sendEmailVerification,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth, db } from "@/components/firebase/config";
+import { doc, updateDoc } from "firebase/firestore";
 
 function ProfileComp() {
-  const { userInfo, mainLanguage, auth } = useContext(contextData);
+  const { userInfo, setUserInfo, mainLanguage, isAuth } =
+    useContext(contextData);
   const [modalTwice, setModalTwice] = useState(false);
   const [friendsModal, setFriendsModal] = useState(false);
+  auth.languageCode = "ru";
 
-  return auth ? (
+  useEffect(() => {
+    userInfo && checkIfUserVerified();
+  }, [userInfo]);
+
+  const checkIfUserVerified = () => {
+    console.log(auth, userInfo.userLogin, userInfo.userPassword);
+    signInWithEmailAndPassword(auth, userInfo.userLogin, userInfo.userPassword)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+
+        if (user.emailVerified) {
+          console.log("User verified");
+          updateFirebaseData(true);
+        } else {
+          console.log("User not verified");
+          updateFirebaseData(false);
+        }
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+      });
+  };
+
+  const updateFirebaseData = async (move: boolean) => {
+    userInfo.verified = move;
+
+    const newData = {
+      ...userInfo,
+      verified: move,
+    };
+
+    const referral = doc(db, "users", `${userInfo.userId}`);
+    await updateDoc(referral, {
+      ...newData,
+    });
+  };
+
+  const resendVerifyLetter = async () => {
+    const user = auth.currentUser;
+
+    if (user && !user.emailVerified) {
+      await sendEmailVerification(user);
+      alert("Письмо для верификаций отправлено!");
+    }
+  };
+
+  return isAuth ? (
     <div className="flex flex-col">
       <div className="flex flex-col md:flex-row gap-4 items-center ">
         <Image
@@ -52,6 +106,19 @@ function ProfileComp() {
             >
               Друзья: {userInfo.friends.length}
             </div>
+          </div>
+          <div className="flex flex-col lg:flex-row lg:gap-2">
+            <p>Почта подтверждена: {userInfo.verified ? "Да" : "Нет"}</p>
+            {!userInfo.verified && (
+              <>
+                <div
+                  className="underline cursor-pointer"
+                  onClick={() => resendVerifyLetter()}
+                >
+                  Отправить письмо для верификаций
+                </div>
+              </>
+            )}
           </div>
           <div className="flex flex-col lg:flex-row gap-2 my-2">
             <Link href="/edit">

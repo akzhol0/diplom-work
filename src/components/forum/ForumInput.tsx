@@ -18,7 +18,7 @@ const ForumInput = ({
   getAllForumItems,
   allForumItems,
 }: ForumInputProps) => {
-  const { userInfo, auth } = useContext(contextData);
+  const { userInfo, isAuth } = useContext(contextData);
 
   const [header, setHeader] = useState("");
   const [desc, setDesc] = useState("");
@@ -26,7 +26,7 @@ const ForumInput = ({
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!auth) {
+    if (!isAuth) {
       setError("Надо зарегестрироваться, чтобы создать дискуссию в форуме!");
       return;
     }

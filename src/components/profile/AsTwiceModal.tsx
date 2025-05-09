@@ -10,7 +10,7 @@ type AsTwiceModalProps = {
 };
 
 const AsTwiceModal = ({ setModalTwice }: AsTwiceModalProps) => {
-  const { setAuth, setUserInfo } = useContext(contextData);
+  const { setIsAuth, setUserInfo } = useContext(contextData);
   const router = useRouter();
   const { mainLanguage } = useContext(contextData);
 
@@ -34,7 +34,7 @@ const AsTwiceModal = ({ setModalTwice }: AsTwiceModalProps) => {
           </button>
           <button
             onClick={() => {
-              setAuth(false);
+              setIsAuth(false);
               Cookies.remove("userId");
               setUserInfo({});
               router.push("/");
