@@ -20,7 +20,7 @@ function ServicesMainPage() {
       <div className="flex flex-col gap-10 mt-5">
         <ServiceCard
           from="mainPage"
-          item={mainLanguage.services.serviceCards[0]}
+          item={mainLanguage.services.serviceCards[1]}
         />
       </div>
     </div>

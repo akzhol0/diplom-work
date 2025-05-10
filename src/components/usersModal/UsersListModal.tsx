@@ -16,26 +16,27 @@ const UsersListModal = () => {
       <OpenModal setIsUserListModal={setIsUserListModal} />
       {isUserListModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 px-2">
-          <div className="bg-white p-6 rounded-2xl shadow-xl w-96 text-center flex flex-col gap-2">
-            <p className={"text-lg"}>Все пользователи:</p>
-            {users.map((item: UserInfoTypes) => (
-              <div className="flex items-center">
-                <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
-                  <Image src={item.image} alt="pfp" width={60} height={60} />
-                </div>
-                <div className="ps-2 text-sm">
-                  <div className="flex flex-col">
-                    <Link href={`/users/${item.userId}`}>
-                      <p className="flex text-start overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
-                        {item.userName}
-                      </p>
-                    </Link>
-                    <p className="text-start">{item.birthdate}</p>
+          <div className="bg-white p-6 rounded-2xl shadow-xl w-96">
+            <p className="text-lg text-center mb-2">Все пользователи:</p>
+            <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto">
+              {users.map((item: UserInfoTypes) => (
+                <div className="flex items-center ">
+                  <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
+                    <Image src={item.image} alt="pfp" width={60} height={60} />
+                  </div>
+                  <div className="ps-2 text-sm">
+                    <div className="flex flex-col">
+                      <Link href={`/users/${item.userId}`}>
+                        <p className="flex text-start overflow-hidden hover:underline cursor-pointer whitespace-nowrap">
+                          {item.userName}
+                        </p>
+                      </Link>
+                      <p className="text-start">{item.birthdate}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-            ...
+              ))}
+            </div>
             <div className="flex justify-center space-x-4">
               <button
                 onClick={() => {

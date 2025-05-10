@@ -29,16 +29,13 @@ function ProfileComp() {
   }, [userInfo]);
 
   const checkIfUserVerified = () => {
-    console.log(auth, userInfo.userLogin, userInfo.userPassword);
     signInWithEmailAndPassword(auth, userInfo.userLogin, userInfo.userPassword)
       .then(async (userCredential) => {
         const user = userCredential.user;
 
         if (user.emailVerified) {
-          console.log("User verified");
           updateFirebaseData(true);
         } else {
-          console.log("User not verified");
           updateFirebaseData(false);
         }
       })

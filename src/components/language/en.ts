@@ -22,7 +22,6 @@ export const en = {
     feedsUser: "Reviews",
     user: "User",
   },
-
   mainPage: {
     codeDevText:
       "Test site made for a diploma thesis, developer Tursynkhan Akzhol, 4th year student at ESIL University.",
@@ -31,7 +30,7 @@ export const en = {
     parallax: {
       title: "Decision Support System for Information Security",
       small:
-        "A specialized information system that helps analyze threats, identify vulnerabilities, and take measures to ensure the security of data and information resources of the organization.",
+        "A decision support system designed to individually assist the user and provide the most suitable recommendation for solving problems in the field of information security, based on a user questionnaire or data analysis.",
     },
     title3: "Why is website information security important?",
     small3:
@@ -218,7 +217,7 @@ export const en = {
         url: "/projects",
       },
       {
-        title: "Services",
+        title: "Systems",
         url: "/services",
       },
       {
@@ -347,7 +346,7 @@ export const en = {
     btn: "Log Out",
   },
   services: {
-    title: "Services",
+    title: "System",
     small1:
       "We manage the entire project development cycle and adhere to the product approach in our work. ",
     small2:

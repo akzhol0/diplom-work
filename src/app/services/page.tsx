@@ -5,7 +5,7 @@ import UsersListModal from "@/components/usersModal/UsersListModal";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Услуги",
+  title: "Системы",
 };
 
 function Services() {
