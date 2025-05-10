@@ -217,16 +217,16 @@ export const en = {
         url: "/projects",
       },
       {
-        title: "Systems",
-        url: "/services",
+        title: "Feedbacks",
+        url: "/feedback",
       },
       {
         title: "Profile",
         url: "/profile",
       },
       {
-        title: "Feedbacks",
-        url: "/feedback",
+        title: "Systems",
+        url: "/services",
       },
     ],
     btn: "Leave a request",

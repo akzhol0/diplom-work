@@ -20,7 +20,7 @@ const AllFeedbacks = () => {
       <p className="text-center text-3xl">
         {mainLanguage.feedback.allFeedbacks}
       </p>
-      <div className="w-full md:w-[80%] flex justify-center">
+      <div className="w-full flex justify-center">
         {loadedFeedbacks ? (
           <div className="w-full">
             {feedbacks.map((feedback: FeedbacksTypes, index: number) => (

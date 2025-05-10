@@ -19,8 +19,8 @@ const UsersListModal = () => {
           <div className="bg-white p-6 rounded-2xl shadow-xl w-96">
             <p className="text-lg text-center mb-2">Все пользователи:</p>
             <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto">
-              {users.map((item: UserInfoTypes) => (
-                <div className="flex items-center ">
+              {users.map((item: UserInfoTypes, index: number) => (
+                <div key={index} className="flex items-center ">
                   <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
                     <Image src={item.image} alt="pfp" width={60} height={60} />
                   </div>

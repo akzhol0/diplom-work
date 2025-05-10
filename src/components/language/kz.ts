@@ -221,16 +221,16 @@ export const kz = {
         url: "/projects",
       },
       {
-        title: "Жүйелер",
-        url: "/services",
+        title: "Пікірлер",
+        url: "/feedback",
       },
       {
         title: "Профиль",
         url: "/profile",
       },
       {
-        title: "Пікірлер",
-        url: "/feedback",
+        title: "Жүйелер",
+        url: "/services",
       },
     ],
     btn: "Өтініш қалдыру",

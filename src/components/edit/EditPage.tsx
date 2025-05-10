@@ -91,14 +91,14 @@ const EditPage = () => {
           <select
             value={stateForm.gender}
             onChange={(e) =>
-              setStateForm({ ...stateForm, birthdate: e.target.value })
+              setStateForm({ ...stateForm, gender: e.target.value })
             }
             className="focus:outline-0"
             name="gender"
             id="gender-select"
           >
             {mainLanguage.loginAndRegsitration.genders.map((item: any) => (
-              <option key={item.local} value={item.local}>
+              <option key={item.local} value={item.ru}>
                 {item.local}
               </option>
             ))}
