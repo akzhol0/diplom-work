@@ -89,12 +89,21 @@ function ProfileComp() {
           <p>
             {mainLanguage.profile.email}: {userInfo.userLogin}
           </p>
-          <p>
-            {mainLanguage.profile.role}:{" "}
-            {userInfo.role === "user"
-              ? "Обычный пользователь"
-              : "Администратор"}
-          </p>
+          <div className="flex gap-2">
+            <p>
+              {mainLanguage.profile.role}:{" "}
+              {userInfo.role === "admin"
+                ? "Администратор"
+                : "Обычный пользователь"}
+            </p>
+            <p>
+              {userInfo.role === "admin" && (
+                <Link href="/admin">
+                  <p className="underline">Страница админа</p>
+                </Link>
+              )}
+            </p>
+          </div>
           <p>Дата рождения: {userInfo.birthdate}</p>
           <div className="flex">
             <div
