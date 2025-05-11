@@ -1,5 +1,3 @@
-"use client";
-
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 import LoadingUi from "@/components/UI/my-loading/LoadingUI";
 import { useEffect, useState } from "react";
@@ -9,9 +7,33 @@ type PasswordResultProps = {
   setResults: (arg0: boolean) => void;
 };
 
+const commonPasswords = [
+  "123456",
+  "123456789",
+  "qwerty",
+  "password",
+  "111111",
+  "123123",
+  "admin",
+  "abc123",
+  "iloveyou",
+  "1234",
+  "000000",
+  "password1",
+  "qwerty123",
+  "1q2w3e4r",
+  "asdfgh",
+  "zaq12wsx",
+  "letmein",
+  "welcome",
+];
+
 type Strength = "weak" | "medium" | "strong";
 
 const getStrength = (password: string): Strength => {
+  const normalized = password.toLowerCase();
+  const isCommonPassword = commonPasswords.includes(normalized);
+
   const length = password.length;
   const hasUpper = /[A-Z]/.test(password);
   const hasLower = /[a-z]/.test(password);
@@ -22,6 +44,7 @@ const getStrength = (password: string): Strength => {
     Boolean,
   ).length;
 
+  if (isCommonPassword) return "weak";
   if (length >= 12 && score === 4) return "strong";
   if (length >= 8 && score >= 2) return "medium";
   return "weak";
@@ -43,7 +66,14 @@ const getRecommendations = (password: string): string[] => {
 };
 
 const PasswordResult = ({ password, setResults }: PasswordResultProps) => {
-  if (!password) return null;
+  if (password === "") return null;
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoaded(true);
+    }, 3000);
+  }, []);
 
   const strength = getStrength(password);
   const recommendations = getRecommendations(password);
@@ -53,33 +83,48 @@ const PasswordResult = ({ password, setResults }: PasswordResultProps) => {
       label: "Слишком простой",
       bar: "w-[30%]",
       bg: "from-red-400 to-red-600",
+      description:
+        "Ваш пароль довольно уязвим: он либо короткий, либо содержит только простые символы. Такой пароль легко подобрать с помощью автоматических алгоритмов. Рекомендуется добавить заглавные буквы, цифры и символы, а также увеличить длину до 12+ символов. Это повысит стойкость к взлому и защитит ваши личные данные.",
     },
     medium: {
       label: "Умеренно надёжный",
       bar: "w-[65%]",
       bg: "from-yellow-300 to-yellow-500",
+      description:
+        "Пароль обладает базовым уровнем защиты. Он уже содержит некоторые разнообразные символы, но может быть уязвим для более продвинутых атак. Чтобы повысить устойчивость, желательно сделать его длиннее и добавить как минимум один специальный символ. Такой подход значительно усложнит задачу злоумышленникам.",
     },
     strong: {
       label: "Надёжный и сложный",
       bar: "w-[100%]",
       bg: "from-emerald-400 to-green-600",
+      description:
+        "Отличный выбор! Ваш пароль длинный и содержит разнообразные символы, что делает его стойким ко многим типам атак — от перебора до словарных методов. Тем не менее, не используйте его повторно на разных сайтах. Использование менеджера паролей также остаётся хорошей практикой.",
     },
   };
 
-  return (
-    <div className="relative mt-6 p-5 rounded-2xl bg-white border shadow-lg max-w-md w-full overflow-hidden group transition-all">
-      <div className="absolute -top-5 -right-5 w-32 h-32 bg-gradient-to-br from-blue-100 to-transparent rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition duration-500"></div>
-      <h2 className="text-xl font-semibold text-gray-800 mb-3 animate-fade-in">
+  return loaded ? (
+    <div className="w-full lg:w-[60%] space-y-4 p-5 rounded-xl border">
+      <p className="text-2xl font-semibold text-gray-800 animate-fade-in">
         {strengthData[strength].label}
-      </h2>
-      <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden mb-3">
+      </p>
+      <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
         <div
           className={`h-full rounded-full bg-gradient-to-r ${strengthData[strength].bg} ${strengthData[strength].bar} transition-all duration-500`}
         ></div>
       </div>
+      <p className="text-sm text-gray-700 animate-fade-in">
+        {strengthData[strength].description}
+      </p>
+      {commonPasswords.includes(password.toLowerCase()) && (
+        <div className="mt-2 p-3 text-sm text-red-600 bg-red-100 rounded-xl animate-fade-in">
+          Этот пароль — <b>слишком популярный</b> и легко угадывается. Даже при
+          наличии цифр или символов он остаётся уязвимым. Используйте уникальную
+          фразу, не встречающуюся в общедоступных списках.
+        </div>
+      )}
       {strength !== "strong" && (
         <div className="text-sm text-gray-700 animate-fade-in">
-          <p className="font-medium mb-1">Как усилить пароль:</p>
+          <p className="font-medium mb-2">Как усилить пароль:</p>
           <ul className="ml-4 list-disc space-y-1">
             {recommendations.map((tip, i) => (
               <li key={i}>{tip}</li>
@@ -87,7 +132,7 @@ const PasswordResult = ({ password, setResults }: PasswordResultProps) => {
           </ul>
         </div>
       )}
-      <div className="text-xs text-gray-500 mt-4 pt-2 border-t animate-fade-in">
+      <div className="text-xs text-gray-500 pt-2 border-t animate-fade-in">
         Мы не сохраняем и не передаём введённые данные. Проверка происходит
         прямо в вашем браузере.
       </div>
@@ -95,6 +140,8 @@ const PasswordResult = ({ password, setResults }: PasswordResultProps) => {
         Назад
       </MyDangerButton>
     </div>
+  ) : (
+    <LoadingUi />
   );
 };
 

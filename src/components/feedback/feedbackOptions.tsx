@@ -74,6 +74,10 @@ const FeedbackOptions = ({
     getFeedbacks();
   };
 
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(feedback.body);
+  };
+
   return (
     <div
       onMouseEnter={() => setModalVisible(true)}
@@ -125,7 +129,10 @@ const FeedbackOptions = ({
             </div>
           ))}
         <div
-          onClick={() => setModalVisible(false)}
+          onClick={() => {
+            setModalVisible(false);
+            handleCopy();
+          }}
           className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
         >
           <div>{mainLanguage.rest.copy}</div>

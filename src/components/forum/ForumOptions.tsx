@@ -35,6 +35,10 @@ const ForumOptions = ({
     getAllForumItems();
   };
 
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(item.description);
+  };
+
   return (
     <div
       onMouseEnter={() => setForumOptions(true)}
@@ -60,7 +64,10 @@ const ForumOptions = ({
             <div>Пользователь</div>
           </Link>
           <div
-            onClick={() => setForumOptions(false)}
+            onClick={() => {
+              setForumOptions(false);
+              handleCopy();
+            }}
             className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
           >
             <div>Скопировать</div>

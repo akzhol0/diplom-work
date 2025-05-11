@@ -49,7 +49,9 @@ const Password = () => {
   ) : (
     <div>
       <h1 className="text-center text-3xl font-semibold my-4">Результаты</h1>
-      <PasswordResult setResults={setResults} password={passwordInput} />
+      <div className="flex justify-center">
+        <PasswordResult setResults={setResults} password={passwordInput} />
+      </div>
     </div>
   );
 };
