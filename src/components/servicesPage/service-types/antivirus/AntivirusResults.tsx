@@ -64,7 +64,7 @@ const AntivirusResults = ({ answers, setNextStage }: AntivirusResultsProps) => {
       </p>
       {finish ? (
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="h-auto xl:min-h-[600px] w-full lg:w-[30%] flex justify-center items-center border rounded-lg overflow-hidden">
+          <div className="h-auto animate-fade-in xl:min-h-[600px] w-full lg:w-[30%] flex justify-center items-center border rounded-lg overflow-hidden">
             <Image
               width={500}
               height={600}
@@ -72,16 +72,16 @@ const AntivirusResults = ({ answers, setNextStage }: AntivirusResultsProps) => {
               alt={mainLanguage.antivirusDataTypes[pickedItemIndex].title}
             />
           </div>
-          <div className="w-full lg:w-[70%] flex flex-col justify-between p-2 md:p-4 lg:p-8">
+          <div className="w-full lg:w-[70%] flex flex-col justify-between p-2 md:p-4 lg:p-8 animate-fade-in">
             <div className="">
-              <p className="text-3xl font-semibold">
+              <p className="text-3xl font-semibold animate-fade-in">
                 {mainLanguage.antivirusDataTypes[pickedItemIndex].title}
               </p>
-              <p className="pt-2 text-md lg:text-lg">
+              <p className="pt-2 text-md lg:text-lg animate-fade-in">
                 {mainLanguage.antivirusDataTypes[pickedItemIndex].reason}
               </p>
             </div>
-            <div className="w-full flex items-center mt-4 gap-2">
+            <div className="w-full flex items-center mt-4 gap-2 animate-fade-in">
               <div className="w-full" onClick={() => setNextStage(true)}>
                 <MyDangerButton className="w-full">Назад</MyDangerButton>
               </div>

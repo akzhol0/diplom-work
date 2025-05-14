@@ -12,7 +12,7 @@ const SingleItemRiskPage = ({
   userAnswerCounter,
 }: SingleItemRiskPageProps) => {
   return (
-    <div className="flex justify-between mt-2 border-b py-1 px-2 rounded-xl">
+    <div className="lg:w-4/5 flex justify-between mt-2 border-b py-2 px-2 rounded-xl">
       <p>
         {item.id}. {item.question}
       </p>

@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import { contextData } from "@/components/context/context";
+import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 
 type RiskResultProps = {
   result: string;
+  setNextPage: (arg0: boolean) => void;
 };
 
-const RiskResult = ({ result }: RiskResultProps) => {
+const RiskResult = ({ result, setNextPage }: RiskResultProps) => {
   const { mainLanguage } = useContext(contextData);
   const [loaded, setLoaded] = useState(false);
   const [resultQuiver, setResultQuiver] = useState<any>();
@@ -33,20 +35,28 @@ const RiskResult = ({ result }: RiskResultProps) => {
       </p>
       {resultQuiver && (
         <div className="mt-8">
-          <p className="text-xl md:text-2xl font-medium">
+          <p className="text-xl md:text-2xl font-medium animate-fade-in">
             {resultQuiver.title}
           </p>
-          <p className="text-md md:text-justify md:text-lg mt-4 indent-10">
+          <p className="text-md md:text-justify md:text-lg mt-4 indent-10 animate-fade-in">
             {resultQuiver.description}
           </p>
           <ul className="gap-2 text-lg mt-4">
-            <li className="font-medium text-xl mb-1">Рекомендаций:</li>
+            <li className="font-medium text-xl mb-1 animate-fade-in">
+              Рекомендаций:
+            </li>
             {resultQuiver.recommendations.map((item: string, index: number) => (
-              <li className="text-sm md:text-lg" key={index}>
+              <li className="text-sm md:text-lg animate-fade-in" key={index}>
                 {index + 1}. {item}
               </li>
             ))}
           </ul>
+          <MyDangerButton
+            className="mt-2 px-10"
+            onClick={() => setNextPage(false)}
+          >
+            Назад
+          </MyDangerButton>
         </div>
       )}
     </div>

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const Page = () => {
   return (
-    <div className="w-full min-h-[800px] flex justify-center">
+    <div className="w-full min-h-[600px] flex justify-center">
       <Antivirus />
     </div>
   );

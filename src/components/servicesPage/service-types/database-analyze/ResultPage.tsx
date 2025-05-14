@@ -6,9 +6,10 @@ import Filter from "@/components/servicesPage/service-types/database-analyze/Fil
 type ResultPageProps = {
   userDecision: string;
   data: any;
+  setResultPage: (args: boolean) => void;
 };
 
-const ResultPage = ({ userDecision, data }: ResultPageProps) => {
+const ResultPage = ({ userDecision, data, setResultPage }: ResultPageProps) => {
   const [databaseUsers, setDatabaseUsers] = useState<any>([]);
   const [loaded, setLoaded] = useState(false);
 
@@ -38,7 +39,11 @@ const ResultPage = ({ userDecision, data }: ResultPageProps) => {
 
   return (
     <div className="flex flex-col items-center">
-      <Filter users={databaseUsers} loaded={loaded} />
+      <Filter
+        setResultPage={setResultPage}
+        users={databaseUsers}
+        loaded={loaded}
+      />
     </div>
   );
 };

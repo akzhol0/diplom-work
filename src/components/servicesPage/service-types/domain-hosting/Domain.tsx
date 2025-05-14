@@ -8,6 +8,7 @@ import Hosting from "@/components/servicesPage/service-types/domain-hosting/Host
 const Domain = () => {
   const [domainName, setDomainName] = useState("");
   const [nextStage, setNextStage] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
@@ -16,6 +17,7 @@ const Domain = () => {
     e.preventDefault();
     setErrorMessage("");
     setSuccessMessage("");
+    setLoading(true);
 
     if (domainName === "" || domainName.length < 3) {
       setErrorMessage("Доменное имя слишком короткое!");
@@ -36,7 +38,9 @@ const Domain = () => {
 
       if (data.WhoisRecord?.dataError === "MISSING_WHOIS_DATA") {
         setSuccessMessage("Домен доступен");
+        setLoading(false);
       } else {
+        setLoading(false);
         setErrorMessage(
           "Домен уже занят или надо использовать домены верхнего уровня (.com .org .net и т.д)",
         );
@@ -73,8 +77,16 @@ const Domain = () => {
         </MyDangerButton>
       </form>
       <div className="py-2">
-        <p className="text-red-600 text-sm text-center">{errorMessage}</p>
-        <p className="text-green-600 text-sm text-center">{successMessage}</p>
+        {!loading ? (
+          <div>
+            <p className="text-red-600 text-sm text-center">{errorMessage}</p>
+            <p className="text-green-600 text-sm text-center">
+              {successMessage}
+            </p>
+          </div>
+        ) : (
+          <p>Загрузка...</p>
+        )}
       </div>
       <div
         onClick={() => {

@@ -115,9 +115,8 @@ const AntiOptions = () => {
           className="w-full flex flex-col items-center"
           onSubmit={handleSubmit}
         >
-          <p className="text-[14px] lg:text-[25px] font-semibold text-center mb-4">
-            Нужно ответить на все вопросы чтобы выявить <br /> наилучший
-            антивирус именно для вас
+          <p className="text-xl lg:text-3xl font-semibold text-center mb-4">
+            Выбор антивируса
           </p>
           <SingleItem
             item={mainLanguage.antivirus[0]}

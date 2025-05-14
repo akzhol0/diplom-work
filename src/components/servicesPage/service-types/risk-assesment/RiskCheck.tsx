@@ -33,14 +33,14 @@ const RiskCheck = () => {
 
   return nextPage ? (
     <div>
-      <RiskResult result={result} />
+      <RiskResult setNextPage={setNextPage} result={result} />
     </div>
   ) : (
     <div>
-      <p className="text-2xl md:text-3xl font-semibold text-center border-t py-4 mt-4 border-gray-600">
+      <p className="text-2xl md:text-3xl font-semibold text-center py-2">
         Оценка уровня безопасности
       </p>
-      <div className="flex flex-col">
+      <div className="flex flex-col items-center">
         {mainLanguage.riskAssessment.riskQuestions.map(
           (item: any, index: number) => (
             <SingleItemRiskPage

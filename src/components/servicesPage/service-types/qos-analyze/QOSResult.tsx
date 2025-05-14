@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import axios from "axios";
+import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 
 type QOSResultProps = {
   finalLoaded: boolean;
@@ -54,7 +55,7 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
         Анализ данных браузера:
       </p>
       {finalLoaded ? (
-        <div className="rounded-xl mt-4 lg:mt-10 max-w-full lg:max-w-[80%] border p-2 md:p-8 mx-auto">
+        <div className="animate-fade-in rounded-xl mt-4 lg:mt-10 max-w-full lg:max-w-[80%] border p-2 md:p-8 mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 text-sm">
             <div>
               <span className="font-semibold">ОС:</span> {data.platform}
@@ -232,6 +233,14 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
               {apiSupport.WebShare ? "Да" : "Нет"}
             </div>
           </div>
+          {/*<div className="flex justify-center">*/}
+          {/*  <MyDangerButton*/}
+          {/*    onClick={() => setFinalLoaded(false)}*/}
+          {/*    className="w-[200px] mt-6"*/}
+          {/*  >*/}
+          {/*    Назад*/}
+          {/*  </MyDangerButton>*/}
+          {/*</div>*/}
         </div>
       ) : (
         <LoadingUI />

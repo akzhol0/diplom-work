@@ -43,7 +43,11 @@ const Analyze = () => {
 
   return resultPage ? (
     <div>
-      <ResultPage data={data} userDecision={userDecision} />
+      <ResultPage
+        setResultPage={setResultPage}
+        data={data}
+        userDecision={userDecision}
+      />
     </div>
   ) : (
     <div className="flex flex-col items-center">
@@ -59,9 +63,9 @@ const Analyze = () => {
         </div>
         <div className="w-[350px] flex flex-col justify-between gap-4 lg:px-8 border-y py-8 lg:py-0 lg:border-x lg:border-y-0">
           <p>Продолжить с готовой базой данных, для примера</p>
-          <div className="w-full flex justify-between">
+          <div className="flex justify-between gap-2">
             <a target="_blank" href="/download/users.json">
-              <MyDangerButton className="py-0 whitespace-nowrap">
+              <MyDangerButton className="whitespace-nowrap">
                 Пример
               </MyDangerButton>
             </a>

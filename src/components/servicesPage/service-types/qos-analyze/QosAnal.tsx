@@ -131,7 +131,7 @@ const QOSAnal = () => {
   }, []);
 
   return !finalStage ? (
-    <div>
+    <div className="animate-fade-in">
       <h1 className="text-2xl md:text-3xl font-semibold mb-4 text-center">
         Данные браузера
       </h1>

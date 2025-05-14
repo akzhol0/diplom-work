@@ -59,7 +59,7 @@ const HostingResults = ({ results, setResultsPage }: HostingResultsProps) => {
     <div>
       {loaded ? (
         <div className="flex flex-col md:flex-row justify-between">
-          <div className="h-auto xl:min-h-[600px] w-full lg:w-[30%] flex justify-center items-center border rounded-lg overflow-hidden">
+          <div className="animate-fade-in h-auto xl:min-h-[600px] w-full lg:w-[30%] flex justify-center items-center border rounded-lg overflow-hidden">
             <Image
               width={500}
               height={600}
@@ -69,19 +69,19 @@ const HostingResults = ({ results, setResultsPage }: HostingResultsProps) => {
           </div>
           <div className="w-full lg:w-[70%] flex flex-col justify-between p-2 md:p-4 lg:p-8">
             <div className="">
-              <p className="text-3xl font-semibold">
+              <p className="text-3xl font-semibold animate-fade-in">
                 {mainLanguage.hostingServiceData[pickedItemIndex].title}
               </p>
-              <p className="pt-2 text-md lg:text-lg">
+              <p className="pt-2 text-md lg:text-lg animate-fade-in">
                 {mainLanguage.hostingServiceData[pickedItemIndex].reason}
               </p>
             </div>
-            <div className="w-full flex items-center mt-4 gap-2">
+            <div className="w-full flex items-center mt-4 gap-2 animate-fade-in">
               <div className="w-full" onClick={() => setResultsPage(false)}>
                 <MyDangerButton className="w-full">Назад</MyDangerButton>
               </div>
               <a
-                className="w-full"
+                className="w-full animate-fade-in"
                 href={`https://www.google.com/search?q=${mainLanguage.hostingServiceData[pickedItemIndex].title}`}
                 target="_blank"
               >

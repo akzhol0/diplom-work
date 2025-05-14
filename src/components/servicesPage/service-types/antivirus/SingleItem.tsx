@@ -9,7 +9,7 @@ type SingleItemProps = {
 
 const SingleItem = ({ state, handleChange, item }: SingleItemProps) => {
   return (
-    <div className="w-full md:w-4/5 min-h-12 rounded-xl border-b flex justify-between items-center mb-4 md:mb-2 lg:mb-0">
+    <div className="w-full md:w-4/5 py-2 rounded-xl border-b flex justify-between items-center mb-4 md:mb-2 lg:mb-0">
       <p className="ps-2">
         {item.id}. {item.question}
       </p>

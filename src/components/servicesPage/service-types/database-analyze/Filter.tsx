@@ -1,9 +1,11 @@
 import React from "react";
 import LoadingUi from "@/components/UI/my-loading/LoadingUI";
+import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 
 type FilterProps = {
   users: any;
   loaded: boolean;
+  setResultPage: (args: boolean) => void;
 };
 
 const getStats = (users: any[]) => {
@@ -174,11 +176,11 @@ const getStats = (users: any[]) => {
   };
 };
 
-const Filter = ({ users, loaded }: FilterProps) => {
+const Filter = ({ users, loaded, setResultPage }: FilterProps) => {
   const stats = getStats(users);
 
   return loaded ? (
-    <div className="w-full lg:w-[80%] mx-auto p-2 lg:p-8 bg-white border rounded-lg space-y-2">
+    <div className="w-full lg:w-[80%] mx-auto p-2 lg:p-8 bg-white border rounded-lg space-y-2 animate-fade-in">
       <p className="text-3xl font-bold text-gray-900 text-center mb-8">
         Статистика пользователей
       </p>
@@ -308,6 +310,14 @@ const Filter = ({ users, loaded }: FilterProps) => {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="flex justify-center">
+        <MyDangerButton
+          onClick={() => setResultPage(false)}
+          className="w-[200px] mt-4"
+        >
+          Назад
+        </MyDangerButton>
       </div>
     </div>
   ) : (
