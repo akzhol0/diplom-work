@@ -18,8 +18,7 @@ import { auth, db } from "@/components/firebase/config";
 import { doc, updateDoc } from "firebase/firestore";
 
 function ProfileComp() {
-  const { userInfo, setUserInfo, mainLanguage, isAuth } =
-    useContext(contextData);
+  const { userInfo, mainLanguage, isAuth } = useContext(contextData);
   const [modalTwice, setModalTwice] = useState(false);
   const [friendsModal, setFriendsModal] = useState(false);
   auth.languageCode = "ru";

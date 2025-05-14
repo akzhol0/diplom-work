@@ -132,7 +132,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
 
   const checkIfUserLogged = async () => {
     const result = Cookies.get("userId");
-    // const userId = result ? JSON.parse(result) : null;
 
     if (result !== undefined) {
       const docRef = doc(db, "users", result);
