@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@mistralai/mistralai": "^1.6.0",
     "@next/env": "^15.0.2",
     "axios": "^1.8.4",
     "firebase": "^11.0.1",
