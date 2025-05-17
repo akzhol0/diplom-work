@@ -17,7 +17,7 @@ function ServiceComponent() {
 
   return (
     <div className="w-full min-h-[800px] flex justify-center">
-      <div className="w-[95%] lg:w-[80%] flex flex-col">
+      <div className="w-[95%] lg:w-[70%] flex flex-col">
         <div className="flex flex-col gap-6 mb-10">
           <p className="text-[50px] md:text-[60px] font-bold">
             {mainLanguage.services.title}

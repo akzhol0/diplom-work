@@ -1,6 +1,6 @@
 import React from "react";
 
-const Reservnoezaibalcopyrovanie = () => {
+const ReserveComp = () => {
   return (
     <div>
       <p className="text-3xl font-semibold text-center">
@@ -10,4 +10,4 @@ const Reservnoezaibalcopyrovanie = () => {
   );
 };
 
-export default Reservnoezaibalcopyrovanie;
+export default ReserveComp;
