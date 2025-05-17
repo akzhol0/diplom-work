@@ -35,6 +35,7 @@ const AiBot = () => {
 
     const apiKey = process.env.NEXT_PUBLIC_AI_API;
     const client = new Mistral({ apiKey });
+    console.log(apiKey);
 
     try {
       const chatResponse = await client.chat.complete({
@@ -58,6 +59,7 @@ const AiBot = () => {
           content: "Произошла ошибка, пажалуйста попробуйте еще раз!",
         },
       ]);
+      setLoading(false);
     }
   };
 
