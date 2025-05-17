@@ -36,11 +36,6 @@ const AiBot = () => {
     const apiKey = process.env.NEXT_PUBLIC_AI_API;
     const client = new Mistral({ apiKey });
 
-    console.log(
-      process.env.NEXT_PUBLIC_BASE_URL,
-      process.env.NEXT_PUBLIC_AI_API,
-    );
-
     try {
       const chatResponse = await client.chat.complete({
         model: "mistral-large-latest",

@@ -24,7 +24,7 @@ const Domain = () => {
       return;
     }
 
-    const apiKey = "at_4PwIoJsjr31Zev3lXo9D1dbJEIanI";
+    const apiKey = process.env.NEXT_PUBLIC_WHOIS_API;
     const url = `https://www.whoisxmlapi.com/whoisserver/WhoisService?apiKey=${apiKey}&domainName=${domainName}&outputFormat=JSON`;
 
     try {
