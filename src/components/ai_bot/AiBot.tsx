@@ -28,6 +28,7 @@ const AiBot = () => {
 
   const handleInputChange = async () => {
     if (!input.trim()) return;
+    if (loading) return;
     setLoading(true);
 
     setMessages((prev: any) => [...prev, { role: "user", content: input }]);
