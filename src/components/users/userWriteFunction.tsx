@@ -94,31 +94,36 @@ const UserWriteFunction = ({
             <h2 className="text-md font-semibold">{receivingUser.userName}</h2>
           </div>
         </div>
-        <div className="flex flex-col h-[500px] overflow-y-auto md:px-4 mb-4">
+        <div className="flex flex-col py-4 h-[500px] overflow-y-auto md:px-4 mb-4 space-y-1 scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100">
           {messages.length !== 0 ? (
             messages
-              .sort((a: any, b: any) => {
-                a.key - b.key;
-              })
-              .map((item: any, index: number) => (
-                <div
-                  className={`p-2 mt-2 bg-gray-100 rounded-lg ${item.senderId === sendingUser.userId ? "self-end" : "self-start"} `}
-                  key={index}
-                >
-                  <div>
-                    <div>
-                      {item.senderId === sendingUser.userId ? (
-                        <p>{sendingUser.userName}:</p>
-                      ) : (
-                        <p>{receivingUser.userName}:</p>
-                      )}
+              .sort((a: any, b: any) => a.key - b.key)
+              .map((item: any, index: number) => {
+                const isSender = item.senderId === sendingUser.userId;
+
+                return (
+                  <div
+                    key={index}
+                    className={`flex flex-col max-w-[75%] ${
+                      isSender
+                        ? "self-end items-end animate-fade-in-message"
+                        : "self-start items-start animate-fade-in-message"
+                    }`}
+                  >
+                    <div
+                      className={`relative px-4 py-2 rounded-2xl shadow-md text-sm ${
+                        isSender
+                          ? "bg-blue-500 text-white rounded-br-none"
+                          : "bg-gray-200 text-gray-900 rounded-bl-none"
+                      }`}
+                    >
+                      <p className="break-words">{item.message}</p>
                     </div>
-                    <p>{item.message}</p>
                   </div>
-                </div>
-              ))
+                );
+              })
           ) : (
-            <div className="h-full text-lg flex justify-center items-center">
+            <div className="h-full text-lg flex justify-center items-center text-gray-400">
               <p>Пусто</p>
             </div>
           )}

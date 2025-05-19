@@ -64,21 +64,21 @@ const AiBot = () => {
   };
 
   return (
-    <div className="w-full min-h-[600px] sm:min-h-[700px] bg-white text-gray-800 flex flex-col">
-      <header className="w-full p-4 border-b-2 rounded-xl text-lg whitespace-nowrap sm:text-2xl font-semibold text-center">
+    <div className="w-full h-[700px] bg-white text-gray-800 flex flex-col">
+      <header className="w-full p-4 border-b rounded-lg border-gray-800 text-lg whitespace-nowrap sm:text-2xl font-semibold text-center">
         Искуственный Интеллект - Brooklyn
       </header>
       <main
         ref={chatRef}
-        className="flex-1 flex flex-col overflow-y-auto p-2 sm:p-6 space-y-4 max-h-[600px] sm:max-h-[700px]"
+        className="flex-1 flex flex-col overflow-y-auto p-0 py-4 sm:p-6 space-y-4 h-[700px] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100"
       >
         {messages.map((msg: any, index: any) => (
           <div
             key={index}
             className={`w-fit text-sm md:text-lg max-w-[80%] px-4 py-3 rounded-xl whitespace-pre-wrap ${
               msg.role === "user"
-                ? "ml-auto bg-blue-100 font-normal"
-                : "mr-auto bg-gray-100 font-normal"
+                ? "ml-auto bg-blue-100 font-normal animate-fade-in"
+                : "mr-auto bg-gray-100 font-normal animate-fade-in"
             }`}
           >
             {msg.content}
@@ -90,7 +90,7 @@ const AiBot = () => {
           </div>
         )}
       </main>
-      <footer className="w-full bg-white flex items-center gap-2">
+      <footer className="w-full bg-white flex items-center gap-2 rounded-lg">
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
