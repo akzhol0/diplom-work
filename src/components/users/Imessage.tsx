@@ -1,15 +1,13 @@
-import React from "react";
+import React, { memo } from "react";
 
 type ImessageProps = {
   item: any;
-  index: number;
   isSender: boolean;
 };
 
-const Imessage = ({ item, isSender, index }: ImessageProps) => {
+const Imessage = memo(({ item, isSender }: ImessageProps) => {
   return (
     <div
-      key={index}
       className={`flex flex-col max-w-[75%] ${
         isSender
           ? "self-end items-end animate-fade-in-message text-right"
@@ -27,6 +25,6 @@ const Imessage = ({ item, isSender, index }: ImessageProps) => {
       </div>
     </div>
   );
-};
+});
 
 export default Imessage;

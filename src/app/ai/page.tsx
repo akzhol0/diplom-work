@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import React from "react";
-import AiBot from "@/components/ai_bot/AiBot";
+import AiBot from "@/components/servicesPage/service-types/ai_bot/AiBot";
 
 export const metadata: Metadata = {
   title: "Искуственный интеллект",

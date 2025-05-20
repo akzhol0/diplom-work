@@ -101,9 +101,7 @@ const UserWriteFunction = ({
               .sort((a: any, b: any) => a.key - b.key)
               .map((item: any, index: number) => {
                 const isSender = item.senderId === sendingUser.userId;
-                return (
-                  <Imessage item={item} isSender={isSender} index={index} />
-                );
+                return <Imessage key={index} item={item} isSender={isSender} />;
               })
           ) : (
             <div className="h-full text-lg flex justify-center items-center text-gray-400">
