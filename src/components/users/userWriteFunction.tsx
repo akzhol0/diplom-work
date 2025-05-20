@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { UserInfoTypes } from "@/components/types/types";
 import { doc, onSnapshot, setDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
+import Imessage from "@/components/users/Imessage";
 
 type UserWriteFunctionProps = {
   setWriteModal: (arg0: boolean) => void;
@@ -100,26 +101,8 @@ const UserWriteFunction = ({
               .sort((a: any, b: any) => a.key - b.key)
               .map((item: any, index: number) => {
                 const isSender = item.senderId === sendingUser.userId;
-
                 return (
-                  <div
-                    key={index}
-                    className={`flex flex-col max-w-[75%] ${
-                      isSender
-                        ? "self-end items-end animate-fade-in-message"
-                        : "self-start items-start animate-fade-in-message"
-                    }`}
-                  >
-                    <div
-                      className={`relative px-4 py-2 rounded-2xl shadow-md text-sm ${
-                        isSender
-                          ? "bg-blue-500 text-white rounded-br-none"
-                          : "bg-gray-200 text-gray-900 rounded-bl-none"
-                      }`}
-                    >
-                      <p className="break-words">{item.message}</p>
-                    </div>
-                  </div>
+                  <Imessage item={item} isSender={isSender} index={index} />
                 );
               })
           ) : (
