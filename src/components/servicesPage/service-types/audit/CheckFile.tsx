@@ -37,66 +37,66 @@ const CheckFile = () => {
       const formData = new FormData();
       formData.append("file", file);
 
-      const uploadResponse = await axios.post(
-        "https://www.virustotal.com/api/v3/files",
-        formData,
-        {
-          headers: {
-            "x-apikey": API_KEY,
-            "Content-Type": "multipart/form-data",
-          },
-        },
-      );
+      const uploadResponse = await fetch("/api/scan-file", {
+        method: "POST",
+        body: formData,
+      });
 
-      const analysisId = uploadResponse.data.data.id;
+      const result = await uploadResponse.json();
 
-      setStatusMessage(
-        "Анализ файла запущен, ожидаем результат. Это может занять до минуты...",
-      );
+      if (!uploadResponse.ok) {
+        throw new Error(result.error || "Ошибка при загрузке файла");
+      }
 
-      // Polling
+      const analysisId = result.data.id;
+
+      setStatusMessage("Файл загружен. Ожидаем завершения анализа...");
+
+      // Polling (тот же, что у тебя)
       let intervalId: NodeJS.Timeout;
       let attempts = 0;
       const maxAttempts = 30;
 
       const poll = async () => {
         try {
-          const response = await axios.get(
+          const res = await fetch(
             `https://www.virustotal.com/api/v3/analyses/${analysisId}`,
             {
               headers: {
-                "x-apikey": API_KEY,
-                "Content-Type": "application/x-www-form-urlencoded",
+                "x-apikey": process.env.NEXT_PUBLIC_VIRUSTOTAL_API!,
               },
             },
           );
-          if (response.data.data.attributes.status === "completed") {
+
+          const data = await res.json();
+
+          if (data.data.attributes.status === "completed") {
             clearInterval(intervalId);
-            setScanResult(response.data);
+            setScanResult(data);
             setStatusMessage(null);
             setLoading(false);
           } else {
             setStatusMessage(
-              `Ожидаем завершения анализа... (${attempts + 1} / ${maxAttempts})`,
+              `Ожидаем результат... (${attempts + 1} / ${maxAttempts})`,
             );
           }
 
           attempts++;
           if (attempts >= maxAttempts) {
             clearInterval(intervalId);
-            setError("Анализ файла не завершился вовремя. Попробуйте позже.");
+            setError("Анализ не завершился вовремя. Повторите позже.");
             setLoading(false);
           }
-        } catch (err) {
+        } catch {
           clearInterval(intervalId);
-          setError("Ошибка при получении результатов анализа.");
+          setError("Ошибка при получении результата анализа.");
           setLoading(false);
         }
       };
 
       intervalId = setInterval(poll, 4000);
     } catch (err: any) {
-      setError(err?.message || "Произошла ошибка при загрузке файла.");
+      setError(err.message || "Произошла ошибка.");
       setStatusMessage(null);
       setLoading(false);
     }
