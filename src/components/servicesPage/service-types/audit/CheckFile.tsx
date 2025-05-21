@@ -69,7 +69,6 @@ const CheckFile = () => {
               },
             },
           );
-
           if (response.data.data.attributes.status === "completed") {
             clearInterval(intervalId);
             setScanResult(response.data);
@@ -161,9 +160,9 @@ const CheckFile = () => {
   };
 
   return (
-    <div className="w-full from-gray-50 to-blue-100 px-6 py-10">
+    <div className="w-full from-gray-50 to-blue-100 p-0 sm:px-6 sm:py-10">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-extrabold text-gray-900 mb-2 px-6">
+        <h1 className="text-xl md:text-3xl font-extrabold text-gray-900 mb-2 px-6">
           Проверка файла на вирусы
         </h1>
         <p className="text-sm text-gray-600 mb-2 px-6">

@@ -107,7 +107,8 @@ const CheckWebsite = () => {
           {attr.stats.undetected}
         </div>
         <div>
-          <strong>ID анализа:</strong> {scanResult?.data?.id}
+          <strong className="max-w-[200px] overflow-hidden">ID анализа:</strong>{" "}
+          {scanResult?.data?.id}
         </div>
         <div>
           <strong>Тип:</strong> {scanResult?.data?.type}
@@ -163,7 +164,7 @@ const CheckWebsite = () => {
               {getExtraDetails()}
             </div>
 
-            <div>
+            <div className="overflow-hidden">
               <h3 className="text-xl font-semibold text-blue-600 mb-4">
                 Отчёт от антивирусных систем
               </h3>
