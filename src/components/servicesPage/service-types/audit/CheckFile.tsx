@@ -66,6 +66,7 @@ const CheckFile = () => {
             {
               headers: {
                 "x-apikey": API_KEY,
+                "Content-Type": "application/x-www-form-urlencoded",
               },
             },
           );
