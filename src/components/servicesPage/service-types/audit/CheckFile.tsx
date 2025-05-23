@@ -1,12 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import axios from "axios";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
 import Link from "next/link";
-
-const API_KEY = process.env.NEXT_PUBLIC_VIRUSTOTAL_API;
+import DragFileIcon from "@/components/UI/icons/DragFileIcon";
 
 const CheckFile = () => {
   const [file, setFile] = useState<File | null>(null);
@@ -14,6 +12,7 @@ const CheckFile = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const API_KEY = process.env.NEXT_PUBLIC_VIRUSTOTAL_API;
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFile(e.target.files?.[0] || null);
@@ -52,7 +51,6 @@ const CheckFile = () => {
 
       setStatusMessage("Файл загружен. Ожидаем завершения анализа...");
 
-      // Polling (тот же, что у тебя)
       let intervalId: NodeJS.Timeout;
       let attempts = 0;
       const maxAttempts = 30;
@@ -63,7 +61,7 @@ const CheckFile = () => {
             `https://www.virustotal.com/api/v3/analyses/${analysisId}`,
             {
               headers: {
-                "x-apikey": process.env.NEXT_PUBLIC_VIRUSTOTAL_API!,
+                "x-apikey": API_KEY!,
               },
             },
           );
@@ -181,25 +179,7 @@ const CheckFile = () => {
               <span className="text-lg font-semibold">{file.name}</span>
             ) : (
               <>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-12 w-12 mb-3"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M3 15a4 4 0 004 4h10a4 4 0 004-4v-3a4 4 0 00-4-4H7a4 4 0 00-4 4v3z"
-                  />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8 10h8M12 6v8"
-                  />
-                </svg>
+                <DragFileIcon />
                 <span>Нажмите или перетащите файл сюда</span>
               </>
             )}
@@ -212,7 +192,7 @@ const CheckFile = () => {
               disabled={loading}
             />
           </label>
-          <div className="mt-4 text-xs text-gray-500 space-y-1">
+          <div className="mt-4 text-xs text-gray-500">
             <p>Максимальный размер файла: 32 МБ</p>
             <p>Поддерживаются все типы файлов</p>
             <p>Файл будет загружен и проверен на вирусы с помощью VirusTotal</p>
