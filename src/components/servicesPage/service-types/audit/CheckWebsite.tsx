@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import axios from "axios";
+import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
+import Link from "next/link";
 
 const CheckWebsite = () => {
   const [url, setUrl] = useState("https://example.com");
@@ -87,6 +89,9 @@ const CheckWebsite = () => {
             </div>
           </div>
         )}
+        <Link href={"/services/audit"}>
+          <MyDangerButton>Назад</MyDangerButton>
+        </Link>
       </div>
     </div>
   );
