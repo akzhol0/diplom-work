@@ -42,6 +42,7 @@ const UserWriteFunction = ({
             id: key,
             message: value.message,
             senderId: value.sendingUserId,
+            time: value.time,
           }),
         );
 
@@ -75,6 +76,7 @@ const UserWriteFunction = ({
       [messages.length + 1]: {
         sendingUserId: sendingUser.userId,
         message: userInputMessage,
+        time: Date.now(),
       },
     };
 

@@ -6,14 +6,33 @@ type ImessageProps = {
 };
 
 const Imessage = memo(({ item, isSender }: ImessageProps) => {
+  const formatTime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+
+    const options: Intl.DateTimeFormatOptions = {
+      day: "2-digit",
+      month: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    };
+
+    return date.toLocaleString("ru-RU", options).replace(",", "");
+  };
+
   return (
     <div
-      className={`flex flex-col max-w-[75%] ${
+      className={`flex items-center gap-2 max-w-[90%] ${
         isSender
           ? "self-end items-end animate-fade-in-message text-right"
           : "self-start items-start animate-fade-in-message text-right"
       }`}
     >
+      {isSender && (
+        <p className="text-sm text-gray-600 whitespace-nowrap">
+          {formatTime(item.time)}
+        </p>
+      )}
       <div
         className={`relative px-4 py-2 rounded-2xl shadow-md text-sm ${
           isSender
@@ -23,6 +42,11 @@ const Imessage = memo(({ item, isSender }: ImessageProps) => {
       >
         <p className="break-words">{item.message}</p>
       </div>
+      {!isSender && (
+        <p className="text-sm text-gray-600 whitespace-nowrap">
+          {formatTime(item.time)}
+        </p>
+      )}
     </div>
   );
 });
