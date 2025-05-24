@@ -15,16 +15,38 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth, db } from "@/components/firebase/config";
-import { doc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+} from "firebase/firestore";
+import ForumItem from "@/components/forum/ForumItem";
 
 function ProfileComp() {
   const { userInfo, mainLanguage, isAuth } = useContext(contextData);
   const [modalTwice, setModalTwice] = useState(false);
   const [friendsModal, setFriendsModal] = useState(false);
+  const [userForumTab, setUserForumTab] = useState<any>(null);
+  const [error, setError] = useState("");
   auth.languageCode = "ru";
+
+  const getAllForumItems = async () => {
+    const q = query(collection(db, "forum"), orderBy("count", "desc"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      if (doc.data().authorId === userInfo.userId) {
+        setUserForumTab(doc.data());
+      }
+    });
+  };
 
   useEffect(() => {
     userInfo && checkIfUserVerified();
+    userInfo && getAllForumItems();
   }, [userInfo]);
 
   const checkIfUserVerified = () => {
@@ -154,6 +176,18 @@ function ProfileComp() {
           {mainLanguage.rest.feedsUser} {userInfo.userName}
         </div>
         <UserFeedbacks userToken={userInfo.userId} />
+        {userForumTab && (
+          <div>
+            <p className="text-2xl py-4 text-center">
+              Форум {userInfo.userName}
+            </p>
+            <ForumItem
+              getAllForumItems={getAllForumItems}
+              item={userForumTab}
+              setError={setError}
+            />
+          </div>
+        )}
       </div>
       {friendsModal && (
         <FriendsModal user={userInfo} setFriendsModal={setFriendsModal} />

@@ -110,7 +110,6 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     const localstorageMainLanguage = Cookies.get("lang");
     setLanguageChanger(localstorageMainLanguage || "ru");
   }, []);
-
   useEffect(() => {
     languageHelper.map((item) => {
       if (languageChanger === item.languageString) {
@@ -130,6 +129,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
     });
   };
 
+  // checkIfUserLogged
   const checkIfUserLogged = async () => {
     const result = Cookies.get("userId");
 

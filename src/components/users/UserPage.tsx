@@ -9,9 +9,19 @@ import { UserInfoTypes } from "@/components/types/types";
 import FriendsModal from "@/components/users/FriendsModal";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
-import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
-import { db } from "@/components/firebase/config";
+import {
+  arrayRemove,
+  arrayUnion,
+  collection,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+} from "firebase/firestore";
+import { auth, db } from "@/components/firebase/config";
 import UserWriteFunction from "@/components/users/userWriteFunction";
+import ForumItem from "@/components/forum/ForumItem";
 
 type UserPageProps = {
   token: string;
@@ -25,10 +35,27 @@ const UserPage = ({ token }: UserPageProps) => {
   const [user, setUser] = useState<UserInfoTypes>();
   const [writeModal, setWriteModal] = useState(false);
   const [docId, setDocId] = useState<string>("");
+  const [userForumTab, setUserForumTab] = useState<any>(null);
+  const [error, setError] = useState("");
+
+  const getAllForumItems = async () => {
+    const q = query(collection(db, "forum"), orderBy("count", "desc"));
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      if (doc.data().authorId === user?.userId) {
+        setUserForumTab(doc.data());
+      }
+    });
+  };
 
   useEffect(() => {
     users.length !== 0 && findUser();
   }, [users]);
+
+  useEffect(() => {
+    user && getAllForumItems();
+  }, [user]);
 
   const findUser = () => {
     users.map((item: any) => {
@@ -162,6 +189,18 @@ const UserPage = ({ token }: UserPageProps) => {
                 {mainLanguage.rest.feedsUser} {user?.userName}
               </div>
               <UserFeedbacks userToken={token} />
+              {userForumTab && (
+                <div>
+                  <p className="text-2xl py-4 text-center">
+                    Форум {user.userName}
+                  </p>
+                  <ForumItem
+                    getAllForumItems={getAllForumItems}
+                    item={userForumTab}
+                    setError={setError}
+                  />
+                </div>
+              )}
             </div>
             {friendsModal && (
               <FriendsModal user={user} setFriendsModal={setFriendsModal} />
