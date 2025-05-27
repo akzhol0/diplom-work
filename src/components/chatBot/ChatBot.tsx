@@ -81,7 +81,7 @@ const ChatBot = () => {
           isBotVisible ? "translate-x-0" : "-translate-x-[91%]"
         }`}
       >
-        <div className="flex flex-col shadow-2xl ">
+        <div className={`flex flex-col ${isBotVisible && "shadow-2xl"}`}>
           <div className="flex items-center justify-center p-4 bg-blue-600 text-white rounded-tr-xl">
             <h2 className="text-lg font-semibold">Чат Бот</h2>
           </div>
