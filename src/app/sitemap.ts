@@ -3,24 +3,24 @@ import { MetadataRoute } from "next";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   return [
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
+      url: `https://diplomwork-akzhol.site/`,
       lastModified: new Date().toISOString(),
       priority: 1,
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/forum`,
+      url: `https://diplomwork-akzhol.site/forum`,
       lastModified: new Date().toISOString(),
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/projects`,
+      url: `https://diplomwork-akzhol.site/projects`,
       lastModified: new Date().toISOString(),
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/services`,
+      url: `https://diplomwork-akzhol.site/services`,
       lastModified: new Date().toISOString(),
     },
     {
-      url: `${process.env.NEXT_PUBLIC_BASE_URL}/feedback`,
+      url: `https://diplomwork-akzhol.site/feedback`,
       lastModified: new Date().toISOString(),
     },
   ];

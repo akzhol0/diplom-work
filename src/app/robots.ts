@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/login", "/register", "/edit", "/admin"],
       },
     ],
-    sitemap: `${process.env.NEXT_PUBLIC_BASE_URL}/sitemap.xml`,
-    host: process.env.NEXT_PUBLIC_BASE_URL,
+    sitemap: `https://diplomwork-akzhol.site/sitemap.xml`,
+    host: "https://diplomwork-akzhol.site",
   };
 }
