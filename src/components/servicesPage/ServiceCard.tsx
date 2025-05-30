@@ -21,7 +21,7 @@ function ServiceCard({ item, from }: serviceCardsProps) {
           href={`${item.card.route === "/ai" ? "/ai" : `/services/${item.card.route}`}`}
         >
           <p className="text-[25px] md:text-[30px] font-bold cursor-pointer hover:text-red-600 duration-300">
-            {item.title}
+            {item.id}. {item.title}
           </p>
         </Link>
         <p className="mt-2 xl:mt-2">{item.description}</p>
