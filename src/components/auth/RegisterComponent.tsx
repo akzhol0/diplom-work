@@ -6,15 +6,18 @@ import MyButtonDanger from "../UI/my-buttons/MyDangerButton";
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  signInWithPopup,
 } from "firebase/auth";
-import { auth, db } from "../firebase/config";
+import { auth, db, provider } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc } from "firebase/firestore";
 import { contextData } from "../context/context";
 import EyeIcon from "../UI/icons/eye/EyeIcon";
+import Cookies from "js-cookie";
+import MyGoogleButton from "@/components/UI/my-buttons/MyGoogleButton";
 
 function RegisterComponent() {
-  const { mainLanguage } = useContext(contextData);
+  const { mainLanguage, users, checkIfUserLogged } = useContext(contextData);
   const router = useRouter();
 
   const [stateForm, setStateForm] = useState({
@@ -57,6 +60,30 @@ function RegisterComponent() {
       });
   };
 
+  const signInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const userIdArray = users.map((user: any) => {
+        return user.userId;
+      });
+
+      if (userIdArray.includes(result.user.uid)) {
+        Cookies.set("userId", result.user.uid);
+
+        checkIfUserLogged();
+        router.push("/profile");
+      } else {
+        Cookies.set("userId", result.user.uid);
+
+        checkIfUserLogged();
+        router.push("/profile");
+        addUserFirebaseFromGoogle(result);
+      }
+    } catch (error) {
+      console.error("Ошибка входа через Google:", error);
+    }
+  };
+
   const addUserFirebase = async (userInfo: any) => {
     await setDoc(doc(db, "users", userInfo.user.uid), {
       userName: stateForm.userName,
@@ -72,16 +99,20 @@ function RegisterComponent() {
     });
   };
 
-  // const signInWithGoogle = async () => {
-  //   try {
-  //     const result = await signInWithPopup(auth, provider);
-  //     addUserFirebase(result.user);
-  //
-  //     router.push("/login");
-  //   } catch (error) {
-  //     console.error("Ошибка входа через Google:", error);
-  //   }
-  // };
+  const addUserFirebaseFromGoogle = async (userInfocb: any) => {
+    await setDoc(doc(db, "users", userInfocb.user.uid), {
+      userName: userInfocb.user.displayName,
+      userId: userInfocb.user.uid,
+      userLogin: userInfocb.user.email,
+      userPassword: "google account",
+      role: "user",
+      gender: "Не хочу говорить",
+      image: userInfocb.user.photoURL,
+      birthdate: "Неизвестно",
+      friends: [],
+      verified: userInfocb.user.emailVerified,
+    });
+  };
 
   return (
     <form
@@ -203,9 +234,9 @@ function RegisterComponent() {
           >
             {mainLanguage.loginAndRegsitration.btnRegister}
           </MyButtonDanger>
-          {/*<div className="w-full flex" onClick={() => signInWithGoogle()}>*/}
-          {/*  <MyGoogleButton />*/}
-          {/*</div>*/}
+          <div className="w-full flex" onClick={() => signInWithGoogle()}>
+            <MyGoogleButton />
+          </div>
           <p className="text-sm text-center text-red-600">{stateForm.error}</p>
         </div>
       </div>

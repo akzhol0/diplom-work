@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useContext, useState } from "react";
-import { contextData } from "@/components/context/context";
+import React, { useState } from "react";
 import SingleItemRiskPage from "@/components/servicesPage/service-types/risk-assesment/SingleItemRiskPage";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import RiskResult from "@/components/servicesPage/service-types/risk-assesment/RiskResult";
+import { ru } from "@/components/language/ru";
 
 const RiskCheck = () => {
-  const { mainLanguage } = useContext(contextData);
+  const [mainLanguage, setMainLanguage] = useState<any>(ru);
   const [userAnswerCounter, setUserAnswerCounter] = useState<number>(0);
   const [error, setError] = useState("");
   const [nextPage, setNextPage] = useState(false);

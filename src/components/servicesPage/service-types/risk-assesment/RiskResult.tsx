@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import { contextData } from "@/components/context/context";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
+import { ru } from "@/components/language/ru";
 
 type RiskResultProps = {
   result: string;
@@ -9,7 +10,7 @@ type RiskResultProps = {
 };
 
 const RiskResult = ({ result, setNextPage }: RiskResultProps) => {
-  const { mainLanguage } = useContext(contextData);
+  const [mainLanguage, setMainLanguage] = useState<any>(ru);
   const [loaded, setLoaded] = useState(false);
   const [resultQuiver, setResultQuiver] = useState<any>();
 

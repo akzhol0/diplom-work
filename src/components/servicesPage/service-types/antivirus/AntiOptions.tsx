@@ -1,13 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import SingleItem from "@/components/servicesPage/service-types/antivirus/SingleItem";
-import { contextData } from "@/components/context/context";
 import { questionTypes } from "@/components/types/types";
 import AntivirusResults from "@/components/servicesPage/service-types/antivirus/AntivirusResults";
 import MyDangerButton from "@/components/UI/my-buttons/MyDangerButton";
+import { ru } from "../../../language/ru";
 
 const AntiOptions = () => {
-  const { mainLanguage } = useContext(contextData);
+  const [mainLanguage, setMainLanguage] = useState<any>(ru);
   const [nextStage, setNextStage] = useState(true);
   const [answers, setAnswers] = useState<questionTypes[]>([]);
   const [resultsPage, setResultsPage] = useState(false);

@@ -3,13 +3,14 @@ import { contextData } from "@/components/context/context";
 import HostItem from "@/components/servicesPage/service-types/domain-hosting/HostItem";
 import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 import HostingResults from "@/components/servicesPage/service-types/domain-hosting/HostingResults";
+import { ru } from "@/components/language/ru";
 
 type HostingProps = {
   domainName: string;
 };
 
 const Hosting = ({ domainName }: HostingProps) => {
-  const { mainLanguage } = useContext(contextData);
+  const [mainLanguage, setMainLanguage] = useState<any>(ru);
   const [formState, setFormState] = useState<any>({
     first: "",
     second: "",
@@ -52,7 +53,11 @@ const Hosting = ({ domainName }: HostingProps) => {
   return resultsPage ? (
     <div>
       <p className="text-3xl font-semibold mt-2 text-center">Результаты:</p>
-      <HostingResults setResultsPage={setResultsPage} results={finalAnswers} />
+      <HostingResults
+        domainName={domainName}
+        setResultsPage={setResultsPage}
+        results={finalAnswers}
+      />
     </div>
   ) : (
     <div>

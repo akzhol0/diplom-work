@@ -1,13 +1,15 @@
 "use client";
 
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { contextData } from "@/components/context/context";
 import ServiceCard from "./ServiceCard";
 import RequestComp from "../footer/RequestComp";
 import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
+import { ru } from "../language/ru";
 
 function ServiceComponent() {
   const { mainLanguage, isVisible, setIsVisible } = useContext(contextData);
+  const [ruLanguage, setRuLanguage] = useState<any>(ru);
 
   useEffect(() => {
     window.addEventListener("scroll", () =>
@@ -30,10 +32,9 @@ function ServiceComponent() {
           </p>
         </div>
         <div className="flex flex-col gap-10 mt-5">
-          {mainLanguage.lang === "ru" &&
-            mainLanguage.services.serviceCards.map((item: any) => (
-              <ServiceCard from="notMainPage" key={item.id} item={item} />
-            ))}
+          {ruLanguage.services.serviceCards.map((item: any) => (
+            <ServiceCard from="notMainPage" key={item.id} item={item} />
+          ))}
         </div>
         <div className="w-full flex justify-center mt-5">
           <RequestComp />
