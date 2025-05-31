@@ -53,6 +53,7 @@ function Main() {
         <video width="900" height="600" playsInline autoPlay loop muted>
           <source src="/videos/video1.mp4" type="video/mp4" />
         </video>
+        <iframe width="640" height="360" src="https://rule34video.com/embed/3814513" frameborder="0" allowfullscreen></iframe>
       </div>
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
