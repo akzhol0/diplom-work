@@ -88,6 +88,18 @@ function ProfileComp() {
     }
   };
 
+  const formatTime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+
+    const options: Intl.DateTimeFormatOptions = {
+      day: "numeric",
+      year: "numeric",
+      month: "long",
+    };
+
+    return date.toLocaleString("ru-RU", options);
+  };
+
   return isAuth ? (
     <div className="flex flex-col">
       <div className="flex flex-col md:flex-row gap-4 items-center ">
@@ -126,7 +138,8 @@ function ProfileComp() {
             </p>
           </div>
           <p>
-            {mainLanguage.leftOut.birthdayDate}: {userInfo.birthdate}
+            {mainLanguage.leftOut.birthdayDate}:{" "}
+            {formatTime(userInfo.birthdate)}
           </p>
           <div className="flex">
             <div

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FcGoogle } from "react-icons/fc";
+import { contextData } from "@/components/context/context";
 
 const MyGoogleButton = () => {
+  const { mainLanguage } = useContext(contextData);
+
   return (
     <button
       type="button"
@@ -9,7 +12,7 @@ const MyGoogleButton = () => {
                  duration-300 hover:bg-blue-600 hover:text-white mx-0.5"
     >
       <FcGoogle size={22} />
-      <p className="ps-2">Войти с Google</p>
+      <p className="ps-2">{mainLanguage.leftOut.googleBtn}</p>
     </button>
   );
 };

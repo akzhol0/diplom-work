@@ -86,6 +86,9 @@ function RegisterComponent() {
   };
 
   const addUserFirebase = async (userInfo: any) => {
+    const dateStr = stateForm.birthdate;
+    const milliseconds = new Date(dateStr).getTime();
+
     const obj = {
       userName: stateForm.userName,
       userId: userInfo.user.uid,
@@ -94,7 +97,7 @@ function RegisterComponent() {
       role: "user",
       gender: stateForm.gender,
       image: "/images/user.png",
-      birthdate: stateForm.birthdate,
+      birthdate: milliseconds,
       friends: [],
       verified: false,
     };
@@ -141,7 +144,7 @@ function RegisterComponent() {
         />
         <div className="flex flex-col items-center justify-start bg-white ">
           <div className="w-full flex gap-2 justify-center items-center">
-            <label className="text-gray-700 text-sm whitespace-nowrap">
+            <label className="ps-2 text-gray-700 text-sm whitespace-nowrap">
               {mainLanguage.rest.birth}
             </label>
             <input

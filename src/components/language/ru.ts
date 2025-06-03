@@ -13,8 +13,11 @@ export const ru = {
     no: "Нет",
     newName: "Новое имя",
     deleteFromFriends: "Удалить из друзей",
+    addToFriends: "Добавить в друзья",
     write: "Написать",
     birthdayDate: "Дата рождения",
+    forum: "Форум",
+    googleBtn: "Войти с Google",
   },
   antivirus: [
     {

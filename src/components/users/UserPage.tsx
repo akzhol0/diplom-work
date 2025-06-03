@@ -121,6 +121,18 @@ const UserPage = ({ token }: UserPageProps) => {
     });
   };
 
+  const formatTime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      day: "2-digit",
+      month: "long",
+    };
+
+    return date.toLocaleString("ru-RU", options).replace(",", "");
+  };
+
   return (
     <div className="w-full min-h-[700px] flex justify-center">
       <div className="w-[95%] md:w-[80%] min-h-[600px]">
@@ -153,7 +165,7 @@ const UserPage = ({ token }: UserPageProps) => {
                     : "Администратор"}
                 </p>
                 <p>
-                  {mainLanguage.rest.birth}: {user?.birthdate}
+                  {mainLanguage.rest.birth}: {formatTime(user?.birthdate)}
                 </p>
                 <div className="flex">
                   <div
@@ -167,7 +179,9 @@ const UserPage = ({ token }: UserPageProps) => {
                   {isAuth &&
                     (token !== userInfo.userId && !isFriends ? (
                       <div onClick={() => addFriend("add")}>
-                        <MyPrimaryButton>Добавить в друзья</MyPrimaryButton>
+                        <MyPrimaryButton>
+                          {mainLanguage.leftOut.addToFriends}
+                        </MyPrimaryButton>
                       </div>
                     ) : (
                       token !== userInfo.userId && (

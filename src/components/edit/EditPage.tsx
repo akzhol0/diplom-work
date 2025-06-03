@@ -27,6 +27,8 @@ const EditPage = () => {
 
   const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const dateStr = stateForm.birthdate;
+    const milliseconds = new Date(dateStr).getTime();
 
     const userChangedData = {
       userName: stateForm.name === "" ? userInfo.userName : stateForm.name,
@@ -36,8 +38,7 @@ const EditPage = () => {
       role: userInfo.role,
       gender: stateForm.gender === "" ? userInfo.gender : stateForm.gender,
       image: userInfo.image,
-      birthdate:
-        stateForm.birthdate === "" ? userInfo.birthdate : stateForm.birthdate,
+      birthdate: stateForm.birthdate === "" ? userInfo.birthdate : milliseconds,
       friends: userInfo.friends,
       verified: userInfo.verified,
     };

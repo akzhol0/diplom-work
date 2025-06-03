@@ -11,7 +11,6 @@ const AntiOptions = () => {
   const [nextStage, setNextStage] = useState(true);
   const [answers, setAnswers] = useState<questionTypes[]>([]);
   const [resultsPage, setResultsPage] = useState(false);
-
   const [state, setState] = useState({
     usedByWho: "",
     operationSystem: "",
@@ -46,6 +45,7 @@ const AntiOptions = () => {
       setError("Пажалуйста заполните все поля.");
     } else {
       setNextStage(!nextStage);
+      setResultsPage(true);
 
       const obj = [
         {

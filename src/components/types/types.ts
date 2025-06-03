@@ -30,7 +30,7 @@ export type UserInfoTypes = {
   userLogin: string;
   userName: string;
   userPassword: string;
-  birthdate: string;
+  birthdate: number;
   friends: any;
   verified: boolean;
 };

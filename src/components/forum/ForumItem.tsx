@@ -44,7 +44,7 @@ const ForumItem = ({
     const date = new Date(timestamp);
 
     const options: Intl.DateTimeFormatOptions = {
-      year: "numeric", // added year here
+      year: "numeric",
       day: "2-digit",
       month: "long",
       hour: "2-digit",

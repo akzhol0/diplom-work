@@ -11,7 +11,7 @@ import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
 import { contextData } from "@/components/context/context";
 
 const Forum = () => {
-  const { isVisible, setIsVisible } = useContext(contextData);
+  const { isVisible, setIsVisible, mainLanguage } = useContext(contextData);
   const [allForumItems, setForumItems] = useState<any>([]);
   const [error, setError] = useState("");
 
@@ -38,7 +38,9 @@ const Forum = () => {
   return (
     <>
       <div>
-        <p className="text-center font-middle text-2xl">Форум</p>
+        <p className="text-center font-middle text-2xl">
+          {mainLanguage.leftOut.forum}
+        </p>
         <div className="flex justify-center">
           <ForumInput
             getAllForumItems={getAllForumItems}

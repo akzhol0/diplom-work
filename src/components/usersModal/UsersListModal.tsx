@@ -11,6 +11,18 @@ const UsersListModal = () => {
   const { users, mainLanguage } = useContext(contextData);
   const [isUserListModal, setIsUserListModal] = useState(false);
 
+  const formatTime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      day: "2-digit",
+      month: "long",
+    };
+
+    return date.toLocaleString("ru-RU", options).replace(",", "");
+  };
+
   return (
     <div>
       <OpenModal setIsUserListModal={setIsUserListModal} />
@@ -33,7 +45,7 @@ const UsersListModal = () => {
                           {item.userName}
                         </p>
                       </Link>
-                      <p className="text-start">{item.birthdate}</p>
+                      <p className="text-start">{formatTime(item.birthdate)}</p>
                     </div>
                   </div>
                 </div>

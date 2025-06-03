@@ -15,6 +15,9 @@ export const en = {
     deleteFromFriends: "Remove from friends",
     write: "Write",
     birthdayDate: "Birthday",
+    forum: "Forum",
+    googleBtn: "SignIn with Google",
+    addToFriends: "Add to friends",
   },
   rest: {
     errorMessage: "An error occurred in the code, please reload the browser!",

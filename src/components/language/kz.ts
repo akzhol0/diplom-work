@@ -6,7 +6,7 @@ export const kz = {
     comments: "Комментариялар",
     friends: "Достар",
     verifyPosition: "Пошта расталдыма",
-    verifySent: "Поштаны растау хаттамасын жібуру",
+    verifySent: "Поштаны растау хаттамасын жіберу",
     adminPage: "Админ парақшасы",
     userRole: "Қолданушы",
     yes: "Ия",
@@ -15,6 +15,9 @@ export const kz = {
     deleteFromFriends: "Достардан өшіру",
     write: "Жазу",
     birthdayDate: "Туған күні",
+    forum: "Форум",
+    googleBtn: "Google-мен кіру",
+    addToFriends: "Достарға қосу",
   },
   rest: {
     goForumLink: "Форум парақшасы",
