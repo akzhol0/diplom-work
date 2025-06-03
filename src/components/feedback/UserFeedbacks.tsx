@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { contextData } from "@/components/context/context";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import FeedbackItself from "@/components/feedback/FeedbackItself";
-import { FeedbacksTypes } from "@/components/types/types";
+import { FeedbacksTypes, UserInfoTypes } from "@/components/types/types";
 
 type UserFeedbacksProps = {
   userToken: string;
+  user: UserInfoTypes;
 };
 
-const UserFeedbacks = ({ userToken }: UserFeedbacksProps) => {
+const UserFeedbacks = ({ userToken, user }: UserFeedbacksProps) => {
   const { feedbacks, loadedFeedbacks, mainLanguage } = useContext(contextData);
 
   function filterFeedbacksFunction() {
@@ -25,7 +26,9 @@ const UserFeedbacks = ({ userToken }: UserFeedbacksProps) => {
         <FeedbackItself key={index} feedback={item} />
       ))
     ) : (
-      <p className="text-center mt-3">{mainLanguage.rest.noFeed}</p>
+      <p className="text-center mt-3">
+        {user.userName}, {mainLanguage.rest.noFeed}
+      </p>
     )
   ) : (
     <LoadingUI />

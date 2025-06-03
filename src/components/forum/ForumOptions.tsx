@@ -28,7 +28,7 @@ const ForumOptions = ({
   getAllForumItems,
   item,
 }: ForumItemProps) => {
-  const { userInfo, isAuth } = useContext(contextData);
+  const { userInfo, isAuth, mainLanguage } = useContext(contextData);
 
   const handleDeleteButton = async () => {
     await deleteDoc(doc(db, "forum", `${item.id}`));
@@ -61,7 +61,7 @@ const ForumOptions = ({
             className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
             href={`/users/${user?.userId}`}
           >
-            <div>Пользователь</div>
+            <div>{mainLanguage.rest.user}</div>
           </Link>
           <div
             onClick={() => {
@@ -70,7 +70,7 @@ const ForumOptions = ({
             }}
             className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
           >
-            <div>Скопировать</div>
+            <div>{mainLanguage.rest.copy}</div>
           </div>
           {type !== "low" && isAuth && (
             <>
@@ -79,7 +79,7 @@ const ForumOptions = ({
                   onClick={() => handleDeleteButton()}
                   className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
                 >
-                  <div>Удалить</div>
+                  <div>{mainLanguage.feedback.delete}</div>
                 </div>
               )}
             </>
@@ -96,7 +96,7 @@ const ForumOptions = ({
               }}
               className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center"
             >
-              <div>Комментарий</div>
+              <div>{mainLanguage.leftOut.comments}</div>
             </div>
           )}
         </div>

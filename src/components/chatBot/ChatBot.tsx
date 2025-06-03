@@ -127,7 +127,7 @@ const ChatBot = () => {
             )}
             <input
               type="text"
-              placeholder="Написать..."
+              placeholder={mainLanguage.leftOut.write}
               className="flex-1 border rounded-full m-2 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={userMessage}
               onChange={(e) => setUserMessage(e.target.value)}

@@ -120,34 +120,41 @@ function ProfileComp() {
             <p>
               {userInfo.role === "admin" && (
                 <Link href="/admin">
-                  <p className="underline">Страница админа</p>
+                  <p className="underline">{mainLanguage.leftOut.adminPage}</p>
                 </Link>
               )}
             </p>
           </div>
-          <p>Дата рождения: {userInfo.birthdate}</p>
+          <p>
+            {mainLanguage.leftOut.birthdayDate}: {userInfo.birthdate}
+          </p>
           <div className="flex">
             <div
               onClick={() => setFriendsModal(!friendsModal)}
               className="w-auto border-white border-b hover:border-b hover:border-black cursor-pointer"
             >
-              Друзья: {userInfo.friends.length}
+              {mainLanguage.leftOut.friends}: {userInfo.friends.length}
             </div>
           </div>
           <div className="flex flex-col lg:flex-row lg:gap-2">
-            <p>Почта подтверждена: {userInfo.verified ? "Да" : "Нет"}</p>
+            <p>
+              {mainLanguage.leftOut.verifyPosition}{" "}
+              {userInfo.verified
+                ? `${mainLanguage.leftOut.yes}`
+                : `${mainLanguage.leftOut.no}`}
+            </p>
             {!userInfo.verified && (
               <>
                 <div
                   className="underline cursor-pointer"
                   onClick={() => resendVerifyLetter()}
                 >
-                  Отправить письмо для верификаций
+                  {mainLanguage.leftOut.verifySent}
                 </div>
               </>
             )}
           </div>
-          <div className="flex flex-col lg:flex-row gap-2 my-2">
+          <div className="flex flex-col xl:flex-row gap-2 my-2">
             <Link href="/edit">
               <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">
                 {mainLanguage.edit.btn}
@@ -168,6 +175,11 @@ function ProfileComp() {
                 {mainLanguage.feedback.btn}
               </MyPrimaryButton>
             </Link>
+            <Link href="/forum">
+              <MyPrimaryButton className="font-semibold h-[40px] whitespace-nowrap">
+                {mainLanguage.rest.goForumLink}
+              </MyPrimaryButton>
+            </Link>
           </div>
         </div>
       </div>
@@ -175,7 +187,7 @@ function ProfileComp() {
         <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
           {mainLanguage.rest.feedsUser} {userInfo.userName}
         </div>
-        <UserFeedbacks userToken={userInfo.userId} />
+        <UserFeedbacks user={userInfo} userToken={userInfo.userId} />
         {userForumTab && (
           <div>
             <p className="text-2xl py-4 text-center">

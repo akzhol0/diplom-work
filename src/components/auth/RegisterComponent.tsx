@@ -17,7 +17,8 @@ import Cookies from "js-cookie";
 import MyGoogleButton from "@/components/UI/my-buttons/MyGoogleButton";
 
 function RegisterComponent() {
-  const { mainLanguage, users, checkIfUserLogged } = useContext(contextData);
+  const { mainLanguage, users, setUsers, checkIfUserLogged } =
+    useContext(contextData);
   const router = useRouter();
 
   const [stateForm, setStateForm] = useState({
@@ -85,7 +86,7 @@ function RegisterComponent() {
   };
 
   const addUserFirebase = async (userInfo: any) => {
-    await setDoc(doc(db, "users", userInfo.user.uid), {
+    const obj = {
       userName: stateForm.userName,
       userId: userInfo.user.uid,
       userLogin: stateForm.login,
@@ -96,11 +97,14 @@ function RegisterComponent() {
       birthdate: stateForm.birthdate,
       friends: [],
       verified: false,
-    });
+    };
+
+    await setDoc(doc(db, "users", userInfo.user.uid), obj);
+    setUsers((prev: any) => [...prev, obj]);
   };
 
   const addUserFirebaseFromGoogle = async (userInfocb: any) => {
-    await setDoc(doc(db, "users", userInfocb.user.uid), {
+    const obj = {
       userName: userInfocb.user.displayName,
       userId: userInfocb.user.uid,
       userLogin: userInfocb.user.email,
@@ -111,7 +115,10 @@ function RegisterComponent() {
       birthdate: "Неизвестно",
       friends: [],
       verified: userInfocb.user.emailVerified,
-    });
+    };
+
+    await setDoc(doc(db, "users", userInfocb.user.uid), obj);
+    setUsers((prev: any) => [...prev, obj]);
   };
 
   return (

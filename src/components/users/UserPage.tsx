@@ -149,7 +149,7 @@ const UserPage = ({ token }: UserPageProps) => {
                 <p>
                   {mainLanguage.profile.role}:{" "}
                   {user?.role === "user"
-                    ? "Обычный пользователь"
+                    ? mainLanguage.leftOut.userRole
                     : "Администратор"}
                 </p>
                 <p>
@@ -160,7 +160,7 @@ const UserPage = ({ token }: UserPageProps) => {
                     onClick={() => setFriendsModal(true)}
                     className="w-auto border-white border-b hover:border-b hover:border-black cursor-pointer"
                   >
-                    Друзья: {user?.friends.length}
+                    {mainLanguage.leftOut.friends}: {user?.friends.length}
                   </div>
                 </div>
                 <div className="flex gap-2 text-[16px] font-semibold mt-1">
@@ -172,13 +172,17 @@ const UserPage = ({ token }: UserPageProps) => {
                     ) : (
                       token !== userInfo.userId && (
                         <div onClick={() => addFriend("remove")}>
-                          <MyDangerButton>Удалить из друзей</MyDangerButton>
+                          <MyDangerButton>
+                            {mainLanguage.leftOut.deleteFromFriends}
+                          </MyDangerButton>
                         </div>
                       )
                     ))}
                   {isAuth && token !== userInfo.userId && (
                     <div onClick={() => setWriteModal(!writeModal)}>
-                      <MyPrimaryButton>Написать</MyPrimaryButton>
+                      <MyPrimaryButton>
+                        {mainLanguage.leftOut.write}
+                      </MyPrimaryButton>
                     </div>
                   )}
                 </div>
@@ -188,7 +192,7 @@ const UserPage = ({ token }: UserPageProps) => {
               <div className="text-2xl border-t border-red-600 mt-6 pt-4 text-center">
                 {mainLanguage.rest.feedsUser} {user?.userName}
               </div>
-              <UserFeedbacks userToken={token} />
+              <UserFeedbacks user={user} userToken={token} />
               {userForumTab && (
                 <div>
                   <p className="text-2xl py-4 text-center">
@@ -211,6 +215,7 @@ const UserPage = ({ token }: UserPageProps) => {
                 sendingUser={userInfo}
                 setWriteModal={setWriteModal}
                 docId={docId === "" ? "null" : docId}
+                findUser={findUser}
               />
             )}
           </div>

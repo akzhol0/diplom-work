@@ -23,7 +23,6 @@ const ForumItem = ({
   const { users } = useContext(contextData);
   const [user, setUser] = useState<UserInfoTypes>();
   const [postComments, setPostComments] = useState<any>(item.comments);
-
   const [isCommentsVisible, setIsCommentsVisible] = useState(false);
   const [commentsLoading, setCommentsLoading] = useState(false);
   const [forumOptions, setForumOptions] = useState(false);
@@ -41,12 +40,27 @@ const ForumItem = ({
     });
   };
 
+  const formatTime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric", // added year here
+      day: "2-digit",
+      month: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    };
+
+    return date.toLocaleString("ru-RU", options).replace(",", "");
+  };
+
   return (
-    <div>
+    <>
       {user && (
-        <>
+        <div className={`${type === "low" ? "min-w-[80%]" : "w-auto"}`}>
           <div
-            className={`w-auto md:min-w-[600px] min-h-[150px] bg-gray-50 rounded-lg ${type === "low" ? "ms-[40px] md:ms-[100px] px-4" : "p-4"}`}
+            className={`${type === "low" ? "min-w-[80%]" : "w-auto"} md:min-w-[600px] min-h-[150px] bg-gray-50 rounded-lg ${type === "low" ? "ms-[40px] md:ms-[100px] px-4" : "p-4"}`}
           >
             <div className="flex items-center justify-between">
               <div className="relative flex">
@@ -72,10 +86,7 @@ const ForumItem = ({
                         {user.userName}
                       </p>
                     </Link>
-                    <p>
-                      {item.createdAt !== "" &&
-                        item.createdAt.toDate().toDateString()}
-                    </p>
+                    <p>{formatTime(item.createdAt)}</p>
                   </div>
                 </div>
               </div>
@@ -91,7 +102,9 @@ const ForumItem = ({
                 getAllForumItems={getAllForumItems}
               />
             </div>
-            <div className={`${type === "low" ? "py-2" : "py-4 border-b"}`}>
+            <div
+              className={`${type === "low" ? "py-2" : "py-4 border-b border-black"}`}
+            >
               <div
                 className={`font-semibold ${type === "low" ? "text-lg mb-0" : "text-xl mb-2"}`}
               >
@@ -143,9 +156,9 @@ const ForumItem = ({
           ) : (
             commentsLoading && <div className="ms-[100px] p-4">Загрузка...</div>
           )}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

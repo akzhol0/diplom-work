@@ -1,5 +1,21 @@
 export const ru = {
   lang: "ru",
+  leftOut: {
+    allUsers: "Все пользователи",
+    add: "Добавить",
+    comments: "Комментарии",
+    friends: "Друзья",
+    verifyPosition: "Почта подтверждена?",
+    verifySent: "Отправить письмо для подтверждения почты",
+    adminPage: "Страница администратора",
+    userRole: "Пользователь",
+    yes: "Да",
+    no: "Нет",
+    newName: "Новое имя",
+    deleteFromFriends: "Удалить из друзей",
+    write: "Написать",
+    birthdayDate: "Дата рождения",
+  },
   antivirus: [
     {
       question: "Это решение для личного использования или для компании?",
@@ -1936,6 +1952,7 @@ export const ru = {
     },
   ],
   rest: {
+    goForumLink: "Страница Форума",
     errorMessage: "Произошла ошибка в коде, пажалуйста перезагрузите браузер!",
     errorReload: "Перезагрузить",
     loading: "Загрузка...",
@@ -1952,7 +1969,7 @@ export const ru = {
     asSaved: "Ваши изменения будут сохранены.",
     asCancel: "Отмена",
     asLeave: "Выйти",
-    noFeed: "Вы пока не написали ни одного отзыва!",
+    noFeed: "не написал пока ни одного отзыва!",
     birth: "День рождение",
     feedsUser: "Отзывы",
     user: "Пользователь",
@@ -2163,10 +2180,10 @@ export const ru = {
         title: "Форум",
         url: "/forum",
       },
-      {
-        title: "Проекты",
-        url: "/projects",
-      },
+      // {
+      //   title: "Проекты",
+      //   url: "/projects",
+      // },
       {
         title: "Отзывы",
         url: "/feedback",
@@ -2337,7 +2354,7 @@ export const ru = {
     btn2: "Назад",
     comment: "К сожалению почту и пароль может поменять только администратор!",
   },
-  copyReservnoe: [],
+  copyReserved: [],
   services: {
     title: "Системы",
     small1:

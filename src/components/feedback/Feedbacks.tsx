@@ -42,7 +42,7 @@ const Feedbacks = () => {
       body: bodyInput,
       rating: ratingInput,
       authorId: userInfo.userId,
-      date: serverTimestamp(),
+      date: Date.now(),
       likedUsers: [],
     };
 
@@ -53,6 +53,9 @@ const Feedbacks = () => {
 
   return (
     <div className="flex flex-col">
+      <p className="text-center text-2xl mb-2">
+        {mainLanguage.feedback.allFeedbacks}
+      </p>
       <div className="flex justify-center items-center">
         <form
           onSubmit={handleSubmit}

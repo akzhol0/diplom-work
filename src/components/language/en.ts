@@ -1,5 +1,21 @@
 export const en = {
   lang: "en",
+  leftOut: {
+    allUsers: "All users",
+    add: "Add",
+    comments: "Comments",
+    friends: "Friends",
+    verifyPosition: "Is email verified?",
+    verifySent: "Send email verification",
+    adminPage: "Admin page",
+    userRole: "User",
+    yes: "Yes",
+    no: "No",
+    newName: "New name",
+    deleteFromFriends: "Remove from friends",
+    write: "Write",
+    birthdayDate: "Birthday",
+  },
   rest: {
     errorMessage: "An error occurred in the code, please reload the browser!",
     errorReload: "Reload",
@@ -17,10 +33,11 @@ export const en = {
     asSaved: "Your changes will be saved.",
     asCancel: "Cancel",
     asLeave: "Log out",
-    noFeed: "You haven't written any reviews yet!",
+    noFeed: "haven't written any reviews yet!",
     birth: "Birthday",
     feedsUser: "Reviews",
     user: "User",
+    goForumLink: "Forum Page",
   },
   mainPage: {
     codeDevText:
@@ -212,10 +229,10 @@ export const en = {
         title: "Forum",
         url: "/forum",
       },
-      {
-        title: "Projects",
-        url: "/projects",
-      },
+      // {
+      //   title: "Projects",
+      //   url: "/projects",
+      // },
       {
         title: "Feedbacks",
         url: "/feedback",
@@ -353,18 +370,19 @@ export const en = {
       "Specialized in Decision Support Systems for Information Security. Our solutions help protect your business from cyber threats, reduce risks, and respond quickly to incidents. We provide a comprehensive approach to security: from data analysis and threat forecasting to automating protection and ensuring compliance with standards.",
     serviceCards: [
       {
-        title: "Decision support systems",
+        title: "Artificial Intelligence - Brooklyn",
         description:
-          "Computerized automated system helps decision makers in complex conditions for a complete and objective analysis of the subject activity",
+          "He has strong expertise in the field of information security and can explain complex topics in simple terms. He can answer questions related to data protection, explain what hackers, viruses, antivirus software, firewalls, encryption, and other important topics are. He can clarify why passwords are necessary, how website attacks work, and how to protect against them.",
         price: "",
         id: 1,
         card: {
-          title: "Huricane",
+          title: "AI",
           description:
-            'Development of an online store for a chain of electronics stores"',
-          backgroundColor: "bg-[#c4f2e1]",
-          type: "Интернет-Магазины",
-          id: 4,
+            "If needed, he will guide you on how to choose security tools, how security systems work in companies, and what measures are taken to prevent data from falling into the wrong hands. He explains everything in a clear and accessible way so that even someone just starting to learn the topic can understand it.",
+          backgroundColor: "bg-[#c5f3b2]",
+          type: "",
+          id: 1,
+          route: "/ai",
         },
       },
       {
@@ -435,8 +453,8 @@ export const en = {
     header: "Header",
     body: "Description",
     rating: "Rating",
-    btn: "Leave a Review",
-    allFeedbacks: "All Reviews",
+    btn: "Leave a Feedback",
+    allFeedbacks: "All Feedbacks",
     like: "Like",
     dislike: "Dislike",
     delete: "Delete",

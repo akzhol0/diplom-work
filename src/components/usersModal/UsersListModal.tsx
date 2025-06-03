@@ -8,7 +8,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const UsersListModal = () => {
-  const { users } = useContext(contextData);
+  const { users, mainLanguage } = useContext(contextData);
   const [isUserListModal, setIsUserListModal] = useState(false);
 
   return (
@@ -17,7 +17,9 @@ const UsersListModal = () => {
       {isUserListModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 px-2">
           <div className="bg-white p-6 rounded-2xl shadow-xl w-96">
-            <p className="text-lg text-center mb-2">Все пользователи:</p>
+            <p className="text-lg text-center mb-2">
+              {mainLanguage.leftOut.allUsers}
+            </p>
             <div className="flex flex-col gap-2 max-h-[400px] overflow-y-auto">
               {users.map((item: UserInfoTypes, index: number) => (
                 <div key={index} className="flex items-center ">
@@ -44,7 +46,7 @@ const UsersListModal = () => {
                 }}
                 className="px-5 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
               >
-                Назад
+                {mainLanguage.edit.btn2}
               </button>
             </div>
           </div>

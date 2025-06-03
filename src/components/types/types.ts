@@ -43,7 +43,7 @@ export type questionTypes = {
 
 export type FeedbacksTypes = {
   body: string;
-  date: any;
+  date: number;
   header: string;
   rating: number;
   id: string;
@@ -62,7 +62,7 @@ export type AntivirusTypes = {
 export type SingleForumItemProps = {
   authorId: string;
   comments: any;
-  createdAt: any;
+  createdAt: number;
   description: string;
   header: string;
   id: string;

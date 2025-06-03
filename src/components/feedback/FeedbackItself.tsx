@@ -13,6 +13,9 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
   const dateTime = new Date();
   const { users } = useContext(contextData);
   const [user, setUser] = useState<UserInfoTypes>();
+  const [postLikesCount, setPostLikesCount] = useState(
+    feedback.likedUsers.length,
+  );
 
   const findUser = () => {
     users.map((user: UserInfoTypes) => {
@@ -26,12 +29,23 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
     findUser();
   }, []);
 
-  const [postLikesCount, setPostLikesCount] = useState(
-    feedback.likedUsers.length,
-  );
+  const formatTime = (timestamp: number): string => {
+    const date = new Date(timestamp);
+
+    const options: Intl.DateTimeFormatOptions = {
+      year: "numeric",
+      day: "2-digit",
+      month: "long",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false,
+    };
+
+    return date.toLocaleString("ru-RU", options).replace(",", "");
+  };
 
   return (
-    <div className="flex flex-col min-h-[150px] bg-[#f1f1f1] rounded-lg my-4 p-5">
+    <div className="flex flex-col min-h-[150px] bg-gray-50 rounded-lg my-4 p-5">
       <div className="flex justify-between items-center">
         {user && (
           <div className="flex">
@@ -46,9 +60,7 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
                   </p>
                 </Link>
                 <p className="max-w-[150px] md:max-w-[200px] max-h-[22px] overflow-hidden">
-                  {feedback.date._methodName
-                    ? dateTime.toLocaleString()
-                    : feedback.date.toDate().toDateString()}
+                  {formatTime(feedback.date)}
                 </p>
               </div>
               <div className="flex sm:ps-4 md:ps-8">

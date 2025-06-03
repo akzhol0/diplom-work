@@ -38,6 +38,7 @@ type ContextProps = {
   isBotVisible: boolean;
   setIsBotVisible: (arg0: boolean) => void;
   allUsersMessages: any;
+  setUsers: (arg0: any) => void;
 };
 
 export const contextData = createContext({} as ContextProps);
@@ -147,6 +148,7 @@ export function ContextOverAll({ children }: ContextOverAllProps) {
   return (
     <contextData.Provider
       value={{
+        setUsers,
         isAuth,
         setIsAuth,
         burgerMenu,

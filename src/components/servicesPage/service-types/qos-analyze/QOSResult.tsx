@@ -45,7 +45,7 @@ const QosResult = ({ data, finalLoaded, setFinalLoaded }: QOSResultProps) => {
       const response = await axios.get(url);
       setLocation(response.data.features[0].properties);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 

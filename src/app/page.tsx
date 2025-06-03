@@ -54,9 +54,9 @@ function Main() {
           <source src="/videos/video1.mp4" type="video/mp4" />
         </video>
       </div>
-      <div className="w-[95%] md:w-[80%]">
-        <ProjectsMainPage />
-      </div>
+      {/*<div className="w-[95%] md:w-[80%]">*/}
+      {/*  <ProjectsMainPage />*/}
+      {/*</div>*/}
       <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
         {mainLanguage.mainPage.questionLabel}
       </p>

@@ -66,7 +66,7 @@ const EditPage = () => {
           <p className="text-gray-700">{mainLanguage.edit.nameLname}:</p>
           <input
             className="w-[200px] h-[40px] focus:outline-0"
-            placeholder="Новое имя пользователя"
+            placeholder={mainLanguage.leftOut.newName}
             type="text"
             id="name"
             name="name"

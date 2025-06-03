@@ -18,7 +18,7 @@ const ForumInput = ({
   getAllForumItems,
   allForumItems,
 }: ForumInputProps) => {
-  const { userInfo, isAuth } = useContext(contextData);
+  const { userInfo, isAuth, mainLanguage } = useContext(contextData);
 
   const [header, setHeader] = useState("");
   const [desc, setDesc] = useState("");
@@ -32,7 +32,7 @@ const ForumInput = ({
     }
 
     if (header === "" || desc === "") {
-      setError("Пажалуйста заполните все поля!");
+      setError(mainLanguage.rest.pleaseSignAll);
       return;
     }
 
@@ -44,7 +44,7 @@ const ForumInput = ({
       description: desc,
       authorId: userInfo.userId,
       comments: [],
-      createdAt: serverTimestamp(),
+      createdAt: Date.now(),
       count: allForumItems.length + 1,
     };
 
@@ -56,10 +56,10 @@ const ForumInput = ({
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full md:w-3/5 lg:w-2/5 flex flex-col gap-4 items-center"
+      className={`w-full md:w-3/5 lg:w-2/5 flex flex-col gap-4 items-center`}
     >
       <input
-        placeholder="Заголовок"
+        placeholder={mainLanguage.feedback.header}
         className="w-full h-[60px] border-b border-1 focus:outline-0 rounded-lg ps-2"
         type="text"
         id="header"
@@ -67,14 +67,14 @@ const ForumInput = ({
         onChange={(e) => setHeader(e.target.value)}
       />
       <textarea
-        placeholder="Описание"
+        placeholder={mainLanguage.feedback.body}
         className="w-full h-[100px] border-b focus:outline-0 ps-2 rounded-lg"
         id="message"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
       ></textarea>
       <MyPrimaryButton type="submit" className="w-full font-semibold">
-        Добавить
+        {mainLanguage.leftOut.add}
       </MyPrimaryButton>
       <div className="flex justify-center">
         <p className="max-w-[300px] text-red-600 text-center">{error}</p>

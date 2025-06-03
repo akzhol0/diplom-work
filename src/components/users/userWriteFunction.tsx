@@ -9,6 +9,7 @@ type UserWriteFunctionProps = {
   receivingUser: UserInfoTypes;
   sendingUser: UserInfoTypes;
   docId: string;
+  findUser: () => void;
 };
 
 const UserWriteFunction = ({
@@ -16,6 +17,7 @@ const UserWriteFunction = ({
   receivingUser,
   sendingUser,
   docId,
+  findUser,
 }: UserWriteFunctionProps) => {
   const [userInputMessage, setUserInputMessage] = useState("");
   const [messages, setMessages] = useState<any>([]);
@@ -27,15 +29,17 @@ const UserWriteFunction = ({
   }, [messages]);
 
   useEffect(() => {
-    messages.length === 0 && getTwoUserMessages();
+    getTwoUserMessages();
   }, []);
 
   const getTwoUserMessages = async () => {
     const docRef = doc(db, "userMessages", newDocId);
+    findUser();
 
     onSnapshot(docRef, (docSnap) => {
       if (docSnap.exists()) {
         const data = docSnap.data();
+        if (!data) return;
 
         const newMessages = Object.entries(data).map(
           ([key, value]: [string, any]) => ({
@@ -47,6 +51,7 @@ const UserWriteFunction = ({
         );
 
         setMessages(newMessages);
+        return;
       } else {
         const createDoc = async () => {
           setNewDocId(`${sendingUser.userId}_${receivingUser.userId}`);
@@ -60,6 +65,7 @@ const UserWriteFunction = ({
           );
         };
         createDoc();
+        return;
       }
     });
   };

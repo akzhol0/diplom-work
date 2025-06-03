@@ -17,9 +17,6 @@ const AllFeedbacks = () => {
 
   return (
     <div className="mt-8 flex flex-col items-center justify-center">
-      <p className="text-center text-3xl">
-        {mainLanguage.feedback.allFeedbacks}
-      </p>
       <div className="w-full flex justify-center">
         {loadedFeedbacks ? (
           <div className="w-full">

@@ -93,7 +93,7 @@ const AntivirusResults = ({ answers, setNextStage }: AntivirusResultsProps) => {
         setMessage(aiMessage.content);
       }
     } catch (error) {
-      console.log("AI request failed:", error);
+      console.error("AI request failed:", error);
     }
   };
 

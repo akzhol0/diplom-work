@@ -38,7 +38,7 @@ const Hosting = ({ domainName }: HostingProps) => {
       (value) => value === "",
     );
     if (isAnyFieldEmpty) {
-      setError("Пажалуйста заполните все поля!");
+      setError(mainLanguage.rest.pleaseSignAll);
       return;
     }
 

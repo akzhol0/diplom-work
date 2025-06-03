@@ -16,7 +16,7 @@ const ForumCommInput = ({
   item,
   setPostComments,
 }: ForumCommInputProps) => {
-  const { isAuth, userInfo } = useContext(contextData);
+  const { isAuth, userInfo, mainLanguage } = useContext(contextData);
 
   const [header, setHeader] = useState("");
   const [desc, setDesc] = useState("");
@@ -30,7 +30,7 @@ const ForumCommInput = ({
     }
 
     if (header === "" || desc === "") {
-      setError("Пажалуйста заполните все поля!");
+      setError(mainLanguage.rest.pleaseSignAll);
       return;
     }
 
@@ -42,7 +42,7 @@ const ForumCommInput = ({
       description: desc,
       authorId: userInfo.userId,
       comments: [],
-      createdAt: "",
+      createdAt: Date.now(),
     };
 
     addFirebaseDocument();
@@ -58,7 +58,7 @@ const ForumCommInput = ({
       description: desc,
       authorId: userInfo.userId,
       comments: [],
-      createdAt: "",
+      createdAt: Date.now(),
     };
 
     await updateDoc(docRef, {
@@ -72,7 +72,7 @@ const ForumCommInput = ({
       className="w-[80%] md:w-[600px] flex flex-col md:flex-row items-center justify-end gap-2 ms-[40px] py-2"
     >
       <input
-        placeholder="Заголовок"
+        placeholder={mainLanguage.feedback.header}
         className="w-full h-[40px] border-b border-1 focus:outline-0 rounded-lg ps-2"
         type="text"
         id="header"
@@ -80,7 +80,7 @@ const ForumCommInput = ({
         onChange={(e) => setHeader(e.target.value)}
       />
       <input
-        placeholder="Описание"
+        placeholder={mainLanguage.feedback.body}
         className="w-full h-[40px] border-b border-1 focus:outline-0 rounded-lg ps-2"
         type="text"
         id="header"
@@ -88,7 +88,7 @@ const ForumCommInput = ({
         onChange={(e) => setDesc(e.target.value)}
       />
       <MyPrimaryButton type={"submit"} className="px-2 h-[40px]">
-        Написать
+        {mainLanguage.leftOut.write}
       </MyPrimaryButton>
     </form>
   );
