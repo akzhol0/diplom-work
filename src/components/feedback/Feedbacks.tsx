@@ -10,8 +10,14 @@ import { db } from "@/components/firebase/config";
 import { FeedbacksTypes } from "@/components/types/types";
 
 const Feedbacks = () => {
-  const { mainLanguage, userInfo, setFeedbacks, isAuth, getFeedbacks } =
-    useContext(contextData);
+  const {
+    mainLanguage,
+    userInfo,
+    setFeedbacks,
+    isAuth,
+    getFeedbacks,
+    feedbacks,
+  } = useContext(contextData);
 
   const [headerInput, setHeaderInput] = useState("");
   const [bodyInput, setBodyInput] = useState("");
@@ -44,6 +50,7 @@ const Feedbacks = () => {
       authorId: userInfo.userId,
       date: Date.now(),
       likedUsers: [],
+      postId: feedbacks.length + 1,
     };
 
     setFeedbacks((prev: FeedbacksTypes[]) => [feedbackObj, ...prev]);

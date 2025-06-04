@@ -18,6 +18,9 @@ export const kz = {
     forum: "Форум",
     googleBtn: "Google-мен кіру",
     addToFriends: "Достарға қосу",
+    feedSmall: "Веб-қосымша қолданушылары қалдырған пікірлер.",
+    goSee: "Барлық пікірлерді көру",
+    usedTech: "Қолданылған технологиялар",
   },
   rest: {
     goForumLink: "Форум парақшасы",
@@ -233,13 +236,13 @@ export const kz = {
   header: {
     links: [
       {
+        title: "Жобалар",
+        url: "/projects",
+      },
+      {
         title: "Форум",
         url: "/forum",
       },
-      // {
-      //   title: "Жобалар",
-      //   url: "/projects",
-      // },
       {
         title: "Пікірлер",
         url: "/feedback",

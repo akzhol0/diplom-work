@@ -18,6 +18,9 @@ export const ru = {
     birthdayDate: "Дата рождения",
     forum: "Форум",
     googleBtn: "Войти с Google",
+    feedSmall: "Оставленные отзывы пользователями веб-приложения.",
+    goSee: "Посмотреть все отзывы",
+    usedTech: "Использованные технологий",
   },
   antivirus: [
     {
@@ -2180,13 +2183,13 @@ export const ru = {
   header: {
     links: [
       {
+        title: "Проекты",
+        url: "/projects",
+      },
+      {
         title: "Форум",
         url: "/forum",
       },
-      // {
-      //   title: "Проекты",
-      //   url: "/projects",
-      // },
       {
         title: "Отзывы",
         url: "/feedback",

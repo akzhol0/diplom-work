@@ -5,8 +5,12 @@ import { contextData } from "@/components/context/context";
 import { FeedbacksTypes } from "@/components/types/types";
 import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
 
-const AllFeedbacks = () => {
-  const { mainLanguage, feedbacks, loadedFeedbacks, isVisible, setIsVisible } =
+type AllFeedbacksProps = {
+  from?: string;
+};
+
+const AllFeedbacks = ({ from }: AllFeedbacksProps) => {
+  const { feedbacks, loadedFeedbacks, isVisible, setIsVisible } =
     useContext(contextData);
 
   useEffect(() => {
@@ -15,14 +19,25 @@ const AllFeedbacks = () => {
     );
   }, []);
 
+  const getFilterId = () => {
+    if (from === "mainPage") {
+      return feedbacks.length - 2;
+    }
+    return 0;
+  };
+
+  const filterId = getFilterId();
+
   return (
     <div className="mt-8 flex flex-col items-center justify-center">
       <div className="w-full flex justify-center">
         {loadedFeedbacks ? (
           <div className="w-full">
-            {feedbacks.map((feedback: FeedbacksTypes, index: number) => (
-              <FeedbackItself feedback={feedback} key={index} />
-            ))}
+            {feedbacks
+              .filter((feedback: FeedbacksTypes) => feedback.postId > filterId)
+              .map((feedback: FeedbacksTypes, index: number) => (
+                <FeedbackItself feedback={feedback} key={index} />
+              ))}
           </div>
         ) : (
           <LoadingUI />

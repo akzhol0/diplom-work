@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <div className="sticky top-0 w-full flex justify-center bg-[#ffffff] z-50">
-      <div className="w-[95%] lg:w-[80%] h-[80px] flex items-center justify-center md:justify-between gap-4">
+      <div className="w-[95%] lg:w-[90%] xl:w-[80%] h-[80px] flex items-center justify-center md:justify-between gap-4">
         <div className="">
           <Brand />
         </div>

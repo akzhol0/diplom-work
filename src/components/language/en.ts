@@ -18,6 +18,9 @@ export const en = {
     forum: "Forum",
     googleBtn: "SignIn with Google",
     addToFriends: "Add to friends",
+    feedSmall: "Reviews left by users of the web application.",
+    goSee: "Check all reviews",
+    usedTech: "All used web-technologies",
   },
   rest: {
     errorMessage: "An error occurred in the code, please reload the browser!",
@@ -229,13 +232,13 @@ export const en = {
   header: {
     links: [
       {
+        title: "Projects",
+        url: "/projects",
+      },
+      {
         title: "Forum",
         url: "/forum",
       },
-      // {
-      //   title: "Projects",
-      //   url: "/projects",
-      // },
       {
         title: "Feedbacks",
         url: "/feedback",

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import Link from "next/link";
 
 const AboutDeveloper = () => {
   return (
@@ -31,6 +32,11 @@ const AboutDeveloper = () => {
           />
         </a>
       </div>
+      <Link href={"/commits-by-date"}>
+        <div className="hover:underline">
+          Посмотреть все обновление (commits) веб-приложение по датам
+        </div>
+      </Link>
     </div>
   );
 };

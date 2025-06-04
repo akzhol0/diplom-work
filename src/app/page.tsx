@@ -13,6 +13,8 @@ import AboutDeveloper from "@/components/main-page/AboutDeveloper";
 import GoUpButton from "@/components/UI/my-buttons/go-up-button/GoUpButton";
 import ChatBot from "@/components/chatBot/ChatBot";
 import UsersListModal from "@/components/usersModal/UsersListModal";
+import FeedbacksMainPage from "@/components/main-page/FeedbacksMainPage";
+import UsedTech from "@/components/main-page/UsedTech";
 
 function Main() {
   const { mainLanguage, isVisible, setIsVisible } = useContext(contextData);
@@ -54,23 +56,29 @@ function Main() {
           <source src="/videos/video1.mp4" type="video/mp4" />
         </video>
       </div>
-      {/*<div className="w-[95%] md:w-[80%]">*/}
-      {/*  <ProjectsMainPage />*/}
-      {/*</div>*/}
+      <ServicesMainPage />
       <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
         {mainLanguage.mainPage.questionLabel}
       </p>
       <div className="w-full flex justify-center bg-[#131313]">
         <Qa />
       </div>
-      <ServicesMainPage />
       <Information
         title={mainLanguage.mainPage.title3}
         small={mainLanguage.mainPage.small3}
       />
+      <div className="w-[95%] md:w-[80%]">
+        <ProjectsMainPage />
+      </div>
       <video width="900" height="600" playsInline autoPlay loop muted>
         <source src="/videos/video2.mp4" type="video/mp4" />
       </video>
+      <div className="w-full sm:w-[90%] lg:w-[80%]">
+        <FeedbacksMainPage />
+      </div>
+      <div className="w-full flex flex-col items-center mt-6">
+        <UsedTech />
+      </div>
       <div className="w-full flex justify-center mt-[40px]">
         <AboutDeveloper />
       </div>

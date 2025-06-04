@@ -49,6 +49,7 @@ export type FeedbacksTypes = {
   id: string;
   authorId: string;
   likedUsers: any;
+  postId: number;
 };
 
 export type AntivirusTypes = {

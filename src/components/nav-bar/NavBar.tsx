@@ -23,7 +23,7 @@ function NavBar() {
     <div
       className={`flex-col md:flex-row flex items-center justify-center gap-4`}
     >
-      <ul className="flex flex-col md:flex-row text-center gap-4 sm:gap-5 text-lg">
+      <ul className="flex flex-col md:flex-row text-center gap-4 md:gap-2 lg:gap-5 text-lg">
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
