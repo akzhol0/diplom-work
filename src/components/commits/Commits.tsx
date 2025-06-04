@@ -1,15 +1,17 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import LoadingUI from "@/components/UI/my-loading/LoadingUI";
 import { FiExternalLink } from "react-icons/fi";
 import Image from "next/image";
+import { contextData } from "@/components/context/context";
 
 const Commits = () => {
   const [commits, setCommits] = useState<any>([]);
   const [totalPages, setTotalPages] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const { mainLanguage } = useContext(contextData);
 
   const getCommits = async (page: number) => {
     setLoading(true);
@@ -73,7 +75,7 @@ const Commits = () => {
   return (
     <div className="w-full md:w-[60%] min-h-[600px]">
       <p className="px-4 text-start font-bold text-[30px] md:text-[40px] mb-6">
-        Все обновления
+        {mainLanguage.leftOut.updates}
       </p>
       <div className="space-y-2 px-2">
         {commits.map((commit: any) => (
@@ -134,7 +136,7 @@ const Commits = () => {
                 getCommits(page);
               }}
               className={`${currentPage === page && "bg-gray-400"} 
-              px-2 text-black bg-gray-200 cursor-pointer hover:bg-gray-400`}
+              px-2 text-black bg-gray-200 cursor-pointer hover:bg-gray-400 rounded`}
             >
               {page}
             </div>

@@ -31,6 +31,7 @@ function Main() {
         <Parallax
           small={mainLanguage.mainPage.parallax.small}
           title={mainLanguage.mainPage.parallax.title}
+          tryNow={mainLanguage.leftOut.tryNow}
         />
         <div className="flex justify-center items-center">
           <div className="rounded-xl overflow-hidden mb-4">

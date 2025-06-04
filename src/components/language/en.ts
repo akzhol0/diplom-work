@@ -21,6 +21,8 @@ export const en = {
     feedSmall: "Reviews left by users of the web application.",
     goSee: "Check all reviews",
     usedTech: "All used web-technologies",
+    tryNow: "Use now",
+    updates: "All updates",
   },
   rest: {
     errorMessage: "An error occurred in the code, please reload the browser!",

@@ -7,9 +7,10 @@ import MyPrimaryButton from "@/components/UI/my-buttons/MyPrimaryButton";
 type ParallaxProps = {
   title: string;
   small: string;
+  tryNow: string;
 };
 
-function Parallax({ title, small }: ParallaxProps) {
+function Parallax({ title, small, tryNow }: ParallaxProps) {
   return (
     <div className="h-auto lg:h-[700px] flex flex-col gap-4 justify-center">
       <p className="max-w-[800px] text-[30px] sm:text-[40px] md:text-[60px] font-bold">
@@ -19,7 +20,7 @@ function Parallax({ title, small }: ParallaxProps) {
         <p className="mb-2">{small}</p>
         <Link href="/services">
           <MyPrimaryButton className="text-sm px-4 py-2">
-            Попробовать сейчас
+            {tryNow}
           </MyPrimaryButton>
         </Link>
         <div className="my-4">
