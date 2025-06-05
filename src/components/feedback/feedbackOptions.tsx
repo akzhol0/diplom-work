@@ -137,6 +137,12 @@ const FeedbackOptions = ({
         >
           <div>{mainLanguage.rest.copy}</div>
         </div>
+        <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
+          Сохранить
+        </div>
+        <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
+          Пожаловаться
+        </div>
       </div>
     </div>
   );

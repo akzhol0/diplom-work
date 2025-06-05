@@ -1,6 +1,8 @@
 export const en = {
   lang: "en",
   leftOut: {
+    admin: "Admin",
+    user: "User",
     allUsers: "All users",
     add: "Add",
     comments: "Comments",

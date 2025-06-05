@@ -161,8 +161,8 @@ const UserPage = ({ token }: UserPageProps) => {
                 <p>
                   {mainLanguage.profile.role}:{" "}
                   {user?.role === "user"
-                    ? mainLanguage.leftOut.userRole
-                    : "Администратор"}
+                    ? mainLanguage.leftOut.user
+                    : mainLanguage.leftOut.admin}
                 </p>
                 <p>
                   {mainLanguage.rest.birth}: {formatTime(user?.birthdate)}

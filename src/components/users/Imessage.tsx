@@ -26,7 +26,7 @@ const Imessage = memo(({ item, isSender }: ImessageProps) => {
       className={`flex items-center gap-2 max-w-[90%] ${
         isSender
           ? "self-end items-end animate-fade-in-message text-right"
-          : "self-start items-start animate-fade-in-message text-right"
+          : "self-start items-start animate-fade-in-message text-left"
       }`}
     >
       {isSender && (

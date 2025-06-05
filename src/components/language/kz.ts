@@ -1,6 +1,8 @@
 export const kz = {
   lang: "kz",
   leftOut: {
+    admin: "Администратор",
+    user: "Қолданушы",
     allUsers: "Барлық қолданушылар",
     add: "Қосу",
     comments: "Комментариялар",

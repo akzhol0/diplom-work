@@ -125,17 +125,17 @@ function ProfileComp() {
           <div className="flex gap-2">
             <p>
               {mainLanguage.profile.role}:{" "}
-              {userInfo.role === "admin"
-                ? "Администратор"
-                : "Обычный пользователь"}
+              {userInfo.role === "user"
+                ? mainLanguage.leftOut.user
+                : mainLanguage.leftOut.admin}
             </p>
-            <p>
-              {userInfo.role === "admin" && (
-                <Link href="/admin">
-                  <p className="underline">{mainLanguage.leftOut.adminPage}</p>
-                </Link>
-              )}
-            </p>
+            {/*<div>*/}
+            {/*  {userInfo.role === "admin" && (*/}
+            {/*    <Link href="/admin">*/}
+            {/*      <p className="underline">{mainLanguage.leftOut.adminPage}</p>*/}
+            {/*    </Link>*/}
+            {/*  )}*/}
+            {/*</div>*/}
           </div>
           <p>
             {mainLanguage.leftOut.birthdayDate}:{" "}
@@ -149,7 +149,7 @@ function ProfileComp() {
               {mainLanguage.leftOut.friends}: {userInfo.friends.length}
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row lg:gap-2">
+          <div className="flex flex-col">
             <p>
               {mainLanguage.leftOut.verifyPosition}{" "}
               {userInfo.verified
