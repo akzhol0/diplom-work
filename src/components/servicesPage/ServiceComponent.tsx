@@ -20,7 +20,7 @@ function ServiceComponent() {
   return (
     <div className="w-full min-h-[800px] flex justify-center">
       <div className="w-[95%] lg:w-[70%] flex flex-col">
-        <div className="flex flex-col gap-6 mb-10">
+        <div className="flex flex-col gap-6 mb-4">
           <p className="text-[50px] md:text-[60px] font-bold">
             {mainLanguage.services.title}
           </p>
@@ -31,10 +31,39 @@ function ServiceComponent() {
             {mainLanguage.services.small2}
           </p>
         </div>
-        <div className="flex flex-col gap-10 mt-5">
-          {ruLanguage.services.serviceCards.map((item: any) => (
-            <ServiceCard from="notMainPage" key={item.id} item={item} />
-          ))}
+        <div className="flex flex-col gap-6 mt-5">
+          <p className="text-center font-semibold text-2xl md:text-3xl mb-0 md:mb-4">
+            1. Интеллектуальные СППР
+          </p>
+          {ruLanguage.services.serviceCards
+            .filter((item: any) => item.type === "ai")
+            .map((item: any) => (
+              <ServiceCard from="notMainPage" key={item.id} item={item} />
+            ))}
+          <p className="text-center font-semibold text-2xl md:text-3xl mb-0 md:mb-4 pt-2 border-black">
+            2. СППР по пользовательским данным
+          </p>
+          {ruLanguage.services.serviceCards
+            .filter((item: any) => item.type === "dss")
+            .map((item: any) => (
+              <ServiceCard from="notMainPage" key={item.id} item={item} />
+            ))}
+          <p className="text-center font-semibold text-2xl md:text-3xl mb-0 md:mb-4 pt-2 border-black">
+            3. Данных-ориентированные СППР
+          </p>
+          {ruLanguage.services.serviceCards
+            .filter((item: any) => item.type === "analyze")
+            .map((item: any) => (
+              <ServiceCard from="notMainPage" key={item.id} item={item} />
+            ))}
+          <p className="text-center font-semibold text-2xl md:text-3xl mb-0 md:mb-4 pt-2 border-black">
+            4. СППР но надежности системы
+          </p>
+          {ruLanguage.services.serviceCards
+            .filter((item: any) => item.type === "security")
+            .map((item: any) => (
+              <ServiceCard from="notMainPage" key={item.id} item={item} />
+            ))}
         </div>
         <div className="w-full flex justify-center mt-5">
           <RequestComp />

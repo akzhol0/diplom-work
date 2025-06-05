@@ -20,6 +20,7 @@ export type ServiceCardPropsTypes = {
   price: string;
   id: number;
   card: PortItemPropsTypes;
+  type: string;
 };
 
 export type UserInfoTypes = {
