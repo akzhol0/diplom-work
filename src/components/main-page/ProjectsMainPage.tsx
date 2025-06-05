@@ -9,7 +9,7 @@ function ProjectsMainPage() {
   const { mainLanguage } = useContext(contextData);
 
   return (
-    <div className="flex flex-col gap-4 my-[50px]">
+    <div className="flex flex-col gap-4 my-[20px]">
       <p className="text-[40px] lg:text-[50px] font-bold">
         {mainLanguage.mainPage.projects.title}
       </p>

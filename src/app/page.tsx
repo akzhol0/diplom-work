@@ -58,7 +58,7 @@ function Main() {
         </video>
       </div>
       <ServicesMainPage />
-      <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mb-[10px] mt-[80px]">
+      <p className="text-[20px] md:text-[30px] text-center text-black font-semibold mt-[20px] md:mt-[60px]">
         {mainLanguage.mainPage.questionLabel}
       </p>
       <div className="w-full flex justify-center bg-[#131313]">

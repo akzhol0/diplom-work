@@ -210,7 +210,7 @@ const UserPage = ({ token }: UserPageProps) => {
               {userForumTab && (
                 <div>
                   <p className="text-2xl py-4 text-center">
-                    Форум {user.userName}
+                    {mainLanguage.leftOut.forum} {user.userName}
                   </p>
                   <ForumItem
                     getAllForumItems={getAllForumItems}

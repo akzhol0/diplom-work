@@ -9,7 +9,7 @@ function ServicesMainPage() {
 
   return (
     <div className="w-[95%] md:w-[80%] flex flex-col my-8">
-      <div className="flex flex-col gap-6 mb-10">
+      <div className="flex flex-col gap-0 md:gap-6 mb-0 md:mb-10">
         <p className="text-[50px] md:text-[60px] font-bold">
           {mainLanguage.services.title}
         </p>

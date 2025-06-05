@@ -2362,7 +2362,6 @@ export const ru = {
     btn2: "Назад",
     comment: "К сожалению почту и пароль может поменять только администратор!",
   },
-  copyReserved: [],
   services: {
     title: "Системы",
     small1:
@@ -2519,5 +2518,194 @@ export const ru = {
       },
     ],
     small5: "Смотреть все услуги",
+  },
+  copyReserved: {
+    questions: [
+      {
+        id: 1,
+        state: "first",
+        question: "Какой объем данных необходимо резервировать?",
+        answers: [
+          "До 1 ГБ",
+          "От 1 до 10 ГБ",
+          "От 10 до 100 ГБ",
+          "От 100 ГБ до 1 ТБ",
+          "Более 1 ТБ",
+        ],
+      },
+      {
+        id: 2,
+        state: "second",
+        question:
+          "С какой периодичностью требуется выполнять резервное копирование?",
+        answers: [
+          "Раз в неделю",
+          "Ежедневно",
+          "Каждый час",
+          "В реальном времени",
+          "Раз в месяц",
+        ],
+      },
+      {
+        id: 3,
+        state: "third",
+        question: "Где должны храниться резервные копии?",
+        answers: [
+          "На локальном диске",
+          "На внешнем накопителе (USB, HDD)",
+          "На локальном сервере",
+          "В облачном хранилище",
+          "Комбинированное решение (локально + облако)",
+        ],
+      },
+      {
+        id: 4,
+        state: "fourth",
+        question:
+          "Какие типы файлов необходимо резервировать в первую очередь?",
+        answers: [
+          "Документы (PDF, Word, Excel)",
+          "Базы данных",
+          "Медиафайлы (фото, видео, аудио)",
+          "Системные файлы и конфигурации",
+          "Все типы файлов",
+        ],
+      },
+      {
+        id: 5,
+        state: "fifth",
+        question: "Как часто изменяются ваши данные?",
+        answers: [
+          "Раз в месяц",
+          "Раз в неделю",
+          "Ежедневно",
+          "Несколько раз в день",
+          "Постоянно (динамичные данные)",
+        ],
+      },
+      {
+        id: 6,
+        state: "sixth",
+        question:
+          "Какой уровень безопасности вам необходим при резервном копировании?",
+        answers: [
+          "Простая защита паролем",
+          "Шифрование данных",
+          "Двухфакторная аутентификация",
+          "Сертифицированные решения (например, ISO/IEC 27001)",
+          "Все перечисленные меры",
+        ],
+      },
+      {
+        id: 7,
+        state: "seventh",
+        question: "Насколько быстро нужно восстановить данные при потере?",
+        answers: [
+          "В течение 24 часов",
+          "В течение 1 часа",
+          "В течение 10 минут",
+          "Мгновенно",
+          "Время восстановления не критично",
+        ],
+      },
+      {
+        id: 8,
+        state: "eighth",
+        question: "Есть ли в вашей организации специалист по IT?",
+        answers: [
+          "Нет, только пользователь",
+          "Есть один IT-специалист",
+          "Небольшой IT-отдел",
+          "Полноценный IT-отдел",
+          "Используем аутсорсинг",
+        ],
+      },
+      {
+        id: 9,
+        state: "ninth",
+        question: "На каких платформах должно работать резервное копирование?",
+        answers: [
+          "Только Windows",
+          "Windows и macOS",
+          "Windows, macOS и Linux",
+          "Рабочие станции и серверы",
+          "Все устройства, включая мобильные",
+        ],
+      },
+      {
+        id: 10,
+        state: "tenth",
+        question: "Какой у вас бюджет на резервное копирование?",
+        answers: [
+          "Бесплатные решения (open source)",
+          "До 5 000 ₸ в месяц",
+          "До 20 000 ₸ в месяц",
+          "До 50 000 ₸ в месяц",
+          "Без ограничений по бюджету",
+        ],
+      },
+    ],
+    typeExamples: [
+      {
+        id: 1,
+        appName: "Acronis Cyber Protect",
+        image:
+          "https://ccsw.co.uk/wp-content/uploads/2023/09/acronis_cloud_backup-1024x538-1.png",
+      },
+      {
+        id: 2,
+        appName: "Veeam Backup & Replication",
+        image:
+          "https://www.silviodibenedetto.com/wp-content/uploads/2019/02/hero_veeam_backup-v2.jpg",
+      },
+      {
+        id: 3,
+        appName: "EaseUS Todo Backup",
+        image:
+          "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4zcfawMjVB3v27ToExEwhOnUrIT7TC8QKJQ&s",
+      },
+      {
+        id: 4,
+        appName: "Macrium Reflect",
+        image:
+          "https://strapistoragemacrium.blob.core.windows.net/strapi-uploads/uploads/reflect_x_here_010563f7c0.png",
+      },
+      {
+        id: 5,
+        appName: "AOMEI Backupper",
+        image:
+          "https://www.aomeitech.com/s-download?filename=../resources/images/partners_marketing-material/img-banner-ab@2x.png",
+      },
+      {
+        id: 6,
+        appName: "IDrive",
+        image:
+          "https://i.pcmag.com/imagery/reviews/03m52lyJ0x1QdmWHn44PDEA-22.fit_lim.size_1050x591.v1737486241.jpg",
+      },
+      {
+        id: 7,
+        appName: "Backblaze",
+        image:
+          "https://www.backblaze.com/blog/wp-content/uploads/2021/06/Backblaze_Rebrand_Blog_Header_Red_Banner-Lg.png",
+      },
+      {
+        id: 8,
+        appName: "Carbonite",
+        image:
+          "https://cdn.cs.1worldsync.com/19/5e/195e891a-d1c8-4646-a62d-9c8296d9a6ee.jpg",
+      },
+      {
+        id: 9,
+        appName: "Duplicati",
+        image:
+          "https://s3.typoniels.de/typoniels-strapi/production/duplicati_11c389676c.webp",
+      },
+      {
+        id: 10,
+        appName: "SpinOne (Google Workspace Backup)",
+        image:
+          "https://866b018c.delivery.rocketcdn.me/wp-content/uploads/2023/08/google-workspace-cover.webp",
+      },
+    ],
   },
 };

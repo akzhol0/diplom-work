@@ -204,7 +204,7 @@ function ProfileComp() {
         {userForumTab && (
           <div>
             <p className="text-2xl py-4 text-center">
-              Форум {userInfo.userName}
+              {mainLanguage.leftOut.forum} {userInfo.userName}
             </p>
             <ForumItem
               getAllForumItems={getAllForumItems}
