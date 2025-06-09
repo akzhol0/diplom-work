@@ -27,12 +27,24 @@ function ServiceComponent() {
           <p className="text-[15px] md:text-[20px]">
             {mainLanguage.services.small1}
           </p>
-          <p className="text-[15px] md:text-[20px]">
+          <div className="text-[15px] md:text-[20px]">
             {mainLanguage.services.small2}
-          </p>
+            {mainLanguage.lang === "kz" && (
+              <p className="text-gray-600 text-sm">
+                *Өкінішке орай, жүйелер тек орыс тілінде жасалған, болашақта бұл
+                жағдайды түзетеміз.*
+              </p>
+            )}
+            {mainLanguage.lang === "en" && (
+              <p className="text-gray-600 text-sm">
+                *Unfortunately, the systems are currently available only in
+                Russian, but we will fix this in the future.*
+              </p>
+            )}
+          </div>
         </div>
         <div className="flex flex-col gap-6 mt-5">
-          <p className="text-center font-semibold text-2xl md:text-3xl mb-0 md:mb-4">
+          <p className="text-center text-black font-semibold text-2xl md:text-3xl mb-0 md:mb-4">
             1. Интеллектуальные СППР
           </p>
           {ruLanguage.services.serviceCards

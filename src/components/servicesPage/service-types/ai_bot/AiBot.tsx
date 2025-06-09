@@ -64,13 +64,13 @@ const AiBot = () => {
   };
 
   return (
-    <div className="w-full h-[700px] bg-white text-gray-800 flex flex-col">
+    <div className="w-full h-[500px] md:h-[700px] bg-white text-gray-800 flex flex-col">
       <header className="w-full p-4 border-b rounded-lg border-gray-800 text-lg whitespace-nowrap sm:text-2xl font-semibold text-center">
-        Искуственный Интеллект - Brooklyn
+        Искуственный Интеллект - Mercury
       </header>
       <main
         ref={chatRef}
-        className="flex-1 flex flex-col overflow-y-auto p-0 py-4 sm:p-6 space-y-4 h-[700px] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100"
+        className="flex-1 flex flex-col overflow-y-auto p-0 py-4 sm:p-6 space-y-4 h-[500px] md:h-[700px] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100"
       >
         {messages.map((msg: any, index: any) => (
           <pre

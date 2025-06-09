@@ -8,23 +8,23 @@ import { ContextOverAll } from "@/components/context/context";
 
 export const metadata: Metadata = {
   title: {
-    default: "Дипломная работа - Турсынханов Акжол - Brooklyn",
-    template: "%s - Brooklyn",
+    default: "Дипломная работа - Турсынханов Акжол - Mercury",
+    template: "%s - Mercury",
   },
   description:
     "Веб-приложение, созданное для дипломной работы студентом Турсынханов Акжол. Система поддержки принятие решений для помощи пользователю индидуально решит или дать максималально подходящий совет по решению проблемы в области информационной безопасности, по итогам опроса пользователя или по анализу данных",
   openGraph: {
-    title: "Дипломная работа - Турсынханов Акжол - Brooklyn",
+    title: "Дипломная работа - Турсынханов Акжол - Mercury",
     description:
       "Веб-приложение, созданное для дипломной работы студентом Турсынханов Акжол. Система поддержки принятие решений для помощи пользователю индидуально решит или дать максималально подходящий совет по решению проблемы в области информационной безопасности, по итогам опроса пользователя или по анализу данных",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
-    siteName: "Brooklyn",
+    siteName: "Mercury",
     images: [
       {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/open-graph.png`,
         width: 1200,
         height: 630,
-        alt: "Дипломная работа - Brooklyn - СППР",
+        alt: "Дипломная работа - Mercury - СППР",
       },
     ],
     locale: "ru_RU",
@@ -33,11 +33,11 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Дипломная работа - Турсынханов Акжол",
-    description: "Веб-приложение: Brooklyn Web App.",
+    description: "Веб-приложение: Mercury Web App.",
     images: `${process.env.NEXT_PUBLIC_BASE_URL}/open-graph.png`,
   },
   appleWebApp: {
-    title: "Brooklyn",
+    title: "Mercury",
     statusBarStyle: "black-translucent",
     capable: true,
   },

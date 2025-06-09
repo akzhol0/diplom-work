@@ -13,7 +13,7 @@ function PortItem({ item }: PortItemProps) {
     >
       <div className="flex justify-between">
         <div className="w-[75%] min-h-[250px] py-2 flex flex-col justify-center ps-2 pt-2">
-          <p className="text-4xl font-semibold whitespace-nowrap">
+          <p className="text-4xl font-semibold whitespace-nowrap text-gray-800">
             {item.title}
           </p>
           <p className="text-base mt-2">{item.description}</p>

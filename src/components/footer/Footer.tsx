@@ -18,11 +18,11 @@ function Footer() {
           <div className="min-h-[200px] lg:items-center flex flex-col lg:flex-row gap-[40px]">
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.email}:</p>
-              <p className="text-xl">sales@mercury.kz</p>
+              <p className="text-xl">ak.akzhol1603@gmail.com</p>
             </span>
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.phone}:</p>
-              <p className="text-xl">+7 (777) 000 00-00</p>
+              <p className="text-xl">+7 (777) 111 78-04</p>
             </span>
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.messengers}:</p>

@@ -20,7 +20,7 @@ function ServiceCard({ item, from }: serviceCardsProps) {
         <Link
           href={`${item.card.route === "/ai" ? "/ai" : `/services/${item.card.route}`}`}
         >
-          <p className="text-3xl text-black font-bold cursor-pointer hover:text-red-600 duration-300">
+          <p className="text-3xl text-gray-800 font-bold cursor-pointer hover:text-red-600 duration-300">
             {item.title}
           </p>
         </Link>

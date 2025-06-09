@@ -23,7 +23,7 @@ function NavBar() {
     <div
       className={`flex-col md:flex-row flex items-center justify-center gap-4`}
     >
-      <ul className="flex flex-col md:flex-row text-center gap-4 md:gap-2 lg:gap-5 text-lg">
+      <ul className="flex flex-col md:flex-row text-center gap-4 lg:gap-5 text-lg">
         {mainLanguage.header.links.map((item: any) => (
           <Link
             key={item.url}
@@ -43,8 +43,8 @@ function NavBar() {
           {mainLanguage.header.btn}
         </MyButtonDanger>
       </Link>
-      <p className="flex sm:hidden xl:block whitespace-nowrap">
-        +7 (777) 000 00-00
+      <p className="flex md:hidden lg:flex whitespace-nowrap">
+        +7 (777) 111 78-04
       </p>
       <span className="cursor-pointer">
         <WhatsappLogo background="black" />

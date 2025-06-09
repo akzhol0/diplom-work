@@ -151,7 +151,7 @@ const ChatBot = () => {
         <div className="h-full flex items-end">
           <button
             onClick={() => setIsBotVisible(!isBotVisible)}
-            className="w-10 h-10 mb-[80px] md:mb-5 bg-blue-800 text-white px-4 rounded-tr-lg rounded-br-lg"
+            className="w-10 h-10 mb-[130px] md:mb-5 bg-blue-800 text-white px-4 rounded-tr-lg rounded-br-lg"
           >
             {isBotVisible ? "<" : ">"}
           </button>

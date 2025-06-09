@@ -235,10 +235,10 @@ export const en = {
   },
   header: {
     links: [
-      {
-        title: "Projects",
-        url: "/projects",
-      },
+      // {
+      //   title: "Projects",
+      //   url: "/projects",
+      // },
       {
         title: "Forum",
         url: "/forum",
@@ -269,7 +269,6 @@ export const en = {
     title: "Projects",
     options: [
       { title: "All", filterBy: "All" },
-      { title: "Controle", filterBy: "Controle" },
       {
         title: "Decision support systems",
         filterBy: "Decision support systems",
@@ -283,10 +282,11 @@ export const en = {
         title: "Information infrastructures",
         filterBy: "Information infrastructures",
       },
+      { title: "Control", filterBy: "Controle" },
     ],
     portfolioItems: [
       {
-        title: "California",
+        title: "Brooklyn",
         description:
           "An organizational and technical system that ensures the development of solutions based on the automation of information processes in various areas of activity or their combinations",
         backgroundColor: "bg-[#bdeffc]",
@@ -294,7 +294,7 @@ export const en = {
         id: 1,
       },
       {
-        title: "Parent Controle",
+        title: "Parent Control",
         description:
           "A class of software solutions for restricting a childs access to various types of information on the Internet or certain functions of a device (TV, tablet or set-top box), as well as limiting the time of their use.",
         backgroundColor: "bg-[#ffc9f9]",
@@ -302,7 +302,7 @@ export const en = {
         id: 2,
       },
       {
-        title: "Controle",
+        title: "Testing",
         description:
           "Conducting checks for compliance with legal and organizational requirements, as well as regulatory documents.",
         backgroundColor: "bg-[#ffcccf]",
@@ -380,7 +380,7 @@ export const en = {
       "Specialized in Decision Support Systems for Information Security. Our solutions help protect your business from cyber threats, reduce risks, and respond quickly to incidents. We provide a comprehensive approach to security: from data analysis and threat forecasting to automating protection and ensuring compliance with standards.",
     serviceCards: [
       {
-        title: "Artificial Intelligence - Brooklyn",
+        title: "Artificial Intelligence - Mercury",
         description:
           "He has strong expertise in the field of information security and can explain complex topics in simple terms. He can answer questions related to data protection, explain what hackers, viruses, antivirus software, firewalls, encryption, and other important topics are. He can clarify why passwords are necessary, how website attacks work, and how to protect against them.",
         price: "",
