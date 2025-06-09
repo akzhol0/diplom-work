@@ -50,6 +50,11 @@ function RegisterComponent() {
       return;
     }
 
+    if (stateForm.password !== stateForm.repeatPassword) {
+      setStateForm({ ...stateForm, error: "Пароли не совпадают!" });
+      return;
+    }
+
     createUserWithEmailAndPassword(auth, stateForm.login, stateForm.password)
       .then((userCredentials) => {
         router.push("/login");
