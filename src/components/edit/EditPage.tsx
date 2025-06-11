@@ -9,11 +9,14 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "@/components/firebase/config";
 import LoadingUi from "@/components/UI/my-loading/LoadingUI";
 import { UserInfoTypes } from "@/components/types/types";
+import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
+import { storage } from "../firebase/config";
 
 const EditPage = () => {
   const { userInfo, mainLanguage, checkIfUserLogged, isAuth } =
     useContext(contextData);
   const router = useRouter();
+  const [userAvatar, setUserAvatar] = useState<any>(null);
 
   const [stateForm, setStateForm] = useState({
     name: "",
@@ -25,10 +28,17 @@ const EditPage = () => {
     setStateForm({ ...stateForm, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const dateStr = stateForm.birthdate;
     const milliseconds = new Date(dateStr).getTime();
+
+    let url = null;
+    if (userAvatar !== null) {
+      const fileRef = ref(storage, `avatars/${userInfo.userId}`);
+      await uploadBytes(fileRef, userAvatar);
+      url = await getDownloadURL(fileRef);
+    }
 
     const userChangedData = {
       userName: stateForm.name === "" ? userInfo.userName : stateForm.name,
@@ -37,7 +47,7 @@ const EditPage = () => {
       userPassword: userInfo.userPassword,
       role: userInfo.role,
       gender: stateForm.gender === "" ? userInfo.gender : stateForm.gender,
-      image: userInfo.image,
+      image: url === null ? userInfo.image : url,
       birthdate: stateForm.birthdate === "" ? userInfo.birthdate : milliseconds,
       friends: userInfo.friends,
       verified: userInfo.verified,
@@ -86,6 +96,29 @@ const EditPage = () => {
             name="birthdate"
             className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
+        </div>
+        <div className="flex items-center space-x-4">
+          <label
+            htmlFor="avatar"
+            className="cursor-pointer bg-blue-600 text-white px-4 py-2 text-sm rounded-md hover:bg-blue-700 transition"
+          >
+            {mainLanguage.leftOut.uploadPhoto}
+          </label>
+          <input
+            type="file"
+            accept="image/png, image/jpeg, image/jpg"
+            name="avatar"
+            id="avatar"
+            className="hidden"
+            onChange={(e) => {
+              setUserAvatar(e.target.files?.[0] || null);
+            }}
+          />
+          <span className="text-sm text-gray-600 max-w-[160px]" id="file-name">
+            {userAvatar?.name
+              ? userAvatar?.name
+              : mainLanguage.leftOut.fileSelected}
+          </span>
         </div>
         <div className="text-gray-700 w-full flex justify-between gap-2 pb-2 items-start border-b">
           <p className="pe-2">{mainLanguage.loginAndRegsitration.gender}:</p>

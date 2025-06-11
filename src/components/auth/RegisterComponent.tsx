@@ -8,18 +8,20 @@ import {
   sendEmailVerification,
   signInWithPopup,
 } from "firebase/auth";
-import { auth, db, provider } from "../firebase/config";
+import { auth, db, provider, storage } from "../firebase/config";
 import { useRouter } from "next/navigation";
 import { doc, setDoc } from "firebase/firestore";
 import { contextData } from "../context/context";
 import EyeIcon from "../UI/icons/eye/EyeIcon";
 import Cookies from "js-cookie";
 import MyGoogleButton from "@/components/UI/my-buttons/MyGoogleButton";
+import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 
 function RegisterComponent() {
   const { mainLanguage, users, setUsers, checkIfUserLogged } =
     useContext(contextData);
   const router = useRouter();
+  const [userAvatar, setUserAvatar] = useState<any>(null);
 
   const [stateForm, setStateForm] = useState({
     userName: "",
@@ -90,24 +92,33 @@ function RegisterComponent() {
     }
   };
 
-  const addUserFirebase = async (userInfo: any) => {
+  const addUserFirebase = async (userInfocb: any) => {
     const dateStr = stateForm.birthdate;
     const milliseconds = new Date(dateStr).getTime();
 
+    let url;
+    if (userAvatar !== null) {
+      const fileRef = ref(storage, `avatars/${userInfocb.user.uid}`);
+      await uploadBytes(fileRef, userAvatar);
+      url = await getDownloadURL(fileRef);
+    } else {
+      url = null;
+    }
+
     const obj = {
       userName: stateForm.userName,
-      userId: userInfo.user.uid,
+      userId: userInfocb.user.uid,
       userLogin: stateForm.login,
       userPassword: stateForm.password,
       role: "user",
       gender: stateForm.gender,
-      image: "/images/user.png",
+      image: url !== null ? url : "/images/user.png",
       birthdate: milliseconds,
       friends: [],
       verified: false,
     };
 
-    await setDoc(doc(db, "users", userInfo.user.uid), obj);
+    await setDoc(doc(db, "users", userInfocb.user.uid), obj);
     setUsers((prev: any) => [...prev, obj]);
   };
 
@@ -159,6 +170,37 @@ function RegisterComponent() {
               onChange={handleChange}
               className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
+          </div>
+        </div>
+        <div className="flex flex-col justify-center items-center gap-1">
+          <div className="flex justify-center items-center space-x-2">
+            <label
+              htmlFor="avatar"
+              className="cursor-pointer bg-blue-600 text-white px-4 py-2 text-sm rounded-md hover:bg-blue-700 transition"
+            >
+              {mainLanguage.leftOut.uploadPhoto}
+            </label>
+            <input
+              type="file"
+              accept="image/png, image/jpeg, image/jpg"
+              name="avatar"
+              id="avatar"
+              className="hidden"
+              onChange={(e) => {
+                setUserAvatar(e.target.files?.[0] || null);
+              }}
+            />
+            <span
+              className="text-sm text-gray-600 max-w-[160px]"
+              id="file-name"
+            >
+              {userAvatar?.name
+                ? userAvatar?.name
+                : mainLanguage.leftOut.fileSelected}
+            </span>
+          </div>
+          <div className="text-gray-600 text-[12px]">
+            {mainLanguage.leftOut.or}
           </div>
         </div>
         <div className="flex justify-between items-center">

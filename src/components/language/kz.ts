@@ -1,6 +1,9 @@
 export const kz = {
   lang: "kz",
   leftOut: {
+    fileSelected: "Фото әлі тандалмады",
+    or: "Немесе қарапайым аватарды қолдануға болады",
+    uploadPhoto: "Фото таңдау",
     admin: "Администратор",
     user: "Қолданушы",
     allUsers: "Барлық қолданушылар",

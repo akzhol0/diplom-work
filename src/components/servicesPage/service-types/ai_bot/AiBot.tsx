@@ -7,11 +7,9 @@ const AiBot = () => {
   const [messages, setMessages] = useState<any>([
     {
       role: "assistant",
-      content:
-        "Привет, я искуственный интеллект этого веб-приложения. Если есть вопросы, можете задавать!",
+      content: `Привет, я искуственный интеллект этого веб-приложения Mercury. Если есть вопросы можете меня спрашивать!`,
     },
   ]);
-
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
@@ -31,7 +29,10 @@ const AiBot = () => {
     if (loading) return;
     setLoading(true);
 
-    setMessages((prev: any) => [...prev, { role: "user", content: input }]);
+    setMessages((prev: any) => [
+      ...prev,
+      { role: "user", content: `${input}` },
+    ]);
     setInput("");
 
     const apiKey = process.env.NEXT_PUBLIC_AI_API;
@@ -47,9 +48,8 @@ const AiBot = () => {
       if (aiMessage?.content) {
         setMessages((prev: any) => [
           ...prev,
-          { role: "assistant", content: aiMessage.content },
+          { role: "agent", content: aiMessage.content },
         ]);
-        setLoading(false);
       }
     } catch (error) {
       setMessages((prev: any) => [
@@ -59,26 +59,32 @@ const AiBot = () => {
           content: "Произошла ошибка, пажалуйста попробуйте еще раз!",
         },
       ]);
+    } finally {
       setLoading(false);
     }
   };
 
   return (
     <div className="w-full h-[500px] md:h-[700px] bg-white text-gray-800 flex flex-col">
-      <header className="w-full p-4 border-b rounded-lg border-gray-800 text-lg whitespace-nowrap sm:text-2xl font-semibold text-center">
+      <header
+        className="w-full p-4 border-b rounded-lg border-gray-800 text-lg whitespace-nowrap sm:text-2xl
+      font-semibold text-center"
+      >
         Искуственный Интеллект - Mercury
       </header>
       <main
         ref={chatRef}
-        className="flex-1 flex flex-col overflow-y-auto p-0 py-4 sm:p-6 space-y-4 h-[500px] md:h-[700px] scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-100"
+        className="flex-1 flex flex-col overflow-y-auto p-0 py-4 sm:p-6 space-y-4 h-[500px] md:h-[700px] scrollbar-thin
+        scrollbar-thumb-gray-400 scrollbar-track-gray-100"
       >
         {messages.map((msg: any, index: any) => (
           <pre
             key={index}
-            className={`w-fit text-sm md:text-lg font-semibold shadow-md max-w-[80%] px-4 py-3 rounded-xl font-sans leading-relaxed whitespace-pre-wrap ${
+            className={`w-fit text-sm md:text-lg font-semibold shadow-md max-w-[80%] px-4 py-3 rounded-xl font-sans 
+            leading-relaxed whitespace-pre-wrap ${
               msg.role === "user"
-                ? "ml-auto bg-blue-100 font-normal animate-fade-in"
-                : "mr-auto bg-gray-100 font-normal animate-fade-in"
+                ? "ml-auto bg-blue-100 animate-fade-in"
+                : "mr-auto bg-gray-100 animate-fade-in"
             }`}
           >
             {msg.content.replace(/^###\s*/, "").replace(/\*\*/g, "")}

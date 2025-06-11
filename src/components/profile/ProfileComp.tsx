@@ -24,7 +24,6 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import ForumItem from "@/components/forum/ForumItem";
-import UserMessagesComp from "@/components/profile/UserMessagesComp";
 
 function ProfileComp() {
   const { userInfo, mainLanguage, isAuth } = useContext(contextData);
@@ -149,9 +148,6 @@ function ProfileComp() {
             >
               {mainLanguage.leftOut.friends}: {userInfo.friends.length}
             </div>
-          </div>
-          <div className="">
-            <UserMessagesComp />
           </div>
           <div className="flex flex-col">
             <p>

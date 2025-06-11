@@ -1,6 +1,9 @@
 export const ru = {
   lang: "ru",
   leftOut: {
+    fileSelected: "Фото не выбрано",
+    uploadPhoto: "Загрузить фото",
+    or: "Или можно использовать обычную аватарку",
     admin: "Администратор",
     user: "Пользователь",
     allUsers: "Все пользователи",

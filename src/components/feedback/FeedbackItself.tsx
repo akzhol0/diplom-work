@@ -10,7 +10,6 @@ type FeedbackItselfProps = {
 };
 
 const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
-  const dateTime = new Date();
   const { users } = useContext(contextData);
   const [user, setUser] = useState<UserInfoTypes>();
   const [postLikesCount, setPostLikesCount] = useState(
@@ -50,7 +49,13 @@ const FeedbackItself = ({ feedback }: FeedbackItselfProps) => {
         {user && (
           <div className="flex">
             <div className="w-[50px] h-[50px] rounded-[50%] border overflow-hidden">
-              <Image src={user.image} alt="pfp" width={60} height={60} />
+              <Image
+                className="object-center"
+                src={user.image}
+                alt="pfp"
+                width={60}
+                height={60}
+              />
             </div>
             <div className="flex items-center text-sm justify-center ps-2">
               <div>
