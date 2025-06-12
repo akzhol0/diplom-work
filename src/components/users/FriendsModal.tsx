@@ -17,7 +17,7 @@ const FriendsModal = ({ setFriendsModal, user }: FriendsModalProps) => {
         <p className={"text-lg"}>{mainLanguage.leftOut.friends}:</p>
         <div>
           {user.friends.length > 0 ? (
-            <div className="my-4 flex flex-col gap-2">
+            <div className="my-4 flex flex-col gap-2 max-h-[400px] overflow-y-scroll">
               {user.friends.map((friend: any, index: number) => (
                 <SingleFriendModal friend={friend.log} key={index} />
               ))}
