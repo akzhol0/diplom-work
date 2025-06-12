@@ -4,12 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Mistral } from "@mistralai/mistralai";
 
 const AiBot = () => {
-  const [messages, setMessages] = useState<any>([
-    {
-      role: "assistant",
-      content: `Привет, я искуственный интеллект этого веб-приложения Mercury. Если есть вопросы можете меня спрашивать!`,
-    },
-  ]);
+  const [messages, setMessages] = useState<any>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const chatRef = useRef<HTMLDivElement>(null);
@@ -48,7 +43,7 @@ const AiBot = () => {
       if (aiMessage?.content) {
         setMessages((prev: any) => [
           ...prev,
-          { role: "agent", content: aiMessage.content },
+          { role: "assistant", content: aiMessage.content },
         ]);
       }
     } catch (error) {
@@ -77,19 +72,27 @@ const AiBot = () => {
         className="flex-1 flex flex-col overflow-y-auto p-0 py-4 sm:p-6 space-y-4 h-[500px] md:h-[700px] scrollbar-thin
         scrollbar-thumb-gray-400 scrollbar-track-gray-100"
       >
-        {messages.map((msg: any, index: any) => (
-          <pre
-            key={index}
-            className={`w-fit text-sm md:text-lg font-semibold shadow-md max-w-[80%] px-4 py-3 rounded-xl font-sans 
+        <pre
+          className="w-fit text-sm md:text-lg font-semibold shadow-md max-w-[80%] px-4 py-3 rounded-xl font-sans
+            leading-relaxed whitespace-pre-wrap mr-auto bg-gray-100 animate-fade-in"
+        >
+          Привет, я искуственный интеллект этого веб-приложения Mercury. Если
+          есть вопросы можете меня спрашивать!
+        </pre>
+        {messages.length !== 0 &&
+          messages.map((msg: any, index: any) => (
+            <pre
+              key={index}
+              className={`w-fit text-sm md:text-lg font-semibold shadow-md max-w-[80%] px-4 py-3 rounded-xl font-sans 
             leading-relaxed whitespace-pre-wrap ${
               msg.role === "user"
                 ? "ml-auto bg-blue-100 animate-fade-in"
                 : "mr-auto bg-gray-100 animate-fade-in"
             }`}
-          >
-            {msg.content.replace(/^###\s*/, "").replace(/\*\*/g, "")}
-          </pre>
-        ))}
+            >
+              {msg.content.replace(/^###\s*/, "").replace(/\*\*/g, "")}
+            </pre>
+          ))}
         {loading && (
           <div className="max-w-[60%] self-start text-md bg-gray-100 rounded-xl px-4 py-2 animate-pulse">
             Печатает...

@@ -59,8 +59,8 @@ function NavBar() {
         name="language-option"
         id="language-option"
       >
-        <option value="ru">RUS</option>
-        <option value="kz">KAZ</option>
+        <option value="ru">РУС</option>
+        <option value="kz">ҚАЗ</option>
         <option value="en">ENG</option>
       </select>
     </div>
