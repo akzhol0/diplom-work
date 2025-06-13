@@ -1,6 +1,8 @@
 export const en = {
   lang: "en",
   leftOut: {
+    complain: "Report",
+    save: "Save",
     fileSelected: "Photo isn't selected yet",
     uploadPhoto: "Upload photo",
     or: "Or, you can just use a regular one",

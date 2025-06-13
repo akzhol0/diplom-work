@@ -99,6 +99,12 @@ const ForumOptions = ({
               <div>{mainLanguage.leftOut.comments}</div>
             </div>
           )}
+          <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
+            {mainLanguage.leftOut.complain}
+          </div>
+          <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
+            {mainLanguage.leftOut.save}
+          </div>
         </div>
       )}
     </div>

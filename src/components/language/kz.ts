@@ -1,6 +1,8 @@
 export const kz = {
   lang: "kz",
   leftOut: {
+    complain: "Шағым беру",
+    save: "Сақтау",
     fileSelected: "Фото әлі тандалмады",
     or: "Немесе қарапайым аватарды қолдануға болады",
     uploadPhoto: "Фото таңдау",

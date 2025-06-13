@@ -138,10 +138,10 @@ const FeedbackOptions = ({
           <div>{mainLanguage.rest.copy}</div>
         </div>
         <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
-          Сохранить
+          {mainLanguage.leftOut.complain}
         </div>
         <div className="w-full h-[30px] flex items-center rounded-xl hover:bg-gray-700 justify-center">
-          Пожаловаться
+          {mainLanguage.leftOut.save}
         </div>
       </div>
     </div>
