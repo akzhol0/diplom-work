@@ -132,9 +132,7 @@ const ChatBot = () => {
               onChange={(e) => setUserMessage(e.target.value)}
             />
             <button
-              onClick={() =>
-                setCommands(mainLanguage.lang === "ru" && !commands)
-              }
+              onClick={() => setCommands(!commands)}
               className="bg-blue-500 text-white px-3 py-2 rounded-full hover:bg-blue-800 transition"
             >
               <Image src="/images/db.png" width={20} height={20} alt="logo" />
