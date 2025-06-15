@@ -137,10 +137,12 @@ function ProfileComp() {
             {/*  )}*/}
             {/*</div>*/}
           </div>
-          <p>
-            {mainLanguage.leftOut.birthdayDate}:{" "}
-            {formatTime(userInfo.birthdate)}
-          </p>
+          {userInfo.birthdate !== "Неизвестно" && (
+            <p>
+              {mainLanguage.leftOut.birthdayDate}:{" "}
+              {formatTime(userInfo.birthdate)}
+            </p>
+          )}
           <div className="flex">
             <div
               onClick={() => setFriendsModal(!friendsModal)}

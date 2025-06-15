@@ -121,7 +121,7 @@ const UserPage = ({ token }: UserPageProps) => {
     });
   };
 
-  const formatTime = (timestamp: number): string => {
+  const formatTime = (timestamp: number | string): string => {
     const date = new Date(timestamp);
 
     const options: Intl.DateTimeFormatOptions = {
@@ -164,9 +164,11 @@ const UserPage = ({ token }: UserPageProps) => {
                     ? mainLanguage.leftOut.user
                     : mainLanguage.leftOut.admin}
                 </p>
-                <p>
-                  {mainLanguage.rest.birth}: {formatTime(user?.birthdate)}
-                </p>
+                {user?.birthdate !== "Неизвестно" && (
+                  <p>
+                    {mainLanguage.rest.birth}: {formatTime(user?.birthdate)}
+                  </p>
+                )}
                 <div className="flex">
                   <div
                     onClick={() => setFriendsModal(true)}

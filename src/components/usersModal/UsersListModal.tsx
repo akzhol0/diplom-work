@@ -11,7 +11,7 @@ const UsersListModal = () => {
   const { users, mainLanguage } = useContext(contextData);
   const [isUserListModal, setIsUserListModal] = useState(false);
 
-  const formatTime = (timestamp: number): string => {
+  const formatTime = (timestamp: number | string): string => {
     const date = new Date(timestamp);
 
     const options: Intl.DateTimeFormatOptions = {
