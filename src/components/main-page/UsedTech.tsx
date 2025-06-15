@@ -11,6 +11,7 @@ import {
   SiJavascript,
   SiGithub,
   SiGraphql,
+  SiVercel,
 } from "react-icons/si";
 import { contextData } from "@/components/context/context";
 
@@ -34,6 +35,7 @@ const UsedTech = () => {
     { icon: <SiNextdotjs size={40} className="text-white" />, name: "NextJS" },
     { icon: <SiGit size={40} className="text-white" />, name: "Git" },
     { icon: <SiGithub size={40} className="text-white" />, name: "GitHub" },
+    { icon: <SiVercel size={40} className="text-white" />, name: "Vercel" },
     { icon: <SiGraphql size={40} className="text-white" />, name: "GraphQL" },
     { icon: <SiFirebase size={40} className="text-white" />, name: "Firebase" },
   ];
