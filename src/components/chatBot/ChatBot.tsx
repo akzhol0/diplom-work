@@ -97,7 +97,7 @@ const ChatBot = () => {
                 </pre>
               ))}
             {loading && (
-              <div className="max-w-[60%] self-start text-md bg-gray-100 rounded-xl px-4 py-2 animate-pulse">
+              <div className="max-w-[60%] self-start text-md bg-gray-100 rounded-xl px-4 py-2 animate-pulse animate-fade-in">
                 Печатает...
               </div>
             )}

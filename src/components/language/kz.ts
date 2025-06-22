@@ -244,10 +244,6 @@ export const kz = {
   },
   header: {
     links: [
-      // {
-      //   title: "Жобалар",
-      //   url: "/projects",
-      // },
       {
         title: "Форум",
         url: "/forum",
@@ -259,6 +255,10 @@ export const kz = {
       {
         title: "Профиль",
         url: "/profile",
+      },
+      {
+        title: "Жобалар",
+        url: "/projects",
       },
       {
         title: "Жүйелер",
@@ -371,6 +371,86 @@ export const kz = {
         backgroundColor: "bg-[#ffc9db]",
         type: "Information infrastructures",
         id: 10,
+      },
+      {
+        title: "CyberNet",
+        description:
+          "Нақты уақыт деректері мен жиналған ақпарат негізінде есептер мен болжаулар жасауға мүмкіндік беретін ақпараттық-талдау жүйесі.",
+        backgroundColor: "bg-[#ffc9f9]",
+        type: "Automated Systems",
+        id: 11,
+      },
+      {
+        title: "SecureTime",
+        description:
+          "Икемді кесте орнату, мазмұнды сүзу және пайдаланушы әрекетін бақылау мүмкіндіктері бар ата-ана бақылауы қосымшасы.",
+        backgroundColor: "bg-[#fcf1c2]",
+        type: "Controle",
+        id: 12,
+      },
+      {
+        title: "Compliance Checker",
+        description:
+          "Ішкі ережелер мен салалық стандарттарға сәйкестігін автоматты түрде тексеретін бизнес-процестер құралы.",
+        backgroundColor: "bg-[#bff8ff]",
+        type: "Controle",
+        id: 13,
+      },
+      {
+        title: "Orion DSS",
+        description:
+          "Тәуекелдерді бағалау, сценарийлік талдау және деректер визуализациясы негізінде шешім қабылдауды қолдайтын платформа.",
+        backgroundColor: "bg-[#ffbffc]",
+        type: "Decision support systems",
+        id: 14,
+      },
+      {
+        title: "AutoTrack",
+        description:
+          "Кәсіпорынның нақты қажеттіліктеріне бейімделетін өндірістік желілерді автоматтандыруға арналған модульдік жүйе.",
+        backgroundColor: "bg-[#ffc9db]",
+        type: "Automated Systems",
+        id: 15,
+      },
+      {
+        title: "BizProcess",
+        description:
+          "Іскерлік процестерді құру және оңтайландыру шешімі, ол корпоративтік IT-жүйелермен бірігуге бейімделген.",
+        backgroundColor: "bg-[#c4f2e1]",
+        type: "Technical process management",
+        id: 16,
+      },
+      {
+        title: "OptimaFlow",
+        description:
+          "Өндірістік және әкімшілік процестерді басқару, шығындарды азайтуға және сапаны бақылауға бағытталған.",
+        backgroundColor: "bg-[#9fd5e3]",
+        type: "Technical process management",
+        id: 17,
+      },
+      {
+        title: "InfraCore",
+        description:
+          "Ақпаратты сақтау, өңдеу және қауіпсіз беру үшін құрылған көп деңгейлі инфрақұрылым.",
+        backgroundColor: "bg-[#d1baff]",
+        type: "Information infrastructures",
+        id: 18,
+      },
+      {
+        title: "SafePoint",
+        description:
+          "Ақаулар немесе кибершабуылдар жағдайында цифрлық ресурстарды қорғау және қалпына келтіру платформасы.",
+        backgroundColor: "bg-[#ffcccf]",
+        type: "Information infrastructures",
+        id: 19,
+      },
+      {
+        title: "NovaSystem",
+        description:
+          "Таралған тораптардың тұрақты жұмысын қамтамасыз ететін икемді автоматтандыру архитектурасы.",
+        backgroundColor: "bg-[#bdeffc]",
+        type: "Automated Systems",
+        id: 20,
       },
     ],
   },

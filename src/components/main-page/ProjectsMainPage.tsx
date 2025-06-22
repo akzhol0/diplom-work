@@ -13,10 +13,10 @@ function ProjectsMainPage() {
       <p className="text-[40px] lg:text-[50px] font-bold">
         {mainLanguage.mainPage.projects.title}
       </p>
-      <p className="max-w-[500px]  lg:text-lg">
+      <p className="max-w-[500px] lg:text-lg">
         {mainLanguage.mainPage.projects.small}
       </p>
-      <PortfolioContainer filter="Automated Systems" />
+      <PortfolioContainer filter="Decision support systems" />
       <div className="flex justify-end">
         <Link href="/projects">
           <p className="text-lg text-red-600 cursor-pointer">

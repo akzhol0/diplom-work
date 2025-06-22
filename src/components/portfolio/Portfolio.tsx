@@ -22,6 +22,9 @@ function Portfolio() {
         <h1 className="text-[40px] md:text-[60px] font-semibold">
           {mainLanguage.projects.title}
         </h1>
+        <p className="max-w-[800px]  lg:text-lg">
+          {mainLanguage.mainPage.projects.small}
+        </p>
         <div className="my-6">
           <Options setFilter={setFilter} />
         </div>

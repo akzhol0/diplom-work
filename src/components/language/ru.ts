@@ -2191,10 +2191,6 @@ export const ru = {
   },
   header: {
     links: [
-      // {
-      //   title: "Проекты",
-      //   url: "/projects",
-      // },
       {
         title: "Форум",
         url: "/forum",
@@ -2206,6 +2202,10 @@ export const ru = {
       {
         title: "Профиль",
         url: "/profile",
+      },
+      {
+        title: "Проекты",
+        url: "/projects",
       },
       {
         title: "Системы",
@@ -2318,6 +2318,86 @@ export const ru = {
         backgroundColor: "bg-[#ffc9db]",
         type: "Information infrastructures",
         id: 10,
+      },
+      {
+        title: "CyberNet",
+        description:
+          "Информационно-аналитическая система, позволяющая формировать отчеты и прогнозы на основе реального времени и собранных данных.",
+        backgroundColor: "bg-[#ffc9f9]",
+        type: "Automated Systems",
+        id: 11,
+      },
+      {
+        title: "SecureTime",
+        description:
+          "Программа родительского контроля с гибкими настройками расписания, фильтрации контента и мониторинга активности.",
+        backgroundColor: "bg-[#fcf1c2]",
+        type: "Controle",
+        id: 12,
+      },
+      {
+        title: "Compliance Checker",
+        description:
+          "Инструмент для автоматизированной проверки соответствия бизнес-процессов внутренним регламентам и отраслевым стандартам.",
+        backgroundColor: "bg-[#bff8ff]",
+        type: "Controle",
+        id: 13,
+      },
+      {
+        title: "Orion DSS",
+        description:
+          "Платформа поддержки принятия решений на основе моделей оценки рисков, сценарного анализа и визуализации данных.",
+        backgroundColor: "bg-[#ffbffc]",
+        type: "Decision support systems",
+        id: 14,
+      },
+      {
+        title: "AutoTrack",
+        description:
+          "Модульная система автоматизации технологических линий с возможностью адаптации под нужды конкретного предприятия.",
+        backgroundColor: "bg-[#ffc9db]",
+        type: "Automated Systems",
+        id: 15,
+      },
+      {
+        title: "BizProcess",
+        description:
+          "Решение для построения и оптимизации бизнес-процессов с возможностью интеграции в корпоративные IT-среды.",
+        backgroundColor: "bg-[#c4f2e1]",
+        type: "Technical process management",
+        id: 16,
+      },
+      {
+        title: "OptimaFlow",
+        description:
+          "Управление производственными и административными процессами с акцентом на снижение потерь и контроль качества.",
+        backgroundColor: "bg-[#9fd5e3]",
+        type: "Technical process management",
+        id: 17,
+      },
+      {
+        title: "InfraCore",
+        description:
+          "Многоуровневая инфраструктура, предназначенная для хранения, обработки и безопасной передачи информации.",
+        backgroundColor: "bg-[#d1baff]",
+        type: "Information infrastructures",
+        id: 18,
+      },
+      {
+        title: "SafePoint",
+        description:
+          "Информационная платформа для защиты и восстановления цифровых ресурсов в случае сбоев или кибератак.",
+        backgroundColor: "bg-[#ffcccf]",
+        type: "Information infrastructures",
+        id: 19,
+      },
+      {
+        title: "NovaSystem",
+        description:
+          "Гибкая архитектура автоматизации рабочих процессов, обеспечивающая стабильную работу распределённых узлов.",
+        backgroundColor: "bg-[#bdeffc]",
+        type: "Automated Systems",
+        id: 20,
       },
     ],
   },

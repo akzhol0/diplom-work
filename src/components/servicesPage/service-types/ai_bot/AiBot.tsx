@@ -94,7 +94,7 @@ const AiBot = () => {
             </pre>
           ))}
         {loading && (
-          <div className="max-w-[60%] self-start text-md bg-gray-100 rounded-xl px-4 py-2 animate-pulse">
+          <div className="max-w-[60%] self-start animate-fade-in text-md bg-gray-100 rounded-xl px-4 py-2 animate-pulse">
             Печатает...
           </div>
         )}

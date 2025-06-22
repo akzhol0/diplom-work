@@ -8,13 +8,13 @@ import { ContextOverAll } from "@/components/context/context";
 
 export const metadata: Metadata = {
   title: {
-    default: "Дипломная работа - Турсынханов Акжол - Mercury",
+    default: "Mercury - Система поддержки принятие решение",
     template: "%s - Mercury",
   },
   description:
     "Веб-приложение, созданное для дипломной работы студентом Турсынханов Акжол. Система поддержки принятие решений для помощи пользователю индидуально решит или дать максималально подходящий совет по решению проблемы в области информационной безопасности, по итогам опроса пользователя или по анализу данных",
   openGraph: {
-    title: "Дипломная работа - Турсынханов Акжол - Mercury",
+    title: "Система поддержки принятие решение - Турсынханов Акжол - Mercury",
     description:
       "Веб-приложение, созданное для дипломной работы студентом Турсынханов Акжол. Система поддержки принятие решений для помощи пользователю индидуально решит или дать максималально подходящий совет по решению проблемы в области информационной безопасности, по итогам опроса пользователя или по анализу данных",
     url: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/open-graph.png`,
         width: 1200,
         height: 630,
-        alt: "Дипломная работа - Mercury - СППР",
+        alt: "Система поддержки принятие решение - Mercury",
       },
     ],
     locale: "ru_RU",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Дипломная работа - Турсынханов Акжол",
+    title: "Система поддержки принятие решение - Турсынханов Акжол",
     description: "Веб-приложение: Mercury Web App.",
     images: `${process.env.NEXT_PUBLIC_BASE_URL}/open-graph.png`,
   },

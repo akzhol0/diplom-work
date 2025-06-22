@@ -240,10 +240,6 @@ export const en = {
   },
   header: {
     links: [
-      // {
-      //   title: "Projects",
-      //   url: "/projects",
-      // },
       {
         title: "Forum",
         url: "/forum",
@@ -255,6 +251,10 @@ export const en = {
       {
         title: "Profile",
         url: "/profile",
+      },
+      {
+        title: "Projects",
+        url: "/projects",
       },
       {
         title: "Systems",
@@ -367,6 +367,86 @@ export const en = {
         backgroundColor: "bg-[#ffc9db]",
         type: "Information infrastructures",
         id: 10,
+      },
+      {
+        title: "CyberNet",
+        description:
+          "An information and analytics system that allows generating reports and forecasts based on real-time data and collected information.",
+        backgroundColor: "bg-[#ffc9f9]",
+        type: "Automated Systems",
+        id: 11,
+      },
+      {
+        title: "SecureTime",
+        description:
+          "A parental control application with flexible schedule settings, content filtering, and activity monitoring.",
+        backgroundColor: "bg-[#fcf1c2]",
+        type: "Controle",
+        id: 12,
+      },
+      {
+        title: "Compliance Checker",
+        description:
+          "A tool for automated verification of business process compliance with internal regulations and industry standards.",
+        backgroundColor: "bg-[#bff8ff]",
+        type: "Controle",
+        id: 13,
+      },
+      {
+        title: "Orion DSS",
+        description:
+          "A decision support platform based on risk assessment models, scenario analysis, and data visualization.",
+        backgroundColor: "bg-[#ffbffc]",
+        type: "Decision support systems",
+        id: 14,
+      },
+      {
+        title: "AutoTrack",
+        description:
+          "A modular system for automating production lines with the ability to adapt to the specific needs of an enterprise.",
+        backgroundColor: "bg-[#ffc9db]",
+        type: "Automated Systems",
+        id: 15,
+      },
+      {
+        title: "BizProcess",
+        description:
+          "A solution for building and optimizing business processes with the ability to integrate into corporate IT environments.",
+        backgroundColor: "bg-[#c4f2e1]",
+        type: "Technical process management",
+        id: 16,
+      },
+      {
+        title: "OptimaFlow",
+        description:
+          "Management of production and administrative processes focused on reducing losses and ensuring quality control.",
+        backgroundColor: "bg-[#9fd5e3]",
+        type: "Technical process management",
+        id: 17,
+      },
+      {
+        title: "InfraCore",
+        description:
+          "A multi-level infrastructure designed for storage, processing, and secure transmission of information.",
+        backgroundColor: "bg-[#d1baff]",
+        type: "Information infrastructures",
+        id: 18,
+      },
+      {
+        title: "SafePoint",
+        description:
+          "An information platform for protecting and recovering digital assets in case of failures or cyberattacks.",
+        backgroundColor: "bg-[#ffcccf]",
+        type: "Information infrastructures",
+        id: 19,
+      },
+      {
+        title: "NovaSystem",
+        description:
+          "A flexible process automation architecture that ensures stable operation of distributed nodes.",
+        backgroundColor: "bg-[#bdeffc]",
+        type: "Automated Systems",
+        id: 20,
       },
     ],
   },

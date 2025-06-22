@@ -29,7 +29,7 @@ const AllFeedbacks = ({ from }: AllFeedbacksProps) => {
   const filterId = getFilterId();
 
   return (
-    <div className="mt-8 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       <div className="w-full flex justify-center">
         {loadedFeedbacks ? (
           <div className="w-full">

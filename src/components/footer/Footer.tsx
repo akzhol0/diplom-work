@@ -22,7 +22,7 @@ function Footer() {
             </span>
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.phone}:</p>
-              <p className="text-xl">+7 (777) 111 78-04</p>
+              <p className="text-xl">+7 (707) 111 78-04</p>
             </span>
             <span className="flex flex-col">
               <p className="text-lg">{mainLanguage.footer.messengers}:</p>

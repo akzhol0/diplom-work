@@ -74,15 +74,15 @@ function Main() {
       <video width="900" height="600" playsInline autoPlay loop muted>
         <source src="/videos/video2.mp4" type="video/mp4" />
       </video>
+      <div className="w-full flex flex-col items-center my-8">
+        <UsedTech />
+      </div>
       <div className="w-full sm:w-[90%] lg:w-[80%]">
         <FeedbacksMainPage />
       </div>
-      <div className="w-full flex flex-col items-center mt-6">
-        <UsedTech />
-      </div>
-      <div className="w-full flex justify-center mt-[40px]">
-        <AboutDeveloper />
-      </div>
+      {/*<div className="w-full flex justify-center mt-[40px]">*/}
+      {/*  <AboutDeveloper />*/}
+      {/*</div>*/}
       {isVisible && <GoUpButton />}
       <ChatBot />
       <UsersListModal />
