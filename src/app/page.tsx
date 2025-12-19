@@ -15,6 +15,7 @@ import ChatBot from "@/components/chatBot/ChatBot";
 import UsersListModal from "@/components/usersModal/UsersListModal";
 import FeedbacksMainPage from "@/components/main-page/FeedbacksMainPage";
 import UsedTech from "@/components/main-page/UsedTech";
+import YandexMap from "@/components/main-page/YandexMap";
 
 function Main() {
   const { mainLanguage, isVisible, setIsVisible } = useContext(contextData);
@@ -71,12 +72,7 @@ function Main() {
       <div className="w-[95%] md:w-[80%]">
         <ProjectsMainPage />
       </div>
-      <script
-        type="text/javascript"
-        charSet="utf-8"
-        async
-        src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A3a494acdb911c686829351128cfdb386fe02b73e91f95ad14e47e96566874bfc&amp;width=300&amp;height=300&amp;lang=ru_RU&amp;scroll=true"
-      ></script>
+      {/*<YandexMap />*/}
       <video width="900" height="600" playsInline autoPlay loop muted>
         <source src="/videos/video2.mp4" type="video/mp4" />
       </video>
