@@ -1,11 +1,11 @@
-import RegisterComponent from '@/components/auth/RegisterComponent';
-import { Metadata } from 'next';
-import React from 'react';
+import RegisterComponent from "@/components/auth/RegisterComponent";
+import { Metadata } from "next";
+import React from "react";
 
 export const metadata: Metadata = {
-  title: 'Регистрация',
+  title: "Регистрация",
 };
-
+// ;LSKENrfae
 function Register() {
   return <RegisterComponent />;
 }
