@@ -37,6 +37,7 @@ const Commits = () => {
       getPaginationNumber(totalPagesLink);
 
       const data = await res.json();
+      console.log(data);
       setCommits(data);
     } catch (error) {
       console.error("Ошибка при получении коммитов:", error);
@@ -78,6 +79,13 @@ const Commits = () => {
         {mainLanguage.leftOut.updates}
       </p>
       <div className="space-y-2 px-2">
+        <div className="p-2 bg-gray-100 rounded-lg">
+          <div className="ps-4 flex items-center">
+            Прикинь, в твоей жизни произошло столько событий, столько всего
+            должно было произойти, чтобы ты именно сейчас читал это сообщение,
+            ну что ты здесь забыл?
+          </div>
+        </div>
         {commits.map((commit: any) => (
           <div key={commit.sha} className="p-4 bg-gray-100 rounded-lg">
             <div className="flex items-center">
