@@ -4,32 +4,32 @@ on:
   push:
     branches: [new-way]
 
-    jobs:
-      build:
-        runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-          - name: Checkout code
-            uses: actions/checkout@v5
-          - name: Set up Node.js
-            uses: actions/setup-node@v6
-            with:
-              node-version: 24
-              cache: 'npm'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'npm'
 
-          - name: Install dependencies
-            run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-          - name: Run tests
-            run: npm test
+      - name: Run tests
+        run: npm test
 
-          - name: Send Telegram Notification
-            uses: appleboy/telegram-action@master
-            if: success()
-            with:
-              to: '1140495322'
-              token: '8410565854:AAFuInzWvf9gYiR_J6_OLvikie0NM8DAcdU'
-              message: |
-                ✅ Билд успешен!
-                Проект: ${{ github.repository }}
-                Автор: ${{ github.actor }}
+      - name: Send Telegram Notification
+        uses: appleboy/telegram-action@master
+        if: success()
+        with:
+          to: '1140495322'
+          token: '8410565854:AAFuInzWvf9gYiR_J6_OLvikie0NM8DAcdU'
+          message: |
+            ✅ Билд успешен!
+            Проект: ${{ github.repository }}
+            Автор: ${{ github.actor }}
