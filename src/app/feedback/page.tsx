@@ -7,7 +7,7 @@ import UsersListModal from "@/components/usersModal/UsersListModal";
 export const metadata: Metadata = {
   title: "Отзывы",
 };
-
+// поч не работает хз
 function Profile() {
   return (
     <div className="w-full flex justify-center">
