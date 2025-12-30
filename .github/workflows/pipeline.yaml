@@ -25,11 +25,12 @@ jobs:
 
       - name: Send Telegram Notification
         uses: appleboy/telegram-action@master
-        if: success()
+        if: always()
         with:
-          to: '1140495322'
-          token: '8410565854:AAFuInzWvf9gYiR_J6_OLvikie0NM8DAcdU'
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
           message: |
-            ✅ Билд успешен!
+            ${{ job.status == 'success' && '✅' || '❌' }} Билд ${{ job.status }}!
             Проект: ${{ github.repository }}
+            Ветка: ${{ github.ref_name }}
             Автор: ${{ github.actor }}
