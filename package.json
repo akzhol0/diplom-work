@@ -15,6 +15,7 @@
     "date-fns": "^4.1.0",
     "firebase": "^11.0.1",
     "framer-motion": "^12.7.5",
+    "gh": "^2.8.9",
     "js-cookie": "^3.0.5",
     "lucide-react": "^0.503.0",
     "next": "14.2.15",
