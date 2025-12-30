@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node coverage/test.js"
+    "test": "node test.js"
   },
   "dependencies": {
     "@mistralai/mistralai": "^1.6.0",
